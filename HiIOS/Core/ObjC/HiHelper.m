@@ -1,0 +1,54 @@
+//
+//  HiHelper.m
+//  HiIOS
+//
+//  Created by 杨建祥 on 2022/7/18.
+//
+
+#import "HiHelper.h"
+#import <QMUIKit/QMUIKit.h>
+
+@interface HiHelper ()
+
+@end
+
+@implementation HiHelper
+
+- (CGFloat)statusBarHeight {
+    return StatusBarHeight;
+}
+
+- (CGFloat)statusBarHeightConstant {
+    return StatusBarHeightConstant;
+}
+
+- (CGFloat)navigationBarHeight {
+    return NavigationBarHeight;
+}
+
+- (CGFloat)navigationContentTop {
+    return NavigationContentTop;
+}
+
+- (CGFloat)navigationContentTopConstant {
+    return NavigationContentTopConstant;
+}
+
+- (CGFloat)tabBarHeight {
+    return TabBarHeight;
+}
+
+- (CGFloat)toolBarHeight {
+    return ToolBarHeight;
+}
+
++ (instancetype)sharedInstance {
+    static id instance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[[self class] alloc] init];
+    });
+    return instance;
+}
+
+@end

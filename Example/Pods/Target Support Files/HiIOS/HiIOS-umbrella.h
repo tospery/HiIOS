@@ -10,6 +10,13 @@
 #endif
 #endif
 
+#import "WebViewJavascriptBridgeBase.h"
+#import "WebViewJavascriptBridge_JS.h"
+#import "WKWebViewJavascriptBridge.h"
+#import "HiHelper.h"
+#import "SwiftyLoad.h"
+#import "UIImage+Frame.h"
+#import "UITextView+Frame.h"
 
 FOUNDATION_EXPORT double HiIOSVersionNumber;
 FOUNDATION_EXPORT const unsigned char HiIOSVersionString[];

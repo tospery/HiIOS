@@ -1,0 +1,6 @@
+framework module SwifterSwift_Hi {
+  umbrella header "SwifterSwift-Hi-umbrella.h"
+
+  export *
+  module * { export * }
+}

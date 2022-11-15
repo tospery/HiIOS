@@ -1,0 +1,62 @@
+//
+//  Parameter.swift
+//  HiIOS
+//
+//  Created by liaoya on 2022/7/19.
+//
+
+import Foundation
+
+public struct Parameter {
+    public static let id                    = "id"
+    public static let key                   = "key"
+    public static let url                   = "url"
+    public static let mac                   = "mac"
+    public static let code                  = "code"
+    public static let type                  = "type"
+    public static let name                  = "name"
+    public static let mode                  = "mode"
+    public static let value                 = "value"
+    public static let state                 = "state"
+    public static let title                 = "title"
+    public static let model                 = "model"
+    public static let active                = "active"
+    public static let models                = "models"
+    public static let portal                = "portal"
+    public static let isDark                = "isDark"
+    public static let isList                = "isList"
+    public static let userid                = "userid"
+    public static let channel               = "channel"
+    public static let keyword               = "keyword"
+    public static let message               = "message"
+    public static let actions               = "actions"
+    public static let command               = "command"
+    public static let handers               = "handers"
+    public static let username              = "username"
+    public static let password              = "password"
+    public static let priority              = "priority"
+    public static let parameter             = "parameter"
+    public static let entryName             = "entryName"
+    public static let forwardType           = "forwardType"
+    public static let navBarStyle           = "navBarStyle"
+    public static let primaryColor          = "primaryColor"
+    public static let toastMessage          = "toastMessage"
+    public static let toastActivity         = "toastActivity"
+    public static let dismissManually       = "dismissManually"
+    public static let shouldRefresh         = "shouldRefresh"
+    public static let progressColor         = "progressColor"
+    public static let shouldLoadMore        = "shouldLoadMore"
+    public static let statusBarStyle        = "statusBarStyle"
+    public static let backgroundColor       = "backgroundColor"
+    public static let backgroundImage       = "backgroundImage"
+    public static let transparetNavBar      = "transparetNavBar"
+    public static let hidesNavigationBar    = "hidesNavigationBar"
+    public static let hidesNavBottomLine    = "hidesNavBottomLine"
+    public static let host                  = "_router_host"
+    public static let path                  = "_router_path"
+    public static let extra                 = "_router_extra"
+    public static let context               = "_router_context"
+    public static let observer              = "_router_observer"
+    public static let needLogin             = "_router_needLogin"
+    public static let currentUser           = "_router_currentUser"
+}

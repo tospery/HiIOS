@@ -1,15 +1,185 @@
 PODS:
-  - HiIOS (1.0.0)
+  - Alamofire (5.6.2)
+  - BonMot (6.1.1)
+  - Cache (6.0.0)
+  - Differentiator (5.0.0)
+  - DZNEmptyDataSet (1.8.1)
+  - FCUUID (1.3.1):
+    - UICKeyChainStore (~> 2.1.0)
+  - HiIOS (1.0.1):
+    - HiIOS/Cache (= 1.0.1)
+    - HiIOS/Components (= 1.0.1)
+    - HiIOS/Core (= 1.0.1)
+    - HiIOS/Frame (= 1.0.1)
+    - HiIOS/Network (= 1.0.1)
+    - HiIOS/Resources (= 1.0.1)
+    - HiIOS/Router (= 1.0.1)
+    - HiIOS/Theme (= 1.0.1)
+  - HiIOS/Cache (1.0.1):
+    - Cache (= 6.0.0)
+    - HiIOS/Core
+  - HiIOS/Components (1.0.1):
+    - HiIOS/Components/JSBridge (= 1.0.1)
+  - HiIOS/Components/JSBridge (1.0.1)
+  - HiIOS/Core (1.0.1):
+    - FCUUID (= 1.3.1)
+    - ObjectMapper-Hi (= 4.2.0-v1)
+    - QMUIKit/QMUICore (= 4.5.1)
+    - SwifterSwift-Hi (= 5.3.0-v1)
+    - SwiftyBeaver (= 1.9.5)
+  - HiIOS/Frame (1.0.1):
+    - BonMot (= 6.1.1)
+    - DZNEmptyDataSet (= 1.8.1)
+    - HiIOS/Cache
+    - HiIOS/Components/JSBridge
+    - HiIOS/Core
+    - HiIOS/Network
+    - HiIOS/Resources
+    - HiIOS/Router
+    - HiIOS/Theme
+    - Kingfisher (= 6.3.1)
+    - MJRefresh (= 3.7.5)
+    - "NSObject+Rx (= 5.2.2)"
+    - ReactorKit (= 3.2.0)
+    - RxDataSources (= 5.0.0)
+  - HiIOS/Network (1.0.1):
+    - HiIOS/Core
+    - Moya/RxSwift (= 15.0.0)
+    - RxRelay (~> 6.0)
+  - HiIOS/Resources (1.0.1)
+  - HiIOS/Router (1.0.1):
+    - HiIOS/Core
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+    - URLNavigator (= 2.4.1)
+  - HiIOS/Theme (1.0.1):
+    - HiIOS/Core
+    - RxTheme (= 6.0.0)
+  - Kingfisher (6.3.1)
+  - MJRefresh (3.7.5)
+  - Moya/Core (15.0.0):
+    - Alamofire (~> 5.0)
+  - Moya/RxSwift (15.0.0):
+    - Moya/Core
+    - RxSwift (~> 6.0)
+  - "NSObject+Rx (5.2.2)":
+    - RxSwift (~> 6.2)
+  - ObjectMapper-Hi (4.2.0-v1)
+  - QMUIKit/QMUICore (4.5.1):
+    - QMUIKit/QMUILog
+    - QMUIKit/QMUIWeakObjectContainer
+  - QMUIKit/QMUILog (4.5.1)
+  - QMUIKit/QMUIWeakObjectContainer (4.5.1)
+  - ReactorKit (3.2.0):
+    - RxSwift (~> 6.0)
+    - WeakMapTable (~> 1.1)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxDataSources (5.0.0):
+    - Differentiator (~> 5.0)
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxSwift (6.5.0)
+  - RxTheme (6.0.0):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - SwifterSwift-Hi (5.3.0-v1):
+    - SwifterSwift-Hi/AppKit (= 5.3.0-v1)
+    - SwifterSwift-Hi/CoreAnimation (= 5.3.0-v1)
+    - SwifterSwift-Hi/CoreGraphics (= 5.3.0-v1)
+    - SwifterSwift-Hi/CoreLocation (= 5.3.0-v1)
+    - SwifterSwift-Hi/CryptoKit (= 5.3.0-v1)
+    - SwifterSwift-Hi/Dispatch (= 5.3.0-v1)
+    - SwifterSwift-Hi/Foundation (= 5.3.0-v1)
+    - SwifterSwift-Hi/HealthKit (= 5.3.0-v1)
+    - SwifterSwift-Hi/MapKit (= 5.3.0-v1)
+    - SwifterSwift-Hi/SceneKit (= 5.3.0-v1)
+    - SwifterSwift-Hi/SpriteKit (= 5.3.0-v1)
+    - SwifterSwift-Hi/StoreKit (= 5.3.0-v1)
+    - SwifterSwift-Hi/SwiftStdlib (= 5.3.0-v1)
+    - SwifterSwift-Hi/UIKit (= 5.3.0-v1)
+    - SwifterSwift-Hi/WebKit (= 5.3.0-v1)
+  - SwifterSwift-Hi/AppKit (5.3.0-v1)
+  - SwifterSwift-Hi/CoreAnimation (5.3.0-v1)
+  - SwifterSwift-Hi/CoreGraphics (5.3.0-v1)
+  - SwifterSwift-Hi/CoreLocation (5.3.0-v1)
+  - SwifterSwift-Hi/CryptoKit (5.3.0-v1)
+  - SwifterSwift-Hi/Dispatch (5.3.0-v1)
+  - SwifterSwift-Hi/Foundation (5.3.0-v1)
+  - SwifterSwift-Hi/HealthKit (5.3.0-v1)
+  - SwifterSwift-Hi/MapKit (5.3.0-v1)
+  - SwifterSwift-Hi/SceneKit (5.3.0-v1)
+  - SwifterSwift-Hi/SpriteKit (5.3.0-v1)
+  - SwifterSwift-Hi/StoreKit (5.3.0-v1)
+  - SwifterSwift-Hi/SwiftStdlib (5.3.0-v1)
+  - SwifterSwift-Hi/UIKit (5.3.0-v1)
+  - SwifterSwift-Hi/WebKit (5.3.0-v1)
+  - SwiftyBeaver (1.9.5)
+  - UICKeyChainStore (2.1.2)
+  - URLNavigator (2.4.1)
+  - WeakMapTable (1.2.0)
 
 DEPENDENCIES:
   - HiIOS (from `../`)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - BonMot
+    - Cache
+    - Differentiator
+    - DZNEmptyDataSet
+    - FCUUID
+    - Kingfisher
+    - MJRefresh
+    - Moya
+    - "NSObject+Rx"
+    - ObjectMapper-Hi
+    - QMUIKit
+    - ReactorKit
+    - RxCocoa
+    - RxDataSources
+    - RxRelay
+    - RxSwift
+    - RxTheme
+    - SwifterSwift-Hi
+    - SwiftyBeaver
+    - UICKeyChainStore
+    - URLNavigator
+    - WeakMapTable
 
 EXTERNAL SOURCES:
   HiIOS:
     :path: "../"
 
 SPEC CHECKSUMS:
-  HiIOS: e367abeb1673903909d21d1b61ac0c7681bedffc
+  Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
+  BonMot: 42c7134bab1da1d1d8805b02113635c12f0200cc
+  Cache: 4ca7e00363fca5455f26534e5607634c820ffc2d
+  Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  FCUUID: bb054fc90cd7cd99320f9f6ff8e130fe607fba05
+  HiIOS: 974459b5d887f04d673dabc3d25915b9076ae0d6
+  Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
+  MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
+  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
+  "NSObject+Rx": 61cf1f7306a73dcef8b36649198af0813ec18dfd
+  ObjectMapper-Hi: 4de83ccea1ba016dda7a71d7066784682a07184d
+  QMUIKit: 3e717c45730ecdf5011ca76751990ad1a23ba7e1
+  ReactorKit: e8b11d6b9c415405f381669b095c154a05b59eca
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+  RxTheme: be60cb14e0544b3cbd574cc37fed35ba9d61aa1f
+  SwifterSwift-Hi: ac0c342e431698dce4f54219b1117a32bbf0ddf3
+  SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
+  UICKeyChainStore: 85db518bb1d294366d15ec9b92a416c4e670518f
+  URLNavigator: 9e277a422a5c131a3e37970c2558e0e866cc22bd
+  WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
 PODFILE CHECKSUM: 1a81796e99f4a5ccde9af14de8a71da0d0e40f85
 
