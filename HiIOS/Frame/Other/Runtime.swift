@@ -20,10 +20,15 @@ final public class Runtime {
     }
     
     public func work() {
-        ExchangeImplementations(UIViewController.self, #selector(UIViewController.present(_:animated:completion:)), #selector(UIViewController.swf_present(_:animated:completion:)))
         if let compatible = self as? RuntimeCompatible {
             compatible.myWork()
+        } else {
+            self.basic()
         }
+    }
+    
+    public func basic() {
+        ExchangeImplementations(UIViewController.self, #selector(UIViewController.present(_:animated:completion:)), #selector(UIViewController.swf_present(_:animated:completion:)))
     }
     
 }

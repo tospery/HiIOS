@@ -22,6 +22,14 @@ final public class Appearance {
     }
     
     public func config() {
+        if let compatible = self as? AppearanceCompatible {
+            compatible.myConfig()
+        } else {
+            self.basic()
+        }
+    }
+    
+    public func basic() {
         // NavBar
 //        let appearance = NavigationBar.appearance()
 ////        appearance.theme.itemColor = themeService.attribute { $0.primaryColor }
@@ -63,10 +71,6 @@ final public class Appearance {
         } else {
             UITabBar.appearance().isTranslucent = false
             UITabBar.appearance().theme.backgroundColor = themeService.attribute { $0.lightColor }
-        }
-        
-        if let compatible = self as? AppearanceCompatible {
-            compatible.myConfig()
         }
     }
     
