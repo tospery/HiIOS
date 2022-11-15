@@ -1,0 +1,16 @@
+PODS:
+  - HiIOS (1.0.0)
+
+DEPENDENCIES:
+  - HiIOS (from `../`)
+
+EXTERNAL SOURCES:
+  HiIOS:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  HiIOS: e367abeb1673903909d21d1b61ac0c7681bedffc
+
+PODFILE CHECKSUM: 1a81796e99f4a5ccde9af14de8a71da0d0e40f85
+
+COCOAPODS: 1.11.3

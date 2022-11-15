@@ -1,0 +1,6 @@
+framework module Pods_HiIOS_Example {
+  umbrella header "Pods-HiIOS_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

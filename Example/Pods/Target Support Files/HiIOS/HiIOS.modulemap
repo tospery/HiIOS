@@ -1,0 +1,6 @@
+framework module HiIOS {
+  umbrella header "HiIOS-umbrella.h"
+
+  export *
+  module * { export * }
+}
