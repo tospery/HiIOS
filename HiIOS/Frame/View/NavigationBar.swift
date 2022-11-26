@@ -252,10 +252,12 @@ public class NavigationBar: UIView {
     public func transparet() {
         self.backgroundColor = .clear
         self.qmui_borderPosition = .init(rawValue: 0)
+        self.isTransparet = true
     }
     
     public func reset() {
         self.backgroundColor = .white
+        self.isTransparet = false
         self.qmui_borderColor = self.layerBorderColor ?? .lightGray
         self.qmui_borderWidth = pixelOne
         self.qmui_borderPosition = .bottom

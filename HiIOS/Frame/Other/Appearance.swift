@@ -39,6 +39,7 @@ final public class Appearance {
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance.init()
             appearance.configureWithOpaqueBackground()
+            // appearance.configureWithTransparentBackground()
             appearance.theme.backgroundColor = themeService.attribute { $0.lightColor }
             appearance.shadowImage = UIImage.init()
             appearance.shadowColor = nil
