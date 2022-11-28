@@ -13,17 +13,21 @@ HiIOS是一个致力于提高项目开发效率的响应式应用框架，其设
 ### 应用框架
 
 采用Reactor单向流框架，用户行为（User Action）和视图状态（View State）通过可观察的流递送到各自的层，这些流是单向的：View只能提交Action到Reactor、View的状态只能由Reactor驱动。
+
 采用的三方库[ReactorKit](https://github.com/ReactorKit/ReactorKit)
 
 ### 主题管理
 
 主题管理基于Rx方式。内置了backgroundColor、foregroundColor、titleColor、bodyColor和borderColor等常用的颜色属性，不够的、可以通过specialColors数组来进行扩展。
+
 采用的三方库[RxTheme](https://github.com/RxSwiftCommunity/RxTheme)
 
 ### 路由管理
 
 路由管理基于URL方式。应用会注册一个自己的URL Scheme，比如ioshub，比如关于页面的url为：ioshub://about；同时也支持由https进行驱动，比如https://ioshub.com/about，如果注册了about的host，则会打开原生关于页面，反之打开网页。
+
 同时对路由进行了Reactive的扩展，支持Rx方式调用，可以方便的处理结果。
+
 采用的三方库[URLNavigator](https://github.com/devxoul/URLNavigator)
 
 ### 网络请求
@@ -53,6 +57,7 @@ QMUI_iOS
 ## 设计资源
 
 可以在项目中添加同名的图标来替换内置的资源，
+
 请查看[内置资源](https://github.com/tospery/HiIOS/tree/main/HiIOS/Resources/Images.xcassets)
 
 ## 其他
