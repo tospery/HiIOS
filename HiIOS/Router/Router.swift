@@ -93,9 +93,9 @@ final public class Router {
             }
 
             if let compatible = self as? RouterCompatible {
-                compatible.web(provider, navigator)
-                compatible.page(provider, navigator)
-                compatible.dialog(provider, navigator)
+//                compatible.web(provider, navigator)
+//                compatible.page(provider, navigator)
+//                compatible.dialog(provider, navigator)
                 return compatible.webViewController(provider, navigator, paramters)
             }
             
