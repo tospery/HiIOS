@@ -24,7 +24,11 @@ HiIOS是一个致力于提高项目开发效率的响应式应用框架，其设
 
 ### 路由管理
 
-路由管理基于URL方式。应用会注册一个自己的URL Scheme，比如ioshub，比如关于页面的url为：ioshub://about；同时也支持由https进行驱动，比如https://ioshub.com/about，如果注册了about的host，则会打开原生关于页面，反之打开网页。
+方式一：ioshub://about
+
+方式二：https://ioshub.com/about
+
+路由管理基于URL方式。应用会注册一个自己的URL Scheme，比如ioshub；同时也支持由https进行驱动，如果注册了about的host，则会打开原生关于页面，反之打开网页。
 
 同时对路由进行了Reactive的扩展，支持Rx方式调用，可以方便的处理结果。
 
@@ -32,9 +36,13 @@ HiIOS是一个致力于提高项目开发效率的响应式应用框架，其设
 
 ### 网络请求
 
-Moay
+Moya
 
-### 兼容处理
+### 序列化
+
+ObjectMapper
+
+### 兼容性
 
 QMUI_iOS
 
