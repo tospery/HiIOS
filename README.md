@@ -69,3 +69,10 @@ iOS 11+
 请查看[内置资源](https://github.com/tospery/HiIOS/tree/main/HiIOS/Resources/Images.xcassets)
 
 ## 其他
+
+Core
+Model
+Router
+Network
+Resources
+Components（Cache/Theme/JSBridge）
