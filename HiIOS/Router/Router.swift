@@ -21,8 +21,8 @@ public protocol RouterCompatible {
     func needLogin(host: Router.Host, path: Router.Path?) -> Bool
     func customLogin(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol, _ url: URLConvertible, _ values: [String: Any], _ context: Any?) -> Bool
     
-    func shouldRefresh(host: Router.Host, path: Router.Path?) -> Bool
-    func shouldLoadMore(host: Router.Host, path: Router.Path?) -> Bool
+//    func shouldRefresh(host: Router.Host, path: Router.Path?) -> Bool
+//    func shouldLoadMore(host: Router.Host, path: Router.Path?) -> Bool
     
     // func title(host: Router.Host, path: Router.Path?) -> String?
     func parameters(_ url: URLConvertible, _ values: [String: Any], _ context: Any?) -> [String: Any]?
@@ -168,14 +168,14 @@ final public class Router {
 //        }
 //        parameters[Parameter.title] = parameters.string(for: Parameter.title) ?? title
         // 5. 刷新/加载
-        var shouldRefresh = false
-        var shouldLoadMore = false
-        if let compatible = self as? RouterCompatible {
-            shouldRefresh = compatible.shouldRefresh(host: host, path: path)
-            shouldLoadMore = compatible.shouldLoadMore(host: host, path: path)
-        }
-        parameters[Parameter.shouldRefresh] = parameters.bool(for: Parameter.shouldRefresh) ?? shouldRefresh
-        parameters[Parameter.shouldLoadMore] = parameters.bool(for: Parameter.shouldLoadMore) ?? shouldLoadMore
+//        var shouldRefresh = false
+//        var shouldLoadMore = false
+//        if let compatible = self as? RouterCompatible {
+//            shouldRefresh = compatible.shouldRefresh(host: host, path: path)
+//            shouldLoadMore = compatible.shouldLoadMore(host: host, path: path)
+//        }
+//        parameters[Parameter.shouldRefresh] = parameters.bool(for: Parameter.shouldRefresh) ?? shouldRefresh
+//        parameters[Parameter.shouldLoadMore] = parameters.bool(for: Parameter.shouldLoadMore) ?? shouldLoadMore
         return parameters
     }
     
