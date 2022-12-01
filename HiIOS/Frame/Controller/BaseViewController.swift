@@ -142,13 +142,13 @@ open class BaseViewController: UIViewController {
             if self.navigationController?.viewControllers.count ?? 0 > 1 {
                 self.navigationBar.addBackButtonToLeft().rx.tap.subscribe(onNext: { [weak self] _ in
                     guard let `self` = self else { return }
-                    self.close()
+                    self.back()
                 }).disposed(by: self.disposeBag)
             } else {
                 if self.qmui_isPresented() {
                     self.navigationBar.addCloseButtonToLeft().rx.tap.subscribe(onNext: { [weak self] _ in
                         guard let `self` = self else { return }
-                        self.close()
+                        self.back()
                     }).disposed(by: self.disposeBag)
                 }
             }
@@ -196,17 +196,17 @@ open class BaseViewController: UIViewController {
 //        }).disposed(by: self.disposeBag)
     }
     
-    open func close(animated: Bool = true, result: Any? = nil, _: Void? = nil) {
+    open func back(animated: Bool = true, result: Any? = nil, _: Void? = nil) {
         if result != nil {
             self.callback?.onNext(result!)
         }
         self.navigator.back(animated: animated) { [weak self] in
             guard let `self` = self else { return }
-            self.didClosed()
+            self.didBacked()
         }
     }
     
-    open func didClosed() {
+    open func didBacked() {
         self.callback?.onCompleted()
         self.mydealloc.onNext(())
     }
@@ -216,7 +216,7 @@ open class BaseViewController: UIViewController {
         case .ended:
             guard let superview = self.navigationController?.topViewController?.view.superview else { return }
             if superview.frame.minX == 0.f {
-                self.didClosed()
+                self.didBacked()
             }
         default: break
         }
