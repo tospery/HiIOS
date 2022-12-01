@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   	ss.dependency 'QMUIKit/QMUICore', '4.5.1'
   	ss.dependency 'FCUUID', '1.3.1'
   	ss.dependency 'SwiftyBeaver', '1.9.5'
-  	ss.dependency 'ObjectMapper-Hi', '4.2.0-v1'
+  	ss.dependency 'ObjectMapper-Hi', '4.2.0-v2'
   	ss.dependency 'SwifterSwift-Hi', '5.3.0-v1'
   end
   
