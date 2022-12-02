@@ -54,7 +54,7 @@ open class BaseViewController: UIViewController {
     public var isActivating = false
     public var error: Error?
     
-    public var contentTop: CGFloat {
+    open var contentTop: CGFloat {
         var height = self.navigationBar.height
         if self.hidesNavigationBar ||
             self.transparetNavBar ||
@@ -70,7 +70,7 @@ open class BaseViewController: UIViewController {
         return height
     }
     
-    public var contentBottom: CGFloat {
+    open var contentBottom: CGFloat {
         var height = 0.f
         if let tabBar = self.tabBarController?.tabBar,
             tabBar.isHidden == false,
@@ -81,8 +81,13 @@ open class BaseViewController: UIViewController {
         return height
     }
     
-    public var contentFrame: CGRect {
-        return CGRect(x: 0, y: self.contentTop, width: self.view.width, height: self.view.height - self.contentTop - self.contentBottom)
+    open var contentFrame: CGRect {
+        .init(
+            x: 0,
+            y: self.contentTop,
+            width: self.view.width,
+            height: self.view.height - self.contentTop - self.contentBottom
+        )
     }
     
     // public let navigationBar = NavigationBar()
