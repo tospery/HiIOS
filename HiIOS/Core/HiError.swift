@@ -158,18 +158,18 @@ extension HiError: Equatable {
 extension HiError: CustomStringConvertible {
     public var description: String {
         switch self {
-        case .none: return "SWError.none"
-        case .unknown: return "SWError.unknown"
-        case .timeout: return "SWError.timeout"
-        case .navigation: return "SWError.navigation"
-        case .dataInvalid: return "SWError.dataInvalid"
-        case .dataIsEmpty: return "SWError.dataIsEmpty"
-        case .userNotLoginedIn: return "SWError.userNotLoginedIn"
-        case .userLoginExpired: return "SWError.userLoginExpired"
-        case .networkNotConnected: return "SWError.networkNotConnected"
-        case .networkNotReachable: return "SWError.networkNotReachable"
-        case let .server(code, message, extra): return "SWError.server(\(code), \(message ?? ""), \(extra?.jsonString() ?? "")"
-        case let .app(code, message, extra): return "SWError.app(\(code), \(message ?? ""), \(extra?.jsonString() ?? ""))"
+        case .none: return "HiError.none"
+        case .unknown: return "HiError.unknown"
+        case .timeout: return "HiError.timeout"
+        case .navigation: return "HiError.navigation"
+        case .dataInvalid: return "HiError.dataInvalid"
+        case .dataIsEmpty: return "HiError.dataIsEmpty"
+        case .userNotLoginedIn: return "HiError.userNotLoginedIn"
+        case .userLoginExpired: return "HiError.userLoginExpired"
+        case .networkNotConnected: return "HiError.networkNotConnected"
+        case .networkNotReachable: return "HiError.networkNotReachable"
+        case let .server(code, message, extra): return "HiError.server(\(code), \(message ?? ""), \(extra?.jsonString() ?? "")"
+        case let .app(code, message, extra): return "HiError.app(\(code), \(message ?? ""), \(extra?.jsonString() ?? ""))"
         }
     }
 }
