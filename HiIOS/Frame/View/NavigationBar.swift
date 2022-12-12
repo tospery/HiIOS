@@ -169,7 +169,7 @@ public class NavigationBar: UIView {
         
         let leftDistance = self.leftButtons.last?.right ?? 0
         let rightDistance = self.width - (self.rightButtons.last?.left ?? self.width)
-        let margin = max(leftDistance, rightDistance) + 8
+        let margin = max(leftDistance, rightDistance) + 2
         let titleWidth = (self.width - margin * 2).flat
         self.titleLabel.frame = CGRect(
             x: margin, y: statusBarHeightConstant, width: titleWidth, height: navBarHeight

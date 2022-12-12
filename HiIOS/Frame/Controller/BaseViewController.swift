@@ -201,7 +201,11 @@ open class BaseViewController: UIViewController {
 //        }).disposed(by: self.disposeBag)
     }
     
-    open func back(animated: Bool = true, result: Any? = nil, _: Void? = nil) {
+    public func navBack(_: Void? = nil) {
+        self.back()
+    }
+    
+    open func back(animated: Bool = true, result: Any? = nil) {
         if result != nil {
             self.callback?.onNext(result!)
         }
