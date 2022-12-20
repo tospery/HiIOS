@@ -248,11 +248,11 @@ extension Router.Host {
     public static var login: Router.Host { "login" }
     public static var about: Router.Host { "about" }
     public static var search: Router.Host { "search" }
-    public static var history: Router.Path { "history" }
 }
 
 extension Router.Path {
     public static var list: Router.Path { "list" }
     public static var detail: Router.Path { "detail" }
+    public static var history: Router.Path { "history" }
 }
 
