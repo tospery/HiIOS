@@ -15,8 +15,10 @@ public protocol RouterCompatible {
     func isLegalHost(host: Router.Host) -> Bool
     func allowedPaths(host: Router.Host) -> [Router.Path]
     
-    func hasType(host: Router.Host) -> Bool
-    func forDetail(host: Router.Host) -> Bool
+//    func hasType(host: Router.Host) -> Bool
+//    func forDetail(host: Router.Host) -> Bool
+    
+    func customPattern(host: Router.Host) -> String
     
     func needLogin(host: Router.Host, path: Router.Path?) -> Bool
     func customLogin(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol, _ url: URLConvertible, _ values: [String: Any], _ context: Any?) -> Bool
@@ -188,47 +190,42 @@ final public class Router {
             return "\(UIApplication.shared.urlScheme)://\(host)/\(path)"
         }
         if let compatible = self as? RouterCompatible {
-            if compatible.forDetail(host: host) {
-                return "\(UIApplication.shared.urlScheme)://\(host)/<id>"
-            }
-        } else {
-            if host == .user {
-                return "\(UIApplication.shared.urlScheme)://\(host)/<id>"
-            }
-        }
-        if let compatible = self as? RouterCompatible {
-            if compatible.hasType(host: host) {
-                return "\(UIApplication.shared.urlScheme)://\(host)/<type:_>"
-            }
-        } else {
-            if host == Router.Host.popup {
-                return "\(UIApplication.shared.urlScheme)://\(host)/<type:_>"
-            }
+            return compatible.customPattern(host: host)
         }
         return "\(UIApplication.shared.urlScheme)://\(host)"
+        
+//        if let compatible = self as? RouterCompatible {
+//            if compatible.forDetail(host: host) {
+//                return "\(UIApplication.shared.urlScheme)://\(host)/<id>"
+//            }
+//        } else {
+//            if host == .user {
+//                return "\(UIApplication.shared.urlScheme)://\(host)/<id>"
+//            }
+//        }
+//        if let compatible = self as? RouterCompatible {
+//            if compatible.hasType(host: host) {
+//                return "\(UIApplication.shared.urlScheme)://\(host)/<type:_>"
+//            }
+//        } else {
+//            if host == Router.Host.popup {
+//                return "\(UIApplication.shared.urlScheme)://\(host)/<type:_>"
+//            }
+//        }
+//        return "\(UIApplication.shared.urlScheme)://\(host)"
     }
     
     public func urlString(host: Router.Host, path: Path? = nil, parameters: [String: String]? = nil) -> String {
-        let string = self.urlPattern(host: host)
-            .replacingOccurrences(of: "/<id>", with: "")
-            .replacingOccurrences(of: "/<type:_>", with: "")
-        var url = string.url!
+//        let string = self.urlPattern(host: host)
+//            .replacingOccurrences(of: "/<id>", with: "")
+//            .replacingOccurrences(of: "/<type:_>", with: "")
+        var url = "\(UIApplication.shared.urlScheme)://\(host)".url!
         if let path = path {
             url.appendPathComponent(path)
         }
         if let parameters = parameters {
             url.appendQueryParameters(parameters)
         }
-//        if host.needLogin || path?.needLogin ?? false {
-//            url.appendQueryParameters([
-//                Parameter.needLogin: true.string
-//            ])
-//            if let user = User.current, user.isValid, let string = user.toJSONString()?.base64Encoded {
-//                url.appendQueryParameters([
-//                    Parameter.currentUser: string
-//                ])
-//            }
-//        }
         return url.absoluteString
     }
 
