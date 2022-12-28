@@ -15,11 +15,6 @@ public protocol RouterCompatible {
     func isLegalHost(host: Router.Host) -> Bool
     func allowedPaths(host: Router.Host) -> [Router.Path]
     
-//    func hasType(host: Router.Host) -> Bool
-//    func forDetail(host: Router.Host) -> Bool
-    
-    func customPattern(host: Router.Host) -> String
-    
     func needLogin(host: Router.Host, path: Router.Path?) -> Bool
     func customLogin(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol, _ url: URLConvertible, _ values: [String: Any], _ context: Any?) -> Bool
     
@@ -185,34 +180,15 @@ final public class Router {
     /// 对于详情页，如app://user/detail采用<id>匹配模式
     /// 此时，需要注册两个patter，分别为app://user/42980和app://user
     /// 前者用于跳转到指定用户的详情页，后者用户跳转到当前登录用户的详情页
-    public func urlPattern(host: Router.Host, path: Path? = nil) -> String {
+    public func urlPattern(host: Router.Host, path: Path? = nil, placeholder: String? = nil) -> String {
+        var url = "\(UIApplication.shared.urlScheme)://\(host)"
         if let path = path {
-            return "\(UIApplication.shared.urlScheme)://\(host)/\(path)"
+            url += "/\(path)"
         }
-        if let compatible = self as? RouterCompatible {
-            return compatible.customPattern(host: host)
+        if let placeholder = placeholder {
+            url += "/\(placeholder)"
         }
-        return "\(UIApplication.shared.urlScheme)://\(host)"
-        
-//        if let compatible = self as? RouterCompatible {
-//            if compatible.forDetail(host: host) {
-//                return "\(UIApplication.shared.urlScheme)://\(host)/<id>"
-//            }
-//        } else {
-//            if host == .user {
-//                return "\(UIApplication.shared.urlScheme)://\(host)/<id>"
-//            }
-//        }
-//        if let compatible = self as? RouterCompatible {
-//            if compatible.hasType(host: host) {
-//                return "\(UIApplication.shared.urlScheme)://\(host)/<type:_>"
-//            }
-//        } else {
-//            if host == Router.Host.popup {
-//                return "\(UIApplication.shared.urlScheme)://\(host)/<type:_>"
-//            }
-//        }
-//        return "\(UIApplication.shared.urlScheme)://\(host)"
+        return url
     }
     
     public func urlString(host: Router.Host, path: Path? = nil, parameters: [String: String]? = nil) -> String {
