@@ -249,6 +249,15 @@ public class NavigationBar: UIView {
         self.layoutIfNeeded()
     }
     
+    public func removeAllRightButtons() {
+        for button in self.rightButtons {
+            button.removeFromSuperview()
+        }
+        self.rightButtons.removeAll()
+        self.setNeedsLayout()
+        self.layoutIfNeeded()
+    }
+    
     public func transparet() {
         self.backgroundColor = .clear
         self.qmui_borderPosition = .init(rawValue: 0)
