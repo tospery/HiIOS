@@ -7,9 +7,14 @@
 
 import Foundation
 
-struct HiSection {
+public struct HiSection {
 
-    let header: ModelType?
-    let models = [ModelType].init()
+    public let header: ModelType?
+    public let models: [ModelType]
+    
+    public init(header: ModelType?, models: [ModelType]) {
+        self.header = header
+        self.models = models
+    }
 
 }
