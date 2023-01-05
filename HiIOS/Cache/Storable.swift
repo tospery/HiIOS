@@ -43,7 +43,7 @@ public extension Storable {
     }
 
     static func arrayKey(page: String? = nil) -> String {
-        var key = "\(String(fullname: self))s"
+        var key = "\(String(fullname: self))List"
         if let path = page {
             key += "#\(path)"
         }
