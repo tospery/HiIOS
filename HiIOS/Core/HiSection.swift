@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct HiSection {
+public struct HiSection: CustomStringConvertible {
 
     public let header: ModelType?
     public let models: [ModelType]
@@ -15,6 +15,17 @@ public struct HiSection {
     public init(header: ModelType?, models: [ModelType]) {
         self.header = header
         self.models = models
+    }
+    
+    public var description: String {
+        var result = header?.description ?? ""
+        result += "("
+        for model in models {
+            result += model.description
+        }
+        result += ")"
+        // print("HiSection的description: \(result)")
+        return result
     }
 
 }
