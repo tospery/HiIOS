@@ -11,12 +11,12 @@ import ObjectMapper_Hi
 public struct Simple: Subjective {
     
     public var id = 0
+    public var divided = true
+    public var indicated = true
+    public var height: CGFloat?
     public var icon: String?
     public var title: String?
     public var detail: String?
-    public var indicated = true
-    public var divided = true
-    public var height: CGFloat?
     public var color: String?
     public var tintColor: String?
     public var target: String?

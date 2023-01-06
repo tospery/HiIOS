@@ -6,11 +6,16 @@
 //
 
 import UIKit
+import QMUIKit
 import UICKeyChainStore
 import FCUUID
 
 public extension UIDevice {
 
+    var modelName: String {
+        QMUIHelper.deviceName
+    }
+    
     var keychain: UICKeyChainStore {
         let service = "device.info"
         let accessGroup = UIApplication.shared.team + ".shared"

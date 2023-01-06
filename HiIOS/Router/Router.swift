@@ -219,6 +219,7 @@ extension Router.Host {
     public static var user: Router.Host { "user" }
     public static var profile: Router.Host { "profile" }
     public static var login: Router.Host { "login" }
+    public static var setting: Router.Host { "setting" }
     public static var about: Router.Host { "about" }
     public static var search: Router.Host { "search" }
 }

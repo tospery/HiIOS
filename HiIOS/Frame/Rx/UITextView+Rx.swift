@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxTheme
 
 public extension Reactive where Base: UITextView {
     
@@ -17,4 +18,20 @@ public extension Reactive where Base: UITextView {
         }
     }
     
+}
+
+public extension ThemeProxy where Base: UITextView {
+
+    var placeholderColor: ThemeAttribute<UIColor?> {
+        get { fatalError("set only") }
+        set {
+            base.placeholderColor = newValue.value
+            let disposable = newValue.stream
+                .take(until: base.rx.deallocating)
+                .observe(on: MainScheduler.instance)
+                .bind(to: base.rx.placeholderColor)
+            hold(disposable, for: "placeHolderColor")
+        }
+    }
+
 }
