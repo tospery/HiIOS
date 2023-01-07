@@ -58,8 +58,12 @@ public extension UIImage {
         return self.image(name: "ic_error_empty")
     }
     
-    static var expireError: UIImage {
-        return self.image(name: "ic_error_expire")
+    static var userNotLoginedInError: UIImage {
+        return self.image(name: "ic_error_user_unlogin")
+    }
+    
+    static var userLoginExpiredError: UIImage {
+        return self.image(name: "ic_error_user_expired")
     }
     
 }

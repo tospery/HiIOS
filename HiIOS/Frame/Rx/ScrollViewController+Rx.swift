@@ -26,6 +26,10 @@ public extension Reactive where Base: ScrollViewController {
                     viewController.setupLoadMore(should: false)
                 }
             } else {
+                if viewController.error != nil {
+                    viewController.setupLoadMore(should: false)
+                    return
+                }
                 if viewController.shouldLoadMore {
                     viewController.setupLoadMore(should: true)
                 }

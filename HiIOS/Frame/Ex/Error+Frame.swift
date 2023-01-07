@@ -20,7 +20,8 @@ extension HiError {
         case .networkNotConnected, .networkNotReachable: return UIImage.networkError
         case .server: return UIImage.serverError
         case .dataIsEmpty: return UIImage.emptyError
-        case .userLoginExpired: return UIImage.expireError
+        case .userNotLoginedIn: return UIImage.userNotLoginedInError
+        case .userLoginExpired: return UIImage.userLoginExpiredError
         default: return nil
         }
     }
