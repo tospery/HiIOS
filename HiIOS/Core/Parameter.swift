@@ -32,6 +32,7 @@ public struct Parameter {
     public static let actions               = "actions"
     public static let command               = "command"
     public static let handers               = "handers"
+    public static let nickname              = "nickname"
     public static let username              = "username"
     public static let password              = "password"
     public static let priority              = "priority"
