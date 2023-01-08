@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'HiIOS'
-  s.version          = '1.0.2'
+  s.version          = '1.1.0'
   s.summary          = 'iOS App Framework.'
   s.description      = <<-DESC
 						iOS App Framework using Swift.
@@ -53,6 +53,11 @@ Pod::Spec.new do |s|
   
   s.subspec 'Resources' do |ss|
     ss.resource_bundles = {'Resources' => ['HiIOS/Resources/*.*']}
+	ss.pod_target_xcconfig = {
+		'EXPANDED_CODE_SIGN_IDENTITY' => '',
+		'CODE_SIGNING_REQUIRED' => 'NO',
+		'CODE_SIGNING_ALLOWED' => 'NO',
+	}
   end
   
   s.subspec 'Components' do |ss|
