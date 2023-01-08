@@ -192,9 +192,6 @@ final public class Router {
     }
     
     public func urlString(host: Router.Host, path: Path? = nil, parameters: [String: String]? = nil) -> String {
-//        let string = self.urlPattern(host: host)
-//            .replacingOccurrences(of: "/<id>", with: "")
-//            .replacingOccurrences(of: "/<type:_>", with: "")
         var url = "\(UIApplication.shared.urlScheme)://\(host)".url!
         if let path = path {
             url.appendPathComponent(path)
@@ -202,7 +199,9 @@ final public class Router {
         if let parameters = parameters {
             url.appendQueryParameters(parameters)
         }
-        return url.absoluteString
+        var string = url.absoluteString
+        logger.print("路由: \(string)", module: .hiIOS)
+        return string
     }
 
 }
