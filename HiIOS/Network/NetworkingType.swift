@@ -13,6 +13,7 @@ import ObjectMapper_Hi
 public protocol NetworkingType {
     associatedtype Target: TargetType
     var provider: MoyaProvider<Target> { get }
+    func request(_ target: Target) -> Single<Moya.Response>
 }
 
 public extension NetworkingType {
@@ -66,8 +67,8 @@ public extension NetworkingType {
 
 public extension NetworkingType {
     func request(_ target: Target) -> Single<Moya.Response> {
-        self.provider.rx.request(target)/*.filterSuccessfulStatusCodes()*/.catch { Single<Moya.Response>.error($0.asHiError)
-        }
+        self.provider.rx.request(target)
+            .catch { Single<Moya.Response>.error($0.asHiError) }
     }
     
     func requestRaw(_ target: Target) -> Single<Moya.Response> {

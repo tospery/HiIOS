@@ -224,6 +224,7 @@ extension Router.Host {
 }
 
 extension Router.Path {
+    public static var page: Router.Path { "page" }
     public static var list: Router.Path { "list" }
     public static var detail: Router.Path { "detail" }
     public static var history: Router.Path { "history" }
