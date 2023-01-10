@@ -19,6 +19,7 @@ public struct Parameter {
     public static let value                 = "value"
     public static let state                 = "state"
     public static let title                 = "title"
+    public static let index                 = "index"
     public static let model                 = "model"
     public static let style                 = "style"
     public static let active                = "active"
