@@ -1,5 +1,5 @@
 //
-//  CollectionHeaderView.swift
+//  BaseCollectionHeader.swift
 //  HiIOS
 //
 //  Created by 杨建祥 on 2022/7/19.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class CollectionHeaderView: BaseCollectionReusableView {
+open class BaseCollectionHeader: BaseCollectionReusableView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
