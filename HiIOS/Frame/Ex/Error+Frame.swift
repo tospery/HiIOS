@@ -43,7 +43,6 @@ extension NSError: HiErrorCompatible {
         }
         if self.domain == NSURLErrorDomain {
             // NSURLErrorDomain Code=-1020 "目前不允许数据连接。"
-
             // NSURLErrorUnknown                        -1
             // NSURLErrorCancelled                      -999
             // NSURLErrorBadURL                         -1000
@@ -55,7 +54,7 @@ extension NSError: HiErrorCompatible {
             // NSURLErrorDNSLookupFailed                -1006
             // NSURLErrorHTTPTooManyRedirects           -1007
             // NSURLErrorResourceUnavailable            -1008
-            // NSURLErrorNotConnectedToInternet         -1009
+            // NSURLErrorNotConnectedToInternet         -1009(似乎已断开与互联网的连接)
             // NSURLErrorRedirectToNonExistentLocation  -1010
             // NSURLErrorBadServerResponse              -1011
             // NSURLErrorUserCancelledAuthentication    -1012
