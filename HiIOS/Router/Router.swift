@@ -199,9 +199,7 @@ final public class Router {
         if let parameters = parameters {
             url.appendQueryParameters(parameters)
         }
-        var string = url.absoluteString
-        logger.print("路由: \(string)", module: .hiIOS)
-        return string
+        return url.absoluteString
     }
 
 }
