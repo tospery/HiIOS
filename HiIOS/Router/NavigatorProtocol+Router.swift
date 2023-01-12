@@ -85,6 +85,11 @@ public extension NavigatorProtocol {
         // 用户参数优先级高于函数参数
         let animated = parameters.bool(for: Parameter.animated) ?? animated
         
+        // 打印路由地址
+        logger.print("#### \(url.absoluteString) ####", module: .hiIOS)
+        logger.print("parameters: \(parameters)", module: .hiIOS)
+        logger.print("context: \(context)", module: .hiIOS)
+        
         switch forwardType {
         case .push:
             if self.push(url, context: context, from: fromNav, animated: animated) != nil {
@@ -100,6 +105,20 @@ public extension NavigatorProtocol {
         return self.open(url, context: context)
     }
     
+    @discardableResult
+    func rxForward(
+        _ url: URLConvertible,
+        context: Any? = nil,
+        wrap: UINavigationController.Type? = nil,
+        fromNav: UINavigationControllerType? = nil,
+        fromVC: UIViewControllerType? = nil,
+        animated: Bool = true,
+        completion: (() -> Void)? = nil
+    ) -> Observable<Any> {
+        (self as! Navigator).rx.forward(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
+    }
+
+    // MARK: - Back
     func back(animated: Bool = true, type: BackType? = nil, _ completion: (() -> Void)? = nil) {
         guard let top = UIViewController.topMost else { return }
         guard let type = type else {
@@ -120,19 +139,39 @@ public extension NavigatorProtocol {
         }
     }
     
+    // MARK: - Push
     @discardableResult
-    func rxForward(
+    func fPush(
+        _ url: URLConvertible,
+        context: Any? = nil,
+        from: UINavigationControllerType? = nil,
+        animated: Bool = true
+    ) -> Bool {
+        self.forward(url, context: context, fromNav: from, animated: animated)
+    }
+    
+    // MARK: - Present
+    @discardableResult
+    func fPresent(
         _ url: URLConvertible,
         context: Any? = nil,
         wrap: UINavigationController.Type? = nil,
-        fromNav: UINavigationControllerType? = nil,
-        fromVC: UIViewControllerType? = nil,
+        from: UIViewControllerType? = nil,
         animated: Bool = true,
         completion: (() -> Void)? = nil
-    ) -> Observable<Any> {
-        (self as! Navigator).rx.forward(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
+    ) -> Bool {
+        self.forward(url, context: context, wrap: wrap, fromVC: from, animated: animated, completion: completion)
     }
-
+    
+    // MARK: - Open
+    @discardableResult
+    func fOpen(
+        _ url: URLConvertible,
+        context: Any? = nil
+    ) -> Bool {
+        self.forward(url, context: context)
+    }
+    
     // MARK: - Toast
     func toastMessage(_ message: String) {
         guard !message.isEmpty else { return }
