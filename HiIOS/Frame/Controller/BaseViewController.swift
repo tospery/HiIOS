@@ -205,11 +205,11 @@ open class BaseViewController: UIViewController {
         self.back()
     }
     
-    open func back(animated: Bool = true, result: Any? = nil) {
+    open func back(animated: Bool = true, type: BackType? = nil, result: Any? = nil) {
         if result != nil {
             self.callback?.onNext(result!)
         }
-        self.navigator.back(animated: animated) { [weak self] in
+        self.navigator.back(animated: animated, type: type) { [weak self] in
             guard let `self` = self else { return }
             self.didBacked()
         }

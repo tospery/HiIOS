@@ -34,6 +34,7 @@ public struct Parameter {
     public static let actions               = "actions"
     public static let command               = "command"
     public static let handers               = "handers"
+    public static let animated              = "animated"
     public static let pageKey               = "pageKey"
     public static let nickname              = "nickname"
     public static let username              = "username"

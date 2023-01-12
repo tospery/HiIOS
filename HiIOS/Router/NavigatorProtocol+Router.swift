@@ -19,6 +19,13 @@ public enum ForwardType: Int {
     case open
 }
 
+public enum BackType {
+    case pop
+    case popAll
+    case popTo(UIViewController)
+    case dismiss
+}
+
 public extension NavigatorProtocol {
 
     // MARK: - Forward（支持自动跳转登录页功能）
@@ -75,6 +82,9 @@ public extension NavigatorProtocol {
             rawValue: parameters.int(for: Parameter.forwardType) ?? 0
         )
         
+        // 用户参数优先级高于函数参数
+        let animated = parameters.bool(for: Parameter.animated) ?? animated
+        
         switch forwardType {
         case .push:
             if self.push(url, context: context, from: fromNav, animated: animated) != nil {
@@ -90,12 +100,23 @@ public extension NavigatorProtocol {
         return self.open(url, context: context)
     }
     
-    func back(animated: Bool = true, _ completion: (() -> Void)? = nil) {
+    func back(animated: Bool = true, type: BackType? = nil, _ completion: (() -> Void)? = nil) {
         guard let top = UIViewController.topMost else { return }
-        if top.navigationController?.viewControllers.count ?? 0 > 1 {
+        guard let type = type else {
+            if top.navigationController?.viewControllers.count ?? 0 > 1 {
+                top.navigationController?.popViewController(animated: animated, completion)
+            } else {
+                top.dismiss(animated: animated, completion: completion)
+            }
+            return
+        }
+        switch type {
+        case .pop:
             top.navigationController?.popViewController(animated: animated, completion)
-        } else {
+        case .dismiss:
             top.dismiss(animated: animated, completion: completion)
+        default:
+            break
         }
     }
     
