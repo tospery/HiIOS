@@ -160,7 +160,9 @@ public extension NavigatorProtocol {
         animated: Bool = true,
         completion: (() -> Void)? = nil
     ) -> Bool {
-        self.forward(url, context: context, wrap: wrap, fromVC: from, animated: animated, completion: completion)
+        var ctx = self.convert(context: context)
+        ctx[Parameter.forwardType] = ForwardType.present.rawValue
+        return self.forward(url, context: ctx, wrap: wrap, fromVC: from, animated: animated, completion: completion)
     }
     
     // MARK: - Open
@@ -169,7 +171,9 @@ public extension NavigatorProtocol {
         _ url: URLConvertible,
         context: Any? = nil
     ) -> Bool {
-        self.forward(url, context: context)
+        var ctx = self.convert(context: context)
+        ctx[Parameter.forwardType] = ForwardType.open.rawValue
+        return self.forward(url, context: ctx)
     }
     
     // MARK: - Toast
@@ -285,5 +289,15 @@ public extension NavigatorProtocol {
 //    func rxSheet(_ path: Router.Path, context: Any? = nil) -> Observable<Any> {
 //        (self.navigator as! Navigator).rx.open(Router.urlString(host: .sheet, path: path), context: context)
 //    }
+    
+    func convert(context: Any? = nil) -> [String: Any] {
+        var ctx = [String: Any].init()
+        if let context = context as? [String: Any] {
+            ctx = context
+        } else {
+            ctx[Parameter.extra] = context
+        }
+        return ctx
+    }
     
 }
