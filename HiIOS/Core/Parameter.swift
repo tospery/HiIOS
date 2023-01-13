@@ -58,6 +58,7 @@ public struct Parameter {
     public static let transparetNavBar      = "transparetNavBar"
     public static let hidesNavigationBar    = "hidesNavigationBar"
     public static let hidesNavBottomLine    = "hidesNavBottomLine"
+    public static let routerUrl             = "_router_url"
     public static let host                  = "_router_host"
     public static let path                  = "_router_path"
     public static let extra                 = "_router_extra"

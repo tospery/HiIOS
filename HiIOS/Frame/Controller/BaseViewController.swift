@@ -37,6 +37,7 @@ func defaultStatusBarStyle() -> UIStatusBarStyle {
 
 open class BaseViewController: UIViewController {
     
+    public let parameters: [String: Any]
     public var callback: AnyObserver<Any>?
     private let mydealloc: PublishSubject<Void>!
     public var disposeBag = DisposeBag()
@@ -103,6 +104,7 @@ open class BaseViewController: UIViewController {
     required public init(_ navigator: NavigatorProtocol, _ reactor: BaseViewReactor) {
         self.mydealloc = reactor.mydealloc
         self.navigator = navigator
+        self.parameters = reactor.parameters
         super.init(nibName: nil, bundle: nil)
         self.hidesBottomBarWhenPushed = true
         self.hidesNavigationBar = reactor.parameters.bool(for: Parameter.hidesNavigationBar) ?? false

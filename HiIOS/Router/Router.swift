@@ -173,6 +173,8 @@ final public class Router {
 //        }
 //        parameters[Parameter.shouldRefresh] = parameters.bool(for: Parameter.shouldRefresh) ?? shouldRefresh
 //        parameters[Parameter.shouldLoadMore] = parameters.bool(for: Parameter.shouldLoadMore) ?? shouldLoadMore
+        parameters[Parameter.routerUrl] = url.urlStringValue
+        
         return parameters
     }
     
