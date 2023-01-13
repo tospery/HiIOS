@@ -111,7 +111,7 @@ open class BaseViewController: UIViewController {
         self.hidesNavBottomLine = reactor.parameters.bool(for: Parameter.hidesNavBottomLine) ?? false
         self.transparetNavBar = reactor.parameters.bool(for: Parameter.transparetNavBar) ?? false
         self.navBarStyle = .init(rawValue: reactor.parameters.int(for: Parameter.navBarStyle) ?? 0) ?? .automatic
-        self.callback = reactor.parameters[Parameter.observer] as? AnyObserver<Any>
+        self.callback = reactor.parameters[Parameter.routerObserver] as? AnyObserver<Any>
     }
     
     required public init?(coder: NSCoder) {

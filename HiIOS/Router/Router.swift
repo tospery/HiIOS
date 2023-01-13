@@ -148,15 +148,15 @@ final public class Router {
                     parameters[key] = value
                 }
             } else {
-                parameters[Parameter.context] = context
+                parameters[Parameter.routerContext] = context
             }
         }
         // 2. Host
         guard let host = url.urlValue?.host else { return nil }
-        parameters[Parameter.host] = host
+        parameters[Parameter.routerHost] = host
         // 3. Path
         let path = url.urlValue?.path.removingPrefix("/").removingSuffix("/")
-        parameters[Parameter.path] = path?.isEmpty ?? true ? nil : path
+        parameters[Parameter.routerPath] = path?.isEmpty ?? true ? nil : path
         // 4. 标题
         parameters[Parameter.title] = parameters.string(for: Parameter.title)
 //        var title: String? = nil

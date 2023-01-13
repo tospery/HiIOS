@@ -29,9 +29,9 @@ public extension Reactive where Base: Navigator {
             if let context = context as? [String: Any] {
                 ctx = context
             } else {
-                ctx[Parameter.extra] = context
+                ctx[Parameter.routerContext] = context
             }
-            ctx[Parameter.observer] = observer
+            ctx[Parameter.routerObserver] = observer
             guard base.forward(
                 url,
                 context: ctx,
@@ -93,7 +93,7 @@ public extension Reactive where Base: Navigator {
         if let context = context as? [String: Any] {
             ctx = context
         } else {
-            ctx[Parameter.extra] = context
+            ctx[Parameter.routerContext] = context
         }
         return ctx
     }

@@ -295,7 +295,7 @@ public extension NavigatorProtocol {
         if let context = context as? [String: Any] {
             ctx = context
         } else {
-            ctx[Parameter.extra] = context
+            ctx[Parameter.routerContext] = context
         }
         return ctx
     }
