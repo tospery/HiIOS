@@ -37,7 +37,11 @@ private func setValue(_ value: Any, key: String, checkForNestedKeys: Bool, delim
 		let keyComponents = ArraySlice(key.components(separatedBy: delimiter).filter { !$0.isEmpty }.map { $0 })
 		setValue(value, forKeyPathComponents: keyComponents, dictionary: &dictionary)
 	} else {
-		dictionary[key] = value
+        var realKey = key
+        if delimiter.count != 0 && key.components(separatedBy: delimiter).count >= 2 {
+            realKey = key.components(separatedBy: delimiter).first!
+        }
+		dictionary[realKey] = value
 	}
 }
 
