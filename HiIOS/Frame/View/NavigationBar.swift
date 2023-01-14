@@ -215,6 +215,7 @@ public class NavigationBar: UIView {
         return button
     }
     
+    @discardableResult
     public func addButtonToRight(button: UIButton) -> UIButton {
         self.addSubview(button)
         

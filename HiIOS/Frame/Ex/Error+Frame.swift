@@ -140,7 +140,14 @@ extension MoyaError: HiErrorCompatible {
             return error.asHiError
         case let .statusCode(response):
             if response.statusCode == 401 {
+                return .userNotLoginedIn
+            }
+            if response.statusCode == 403 {
                 return .userLoginExpired
+            }
+            if let json = try? response.data.jsonObject() as? [String: Any],
+               let message = json.string(for: Parameter.message), message.count != 0 {
+                return .server(ErrorCode.moyaError, message, nil)
             }
             return .server(ErrorCode.moyaError, response.data.string(encoding: .utf8), nil)
         case .jsonMapping:

@@ -107,31 +107,6 @@ final public class Router {
             if let compatible = self as? RouterCompatible {
                 return compatible.customLogin(provider, navigator, url, values, context)
             }
-            
-//            guard let top = UIViewController.topMost else { return false }
-//            if top.className.contains("LoginViewController") ||
-//                top.className.contains("TXSSOLoginViewController") {
-//                return false
-//            }
-//
-//            // 没有引入Frame，无法使用BaseViewReactor/BaseViewController
-//            if let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String {
-//                let reactorName = "\(appName).LoginViewReactor"
-//                let controllerName = "\(appName).LoginViewController"
-//                if let reactorType = NSClassFromString(reactorName) as? BaseViewReactor.Type,
-//                   let controllerType = NSClassFromString(controllerName) as? BaseViewController.Type {
-//                    let vc = controllerType.init(
-//                        navigator,
-//                        reactorType.init(
-//                            provider,
-//                            self.parameters(url, values, context)
-//                        )
-//                    )
-//                    let nav = NavigationController(rootViewController: vc)
-//                    top.present(nav, animated: true)
-//                }
-//            }
-            
             return false
         }
     }
