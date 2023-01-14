@@ -1,0 +1,6 @@
+framework module Pods_HiIOS01TabBar {
+  umbrella header "Pods-HiIOS01TabBar-umbrella.h"
+
+  export *
+  module * { export * }
+}

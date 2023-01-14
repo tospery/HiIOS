@@ -1,0 +1,26 @@
+${PODS_ROOT}/Target Support Files/Pods-HiIOS01TabBar/Pods-HiIOS01TabBar-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/BonMot/BonMot.framework
+${BUILT_PRODUCTS_DIR}/Cache/Cache.framework
+${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework
+${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework
+${BUILT_PRODUCTS_DIR}/FCUUID/FCUUID.framework
+${BUILT_PRODUCTS_DIR}/HiIOS/HiIOS.framework
+${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
+${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework
+${BUILT_PRODUCTS_DIR}/Moya/Moya.framework
+${BUILT_PRODUCTS_DIR}/NSObject+Rx/NSObject_Rx.framework
+${BUILT_PRODUCTS_DIR}/ObjectMapper-Hi/ObjectMapper_Hi.framework
+${BUILT_PRODUCTS_DIR}/QMUIKit/QMUIKit.framework
+${BUILT_PRODUCTS_DIR}/ReactorKit/ReactorKit.framework
+${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework
+${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework
+${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework
+${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
+${BUILT_PRODUCTS_DIR}/RxTheme/RxTheme.framework
+${BUILT_PRODUCTS_DIR}/RxViewController/RxViewController.framework
+${BUILT_PRODUCTS_DIR}/SwifterSwift-Hi/SwifterSwift_Hi.framework
+${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework
+${BUILT_PRODUCTS_DIR}/UICKeyChainStore/UICKeyChainStore.framework
+${BUILT_PRODUCTS_DIR}/URLNavigator/URLNavigator.framework
+${BUILT_PRODUCTS_DIR}/WeakMapTable/WeakMapTable.framework
