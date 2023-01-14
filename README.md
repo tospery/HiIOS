@@ -36,15 +36,49 @@ HiIOS是一个致力于提高项目开发效率的响应式应用框架，其设
 
 ### 网络请求
 
-Moya
+基于Moya框架进行搭建，支持Rx方式请求和响应数据的model化，相应代码封装在NetworkingType协议中。便捷请求方法如下：
+
+```swift
+requestRaw
+requestJSON
+requestObject
+requestArray
+requestBase
+requestData
+requestModel
+requestModels
+requestList
+```
+
+采用的三方库[Moya](https://github.com/Moya/Moya)
 
 ### 序列化
 
-ObjectMapper
+对ObjectMapper进行了改进，支持多个字段的解析，如：
+
+```swift
+username                <- map["login|username", nested: false, delimiter: "|"]
+```
+
+采用的三方库[ObjectMapper-Hi](https://github.com/tospery/ObjectMapper-Hi)
 
 ### 兼容性
 
-QMUI_iOS
+对状态栏、导航栏、标签栏、刘海屏等涉及系统兼容型的常用方法，封装为：
+
+```swift
+screenWidth
+screenHeight
+deviceWidth
+deviceHeight
+isNotchedScreen
+isRegularScreen
+isSmallScreen
+isMiddleScreen
+isLargeScreen
+```
+
+采用的三方库[QMUI_iOS](https://github.com/Tencent/QMUI_iOS)
 
 ## 支持iOS版本
 
