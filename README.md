@@ -82,7 +82,7 @@ isLargeScreen
 
 ## 使用教程
 
-[【HiIOS】01、创建标签容器应用](https://blog.csdn.net/tospery/article/details/128690778)
+[01、创建标签容器应用](https://blog.csdn.net/tospery/article/details/128690778)
 
 ## 支持iOS版本
 
