@@ -86,6 +86,8 @@ isLargeScreen
 
 [02、添加主题支持](https://blog.csdn.net/tospery/article/details/128694454)
 
+[03、添加本地化支持](https://blog.csdn.net/tospery/article/details/128694699)
+
 ## 支持iOS版本
 
 iOS 11+

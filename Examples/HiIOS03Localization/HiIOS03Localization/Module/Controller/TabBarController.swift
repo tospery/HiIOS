@@ -53,22 +53,22 @@ class TabBarController: HiIOS.TabBarController, ReactorKit.View {
                 self.navigator,
                 TrendingViewReactor.init(AppDependency.shared.provider, nil)
             )
-            viewController.tabBarItem.image = UIImage.init(named: "tabbar_trending_normal")?.original
-            viewController.tabBarItem.selectedImage = UIImage.init(named: "tabbar_trending_selected")?.original
+            viewController.tabBarItem.image = R.image.tabbar_trending_normal()?.original
+            viewController.tabBarItem.selectedImage = R.image.tabbar_trending_selected()?.original
         case .favorite:
             viewController = FavoriteViewController(
                 self.navigator,
                 FavoriteViewReactor.init(AppDependency.shared.provider, nil)
             )
-            viewController.tabBarItem.image = UIImage.init(named: "tabbar_favorite_normal")?.original
-            viewController.tabBarItem.selectedImage = UIImage.init(named: "tabbar_favorite_selected")?.original
+            viewController.tabBarItem.image = R.image.tabbar_favorite_normal()?.original
+            viewController.tabBarItem.selectedImage = R.image.tabbar_favorite_selected()?.original
         case .personal:
             viewController = PersonalViewController(
                 self.navigator,
                 PersonalViewReactor.init(AppDependency.shared.provider, nil)
             )
-            viewController.tabBarItem.image = UIImage.init(named: "tabbar_personal_normal")?.original
-            viewController.tabBarItem.selectedImage = UIImage.init(named: "tabbar_personal_selected")?.original
+            viewController.tabBarItem.image = R.image.tabbar_personal_normal()?.original
+            viewController.tabBarItem.selectedImage = R.image.tabbar_personal_selected()?.original
         }
         viewController.hidesBottomBarWhenPushed = false
         return viewController!

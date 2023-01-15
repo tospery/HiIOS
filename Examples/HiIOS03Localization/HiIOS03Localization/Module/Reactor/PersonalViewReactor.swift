@@ -30,7 +30,7 @@ class PersonalViewReactor: ScrollViewReactor, ReactorKit.Reactor {
     required init(_ provider: HiIOS.ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         self.initialState = State(
-            title: self.title ?? "Personal"
+            title: self.title ?? R.string.localizable.personal()
         )
     }
     

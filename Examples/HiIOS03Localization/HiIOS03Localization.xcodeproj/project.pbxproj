@@ -21,6 +21,8 @@
 		91E00268297302AC0026C10D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E00267297302AC0026C10D /* AppDelegate.swift */; };
 		91E00271297302AD0026C10D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E00270297302AD0026C10D /* Assets.xcassets */; };
 		91E00274297302AD0026C10D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91E00272297302AD0026C10D /* LaunchScreen.storyboard */; };
+		91F72ADD2973DD6400E9104F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91F72ADC2973DD6400E9104F /* Localizable.strings */; };
+		91F72ADF2973DDD000E9104F /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F72ADE2973DDD000E9104F /* R.generated.swift */; };
 		A530DB68C39935CD0FF5F2BD /* Pods_HiIOS03Localization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 574F47DF3A196266A8C65C0F /* Pods_HiIOS03Localization.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +48,8 @@
 		91E00270297302AD0026C10D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91E00273297302AD0026C10D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91E00275297302AD0026C10D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91F72ADC2973DD6400E9104F /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		91F72ADE2973DDD000E9104F /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		A743742D18BEC94DC4DF00EE /* Pods-HiIOS03Localization.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiIOS03Localization.release.xcconfig"; path = "Target Support Files/Pods-HiIOS03Localization/Pods-HiIOS03Localization.release.xcconfig"; sourceTree = "<group>"; };
 		BD11C990FDDE51A6C6A01B5E /* Pods-HiIOS01TabBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiIOS01TabBar.release.xcconfig"; path = "Target Support Files/Pods-HiIOS01TabBar/Pods-HiIOS01TabBar.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,11 +90,13 @@
 		911DE6FF297303A0000CCC08 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				91F72ADE2973DDD000E9104F /* R.generated.swift */,
 				91E00267297302AC0026C10D /* AppDelegate.swift */,
 				91E00270297302AD0026C10D /* Assets.xcassets */,
 				91E00272297302AD0026C10D /* LaunchScreen.storyboard */,
 				91E00275297302AD0026C10D /* Info.plist */,
 				911DE70029730431000CCC08 /* AppDependency.swift */,
+				91F72ADC2973DD6400E9104F /* Localizable.strings */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -179,6 +185,7 @@
 			buildConfigurationList = 91E00278297302AD0026C10D /* Build configuration list for PBXNativeTarget "HiIOS03Localization" */;
 			buildPhases = (
 				8B7A39D85A484FB4EA820FC1 /* [CP] Check Pods Manifest.lock */,
+				91F72ADB2973DD0A00E9104F /* R.swift */,
 				91E00260297302AC0026C10D /* Sources */,
 				91E00261297302AC0026C10D /* Frameworks */,
 				91E00262297302AC0026C10D /* Resources */,
@@ -232,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91E00274297302AD0026C10D /* LaunchScreen.storyboard in Resources */,
+				91F72ADD2973DD6400E9104F /* Localizable.strings in Resources */,
 				91E00271297302AD0026C10D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,6 +286,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		91F72ADB2973DD0A00E9104F /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = R.swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/HiIOS03Localization/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/HiIOS03Localization/R.generated.swift\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -291,6 +319,7 @@
 				911DE70D297305CB000CCC08 /* FavoriteViewReactor.swift in Sources */,
 				911DE713297305EC000CCC08 /* FavoriteViewController.swift in Sources */,
 				911DE70129730431000CCC08 /* AppDependency.swift in Sources */,
+				91F72ADF2973DDD000E9104F /* R.generated.swift in Sources */,
 				911DE715297305F5000CCC08 /* PersonalViewController.swift in Sources */,
 				911DE709297305A1000CCC08 /* TabBarReactor.swift in Sources */,
 				911DE70B297305AF000CCC08 /* TrendingViewReactor.swift in Sources */,
