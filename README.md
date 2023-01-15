@@ -80,6 +80,12 @@ isLargeScreen
 
 采用的三方库[QMUI_iOS](https://github.com/Tencent/QMUI_iOS)
 
+## 使用教程
+
+[【HiIOS】01、创建标签容器应用](https://blog.csdn.net/tospery/article/details/128690778)
+
+iOS 11+
+
 ## 支持iOS版本
 
 iOS 11+
