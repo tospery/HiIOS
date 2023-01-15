@@ -31,15 +31,9 @@ final public class Appearance {
     
     public func basic() {
         // NavBar
-//        let appearance = NavigationBar.appearance()
-////        appearance.theme.itemColor = themeService.attribute { $0.primaryColor }
-//        appearance.theme.barColor = themeService.attribute { $0.lightColor }
-//        appearance.theme.lineColor = themeService.attribute { $0.borderColor }
-//        appearance.theme.titleColor = themeService.attribute { $0.foregroundColor }
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance.init()
             appearance.configureWithOpaqueBackground()
-            // appearance.configureWithTransparentBackground()
             appearance.theme.backgroundColor = themeService.attribute { $0.lightColor }
             appearance.shadowImage = UIImage.init()
             appearance.shadowColor = nil
@@ -63,8 +57,6 @@ final public class Appearance {
             let appearance = UITabBarAppearance.init()
             appearance.configureWithOpaqueBackground()
             appearance.theme.backgroundColor = themeService.attribute { $0.lightColor }
-//            appearance.shadowImage = UIImage.init()
-//            appearance.shadowColor = nil
             UITabBar.appearance().standardAppearance = appearance
             if #available(iOS 15.0, *) {
                 UITabBar.appearance().scrollEdgeAppearance = appearance

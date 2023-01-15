@@ -55,7 +55,7 @@ public enum ThemeType: ThemeProvider {
         if let compatible = self as? ThemeTypeCompatible {
             return compatible.theme
         }
-        fatalError()
+        return HiTheme(color: .blue)
     }
     
     public func toggle(_ color: UIColor? = nil) {
@@ -94,4 +94,31 @@ public enum ThemeType: ThemeProvider {
         return theme
     }
 
+}
+
+struct HiTheme: Theme {
+    let backgroundColor = UIColor.white
+    let foregroundColor = UIColor.black
+    let lightColor = UIColor(hex: 0xF6F6F6)!
+    let darkColor = UIColor.darkGray
+    var primaryColor = UIColor.blue
+    let secondaryColor = UIColor.green
+    let titleColor = UIColor(hex: 0x333333)!
+    let bodyColor = UIColor(hex: 0x666666)!
+    let headerColor = UIColor(hex: 0xD2D2D2)!
+    let footerColor = UIColor(hex: 0xB2B2B2)!
+    let borderColor = UIColor(hex: 0xE2E2E2)!
+    let spacerColor = UIColor(hex: 0xF4F4F4)!
+    let separatorColor = UIColor(hex: 0xE0E0E0)!
+    let indicatorColor = UIColor.red
+    let specialColors = [String: UIColor].init()
+    let barStyle = UIBarStyle.default
+    let statusBarStyle = UIStatusBarStyle.default
+    let keyboardAppearance = UIKeyboardAppearance.light
+    let blurStyle = UIBlurEffect.Style.extraLight
+    
+    init(color: UIColor?) {
+        guard let color = color else { return }
+        self.primaryColor = color
+    }
 }

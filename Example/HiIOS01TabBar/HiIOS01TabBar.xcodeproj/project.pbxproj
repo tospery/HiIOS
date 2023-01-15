@@ -18,7 +18,6 @@
 		911DE713297305EC000CCC08 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911DE712297305EC000CCC08 /* FavoriteViewController.swift */; };
 		911DE715297305F5000CCC08 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911DE714297305F5000CCC08 /* PersonalViewController.swift */; };
 		911DE71929730803000CCC08 /* DataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911DE71829730803000CCC08 /* DataType.swift */; };
-		911DE71B2973096F000CCC08 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911DE71A2973096F000CCC08 /* Theme.swift */; };
 		91E00268297302AC0026C10D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E00267297302AC0026C10D /* AppDelegate.swift */; };
 		91E00271297302AD0026C10D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E00270297302AD0026C10D /* Assets.xcassets */; };
 		91E00274297302AD0026C10D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91E00272297302AD0026C10D /* LaunchScreen.storyboard */; };
@@ -37,7 +36,6 @@
 		911DE712297305EC000CCC08 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		911DE714297305F5000CCC08 /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		911DE71829730803000CCC08 /* DataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataType.swift; sourceTree = "<group>"; };
-		911DE71A2973096F000CCC08 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		91E00264297302AC0026C10D /* HiIOS01TabBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiIOS01TabBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91E00267297302AC0026C10D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91E00270297302AD0026C10D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -130,7 +128,6 @@
 			isa = PBXGroup;
 			children = (
 				911DE71829730803000CCC08 /* DataType.swift */,
-				911DE71A2973096F000CCC08 /* Theme.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -286,7 +283,6 @@
 				911DE715297305F5000CCC08 /* PersonalViewController.swift in Sources */,
 				911DE709297305A1000CCC08 /* TabBarReactor.swift in Sources */,
 				911DE70B297305AF000CCC08 /* TrendingViewReactor.swift in Sources */,
-				911DE71B2973096F000CCC08 /* Theme.swift in Sources */,
 				911DE71929730803000CCC08 /* DataType.swift in Sources */,
 				91E00268297302AC0026C10D /* AppDelegate.swift in Sources */,
 			);

@@ -27,9 +27,9 @@ class TabBarController: HiIOS.TabBarController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBar.barTintColor = .lightGray
-        self.tabBar.tintColor = .blue
-        self.tabBar.unselectedItemTintColor = .title
+        self.tabBar.theme.barTintColor = themeService.attribute { $0.lightColor }
+        self.tabBar.theme.tintColor = themeService.attribute { $0.primaryColor }
+        self.tabBar.theme.unselectedItemTintColor = themeService.attribute { $0.titleColor }
     }
 
     func bind(reactor: TabBarReactor) {
