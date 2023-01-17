@@ -45,6 +45,7 @@ public struct Parameter {
     public static let parameter             = "parameter"
     public static let listStyle             = "listStyle"
     public static let entryName             = "entryName"
+    public static let timestamp             = "timestamp"
     public static let forwardType           = "forwardType"
     public static let navBarStyle           = "navBarStyle"
     public static let primaryColor          = "primaryColor"
