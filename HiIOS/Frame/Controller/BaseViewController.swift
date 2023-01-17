@@ -232,5 +232,50 @@ open class BaseViewController: UIViewController {
         default: break
         }
     }
+    
+    // MARK: handle
+    open func handleTitle(_ text: String?) {
+        self.navigationBar.titleLabel.text = text
+        self.navigationBar.setNeedsLayout()
+        self.navigationBar.layoutIfNeeded()
+    }
+    
+    open func handleActivating(_ isActivating: Bool) {
+        self.isActivating = isActivating
+        guard self.isViewLoaded else { return }
+        if isActivating {
+            self.navigator.showToastActivity()
+        } else {
+            self.navigator.hideToastActivity()
+        }
+    }
+    
+    open func handleToast(_ message: String) {
+        guard self.isViewLoaded else { return }
+        guard !message.isEmpty else { return }
+        self.navigator.toastMessage(message)
+    }
+    
+    open func handleError(_ error: Error?) {
+        self.error = error
+        guard self.isViewLoaded else { return }
+        guard let error = error?.asHiError else { return }
+        if error.isNeedLogin {
+            self.navigator.login()
+        } else {
+            if let scrollViewController = self as? ScrollViewController {
+                if scrollViewController.isLoading {
+                    // loading的错误用emptyDataset提示，不进行toast
+                    return
+                } else if scrollViewController.isRefreshing {
+                    // refreshing的empty错误，不进行toast
+                    if error == .dataIsEmpty {
+                        return
+                    }
+                }
+            }
+            self.navigator.toastMessage(error.localizedDescription)
+        }
+    }
 
 }
