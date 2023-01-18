@@ -83,7 +83,7 @@ public extension Reactive where Base: Navigator {
     ) -> Observable<Any> {
         forward(url, context: (
             self.convert(context: context) + [
-                Parameter.forwardType: ForwardType.present.rawValue
+                Parameter.forwardType: ForwardType.open.rawValue
             ]
         ))
     }

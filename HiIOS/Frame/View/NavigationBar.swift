@@ -138,6 +138,10 @@ public class NavigationBar: UIView {
     }
     
     public override func sizeThatFits(_ size: CGSize) -> CGSize {
+        intrinsicContentSize
+    }
+    
+    public override var intrinsicContentSize: CGSize {
         let height = self.style == .automatic ? navigationContentTopConstant : navigationBarHeight
         return CGSize(width: deviceWidth, height: height)
     }
@@ -149,7 +153,7 @@ public class NavigationBar: UIView {
         
         let padding = 10.f
         var left = padding
-        let top = statusBarHeightConstant
+        let top = self.style == .automatic ? statusBarHeightConstant : 0
         let navBarHeight = navigationBarHeight
         for button in self.leftButtons {
             button.sizeToFit()
@@ -172,7 +176,7 @@ public class NavigationBar: UIView {
         let margin = max(leftDistance, rightDistance) + 2
         let titleWidth = (self.width - margin * 2).flat
         self.titleLabel.frame = CGRect(
-            x: margin, y: statusBarHeightConstant, width: titleWidth, height: navBarHeight
+            x: margin, y: top, width: titleWidth, height: navBarHeight
         )
         
         if let titleView = self.titleView {
