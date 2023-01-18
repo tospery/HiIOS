@@ -192,6 +192,7 @@ open class BaseViewController: UIViewController {
     
     // MARK: - Method
     open func bind(reactor: BaseViewReactor) {
+        reactor.navigator = self.navigator
         // bind
 //        self.backBarItem.rx.tap.asObservable().subscribe(onNext: { [weak self] _ in
 //            guard let `self` = self else { return }

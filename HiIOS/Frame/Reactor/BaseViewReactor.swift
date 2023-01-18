@@ -8,12 +8,14 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import URLNavigator
 
 open class BaseViewReactor: NSObject, ReactorType {
     
     public let host: Router.Host
     public let path: Router.Path?
     public let provider: ProviderType
+    public weak var navigator: NavigatorProtocol!
     public var parameters: [String: Any]
     public var title: String?
     public let mydealloc = PublishSubject<Void>.init()
