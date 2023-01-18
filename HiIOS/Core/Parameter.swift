@@ -38,6 +38,7 @@ public struct Parameter {
     public static let handers               = "handers"
     public static let animated              = "animated"
     public static let pageKey               = "pageKey"
+    public static let `default`             = "default"
     public static let nickname              = "nickname"
     public static let username              = "username"
     public static let password              = "password"
