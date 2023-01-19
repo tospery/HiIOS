@@ -266,10 +266,12 @@ open class BaseViewController: UIViewController {
         } else {
             if let scrollViewController = self as? ScrollViewController {
                 if scrollViewController.isLoading {
-                    // loading的错误用emptyDataset提示，不进行toast
                     return
                 } else if scrollViewController.isRefreshing {
-                    // refreshing的empty错误，不进行toast
+                    if error == .dataIsEmpty {
+                        return
+                    }
+                } else if scrollViewController.isLoadingMore {
                     if error == .dataIsEmpty {
                         return
                     }
