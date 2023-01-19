@@ -16,6 +16,7 @@ public struct Parameter {
     public static let type                  = "type"
     public static let name                  = "name"
     public static let mode                  = "mode"
+    public static let page                  = "page"
     public static let query                 = "query"
     public static let value                 = "value"
     public static let state                 = "state"
