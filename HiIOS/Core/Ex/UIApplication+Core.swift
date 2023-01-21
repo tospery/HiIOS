@@ -10,12 +10,12 @@ import SwifterSwift_Hi
 
 public extension UIApplication {
     
-    private static var _isAppStore: Bool?
-    var isAppStore: Bool {
-        if UIApplication._isAppStore == nil {
-            UIApplication._isAppStore = self.inferredEnvironment == .appStore
+    private static var _inAppStore: Bool?
+    var inAppStore: Bool {
+        if UIApplication._inAppStore == nil {
+            UIApplication._inAppStore = self.inferredEnvironment == .appStore
         }
-        return UIApplication._isAppStore!
+        return UIApplication._inAppStore!
     }
     
     var team: String {
