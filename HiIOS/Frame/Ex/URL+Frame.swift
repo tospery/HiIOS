@@ -17,7 +17,7 @@ public extension URL {
     }
     
     var pathString: String {
-        self.absoluteString.removingPrefix(self.baseString)
+        self.absoluteString.removingPrefix(self.baseString).components(separatedBy: "?").first ?? ""
     }
     
     func insertingPathComponent(_ pathComponent: String?, at index: UInt) -> URL {
