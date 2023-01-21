@@ -10,6 +10,14 @@ import SwifterSwift_Hi
 
 public extension UIApplication {
     
+    private static var _isAppStore: Bool?
+    var isAppStore: Bool {
+        if UIApplication._isAppStore == nil {
+            UIApplication._isAppStore = self.inferredEnvironment == .appStore
+        }
+        return UIApplication._isAppStore!
+    }
+    
     var team: String {
         let query = [
             kSecClass as NSString: kSecClassGenericPassword as NSString,
