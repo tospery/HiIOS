@@ -10,15 +10,14 @@ import URLNavigator
 import SwifterSwift_Hi
 
 public extension URL {
-
-    var pathString: String {
-//        if #available(iOS 16, *) {
-//        self.path(percentEncoded: false)
-        self.relativePath
-    }
     
     var baseString: String {
-        self.absoluteString.replacingOccurrences(of: self.pathString, with: "")
+        let components = self.absoluteString.components(separatedBy: "/")
+        return "\(components.first ?? "")//\(components[safe: 2] ?? "")"
+    }
+    
+    var pathString: String {
+        self.absoluteString.removingPrefix(self.baseString)
     }
     
     func insertingPathComponent(_ pathComponent: String?, at index: UInt) -> URL {
