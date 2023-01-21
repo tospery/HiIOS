@@ -24,6 +24,7 @@ public protocol RouterCompatible {
     // func title(host: Router.Host, path: Router.Path?) -> String?
     func parameters(_ url: URLConvertible, _ values: [String: Any], _ context: Any?) -> [String: Any]?
     
+    func webToNative(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol, _ url: URLConvertible, _ context: Any?) -> Bool
     func webViewController(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol, _ paramters: [String: Any]) -> UIViewController?
     
     func web(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol)
@@ -81,7 +82,13 @@ final public class Router {
                 if navigator.forward(url, context: context) {
                     return nil
                 }
+                if let compatible = self as? RouterCompatible {
+                    if compatible.webToNative(provider, navigator, url, context) {
+                        return nil
+                    }
+                }
             }
+            
             // (2) 网页跳转
             var paramters = context as? [String: Any] ?? [:]
             paramters[Parameter.url] = url.absoluteString
@@ -90,9 +97,6 @@ final public class Router {
             }
 
             if let compatible = self as? RouterCompatible {
-//                compatible.web(provider, navigator)
-//                compatible.page(provider, navigator)
-//                compatible.dialog(provider, navigator)
                 return compatible.webViewController(provider, navigator, paramters)
             }
             
