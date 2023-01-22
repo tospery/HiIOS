@@ -1,5 +1,5 @@
 //
-//  HiSection.swift
+//  HiContent.swift
 //  HiIOS
 //
 //  Created by 杨建祥 on 2023/1/5.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct HiSection: CustomStringConvertible {
+public struct HiContent: CustomStringConvertible {
 
     public let header: ModelType?
     public let models: [ModelType]
@@ -24,7 +24,7 @@ public struct HiSection: CustomStringConvertible {
             result += model.description
         }
         result += ")"
-        // print("HiSection的description: \(result)")
+        // print("Content的description: \(result)")
         return result
     }
 
