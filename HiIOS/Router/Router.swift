@@ -24,7 +24,7 @@ public protocol RouterCompatible {
 //    func shouldLoadMore(host: Router.Host, path: Router.Path?) -> Bool
     
     // func title(host: Router.Host, path: Router.Path?) -> String?
-    func parameters(_ url: URLConvertible, _ values: [String: Any], _ context: Any?) -> [String: Any]?
+    // func parameters(_ url: URLConvertible, _ values: [String: Any], _ context: Any?) -> [String: Any]?
     
     func webToNative(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol, _ url: URLConvertible, _ context: Any?) -> Bool
     func webViewController(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol, _ paramters: [String: Any]) -> UIViewController?
@@ -74,35 +74,35 @@ final public class Router {
     }
     
     func buildinWeb(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol) {
-        let webFactory: ViewControllerFactory = { [weak self] (url, _, context) in
+        let webFactory: ViewControllerFactory = { [weak self] (url, values, context) in
             guard let `self` = self else { return nil }
             guard let url = url.urlValue else { return nil }
-            // (1) 原生支持
             let string = url.absoluteString
-            let base = UIApplication.shared.baseWebUrl + "/"
-            if string.hasPrefix(base) {
-                let url = string.replacingOccurrences(of: base, with: UIApplication.shared.urlScheme + "://")
-                if navigator.forward(url, context: context) {
-                    return nil
-                }
-                if let compatible = self as? RouterCompatible {
-                    if compatible.webToNative(provider, navigator, url, context) {
-                        return nil
-                    }
-                }
-            }
-            
-            // (2) 网页跳转
-            var paramters = context as? [String: Any] ?? [:]
-            paramters[Parameter.url] = url.absoluteString
+            var paramters = self.parameters(url, values, context) ?? [:]
+            paramters[Parameter.url] = string
             if let title = url.queryValue(for: Parameter.title) {
                 paramters[Parameter.title] = title
             }
-
+            let force = paramters.bool(for: Parameter.routerForceWeb) ?? false
+            if !force {
+                // (1) 原生支持
+                let base = UIApplication.shared.baseWebUrl + "/"
+                if string.hasPrefix(base) {
+                    let url = string.replacingOccurrences(of: base, with: UIApplication.shared.urlScheme + "://")
+                    if navigator.forward(url, context: context) {
+                        return nil
+                    }
+                    if let compatible = self as? RouterCompatible {
+                        if compatible.webToNative(provider, navigator, url, context) {
+                            return nil
+                        }
+                    }
+                }
+            }
+            // (2) 网页跳转
             if let compatible = self as? RouterCompatible {
                 return compatible.webViewController(provider, navigator, paramters)
             }
-            
             return nil
         }
         navigator.register("http://<path:_>", webFactory)

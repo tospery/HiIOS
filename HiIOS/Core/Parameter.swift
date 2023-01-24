@@ -71,7 +71,8 @@ public struct Parameter {
     public static let routerPath            = "_router_path"
     public static let routerContext         = "_router_context"
     public static let routerObserver        = "_router_observer"
-    public static let routerNeedLogin       = "_router_needLogin"
+    public static let routerForceWeb        = "_router_forceweb"
+    public static let routerNeedLogin       = "_router_needlogin"
     public static let routerTimestamp       = "_router_timestamp"
-    public static let routerCurrentUser     = "_router_currentUser"
+    public static let routerCurrentUser     = "_router_currentuser"
 }
