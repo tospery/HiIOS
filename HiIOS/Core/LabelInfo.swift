@@ -10,19 +10,19 @@ import UIKit
 public struct LabelInfo: CustomStringConvertible {
 
     public let attributedText: NSAttributedString?
-    public let links: [String]?
     public let alignment: NSTextAlignment?
+    public let links: [String: String]?
     public let color: UIColor?
     
     public init(
         attributedText: NSAttributedString? = nil,
-        links: [String]? = nil,
         alignment: NSTextAlignment? = nil,
+        links: [String: String]? = nil,
         color: UIColor? = nil
     ) {
         self.attributedText = attributedText
-        self.links = links
         self.alignment = alignment
+        self.links = links
         self.color = color
     }
     
