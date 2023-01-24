@@ -196,17 +196,17 @@ open class BaseViewController: UIViewController {
     }
     
     public func tapNav(_: Void? = nil) {
-        self.back(cancelled: true)
+        self.back(cancel: true)
     }
     
-    open func back(type: ForwardType? = nil, animated: Bool = true, result: Any? = nil, cancelled: Bool = false) {
-        if result != nil && cancelled == false {
+    open func back(type: ForwardType? = nil, animated: Bool = true, result: Any? = nil, cancel: Bool = false) {
+        if result != nil && cancel == false {
             self.callback?.onNext(result!)
         }
         self.navigator.rxBack(type: type, animated: animated)
             .subscribe(onCompleted: { [weak self] in
                 guard let `self` = self else { return }
-                if cancelled {
+                if cancel {
                     self.cancel()
                 } else {
                     self.callback?.onCompleted()
