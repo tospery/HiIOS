@@ -209,31 +209,15 @@ open class BaseViewController: UIViewController {
     }
     
     open func back(type: ForwardType? = nil, animated: Bool = true, result: Any? = nil) {
-        self.navigator.back(type ?? .auto, animated: animated, result: result)
-//        self.navigator.back(type, animated: animated, result: result) {
-//            logger.print("【back】完成了")
-//        }
-//        if result != nil {
-//            self.callback?.onNext(result!)
-//        }
-//        let completion: (() -> Void) = { [weak self] in
-//            guard let `self` = self else { return }
-//            self.didBacked()
-//        }
-//        guard let type = type else {
-//            popOne(viewController: self, animated: animated, completion)
-//            return
-//        }
-//        switch type {
-//        case .off:
-//            popOne(viewController: self, animated: animated, completion)
-//        case .all:
-//            popAll(viewController: self, animated: animated, completion)
-//        case .dismiss:
-//            HiIOS.dismiss(viewController: self, animated: animated, completion)
-//        default:
-//            break
-//        }
+        if result != nil {
+            self.callback?.onNext(result!)
+        }
+        self.navigator.rxBack(type: type, animated: animated)
+            .subscribe(onCompleted: { [weak self] in
+                guard let `self` = self else { return }
+                self.callback?.onCompleted()
+            })
+            .disposed(by: self.disposeBag)
     }
     
     open func didBacked() {

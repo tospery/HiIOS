@@ -85,9 +85,12 @@ public extension NavigatorProtocol {
         // context中的参数的优先级高于查询参数
         var parameters: [String: Any] = url.queryParameters ?? [:]
         parameters += context as? [String: Any] ?? [:]
+        let forwardValue = parameters.int(
+            for: Parameter.forwardType
+        ) ?? (host == .back ? ForwardType.auto.rawValue : ForwardType.push.rawValue)
         let forwardType = ForwardType.init(
-            rawValue: parameters.int(for: Parameter.forwardType) ?? 0
-        )
+            rawValue: forwardValue
+        ) ?? (host == .back ? ForwardType.auto : ForwardType.push)
         
         // 用户参数优先级高于函数参数
         let animated = parameters.bool(for: Parameter.animated) ?? animated
@@ -163,18 +166,18 @@ public extension NavigatorProtocol {
     }
     
     // MARK: - Back
-    func back(
-        _ type: ForwardType,
-        animated: Bool = true,
-        result: Any? = nil
-    ) {
-        (self as! Navigator).rx.open(Router.shared.urlString(host: .back), context: [
+    func back(type: ForwardType? = nil, animated: Bool = true) {
+        self.forward(Router.shared.urlString(host: .back), context: [
             Parameter.forwardType: type,
-            Parameter.animated: animated,
-            Parameter.result: result
+            Parameter.animated: animated
         ])
-        .subscribe(onCompleted: {
-        }).disposed(by: gDisposeBag)
+    }
+    
+    func rxBack(type: ForwardType? = nil, animated: Bool = true) -> Observable<Any> {
+        (self as! Navigator).rx.forward(Router.shared.urlString(host: .back), context: [
+            Parameter.forwardType: type,
+            Parameter.animated: animated
+        ])
     }
     
 //    func back(animated: Bool = true, type: ForwardType? = nil, _ completion: (() -> Void)? = nil) {

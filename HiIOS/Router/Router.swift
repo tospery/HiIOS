@@ -121,7 +121,7 @@ final public class Router {
                 }
                 observer?.onCompleted()
             }
-            let forward = parameters?.enum(for: Parameter.forwardType, type: ForwardType.self) ?? .off
+            let forward = parameters?.enum(for: Parameter.forwardType, type: ForwardType.self) ?? .auto
             let animated = parameters?.bool(for: Parameter.animated) ?? true
             switch forward {
             case .off:
@@ -131,7 +131,11 @@ final public class Router {
             case .dismiss:
                 HiIOS.dismiss(viewController: top, animated: animated, completion)
             default:
-                break
+                if top.navigationController?.viewControllers.count ?? 0 > 1 {
+                    popOne(viewController: top, animated: animated, completion)
+                } else {
+                    HiIOS.dismiss(viewController: top, animated: animated, completion)
+                }
             }
             return true
         }
