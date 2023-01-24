@@ -14,9 +14,12 @@ import SwifterSwift_Hi
 var navigateBag = DisposeBag()
 
 public enum ForwardType: Int {
+    // to
     case push
     case present
     case open
+    // back
+    case auto
     case to
     case off
     case all

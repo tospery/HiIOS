@@ -209,6 +209,9 @@ open class BaseViewController: UIViewController {
     }
     
     open func back(_ type: ForwardType? = nil, animated: Bool = true, result: Any? = nil) {
+        self.navigator.back(type, animated: animated, result: result) {
+            logger.print("【back】完成了")
+        }
 //        if result != nil {
 //            self.callback?.onNext(result!)
 //        }
