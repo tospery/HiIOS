@@ -45,6 +45,7 @@ public struct Parameter {
     public static let nickname              = "nickname"
     public static let username              = "username"
     public static let password              = "password"
+    public static let selected              = "selected"
     public static let priority              = "priority"
     public static let parameter             = "parameter"
     public static let listStyle             = "listStyle"
