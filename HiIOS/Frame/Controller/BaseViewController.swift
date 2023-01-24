@@ -204,7 +204,7 @@ open class BaseViewController: UIViewController {
 //        }).disposed(by: self.disposeBag)
     }
     
-    public func navBack(_: Void? = nil) {
+    public func tapNav(_: Void? = nil) {
         self.back()
     }
     
