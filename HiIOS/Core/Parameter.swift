@@ -26,6 +26,7 @@ public struct Parameter {
     public static let model                 = "model"
     public static let style                 = "style"
     public static let error                 = "error"
+    public static let result                = "result"
     public static let active                = "active"
     public static let models                = "models"
     public static let portal                = "portal"

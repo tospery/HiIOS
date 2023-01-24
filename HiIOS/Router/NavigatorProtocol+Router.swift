@@ -17,14 +17,18 @@ public enum ForwardType: Int {
     case push
     case present
     case open
-}
-
-public enum BackType {
-    case pop
-    case popAll
-    case popTo(UIViewController)
+    case to
+    case off
+    case all
     case dismiss
 }
+
+//public enum BackType {
+//    case pop
+//    case popAll
+//    case popTo(UIViewController)
+//    case dismiss
+//}
 
 public extension NavigatorProtocol {
 
@@ -119,25 +123,25 @@ public extension NavigatorProtocol {
     }
 
     // MARK: - Back
-    func back(animated: Bool = true, type: BackType? = nil, _ completion: (() -> Void)? = nil) {
-        guard let top = UIViewController.topMost else { return }
-        guard let type = type else {
-            if top.navigationController?.viewControllers.count ?? 0 > 1 {
-                top.navigationController?.popViewController(animated: animated, completion)
-            } else {
-                top.dismiss(animated: animated, completion: completion)
-            }
-            return
-        }
-        switch type {
-        case .pop:
-            top.navigationController?.popViewController(animated: animated, completion)
-        case .dismiss:
-            top.dismiss(animated: animated, completion: completion)
-        default:
-            break
-        }
-    }
+//    func back(animated: Bool = true, type: ForwardType? = nil, _ completion: (() -> Void)? = nil) {
+//        guard let top = UIViewController.topMost else { return }
+//        guard let type = type else {
+//            if top.navigationController?.viewControllers.count ?? 0 > 1 {
+//                top.navigationController?.popViewController(animated: animated, completion)
+//            } else {
+//                top.dismiss(animated: animated, completion: completion)
+//            }
+//            return
+//        }
+//        switch type {
+//        case .pop:
+//            top.navigationController?.popViewController(animated: animated, completion)
+//        case .dismiss:
+//            top.dismiss(animated: animated, completion: completion)
+//        default:
+//            break
+//        }
+//    }
     
     // MARK: - Push
     @discardableResult

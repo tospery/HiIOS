@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 import URLNavigator
 
 public protocol RouterCompatible {
@@ -46,6 +48,7 @@ final public class Router {
     public func initialize(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol) {
         self.buildinMatch(provider, navigator)
         self.buildinWeb(provider, navigator)
+        self.buildinBack(provider, navigator)
         self.buildinLogin(provider, navigator)
         if let compatible = self as? RouterCompatible {
             compatible.web(provider, navigator)
@@ -104,6 +107,34 @@ final public class Router {
         }
         navigator.register("http://<path:_>", webFactory)
         navigator.register("https://<path:_>", webFactory)
+    }
+    
+    func buildinBack(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol) {
+        navigator.handle(self.urlPattern(host: .back)) { url, values, context in
+            guard let top = UIViewController.topMost else { return false }
+            let parameters = self.parameters(url, values, context)
+            let result = parameters?[Parameter.result]
+            let observer = parameters?[Parameter.routerObserver] as? AnyObserver<Any>
+            let completion: (() -> Void) = {
+                if result != nil {
+                    observer?.onNext(result)
+                }
+                observer?.onCompleted()
+            }
+            let forward = parameters?.enum(for: Parameter.forwardType, type: ForwardType.self) ?? .off
+            let animated = parameters?.bool(for: Parameter.animated) ?? true
+            switch forward {
+            case .off:
+                popOne(viewController: top, animated: animated, completion)
+            case .all:
+                popAll(viewController: top, animated: animated, completion)
+            case .dismiss:
+                HiIOS.dismiss(viewController: top, animated: animated, completion)
+            default:
+                break
+            }
+            return true
+        }
     }
     
     func buildinLogin(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol) {
