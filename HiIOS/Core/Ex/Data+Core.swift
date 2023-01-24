@@ -7,6 +7,10 @@
 
 import Foundation
 
+public enum HiRequestMode: Int {
+    case load, refresh, loadMore, update, reload
+}
+
 public extension Data {
     
     static func dataFromFile(withFilename filename: String, at bundleClass: AnyClass? = nil) -> Data? {

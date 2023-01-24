@@ -186,6 +186,8 @@ final public class Router {
 }
 
 extension Router.Host {
+    public static var back: Router.Host { "back" }
+    
     public static var toast: Router.Host { "toast" }
     public static var alert: Router.Host { "alert" }
     public static var sheet: Router.Host { "sheet" }
