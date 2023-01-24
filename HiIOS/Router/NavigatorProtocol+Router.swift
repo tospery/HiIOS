@@ -121,27 +121,6 @@ public extension NavigatorProtocol {
     ) -> Observable<Any> {
         (self as! Navigator).rx.forward(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
     }
-
-    // MARK: - Back
-//    func back(animated: Bool = true, type: ForwardType? = nil, _ completion: (() -> Void)? = nil) {
-//        guard let top = UIViewController.topMost else { return }
-//        guard let type = type else {
-//            if top.navigationController?.viewControllers.count ?? 0 > 1 {
-//                top.navigationController?.popViewController(animated: animated, completion)
-//            } else {
-//                top.dismiss(animated: animated, completion: completion)
-//            }
-//            return
-//        }
-//        switch type {
-//        case .pop:
-//            top.navigationController?.popViewController(animated: animated, completion)
-//        case .dismiss:
-//            top.dismiss(animated: animated, completion: completion)
-//        default:
-//            break
-//        }
-//    }
     
     // MARK: - Push
     @discardableResult
@@ -179,6 +158,75 @@ public extension NavigatorProtocol {
         ctx[Parameter.forwardType] = ForwardType.open.rawValue
         return self.forward(url, context: ctx)
     }
+    
+    // MARK: - Back
+    func back(
+        _ type: ForwardType? = nil,
+        animated: Bool = true,
+        result: Any? = nil,
+        completion: (() -> Void)? = nil
+    ) {
+        (self as! Navigator).rx.open(Router.shared.urlString(host: .back), context: [
+            Parameter.forwardType: type ?? .off,
+            Parameter.animated: animated,
+            Parameter.result: result
+        ])
+        .subscribe(onCompleted: {
+            completion?()
+        }).disposed(by: gDisposeBag)
+    }
+    
+//    func back(animated: Bool = true, type: ForwardType? = nil, _ completion: (() -> Void)? = nil) {
+//        guard let top = UIViewController.topMost else { return }
+//        guard let type = type else {
+//            if top.navigationController?.viewControllers.count ?? 0 > 1 {
+//                top.navigationController?.popViewController(animated: animated, completion)
+//            } else {
+//                top.dismiss(animated: animated, completion: completion)
+//            }
+//            return
+//        }
+//        switch type {
+//        case .pop:
+//            top.navigationController?.popViewController(animated: animated, completion)
+//        case .dismiss:
+//            top.dismiss(animated: animated, completion: completion)
+//        default:
+//            break
+//        }
+//    }
+//    func back(
+//        _ type: ForwardType? = nil,
+//        animated: Bool = true,
+//        result: Any? = nil,
+//        completion: (() -> Void)? = nil
+//    ) {
+////        (self as! Navigator).rx.open(
+////            Router.shared.urlString(
+////                host: .alert,
+////                parameters: [
+////                    Parameter.title: title,
+////                    Parameter.message: message
+////                ]),
+////            context: [
+////                Parameter.actions: actions
+////            ]
+////        )
+//        (self as! Navigator).rx.open(Router.shared.urlString(host: .back), context: [
+//        ])
+//    }
+    
+//    func rxBack(
+//        _ type: ForwardType? = nil,
+//        animated: Bool = true,
+//        result: Any? = nil
+//    ) {
+//        (self as! Navigator).rx.open(Router.shared.urlString(host: .back), context: [
+//            Parameter.forwardType: type ?? .off,
+//            Parameter.animated: animated,
+//            Parameter.result:
+//        ])
+//    }
     
     // MARK: - Toast
     func toastMessage(_ message: String) {

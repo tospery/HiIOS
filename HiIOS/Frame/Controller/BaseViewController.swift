@@ -208,7 +208,7 @@ open class BaseViewController: UIViewController {
         self.back()
     }
     
-    open func back(animated: Bool = true, type: ForwardType? = nil, result: Any? = nil) {
+    open func back(_ type: ForwardType? = nil, animated: Bool = true, result: Any? = nil) {
 //        if result != nil {
 //            self.callback?.onNext(result!)
 //        }
