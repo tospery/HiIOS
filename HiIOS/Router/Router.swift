@@ -113,6 +113,9 @@ final public class Router {
         navigator.handle(self.urlPattern(host: .back)) { url, values, context in
             guard let top = UIViewController.topMost else { return false }
             let parameters = self.parameters(url, values, context)
+            if let message = parameters?.string(for: Parameter.message), message.isNotEmpty {
+                navigator.toastMessage(message)
+            }
             let result = parameters?[Parameter.result]
             let observer = parameters?[Parameter.routerObserver] as? AnyObserver<Any>
             let completion: (() -> Void) = {
