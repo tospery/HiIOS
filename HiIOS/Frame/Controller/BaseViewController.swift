@@ -279,6 +279,9 @@ open class BaseViewController: UIViewController {
                     }
                 }
             }
+            if error == .none {
+                return
+            }
             self.navigator.toastMessage(error.localizedDescription)
         }
     }

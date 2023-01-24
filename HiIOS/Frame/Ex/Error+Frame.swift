@@ -72,6 +72,9 @@ extension NSError: HiErrorCompatible {
                 self.code <= NSURLErrorCancelled {
                 return .server(ErrorCode.serverUnableConnect, self.localizedDescription, nil)
             }
+            if self.code == NSURLErrorCannotParseResponse {
+                return .dataInvalid
+            }
 //            if self.code >= NSURLErrorDNSLookupFailed ||
 //                        self.code <= NSURLErrorCannotParseResponse {
 //                return .server(ErrorCode.serverNoResponse, self.localizedDescription)
