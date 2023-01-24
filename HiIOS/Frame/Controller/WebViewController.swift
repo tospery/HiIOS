@@ -158,7 +158,7 @@ open class WebViewController: ScrollViewController, View {
             .disposed(by: self.disposeBag)
     }
     
-    open override func didBacked() {
+    open override func cancel() {
         self.clear()
     }
     

@@ -193,35 +193,30 @@ open class BaseViewController: UIViewController {
     // MARK: - Method
     open func bind(reactor: BaseViewReactor) {
         reactor.navigator = self.navigator
-        // bind
-//        self.backBarItem.rx.tap.asObservable().subscribe(onNext: { [weak self] _ in
-//            guard let `self` = self else { return }
-//            self.navigationController?.popViewController()
-//        }).disposed(by: self.disposeBag)
-//        self.closeBarItem.rx.tap.asObservable().subscribe(onNext: { [weak self] _ in
-//            guard let `self` = self else { return }
-//            self.dismiss(animated: true, completion: nil)
-//        }).disposed(by: self.disposeBag)
     }
     
     public func tapNav(_: Void? = nil) {
-        self.back()
+        self.back(cancelled: true)
     }
     
-    open func back(type: ForwardType? = nil, animated: Bool = true, result: Any? = nil) {
-        if result != nil {
+    open func back(type: ForwardType? = nil, animated: Bool = true, result: Any? = nil, cancelled: Bool = false) {
+        if result != nil && cancelled == false {
             self.callback?.onNext(result!)
         }
         self.navigator.rxBack(type: type, animated: animated)
             .subscribe(onCompleted: { [weak self] in
                 guard let `self` = self else { return }
-                self.callback?.onCompleted()
+                if cancelled {
+                    self.cancel()
+                } else {
+                    self.callback?.onCompleted()
+                }
             })
             .disposed(by: self.disposeBag)
     }
     
-    open func didBacked() {
-        self.callback?.onCompleted()
+    open func cancel() {
+        self.callback?.onNext(HiError.none)
         self.mydealloc.onNext(())
     }
     
@@ -230,7 +225,7 @@ open class BaseViewController: UIViewController {
         case .ended:
             guard let superview = self.navigationController?.topViewController?.view.superview else { return }
             if superview.frame.minX == 0.f {
-                self.didBacked()
+                self.cancel()
             }
         default: break
         }
