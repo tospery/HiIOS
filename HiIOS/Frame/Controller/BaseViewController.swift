@@ -149,13 +149,13 @@ open class BaseViewController: UIViewController {
             if self.navigationController?.viewControllers.count ?? 0 > 1 {
                 self.navigationBar.addBackButtonToLeft().rx.tap.subscribe(onNext: { [weak self] _ in
                     guard let `self` = self else { return }
-                    self.back()
+                    self.tapNav()
                 }).disposed(by: self.disposeBag)
             } else {
                 if self.qmui_isPresented() {
                     self.navigationBar.addCloseButtonToLeft().rx.tap.subscribe(onNext: { [weak self] _ in
                         guard let `self` = self else { return }
-                        self.back()
+                        self.tapNav()
                     }).disposed(by: self.disposeBag)
                 }
             }
@@ -208,10 +208,11 @@ open class BaseViewController: UIViewController {
         self.back()
     }
     
-    open func back(_ type: ForwardType? = nil, animated: Bool = true, result: Any? = nil) {
-        self.navigator.back(type, animated: animated, result: result) {
-            logger.print("【back】完成了")
-        }
+    open func back(type: ForwardType? = nil, animated: Bool = true, result: Any? = nil) {
+        self.navigator.back(type ?? .auto, animated: animated, result: result)
+//        self.navigator.back(type, animated: animated, result: result) {
+//            logger.print("【back】完成了")
+//        }
 //        if result != nil {
 //            self.callback?.onNext(result!)
 //        }

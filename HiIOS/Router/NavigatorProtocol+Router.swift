@@ -164,18 +164,16 @@ public extension NavigatorProtocol {
     
     // MARK: - Back
     func back(
-        _ type: ForwardType? = nil,
+        _ type: ForwardType,
         animated: Bool = true,
-        result: Any? = nil,
-        completion: (() -> Void)? = nil
+        result: Any? = nil
     ) {
         (self as! Navigator).rx.open(Router.shared.urlString(host: .back), context: [
-            Parameter.forwardType: type ?? .off,
+            Parameter.forwardType: type,
             Parameter.animated: animated,
             Parameter.result: result
         ])
         .subscribe(onCompleted: {
-            completion?()
         }).disposed(by: gDisposeBag)
     }
     

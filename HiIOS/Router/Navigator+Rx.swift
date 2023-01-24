@@ -88,17 +88,17 @@ public extension Reactive where Base: Navigator {
         ))
     }
 
-    func back(
-        _ type: ForwardType? = nil,
-        animated: Bool = true,
-        result: Any? = nil
-    ) -> Observable<Any> {
-        forward(Router.shared.urlString(host: .back), context: [
-            Parameter.forwardType: type ?? .off,
-            Parameter.animated: animated,
-            Parameter.result: result
-        ])
-    }
+//    func back(
+//        _ type: ForwardType? = nil,
+//        animated: Bool = true,
+//        result: Any? = nil
+//    ) -> Observable<Any> {
+//        forward(Router.shared.urlString(host: .back), context: [
+//            Parameter.forwardType: type ?? .off,
+//            Parameter.animated: animated,
+//            Parameter.result: result
+//        ])
+//    }
     
     func convert(context: Any? = nil) -> [String: Any] {
         var ctx = [String: Any].init()
