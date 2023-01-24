@@ -106,8 +106,9 @@ private extension HiLoggerPlugin {
         }
 
         if responseBody {
-            let stringOutput = configuration.formatter.responseData(response.data)
-            output.append(configuration.formatter.entry("Response Body", stringOutput, target))
+            var string = "(\(response.statusCode), \(response.request?.url?.pathString ?? ""))\n"
+            string += configuration.formatter.responseData(response.data)
+            output.append(configuration.formatter.entry("Response", string, target))
         }
 
         return output
