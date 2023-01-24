@@ -164,17 +164,19 @@ public extension NavigatorProtocol {
     }
     
     // MARK: - Back
-    func back(type: ForwardType? = nil, animated: Bool = true) {
+    func back(type: ForwardType? = nil, animated: Bool = true, message: String? = nil) {
         self.forward(Router.shared.urlString(host: .back), context: [
             Parameter.forwardType: type,
-            Parameter.animated: animated
+            Parameter.animated: animated,
+            Parameter.message: message
         ])
     }
     
-    func rxBack(type: ForwardType? = nil, animated: Bool = true) -> Observable<Any> {
+    func rxBack(type: ForwardType? = nil, animated: Bool = true, message: String? = nil) -> Observable<Any> {
         (self as! Navigator).rx.forward(Router.shared.urlString(host: .back), context: [
             Parameter.forwardType: type,
-            Parameter.animated: animated
+            Parameter.animated: animated,
+            Parameter.message: message
         ])
     }
     

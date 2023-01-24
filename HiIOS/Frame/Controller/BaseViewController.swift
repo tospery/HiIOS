@@ -199,11 +199,17 @@ open class BaseViewController: UIViewController {
         self.back(cancel: true)
     }
     
-    open func back(type: ForwardType? = nil, animated: Bool = true, result: Any? = nil, cancel: Bool = false) {
+    open func back(
+        type: ForwardType? = nil,
+        animated: Bool = true,
+        result: Any? = nil,
+        cancel: Bool = false,
+        message: String? = nil
+    ) {
         if result != nil && cancel == false {
             self.callback?.onNext(result!)
         }
-        self.navigator.rxBack(type: type, animated: animated)
+        self.navigator.rxBack(type: type, animated: animated, message: message)
             .subscribe(onCompleted: { [weak self] in
                 guard let `self` = self else { return }
                 if cancel {
