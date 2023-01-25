@@ -11,15 +11,6 @@ import SwifterSwift_Hi
 
 public extension URL {
     
-    var baseString: String {
-        let components = self.absoluteString.components(separatedBy: "/")
-        return "\(components.first ?? "")//\(components[safe: 2] ?? "")"
-    }
-    
-    var pathString: String {
-        self.absoluteString.removingPrefix(self.baseString).components(separatedBy: "?").first ?? ""
-    }
-    
     func insertingPathComponent(_ pathComponent: String?, at index: UInt) -> URL {
         guard let pathComponent = pathComponent else { return self }
         guard let scheme = self.scheme else { return self }
