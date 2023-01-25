@@ -283,7 +283,7 @@ open class BaseViewController: UIViewController {
             if error == .none {
                 return
             }
-            self.navigator.toastMessage(error.localizedDescription)
+            self.navigator.toastMessage(error.localizedDescription, .failure)
         }
     }
 

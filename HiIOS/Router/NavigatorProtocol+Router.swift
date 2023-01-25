@@ -233,9 +233,10 @@ public extension NavigatorProtocol {
 //    }
     
     // MARK: - Toast
-    func toastMessage(_ message: String) {
+    func toastMessage(_ message: String, _ style: HiToastStyle = .success) {
         guard !message.isEmpty else { return }
         self.open(Router.shared.urlString(host: .toast, parameters: [
+            Parameter.style: style.rawValue.string,
             Parameter.message: message
         ]))
     }
