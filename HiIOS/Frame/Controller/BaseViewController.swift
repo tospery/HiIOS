@@ -149,13 +149,13 @@ open class BaseViewController: UIViewController {
             if self.navigationController?.viewControllers.count ?? 0 > 1 {
                 self.navigationBar.addBackButtonToLeft().rx.tap.subscribe(onNext: { [weak self] _ in
                     guard let `self` = self else { return }
-                    self.tapNav()
+                    self.tapBack()
                 }).disposed(by: self.disposeBag)
             } else {
                 if self.qmui_isPresented() {
                     self.navigationBar.addCloseButtonToLeft().rx.tap.subscribe(onNext: { [weak self] _ in
                         guard let `self` = self else { return }
-                        self.tapNav()
+                        self.tapBack()
                     }).disposed(by: self.disposeBag)
                 }
             }
@@ -195,7 +195,7 @@ open class BaseViewController: UIViewController {
         reactor.navigator = self.navigator
     }
     
-    public func tapNav(_: Void? = nil) {
+    open func tapBack(_: Void? = nil) {
         self.back(cancel: true)
     }
     

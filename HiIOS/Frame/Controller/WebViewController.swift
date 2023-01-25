@@ -180,20 +180,6 @@ extension WebViewController: WKNavigationDelegate {
     }
     
     open func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
-//        if #available(iOS 11, *) {
-//            webView.configuration.websiteDataStore.httpCookieStore.getAllCookies { cookies in
-//                let abc = HTTPCookieStorage.shared.cookies
-//                print("")
-//                // self.saveCookies(cookies)
-//            }
-//        } else {
-//            if let response = navigationResponse.response as? HTTPURLResponse,
-//                let headerFields = response.allHeaderFields as? [String: String],
-//                let url = response.url {
-//                let cookies = HTTPCookie.cookies(withResponseHeaderFields: headerFields, for: url)
-//                self.saveCookies(cookies)
-//            }
-//        }
         decisionHandler(.allow)
     }
 
