@@ -92,23 +92,12 @@ private extension HiLoggerPlugin {
     func logNetworkResponse(_ response: Response, target: TargetType, isFromError: Bool) -> [String] {
         // Adding log entries for each given log option
         var output = [String]()
-
-        let responseBody = (isFromError && configuration.logOptions.contains(.errorResponseBody))
-                || configuration.logOptions.contains(.successResponseBody)
-        
-        // Response presence check
-        if let httpResponse = response.response {
-            if !responseBody {
-                output.append(configuration.formatter.entry("Response", httpResponse.description, target))
-            }
-        } else {
-            output.append(configuration.formatter.entry("Response", "Received empty network response for \(target).", target))
-        }
-
-        if responseBody {
-            var string = "(\(response.statusCode), \(response.request?.url?.pathString ?? ""))\n"
-            string += configuration.formatter.responseData(response.data)
-            output.append(configuration.formatter.entry("Response", string, target))
+		
+        if (isFromError && configuration.logOptions.contains(.errorResponseBody))
+            || configuration.logOptions.contains(.successResponseBody) {
+            var info = "(\(response.statusCode), \(response.request?.url?.pathString ?? ""))"
+            let json = configuration.formatter.responseData(response.data)
+            output.append(configuration.formatter.entry("Response", "\(info)\n\(json)", target))
         }
 
         return output
