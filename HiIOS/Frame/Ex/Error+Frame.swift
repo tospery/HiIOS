@@ -11,6 +11,7 @@ import Alamofire
 import SwifterSwift_Hi
 import Moya
 import SafariServices
+import AuthenticationServices
 import StoreKit
 
 extension HiError {
@@ -31,6 +32,15 @@ extension HiError {
 extension NSError: HiErrorCompatible {
     public var hiError: HiError {
         logger.print("NSError转换-> \(self.domain), \(self.code), \(self.localizedDescription)", module: .hiIOS)
+        
+        if #available(iOS 12.0, *) {
+            if self.domain == ASWebAuthenticationSessionError.errorDomain {
+                if let compatible = self as? ASWebAuthenticationSessionError {
+                    return compatible.hiError
+                }
+            }
+        }
+        
         if self.domain == SFAuthenticationError.errorDomain {
             if let compatible = self as? SFAuthenticationError {
                 return compatible.hiError
@@ -88,6 +98,18 @@ extension NSError: HiErrorCompatible {
             }
         }
         return .server(ErrorCode.nserror, self.localizedDescription, nil)
+    }
+}
+
+@available(iOS 12.0, *)
+extension ASWebAuthenticationSessionError: HiErrorCompatible {
+    public var hiError: HiError {
+        switch self.code {
+        case .canceledLogin:
+            return .none
+        default:
+            return .app(ErrorCode.asError, self.localizedDescription, nil)
+        }
     }
 }
 
