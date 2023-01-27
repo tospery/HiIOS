@@ -20,12 +20,6 @@ public protocol RouterCompatible {
     func needLogin(host: Router.Host, path: Router.Path?) -> Bool
     func customLogin(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol, _ url: URLConvertible, _ values: [String: Any], _ context: Any?) -> Bool
     
-//    func shouldRefresh(host: Router.Host, path: Router.Path?) -> Bool
-//    func shouldLoadMore(host: Router.Host, path: Router.Path?) -> Bool
-    
-    // func title(host: Router.Host, path: Router.Path?) -> String?
-    // func parameters(_ url: URLConvertible, _ values: [String: Any], _ context: Any?) -> [String: Any]?
-    
     func webToNative(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol, _ url: URLConvertible, _ context: Any?) -> Bool
     func webViewController(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol, _ paramters: [String: Any]) -> UIViewController?
     
