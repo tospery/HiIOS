@@ -11,8 +11,8 @@ import ObjectMapper_Hi
 public struct Simple: Subjective {
     
     public var id = 0
-    public var divided = true
-    public var indicated = true
+    public var divided: Bool? = true
+    public var indicated: Bool? = true
     public var height: CGFloat?
     public var icon: String?
     public var title: String?
@@ -33,8 +33,8 @@ public struct Simple: Subjective {
         icon: String? = nil,
         title: String? = nil,
         detail: String? = nil,
-        indicated: Bool = true,
-        divided: Bool = true,
+        indicated: Bool? = true,
+        divided: Bool? = true,
         height: CGFloat? = nil,
         color: String? = nil,
         tintColor: String? = nil,
