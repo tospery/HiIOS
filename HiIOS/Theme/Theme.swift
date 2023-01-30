@@ -33,7 +33,7 @@ public protocol Theme {
     var keyboardAppearance: UIKeyboardAppearance { get }
     var blurStyle: UIBlurEffect.Style { get }
     
-    init(color: UIColor?)
+    init(primaryColor: UIColor?, secondaryColor: UIColor?)
 }
 
 public protocol ThemeTypeCompatible {
@@ -41,8 +41,8 @@ public protocol ThemeTypeCompatible {
 }
 
 public enum ThemeType: ThemeProvider {
-    case light(color: UIColor?)
-    case dark(color: UIColor?)
+    case light(primaryColor: UIColor?, secondaryColor: UIColor?)
+    case dark(primaryColor: UIColor?, secondaryColor: UIColor?)
 
     public var isDark: Bool {
         switch self {
@@ -55,21 +55,16 @@ public enum ThemeType: ThemeProvider {
         if let compatible = self as? ThemeTypeCompatible {
             return compatible.theme
         }
-        return HiTheme(color: .blue)
+        return HiTheme(primaryColor: .blue, secondaryColor: .red)
     }
     
-    public func toggle(_ color: UIColor? = nil) {
+    public func toggle(primaryColor: UIColor? = nil, secondaryColor: UIColor? = nil) {
         var theme: ThemeType
-        if let color = color {
-            switch self {
-            case .light: theme = ThemeType.dark(color: color)
-            case .dark: theme = ThemeType.light(color: color)
-            }
-        } else {
-            switch self {
-            case .light(let color): theme = ThemeType.dark(color: color)
-            case .dark(let color): theme = ThemeType.light(color: color)
-            }
+        switch self {
+        case let .light(oldPrimaryColor, oldSecondaryColor):
+            theme = ThemeType.dark(primaryColor: primaryColor ?? oldPrimaryColor, secondaryColor: secondaryColor ?? oldSecondaryColor)
+        case let .dark(oldPrimaryColor, oldSecondaryColor):
+            theme = ThemeType.light(primaryColor: primaryColor ?? oldPrimaryColor, secondaryColor: secondaryColor ?? oldSecondaryColor)
         }
         theme.save()
         themeService.switch(theme)
@@ -79,18 +74,24 @@ public enum ThemeType: ThemeProvider {
         let defaults = UserDefaults.standard
         defaults.set(self.isDark, forKey: Parameter.isDark)
         defaults.set(self.associatedObject.primaryColor.hexString, forKey: Parameter.primaryColor)
+        defaults.set(self.associatedObject.secondaryColor.hexString, forKey: Parameter.secondaryColor)
         defaults.synchronize()
     }
     
     public static var current: ThemeType {
         let defaults = UserDefaults.standard
         let isDark = defaults.bool(forKey: Parameter.isDark)
-        var color: UIColor?
+        var primaryColor: UIColor?
+        var secondaryColor: UIColor?
         if let string = defaults.string(forKey: Parameter.primaryColor),
            let value = UIColor.init(hexString: string) {
-            color = value
+            primaryColor = value
         }
-        let theme = isDark ? ThemeType.dark(color: color) : ThemeType.light(color: color)
+        if let string = defaults.string(forKey: Parameter.secondaryColor),
+           let value = UIColor.init(hexString: string) {
+            secondaryColor = value
+        }
+        let theme = isDark ? ThemeType.dark(primaryColor: primaryColor, secondaryColor: secondaryColor) : ThemeType.light(primaryColor: primaryColor, secondaryColor: secondaryColor)
         return theme
     }
 
@@ -102,7 +103,7 @@ struct HiTheme: Theme {
     let lightColor = UIColor(hex: 0xF6F6F6)!
     let darkColor = UIColor.darkGray
     var primaryColor = UIColor.blue
-    let secondaryColor = UIColor.green
+    var secondaryColor = UIColor.red
     let titleColor = UIColor(hex: 0x333333)!
     let bodyColor = UIColor(hex: 0x666666)!
     let headerColor = UIColor(hex: 0xD2D2D2)!
@@ -117,8 +118,12 @@ struct HiTheme: Theme {
     let keyboardAppearance = UIKeyboardAppearance.light
     let blurStyle = UIBlurEffect.Style.extraLight
     
-    init(color: UIColor?) {
-        guard let color = color else { return }
-        self.primaryColor = color
+    init(primaryColor: UIColor?, secondaryColor: UIColor?) {
+        if let primaryColor = primaryColor {
+            self.primaryColor = primaryColor
+        }
+        if let secondaryColor = secondaryColor {
+            self.secondaryColor = secondaryColor
+        }
     }
 }

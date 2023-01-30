@@ -54,6 +54,7 @@ public struct Parameter {
     public static let forwardType           = "forwardType"
     public static let navBarStyle           = "navBarStyle"
     public static let primaryColor          = "primaryColor"
+    public static let secondaryColor        = "secondaryColor"
     public static let toastMessage          = "toastMessage"
     public static let toastActivity         = "toastActivity"
     public static let dismissManually       = "dismissManually"
