@@ -170,6 +170,14 @@ open class BaseViewController: UIViewController {
             self.setNeedsStatusBarAppearanceUpdate()
         }).disposed(by: self.rx.disposeBag)
         
+        themeService.typeStream.skip(1)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] themeType in
+                guard let `self` = self else { return }
+                self.handleTheme(themeType)
+            })
+            .disposed(by: self.disposeBag)
+        
         self.view.theme.backgroundColor = themeService.attribute { $0.backgroundColor }
         self.navigationBar.theme.titleColor = themeService.attribute { $0.foregroundColor }
         self.navigationBar.theme.itemColor = themeService.attribute { $0.foregroundColor }
@@ -238,6 +246,9 @@ open class BaseViewController: UIViewController {
     }
     
     // MARK: handle
+    open func handleTheme(_ themeType: ThemeType) {
+    }
+    
     open func handleTitle(_ text: String?) {
         self.navigationBar.titleLabel.text = text
         self.navigationBar.setNeedsLayout()

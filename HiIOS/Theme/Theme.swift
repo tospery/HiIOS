@@ -58,13 +58,21 @@ public enum ThemeType: ThemeProvider {
         return HiTheme(primaryColor: .blue, secondaryColor: .red)
     }
     
-    public func toggle(primaryColor: UIColor? = nil, secondaryColor: UIColor? = nil) {
+    public func change(primaryColor: UIColor? = nil, secondaryColor: UIColor? = nil, isToggle: Bool = false) {
         var theme: ThemeType
         switch self {
         case let .light(oldPrimaryColor, oldSecondaryColor):
-            theme = ThemeType.dark(primaryColor: primaryColor ?? oldPrimaryColor, secondaryColor: secondaryColor ?? oldSecondaryColor)
+            if isToggle {
+                theme = ThemeType.dark(primaryColor: primaryColor ?? oldPrimaryColor, secondaryColor: secondaryColor ?? oldSecondaryColor)
+            } else {
+                theme = ThemeType.light(primaryColor: primaryColor ?? oldPrimaryColor, secondaryColor: secondaryColor ?? oldSecondaryColor)
+            }
         case let .dark(oldPrimaryColor, oldSecondaryColor):
-            theme = ThemeType.light(primaryColor: primaryColor ?? oldPrimaryColor, secondaryColor: secondaryColor ?? oldSecondaryColor)
+            if isToggle {
+                theme = ThemeType.light(primaryColor: primaryColor ?? oldPrimaryColor, secondaryColor: secondaryColor ?? oldSecondaryColor)
+            } else {
+                theme = ThemeType.dark(primaryColor: primaryColor ?? oldPrimaryColor, secondaryColor: secondaryColor ?? oldSecondaryColor)
+            }
         }
         theme.save()
         themeService.switch(theme)
