@@ -171,7 +171,7 @@ open class BaseViewController: UIViewController {
         }).disposed(by: self.rx.disposeBag)
         
         themeService.typeStream.skip(1)
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] themeType in
                 guard let `self` = self else { return }
                 self.handleTheme(themeType)

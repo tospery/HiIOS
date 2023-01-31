@@ -27,16 +27,15 @@ public extension Reactive where Base: UIImageView {
     
     func imageResource(
         placeholder: Placeholder? = nil,
-        options: KingfisherOptionsInfo? = nil
+        options: KingfisherOptionsInfo? = nil,
+        alwaysTemplate: Bool = false
     ) -> Binder<ImageSource?> {
         return Binder(self.base) { imageView, resource in
-            // imageView.isHidden = false
             if let image = resource as? UIImage {
-                imageView.image = image
+                imageView.image = alwaysTemplate ? image.template : image
             } else if let url = resource as? URL {
                 imageView.kf.setImage(with: url, placeholder: placeholder, options: options)
             } else {
-                // imageView.isHidden = true
                 placeholder?.add(to: imageView)
             }
         }

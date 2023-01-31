@@ -16,6 +16,7 @@ public protocol LibraryCompatible {
 
 final public class Library {
     
+    public var disposeBag = DisposeBag()
     public static var shared = Library()
     
     public init() {
