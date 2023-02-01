@@ -31,7 +31,7 @@ public extension Reactive where Base: UIImageView {
         alwaysTemplate: Bool = false
     ) -> Binder<ImageSource?> {
         return Binder(self.base) { imageView, resource in
-            if resource == nil {
+            if resource == nil && placeholder == nil {
                 imageView.image = nil
                 return
             }
