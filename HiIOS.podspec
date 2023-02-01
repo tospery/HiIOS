@@ -11,13 +11,13 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/tospery/HiIOS.git', :tag => s.version.to_s }
 
   s.requires_arc = true
-  s.swift_version = '5.0'
-  s.ios.deployment_target = '11.0'
+  s.swift_version = '5.3'
+  s.ios.deployment_target = '13.0'
   s.frameworks = 'UIKit', 'CoreGraphics'
   
   s.subspec 'Core' do |ss|
     ss.source_files = 'HiIOS/Core/**/*'
-  	ss.dependency 'QMUIKit/QMUICore', '4.5.1'
+  	ss.dependency 'QMUIKit/QMUICore', '4.6.3'
   	ss.dependency 'FCUUID', '1.3.1'
   	ss.dependency 'SwiftyBeaver', '1.9.5'
   	ss.dependency 'ObjectMapper-Hi', '4.2.0-v2'
@@ -80,7 +80,7 @@ Pod::Spec.new do |s|
   	ss.dependency 'NSObject+Rx', '5.2.2'
   	ss.dependency 'ReactorKit', '3.2.0'
   	ss.dependency 'BonMot', '6.1.1'
-  	ss.dependency 'Kingfisher', '6.3.1'
+  	ss.dependency 'Kingfisher', '7.5.0'
   	ss.dependency 'DZNEmptyDataSet', '1.8.1'
   	ss.dependency 'MJRefresh', '3.7.5'
   end
