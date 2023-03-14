@@ -73,6 +73,7 @@ extension NSError: HiErrorCompatible {
             // NSURLErrorCannotDecodeRawData            -1015
             // NSURLErrorCannotDecodeContentData        -1016
             // NSURLErrorCannotParseResponse            -1017
+            // -1202（此服务器的证书无效。）
             // logger.print("看看错误码: \(NSURLErrorFileDoesNotExist)")
 
             if self.code == -1020 {
