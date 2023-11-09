@@ -80,7 +80,7 @@ Pod::Spec.new do |s|
   	ss.dependency 'NSObject+Rx', '5.2.2'
   	ss.dependency 'ReactorKit', '3.2.0'
   	ss.dependency 'BonMot', '6.1.1'
-  	ss.dependency 'Kingfisher', '7.5.0'
+  	ss.dependency 'Kingfisher', '7.10.0'
   	ss.dependency 'DZNEmptyDataSet', '1.8.1'
   	ss.dependency 'MJRefresh', '3.7.5'
   end
