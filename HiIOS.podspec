@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'HiIOS'
-  s.version          = '1.2.5'
+  s.version          = '1.2.6'
   s.summary          = 'iOS App Framework.'
   s.description      = <<-DESC
 						iOS App Framework using Swift.
@@ -17,11 +17,11 @@ Pod::Spec.new do |s|
   
   s.subspec 'Core' do |ss|
     ss.source_files = 'HiIOS/Core/**/*'
-  	ss.dependency 'QMUIKit/QMUICore', '4.6.3'
+  	ss.dependency 'QMUIKit/QMUICore', '4.7.0'
   	ss.dependency 'FCUUID', '1.3.1'
   	ss.dependency 'SwiftyBeaver', '1.9.5'
   	ss.dependency 'ObjectMapper-Hi', '4.2.0-v2'
-  	ss.dependency 'SwifterSwift-Hi', '5.3.0-v1'
+  	ss.dependency 'SwifterSwift', '6.0.0'
   end
   
   s.subspec 'Cache' do |ss|
@@ -35,7 +35,7 @@ Pod::Spec.new do |s|
   	ss.dependency 'HiIOS/Core'
   	ss.dependency 'RxSwift', '~> 6.0'
   	ss.dependency 'RxCocoa', '~> 6.0'
-  	ss.dependency 'URLNavigator', '2.4.1'
+  	ss.dependency 'URLNavigator', '2.5.1'
   end
   
   s.subspec 'Network' do |ss|
@@ -79,10 +79,10 @@ Pod::Spec.new do |s|
   	ss.dependency 'RxDataSources', '5.0.0'
   	ss.dependency 'NSObject+Rx', '5.2.2'
   	ss.dependency 'ReactorKit', '3.2.0'
-  	ss.dependency 'BonMot', '6.1.1'
+  	ss.dependency 'BonMot', '6.1.3'
   	ss.dependency 'Kingfisher', '7.10.0'
   	ss.dependency 'DZNEmptyDataSet', '1.8.1'
-  	ss.dependency 'MJRefresh', '3.7.5'
+  	ss.dependency 'MJRefresh', '3.7.6'
   end
 
 end

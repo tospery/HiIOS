@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 import Alamofire
-import SwifterSwift_Hi
+import SwifterSwift
 import Moya
 import SafariServices
 import AuthenticationServices

@@ -7,7 +7,7 @@
 
 import Foundation
 import URLNavigator
-import SwifterSwift_Hi
+import SwifterSwift
 
 public extension URL {
     

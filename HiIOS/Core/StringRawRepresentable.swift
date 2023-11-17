@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SwifterSwift_Hi
+import SwifterSwift
 
 public protocol StringRawRepresentable {
     var stringRawValue: String { get }

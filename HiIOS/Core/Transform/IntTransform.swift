@@ -7,7 +7,7 @@
 
 import Foundation
 import ObjectMapper_Hi
-import SwifterSwift_Hi
+import SwifterSwift
 
 public class IntTransform: TransformType {
 

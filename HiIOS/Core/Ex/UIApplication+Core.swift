@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SwifterSwift_Hi
+import SwifterSwift
 
 public extension UIApplication {
     

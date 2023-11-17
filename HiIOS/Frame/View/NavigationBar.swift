@@ -9,7 +9,7 @@ import UIKit
 import QMUIKit
 import RxSwift
 import RxCocoa
-import SwifterSwift_Hi
+import SwifterSwift
 import RxTheme
 
 public class NavigationBar: UIView {

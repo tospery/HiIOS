@@ -12,7 +12,7 @@ import URLNavigator
 import DZNEmptyDataSet
 import BonMot
 import MJRefresh
-import SwifterSwift_Hi
+import SwifterSwift
 
 open class ScrollViewController: BaseViewController {
     

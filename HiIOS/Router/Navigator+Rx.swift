@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import URLNavigator
-import SwifterSwift_Hi
+import SwifterSwift
 
 extension Navigator: ReactiveCompatible { }
 public extension Reactive where Base: Navigator {

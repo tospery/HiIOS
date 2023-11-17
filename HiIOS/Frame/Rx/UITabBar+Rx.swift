@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import SwifterSwift_Hi
+import SwifterSwift
 import RxTheme
 
 public extension ThemeProxy where Base: UITabBar {

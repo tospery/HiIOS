@@ -7,7 +7,7 @@
 
 import Foundation
 import ObjectMapper_Hi
-import SwifterSwift_Hi
+import SwifterSwift
 
 // MARK: - 模型协议
 public protocol ModelType: Mappable, CustomStringConvertible {

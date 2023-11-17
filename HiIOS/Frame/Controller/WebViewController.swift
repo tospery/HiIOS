@@ -11,7 +11,7 @@ import RxCocoa
 import WebKit
 import URLNavigator
 import ReactorKit
-import SwifterSwift_Hi
+import SwifterSwift
 
 open class WebViewController: ScrollViewController, View {
     

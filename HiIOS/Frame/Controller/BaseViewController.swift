@@ -10,7 +10,7 @@ import QMUIKit
 import RxSwift
 import RxCocoa
 import NSObject_Rx
-import SwifterSwift_Hi
+import SwifterSwift
 import URLNavigator
 
 public let statusBarService = BehaviorRelay<UIStatusBarStyle>(

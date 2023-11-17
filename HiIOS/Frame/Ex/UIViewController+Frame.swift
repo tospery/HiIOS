@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import SwifterSwift_Hi
+import SwifterSwift
 
 public extension UIViewController {
     

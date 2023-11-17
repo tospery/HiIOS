@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxTheme
-import SwifterSwift_Hi
+import SwifterSwift
 
 public extension Reactive where Base: UIView {
     

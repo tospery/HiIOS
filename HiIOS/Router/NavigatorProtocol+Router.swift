@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import URLNavigator
-import SwifterSwift_Hi
+import SwifterSwift
 
 var navigateBag = DisposeBag()
 
