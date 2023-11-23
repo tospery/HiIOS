@@ -11,9 +11,10 @@
 		910AF2762B0F10B60044111C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910AF2752B0F10B60044111C /* AppDelegate.swift */; };
 		910AF2782B0F10B60044111C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910AF2772B0F10B60044111C /* SceneDelegate.swift */; };
 		910AF27A2B0F10B60044111C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910AF2792B0F10B60044111C /* ViewController.swift */; };
-		910AF27D2B0F10B60044111C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 910AF27B2B0F10B60044111C /* Main.storyboard */; };
 		910AF27F2B0F10B70044111C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 910AF27E2B0F10B70044111C /* Assets.xcassets */; };
 		910AF2822B0F10B70044111C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 910AF2802B0F10B70044111C /* LaunchScreen.storyboard */; };
+		91E679E22B0F2FFD00D4C4CA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91E679E12B0F2FFD00D4C4CA /* Localizable.strings */; };
+		91E679E62B0F308F00D4C4CA /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E679E52B0F308F00D4C4CA /* R.generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,10 +24,14 @@
 		910AF2752B0F10B60044111C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		910AF2772B0F10B60044111C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		910AF2792B0F10B60044111C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		910AF27C2B0F10B60044111C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		910AF27E2B0F10B70044111C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		910AF2812B0F10B70044111C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		910AF2832B0F10B70044111C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9188AAA92B0F2B0200AF0DBD /* HiIOSTmpl.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HiIOSTmpl.entitlements; sourceTree = "<group>"; };
+		91E679DF2B0F2FA700D4C4CA /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
+		91E679E02B0F2FDE00D4C4CA /* OC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OC-Bridging-Header.h"; sourceTree = "<group>"; };
+		91E679E12B0F2FFD00D4C4CA /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		91E679E52B0F308F00D4C4CA /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		DA01288709EB7C05B26E8D76 /* Pods-HiIOSTmpl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiIOSTmpl.debug.xcconfig"; path = "Target Support Files/Pods-HiIOSTmpl/Pods-HiIOSTmpl.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,7 +61,6 @@
 				DA01288709EB7C05B26E8D76 /* Pods-HiIOSTmpl.debug.xcconfig */,
 				6E89BFF99422B6DEF98DB20E /* Pods-HiIOSTmpl.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -81,13 +85,17 @@
 		910AF2742B0F10B60044111C /* HiIOSTmpl */ = {
 			isa = PBXGroup;
 			children = (
+				91E679E52B0F308F00D4C4CA /* R.generated.swift */,
+				91E679DF2B0F2FA700D4C4CA /* .swiftlint.yml */,
+				9188AAA92B0F2B0200AF0DBD /* HiIOSTmpl.entitlements */,
 				910AF2752B0F10B60044111C /* AppDelegate.swift */,
 				910AF2772B0F10B60044111C /* SceneDelegate.swift */,
 				910AF2792B0F10B60044111C /* ViewController.swift */,
-				910AF27B2B0F10B60044111C /* Main.storyboard */,
 				910AF27E2B0F10B70044111C /* Assets.xcassets */,
 				910AF2802B0F10B70044111C /* LaunchScreen.storyboard */,
 				910AF2832B0F10B70044111C /* Info.plist */,
+				91E679E02B0F2FDE00D4C4CA /* OC-Bridging-Header.h */,
+				91E679E12B0F2FFD00D4C4CA /* Localizable.strings */,
 			);
 			path = HiIOSTmpl;
 			sourceTree = "<group>";
@@ -100,6 +108,8 @@
 			buildConfigurationList = 910AF2862B0F10B70044111C /* Build configuration list for PBXNativeTarget "HiIOSTmpl" */;
 			buildPhases = (
 				42A982256A3E56C928BAB730 /* [CP] Check Pods Manifest.lock */,
+				91E679E32B0F302300D4C4CA /* SwiftLint */,
+				91E679E42B0F303C00D4C4CA /* R.swift */,
 				910AF26E2B0F10B60044111C /* Sources */,
 				910AF26F2B0F10B60044111C /* Frameworks */,
 				910AF2702B0F10B60044111C /* Resources */,
@@ -153,8 +163,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				910AF2822B0F10B70044111C /* LaunchScreen.storyboard in Resources */,
+				91E679E22B0F2FFD00D4C4CA /* Localizable.strings in Resources */,
 				910AF27F2B0F10B70044111C /* Assets.xcassets in Resources */,
-				910AF27D2B0F10B60044111C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +210,45 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HiIOSTmpl/Pods-HiIOSTmpl-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		91E679E32B0F302300D4C4CA /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
+		91E679E42B0F303C00D4C4CA /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = R.swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/HiIOSTmpl/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/HiIOSTmpl/R.generated.swift\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -210,20 +259,13 @@
 				910AF27A2B0F10B60044111C /* ViewController.swift in Sources */,
 				910AF2762B0F10B60044111C /* AppDelegate.swift in Sources */,
 				910AF2782B0F10B60044111C /* SceneDelegate.swift in Sources */,
+				91E679E62B0F308F00D4C4CA /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		910AF27B2B0F10B60044111C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				910AF27C2B0F10B60044111C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		910AF2802B0F10B70044111C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -360,17 +402,33 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HiIOSTmpl/HiIOSTmpl.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WDE622528T;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HiIOSTmpl/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HiIOSTmpl;
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能访问蓝牙";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能访问日历";
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能访问相机";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能使用本地网络";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能在使用期间始终访问位置";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能始终访问位置";
+				INFOPLIST_KEY_NSLocationUsageDescription = "IOSTemplate需要您的同意，才能访问位置";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能在使用期间访问位置";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能访问麦克风";
+				INFOPLIST_KEY_NSMotionUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能访问运动与健身";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能保存照片到相册";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能访问相册";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能访问提醒事项";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -391,17 +449,33 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HiIOSTmpl/HiIOSTmpl.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WDE622528T;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HiIOSTmpl/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HiIOSTmpl;
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能访问蓝牙";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能访问日历";
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能访问相机";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能使用本地网络";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能在使用期间始终访问位置";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能始终访问位置";
+				INFOPLIST_KEY_NSLocationUsageDescription = "IOSTemplate需要您的同意，才能访问位置";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能在使用期间访问位置";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能访问麦克风";
+				INFOPLIST_KEY_NSMotionUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能访问运动与健身";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能保存照片到相册";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能访问相册";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "$(PRODUCT_NAME)需要您的同意，才能访问提醒事项";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

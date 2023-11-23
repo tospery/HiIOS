@@ -1,0 +1,29 @@
+disabled_rules:
+    - trailing_whitespace
+    - vertical_whitespace
+    - unneeded_override
+
+included:
+    - HiIOSTmpl
+
+excluded:
+    - Pods
+    - HiIOSTmpl/R.generated.swift
+
+type_name:
+    min_length:
+        warning: 2
+        error: 1
+    excluded:
+        - T
+        - E
+
+identifier_name:
+    min_length:
+        warning: 2
+        error: 1
+    excluded:
+        - i
+        - x
+        - y
+        - id

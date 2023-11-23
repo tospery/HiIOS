@@ -2,10 +2,14 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '13.0'
 use_frameworks!
+inhibit_all_warnings!
 
 target 'HiIOSTmpl' do
   pod 'HiIOS', :path => '../../'
 
+  pod 'R.swift', '7.3.2'
+  pod 'SwiftLint', '0.54.0'
+  
 end
 
 post_install do |installer|
