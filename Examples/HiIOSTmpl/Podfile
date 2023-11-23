@@ -1,0 +1,34 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '13.0'
+use_frameworks!
+
+target 'HiIOSTmpl' do
+  pod 'HiIOS', :path => '../../'
+
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+	  config.build_settings['CODE_SIGNING_ALLOWED'] ="NO"
+    end
+  end
+  find_and_replace("Pods/FBRetainCycleDetector/FBRetainCycleDetector/Layout/Classes/FBClassStrongLayout.mm",
+        "layoutCache[currentClass] = ivars;", "layoutCache[(id<NSCopying>)currentClass] = ivars;")
+end
+
+def find_and_replace(dir, findstr, replacestr)
+  Dir[dir].each do |name|
+      FileUtils.chmod("+w", name)
+      text = File.read(name)
+      replace = text.gsub(findstr,replacestr)
+      if text != replace
+          puts "Fix: " + name
+          File.open(name, "w") { |file| file.puts replace }
+          STDOUT.flush
+      end
+  end
+  Dir[dir + '*/'].each(&method(:find_and_replace))
+end
