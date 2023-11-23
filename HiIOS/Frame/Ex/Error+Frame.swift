@@ -33,16 +33,8 @@ extension NSError: HiErrorCompatible {
     public var hiError: HiError {
         logger.print("NSError转换-> \(self.domain), \(self.code), \(self.localizedDescription)", module: .hiIOS)
         
-        if #available(iOS 12.0, *) {
-            if self.domain == ASWebAuthenticationSessionError.errorDomain {
-                if let compatible = self as? ASWebAuthenticationSessionError {
-                    return compatible.hiError
-                }
-            }
-        }
-        
-        if self.domain == SFAuthenticationError.errorDomain {
-            if let compatible = self as? SFAuthenticationError {
+        if self.domain == ASWebAuthenticationSessionError.errorDomain {
+            if let compatible = self as? ASWebAuthenticationSessionError {
                 return compatible.hiError
             }
         }
@@ -102,7 +94,6 @@ extension NSError: HiErrorCompatible {
     }
 }
 
-@available(iOS 12.0, *)
 extension ASWebAuthenticationSessionError: HiErrorCompatible {
     public var hiError: HiError {
         switch self.code {
@@ -110,17 +101,6 @@ extension ASWebAuthenticationSessionError: HiErrorCompatible {
             return .none
         default:
             return .app(ErrorCode.asError, self.localizedDescription, nil)
-        }
-    }
-}
-
-extension SFAuthenticationError: HiErrorCompatible {
-    public var hiError: HiError {
-        switch self.code {
-        case .canceledLogin:
-            return .none
-        default:
-            return .app(ErrorCode.skerror, self.localizedDescription, nil)
         }
     }
 }

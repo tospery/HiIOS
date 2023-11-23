@@ -14,6 +14,8 @@
 
 @implementation HiHelper
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (CGFloat)statusBarHeight {
     return StatusBarHeight;
 }
@@ -41,6 +43,7 @@
 - (CGFloat)toolBarHeight {
     return ToolBarHeight;
 }
+#pragma clang diagnostic pop
 
 + (instancetype)sharedInstance {
     static id instance;

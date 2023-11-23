@@ -226,6 +226,7 @@ extension Error {
         if let hi = self as? HiError {
             return hi
         }
+        
         if let compatible = self as? HiErrorCompatible {
             return compatible.hiError
         }

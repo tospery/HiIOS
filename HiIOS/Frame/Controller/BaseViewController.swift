@@ -18,7 +18,9 @@ public let statusBarService = BehaviorRelay<UIStatusBarStyle>(
 )
 
 func defaultStatusBarStyle() -> UIStatusBarStyle {
-    guard let style = Bundle.main.infoDictionary?["UIStatusBarStyle"] as? String else { return UIApplication.shared.statusBarStyle }
+    guard let style = Bundle.main.infoDictionary?["UIStatusBarStyle"] as? String else {
+        return UIApplication.shared.windows.first!.windowScene!.statusBarManager!.statusBarStyle
+    }
     switch style {
     case "UIStatusBarStyleDefault":
         return .default
@@ -31,7 +33,7 @@ func defaultStatusBarStyle() -> UIStatusBarStyle {
             return .default
         }
     default:
-        return UIApplication.shared.statusBarStyle
+        return UIApplication.shared.windows.first!.windowScene!.statusBarManager!.statusBarStyle
     }
 }
 
