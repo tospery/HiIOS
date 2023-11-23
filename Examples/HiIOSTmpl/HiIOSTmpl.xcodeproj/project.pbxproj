@@ -7,120 +7,76 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2889488F319D4CE8620757DF /* Pods_HiIOSTmpl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 879D7164A037C7A30F2B2781 /* Pods_HiIOSTmpl.framework */; };
-		91651BC22B08848800EE9693 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91651BC12B08848800EE9693 /* AppDelegate.swift */; };
-		91651BC42B08848800EE9693 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91651BC32B08848800EE9693 /* SceneDelegate.swift */; };
-		91651BCB2B08848900EE9693 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91651BCA2B08848900EE9693 /* Assets.xcassets */; };
-		91651BCE2B08848900EE9693 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91651BCC2B08848900EE9693 /* LaunchScreen.storyboard */; };
-		91C670D42B088E9500A94647 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91C670D32B088E9500A94647 /* Localizable.strings */; };
-		91C670D62B088EF200A94647 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C670D52B088EF200A94647 /* R.generated.swift */; };
+		910AF2762B0F10B60044111C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910AF2752B0F10B60044111C /* AppDelegate.swift */; };
+		910AF2782B0F10B60044111C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910AF2772B0F10B60044111C /* SceneDelegate.swift */; };
+		910AF27A2B0F10B60044111C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910AF2792B0F10B60044111C /* ViewController.swift */; };
+		910AF27D2B0F10B60044111C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 910AF27B2B0F10B60044111C /* Main.storyboard */; };
+		910AF27F2B0F10B70044111C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 910AF27E2B0F10B70044111C /* Assets.xcassets */; };
+		910AF2822B0F10B70044111C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 910AF2802B0F10B70044111C /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		70FA76C49292867FFFF17292 /* Pods-HiIOSTmpl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiIOSTmpl.release.xcconfig"; path = "Target Support Files/Pods-HiIOSTmpl/Pods-HiIOSTmpl.release.xcconfig"; sourceTree = "<group>"; };
-		879D7164A037C7A30F2B2781 /* Pods_HiIOSTmpl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HiIOSTmpl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		91651BBE2B08848800EE9693 /* HiIOSTmpl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiIOSTmpl.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		91651BC12B08848800EE9693 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		91651BC32B08848800EE9693 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		91651BCA2B08848900EE9693 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		91651BCD2B08848900EE9693 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		91651BCF2B08848900EE9693 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		91C670CD2B088B7300A94647 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
-		91C670CE2B088BBC00A94647 /* OC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OC-Bridging-Header.h"; sourceTree = "<group>"; };
-		91C670CF2B088BDA00A94647 /* readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
-		91C670D02B088C2500A94647 /* HiIOSTmpl.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HiIOSTmpl.entitlements; sourceTree = "<group>"; };
-		91C670D32B088E9500A94647 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		91C670D52B088EF200A94647 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
-		E18D92FD4CEB3167C64AF811 /* Pods-HiIOSTmpl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiIOSTmpl.debug.xcconfig"; path = "Target Support Files/Pods-HiIOSTmpl/Pods-HiIOSTmpl.debug.xcconfig"; sourceTree = "<group>"; };
+		910AF2722B0F10B60044111C /* HiIOSTmpl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiIOSTmpl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		910AF2752B0F10B60044111C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		910AF2772B0F10B60044111C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		910AF2792B0F10B60044111C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		910AF27C2B0F10B60044111C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		910AF27E2B0F10B70044111C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		910AF2812B0F10B70044111C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		910AF2832B0F10B70044111C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		91651BBB2B08848800EE9693 /* Frameworks */ = {
+		910AF26F2B0F10B60044111C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2889488F319D4CE8620757DF /* Pods_HiIOSTmpl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1F86FDC3867061B9817CC19A /* Frameworks */ = {
+		910AF2692B0F10B60044111C = {
 			isa = PBXGroup;
 			children = (
-				879D7164A037C7A30F2B2781 /* Pods_HiIOSTmpl.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		33CDF458E4D7B6F87871AA6C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E18D92FD4CEB3167C64AF811 /* Pods-HiIOSTmpl.debug.xcconfig */,
-				70FA76C49292867FFFF17292 /* Pods-HiIOSTmpl.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		91651BB52B08848800EE9693 = {
-			isa = PBXGroup;
-			children = (
-				91651BC02B08848800EE9693 /* HiIOSTmpl */,
-				91651BBF2B08848800EE9693 /* Products */,
-				33CDF458E4D7B6F87871AA6C /* Pods */,
-				1F86FDC3867061B9817CC19A /* Frameworks */,
+				910AF2742B0F10B60044111C /* HiIOSTmpl */,
+				910AF2732B0F10B60044111C /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		91651BBF2B08848800EE9693 /* Products */ = {
+		910AF2732B0F10B60044111C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				91651BBE2B08848800EE9693 /* HiIOSTmpl.app */,
+				910AF2722B0F10B60044111C /* HiIOSTmpl.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		91651BC02B08848800EE9693 /* HiIOSTmpl */ = {
+		910AF2742B0F10B60044111C /* HiIOSTmpl */ = {
 			isa = PBXGroup;
 			children = (
-				91C670CC2B088ABB00A94647 /* Core */,
+				910AF2752B0F10B60044111C /* AppDelegate.swift */,
+				910AF2772B0F10B60044111C /* SceneDelegate.swift */,
+				910AF2792B0F10B60044111C /* ViewController.swift */,
+				910AF27B2B0F10B60044111C /* Main.storyboard */,
+				910AF27E2B0F10B70044111C /* Assets.xcassets */,
+				910AF2802B0F10B70044111C /* LaunchScreen.storyboard */,
+				910AF2832B0F10B70044111C /* Info.plist */,
 			);
 			path = HiIOSTmpl;
-			sourceTree = "<group>";
-		};
-		91C670CC2B088ABB00A94647 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				91C670D52B088EF200A94647 /* R.generated.swift */,
-				91C670D02B088C2500A94647 /* HiIOSTmpl.entitlements */,
-				91C670CD2B088B7300A94647 /* .swiftlint.yml */,
-				91651BC12B08848800EE9693 /* AppDelegate.swift */,
-				91651BC32B08848800EE9693 /* SceneDelegate.swift */,
-				91651BCA2B08848900EE9693 /* Assets.xcassets */,
-				91651BCC2B08848900EE9693 /* LaunchScreen.storyboard */,
-				91651BCF2B08848900EE9693 /* Info.plist */,
-				91C670CE2B088BBC00A94647 /* OC-Bridging-Header.h */,
-				91C670CF2B088BDA00A94647 /* readme.txt */,
-				91C670D32B088E9500A94647 /* Localizable.strings */,
-			);
-			name = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		91651BBD2B08848800EE9693 /* HiIOSTmpl */ = {
+		910AF2712B0F10B60044111C /* HiIOSTmpl */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 91651BD22B08848900EE9693 /* Build configuration list for PBXNativeTarget "HiIOSTmpl" */;
+			buildConfigurationList = 910AF2862B0F10B70044111C /* Build configuration list for PBXNativeTarget "HiIOSTmpl" */;
 			buildPhases = (
-				3C1D84F21CD5625061D3519C /* [CP] Check Pods Manifest.lock */,
-				91C670D12B088E0900A94647 /* SwiftLint */,
-				91C670D22B088E2C00A94647 /* R.swift */,
-				91651BBA2B08848800EE9693 /* Sources */,
-				91651BBB2B08848800EE9693 /* Frameworks */,
-				91651BBC2B08848800EE9693 /* Resources */,
-				CFEEA6D99D2617173589D548 /* [CP] Embed Pods Frameworks */,
+				910AF26E2B0F10B60044111C /* Sources */,
+				910AF26F2B0F10B60044111C /* Frameworks */,
+				910AF2702B0F10B60044111C /* Resources */,
 			);
 			buildRules = (
 			);
@@ -128,25 +84,25 @@
 			);
 			name = HiIOSTmpl;
 			productName = HiIOSTmpl;
-			productReference = 91651BBE2B08848800EE9693 /* HiIOSTmpl.app */;
+			productReference = 910AF2722B0F10B60044111C /* HiIOSTmpl.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		91651BB62B08848800EE9693 /* Project object */ = {
+		910AF26A2B0F10B60044111C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					91651BBD2B08848800EE9693 = {
+					910AF2712B0F10B60044111C = {
 						CreatedOnToolsVersion = 15.0.1;
 					};
 				};
 			};
-			buildConfigurationList = 91651BB92B08848800EE9693 /* Build configuration list for PBXProject "HiIOSTmpl" */;
+			buildConfigurationList = 910AF26D2B0F10B60044111C /* Build configuration list for PBXProject "HiIOSTmpl" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -154,127 +110,55 @@
 				en,
 				Base,
 			);
-			mainGroup = 91651BB52B08848800EE9693;
-			productRefGroup = 91651BBF2B08848800EE9693 /* Products */;
+			mainGroup = 910AF2692B0F10B60044111C;
+			productRefGroup = 910AF2732B0F10B60044111C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				91651BBD2B08848800EE9693 /* HiIOSTmpl */,
+				910AF2712B0F10B60044111C /* HiIOSTmpl */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		91651BBC2B08848800EE9693 /* Resources */ = {
+		910AF2702B0F10B60044111C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91651BCE2B08848900EE9693 /* LaunchScreen.storyboard in Resources */,
-				91C670D42B088E9500A94647 /* Localizable.strings in Resources */,
-				91651BCB2B08848900EE9693 /* Assets.xcassets in Resources */,
+				910AF2822B0F10B70044111C /* LaunchScreen.storyboard in Resources */,
+				910AF27F2B0F10B70044111C /* Assets.xcassets in Resources */,
+				910AF27D2B0F10B60044111C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		3C1D84F21CD5625061D3519C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-HiIOSTmpl-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		91C670D12B088E0900A94647 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
-		};
-		91C670D22B088E2C00A94647 /* R.swift */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = R.swift;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				$SRCROOT/HiIOSTmpl/R.generated.swift,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/HiIOSTmpl/R.generated.swift\"\n";
-		};
-		CFEEA6D99D2617173589D548 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HiIOSTmpl/Pods-HiIOSTmpl-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HiIOSTmpl/Pods-HiIOSTmpl-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HiIOSTmpl/Pods-HiIOSTmpl-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		91651BBA2B08848800EE9693 /* Sources */ = {
+		910AF26E2B0F10B60044111C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91651BC22B08848800EE9693 /* AppDelegate.swift in Sources */,
-				91651BC42B08848800EE9693 /* SceneDelegate.swift in Sources */,
-				91C670D62B088EF200A94647 /* R.generated.swift in Sources */,
+				910AF27A2B0F10B60044111C /* ViewController.swift in Sources */,
+				910AF2762B0F10B60044111C /* AppDelegate.swift in Sources */,
+				910AF2782B0F10B60044111C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		91651BCC2B08848900EE9693 /* LaunchScreen.storyboard */ = {
+		910AF27B2B0F10B60044111C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				91651BCD2B08848900EE9693 /* Base */,
+				910AF27C2B0F10B60044111C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		910AF2802B0F10B70044111C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				910AF2812B0F10B70044111C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -282,7 +166,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		91651BD02B08848900EE9693 /* Debug */ = {
+		910AF2842B0F10B70044111C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -345,7 +229,7 @@
 			};
 			name = Debug;
 		};
-		91651BD12B08848900EE9693 /* Release */ = {
+		910AF2852B0F10B70044111C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -401,13 +285,11 @@
 			};
 			name = Release;
 		};
-		91651BD32B08848900EE9693 /* Debug */ = {
+		910AF2872B0F10B70044111C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E18D92FD4CEB3167C64AF811 /* Pods-HiIOSTmpl.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = HiIOSTmpl/HiIOSTmpl.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WDE622528T;
@@ -417,7 +299,6 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -434,13 +315,11 @@
 			};
 			name = Debug;
 		};
-		91651BD42B08848900EE9693 /* Release */ = {
+		910AF2882B0F10B70044111C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70FA76C49292867FFFF17292 /* Pods-HiIOSTmpl.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = HiIOSTmpl/HiIOSTmpl.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WDE622528T;
@@ -450,7 +329,6 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -470,25 +348,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		91651BB92B08848800EE9693 /* Build configuration list for PBXProject "HiIOSTmpl" */ = {
+		910AF26D2B0F10B60044111C /* Build configuration list for PBXProject "HiIOSTmpl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				91651BD02B08848900EE9693 /* Debug */,
-				91651BD12B08848900EE9693 /* Release */,
+				910AF2842B0F10B70044111C /* Debug */,
+				910AF2852B0F10B70044111C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		91651BD22B08848900EE9693 /* Build configuration list for PBXNativeTarget "HiIOSTmpl" */ = {
+		910AF2862B0F10B70044111C /* Build configuration list for PBXNativeTarget "HiIOSTmpl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				91651BD32B08848900EE9693 /* Debug */,
-				91651BD42B08848900EE9693 /* Release */,
+				910AF2872B0F10B70044111C /* Debug */,
+				910AF2882B0F10B70044111C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 91651BB62B08848800EE9693 /* Project object */;
+	rootObject = 910AF26A2B0F10B60044111C /* Project object */;
 }
