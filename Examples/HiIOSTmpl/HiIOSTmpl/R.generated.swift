@@ -58,7 +58,7 @@ struct _R {
     }
 
 
-    /// This `_R.string.localizable` struct is generated, and contains static references to 29 localization keys.
+    /// This `_R.string.localizable` struct is generated, and contains static references to 32 localization keys.
     struct localizable {
       let source: RswiftResources.StringResource.Source
 
@@ -66,6 +66,16 @@ struct _R {
       ///
       /// Key: About
       var about: RswiftResources.StringResource { .init(key: "About", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: 中文
+      ///
+      /// Key: Chinese
+      var chinese: RswiftResources.StringResource { .init(key: "Chinese", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: English
+      ///
+      /// Key: English
+      var english: RswiftResources.StringResource { .init(key: "English", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
 
       /// Value: 非法操作
       ///
@@ -166,6 +176,11 @@ struct _R {
       ///
       /// Key: Error.User.NotLoggedIn.Title
       var errorUserNotLoggedInTitle: RswiftResources.StringResource { .init(key: "Error.User.NotLoggedIn.Title", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: Follow system
+      ///
+      /// Key: Follow System
+      var followSystem: RswiftResources.StringResource { .init(key: "Follow System", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
 
       /// Value: 首页
       ///
