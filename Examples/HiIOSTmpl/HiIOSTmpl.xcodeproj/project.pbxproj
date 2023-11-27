@@ -15,6 +15,8 @@
 		911040F32B11A39A00AF07A3 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911040F22B11A39A00AF07A3 /* AppDependency.swift */; };
 		91E679E22B0F2FFD00D4C4CA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91E679E12B0F2FFD00D4C4CA /* Localizable.strings */; };
 		91E679E62B0F308F00D4C4CA /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E679E52B0F308F00D4C4CA /* R.generated.swift */; };
+		91F8C1002B141BF1005CAB09 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F8C0FF2B141BF1005CAB09 /* Constant.swift */; };
+		91F8C1022B141C37005CAB09 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F8C1012B141C37005CAB09 /* Function.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		91E679E02B0F2FDE00D4C4CA /* OC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OC-Bridging-Header.h"; sourceTree = "<group>"; };
 		91E679E12B0F2FFD00D4C4CA /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		91E679E52B0F308F00D4C4CA /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		91F8C0FF2B141BF1005CAB09 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		91F8C1012B141C37005CAB09 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		DA01288709EB7C05B26E8D76 /* Pods-HiIOSTmpl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiIOSTmpl.debug.xcconfig"; path = "Target Support Files/Pods-HiIOSTmpl/Pods-HiIOSTmpl.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +89,7 @@
 		910AF2742B0F10B60044111C /* HiIOSTmpl */ = {
 			isa = PBXGroup;
 			children = (
+				91F8C0FC2B141BC3005CAB09 /* Component */,
 				911040F42B11A42F00AF07A3 /* Core */,
 			);
 			path = HiIOSTmpl;
@@ -106,6 +111,23 @@
 				911040F22B11A39A00AF07A3 /* AppDependency.swift */,
 			);
 			name = Core;
+			sourceTree = "<group>";
+		};
+		91F8C0FC2B141BC3005CAB09 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				91F8C0FE2B141BD6005CAB09 /* Foundation */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		91F8C0FE2B141BD6005CAB09 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				91F8C0FF2B141BF1005CAB09 /* Constant.swift */,
+				91F8C1012B141C37005CAB09 /* Function.swift */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +288,8 @@
 			files = (
 				911040F32B11A39A00AF07A3 /* AppDependency.swift in Sources */,
 				910AF2762B0F10B60044111C /* AppDelegate.swift in Sources */,
+				91F8C1002B141BF1005CAB09 /* Constant.swift in Sources */,
+				91F8C1022B141C37005CAB09 /* Function.swift in Sources */,
 				910AF2782B0F10B60044111C /* SceneDelegate.swift in Sources */,
 				91E679E62B0F308F00D4C4CA /* R.generated.swift in Sources */,
 			);
