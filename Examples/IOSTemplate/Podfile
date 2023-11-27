@@ -23,6 +23,7 @@ target 'IOSTemplate' do
   pod 'SnapKit', '5.6.0'
   
   # Advanced
+  pod 'TTTAttributedLabel', '2.0.0'
   pod 'Toast-Swift', '5.0.1'
   pod 'SwiftEntryKit', '2.0.0'
   

@@ -7,6 +7,7 @@
 
 import Foundation
 import HiIOS
+import SwifterSwift
 
 extension UIApplication {
 

@@ -24,7 +24,6 @@ extension Router {
         self.popup(provider, navigator)
     }
     
-    // swiftlint:disable function_body_length
     func attributes(_ name: String?) -> EKAttributes {
         var attributes = EKAttributes.centerFloat
         attributes.windowLevel = .normal
@@ -78,7 +77,5 @@ extension Router {
         attributes.name = name
         return attributes
     }
-    // swiftlint:enable function_body_length
     
 }
-

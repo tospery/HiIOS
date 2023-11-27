@@ -17,7 +17,7 @@ import RxDataSources
 import RxGesture
 import HiIOS
 
-class PersonalViewController: NormalViewController {
+class PersonalViewController: ListViewController {
     
     required init(_ navigator: NavigatorProtocol, _ reactor: BaseViewReactor) {
         super.init(navigator, reactor)
@@ -39,20 +39,20 @@ class PersonalViewController: NormalViewController {
         super.viewDidLayoutSubviews()
     }
     
-    override func bind(reactor: NormalViewReactor) {
+    override func bind(reactor: ListViewReactor) {
         super.bind(reactor: reactor)
     }
     
-    override func fromState(reactor: NormalViewReactor) {
-        super.fromState(reactor: reactor)
-    }
+//    override func fromState(reactor: ListViewReactor) {
+//        super.fromState(reactor: reactor)
+//    }
     
-    override func tapUser(_: Void? = nil) {
-        if self.reactor?.currentState.user?.isValid ?? false {
-            self.navigator.forward(Router.shared.urlString(host: .profile))
-            return
-        }
-        self.navigator.login()
-    }
+//    override func tapUser(_: Void? = nil) {
+//        if self.reactor?.currentState.user?.isValid ?? false {
+//            self.navigator.forward(Router.shared.urlString(host: .profile))
+//            return
+//        }
+//        self.navigator.login()
+//    }
 
 }

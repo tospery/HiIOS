@@ -13,7 +13,7 @@ import URLNavigator
 import Rswift
 import HiIOS
 
-class PersonalViewReactor: NormalViewReactor {
+class PersonalViewReactor: ListViewReactor {
     
     required init(_ provider: HiIOS.ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)

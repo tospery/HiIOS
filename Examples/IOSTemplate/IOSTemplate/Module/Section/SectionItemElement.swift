@@ -6,20 +6,23 @@
 //
 
 import Foundation
+import HiIOS
 
 enum SectionItemElement {
-    case settings, about
-    case banner([String])
-
-    static let aboutSections = [[settings], [about]]
+    case label(LabelInfo)
+    
+    func sectionItem(_ model: ModelType) -> SectionItem {
+        switch self {
+        case .label: return .label(.init(model))
+        }
+    }
+    
 }
 
 extension SectionItemElement: CustomStringConvertible {
     var description: String {
         switch self {
-        case .settings: return "settings"
-        case .about: return "about"
-        case .banner: return "banner"
+        case let .label(info): return "label-\(info.description)"
         }
     }
 }

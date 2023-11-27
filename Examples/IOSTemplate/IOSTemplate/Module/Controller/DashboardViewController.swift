@@ -19,7 +19,7 @@ import RxDataSources
 class DashboardViewController: CollectionViewController, ReactorKit.View {
     
     struct Reusable {
-        static let simpleCell = ReusableCell<SimpleCell>()
+        static let labelCell = ReusableCell<LabelCell>()
     }
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<Section>
@@ -39,7 +39,7 @@ class DashboardViewController: CollectionViewController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.register(Reusable.simpleCell)
+        self.collectionView.register(Reusable.labelCell)
     }
     
     func bind(reactor: DashboardViewReactor) {
@@ -64,19 +64,21 @@ class DashboardViewController: CollectionViewController, ReactorKit.View {
 
     static func dataSourceFactory(_ navigator: NavigatorProtocol, _ reactor: BaseViewReactor)
         -> RxCollectionViewSectionedReloadDataSource<Section> {
-        return .init(
-            configureCell: { _, collectionView, indexPath, sectionItem in
-                switch sectionItem {
-                case .simple(let item):
-                    let cell = collectionView.dequeue(Reusable.simpleCell, for: indexPath)
-                    cell.bind(reactor: item)
-                    return cell
-                }
-            },
-            configureSupplementaryView: { _, collectionView, kind, indexPath in
-                return collectionView.emptyView(for: indexPath, kind: kind)
-            }
-        )
+//        return .init(
+//            configureCell: { _, collectionView, indexPath, sectionItem in
+//                switch sectionItem {
+//                case .label(let item):
+//                    let cell = collectionView.dequeue(Reusable.labelCell, for: indexPath)
+//                    cell.bind(reactor: item)
+//                    return cell
+//                }
+//            },
+//            configureSupplementaryView: { _, collectionView, kind, indexPath in
+//                return collectionView.emptyView(for: indexPath, kind: kind)
+//            }
+//        )
+            .init 
+
     }
     
 }
@@ -90,8 +92,8 @@ extension DashboardViewController: UICollectionViewDelegateFlowLayout {
     ) -> CGSize {
         let width = collectionView.sectionWidth(at: indexPath.section)
         switch self.dataSource[indexPath] {
-        case .simple(let item):
-            return Reusable.simpleCell.class.size(width: width, item: item)
+        case .label(let item):
+            return Reusable.labelCell.class.size(width: width, item: item)
         }
     }
 

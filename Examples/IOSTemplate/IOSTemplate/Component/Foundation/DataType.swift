@@ -47,6 +47,46 @@ enum Platform {
 
 }
 
+enum Page: String, Codable {
+    case none
+    // 趋势的
+    case trendingRepos
+    case trendingUsers
+    
+    static let trendingValues = [trendingRepos, trendingUsers]
+    
+    var title: String? {
+        nil
+    }
+    
+//    func apiPath(_ username: String, _ reponame: String) -> String {
+//        switch self {
+//        case .repositories:
+//            return "/users/\(username)/repos"
+//        case .stars:
+//            return "/users/\(username)/starred"
+//        case .followers:
+//            return "/users/\(username)/followers"
+//        case .following:
+//            return "/users/\(username)/following"
+//        case .watchs:
+//            return "/users/\(username)/subscriptions"
+//        case .forks:
+//            return "/repos/\(username)/\(reponame)/forks"
+//        case .watchers:
+//            return "/repos/\(username)/\(reponame)/subscribers"
+//        case .stargazers:
+//            return "/repos/\(username)/\(reponame)/stargazers"
+//        case .contributors:
+//            return "/repos/\(username)/\(reponame)/contributors"
+//        default:
+//            break
+//        }
+//        return ""
+//    }
+    
+}
+
 enum ITAlertAction: AlertActionType, Equatable {
     case destructive
     case `default`
