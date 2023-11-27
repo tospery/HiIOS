@@ -25,3 +25,5 @@ var userParameters: [String: Any] {
         Parameter.username: User.current?.username ?? ""
     ]
 }
+
+var myLangs: [String]? { Localization.preferredLanguages }

@@ -48,8 +48,8 @@ class SimpleItem: BaseCollectionItem, ReactorKit.Reactor {
             icon: simple.icon?.imageSource,
             title: simple.title,
             detail: simple.detail,
-            indicated: simple.indicated,
-            divided: simple.divided
+            indicated: simple.indicated ?? false,
+            divided: simple.divided ?? false
         )
     }
     

@@ -20,7 +20,7 @@ import RxViewController
 import RxTheme
 import ReusableKit_Hi
 import ObjectMapper_Hi
-import SwifterSwift_Hi
+import SwifterSwift
 import BonMot
 
 

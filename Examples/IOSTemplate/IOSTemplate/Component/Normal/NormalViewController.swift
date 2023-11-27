@@ -21,8 +21,8 @@ class NormalViewController: HiIOS.CollectionViewController, ReactorKit.View {
     
     struct Reusable {
         static let simpleCell = ReusableCell<SimpleCell>()
-        static let headerView = ReusableView<CollectionHeaderView>()
-        static let footerView = ReusableView<CollectionFooterView>()
+        static let headerView = ReusableView<BaseCollectionHeader>()
+        static let footerView = ReusableView<BaseCollectionHeader>()
     }
     
     lazy var dataSource: RxCollectionViewSectionedReloadDataSource<Section> = {

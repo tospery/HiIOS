@@ -46,3 +46,91 @@ enum Platform {
     }
 
 }
+
+enum ITAlertAction: AlertActionType, Equatable {
+    case destructive
+    case `default`
+    case cancel
+    case input
+    case exit
+    
+    init?(string: String) {
+        switch string {
+        case ITAlertAction.cancel.title: self = ITAlertAction.cancel
+        case ITAlertAction.exit.title: self = ITAlertAction.exit
+        default: return nil
+        }
+    }
+
+    var title: String? {
+        switch self {
+        case .destructive:  return R.string.localizable.sure(
+            preferredLanguages: myLangs
+        )
+        case .default:  return R.string.localizable.oK(
+            preferredLanguages: myLangs
+        )
+        case .cancel: return R.string.localizable.cancel(
+            preferredLanguages: myLangs
+        )
+        case .exit: return R.string.localizable.exit(
+            preferredLanguages: myLangs
+        )
+        default: return nil
+        }
+    }
+
+    var style: UIAlertAction.Style {
+        switch self {
+        case .cancel:  return .cancel
+        case .destructive, .exit:  return .destructive
+        default: return .default
+        }
+    }
+
+    static func == (lhs: ITAlertAction, rhs: ITAlertAction) -> Bool {
+        switch (lhs, rhs) {
+        case (.destructive, .destructive),
+            (.default, .default),
+            (.cancel, .cancel),
+            (.input, .input),
+            (.exit, .exit):
+            return true
+        default:
+            return false
+        }
+    }
+}
+
+enum Localization: String, CustomStringConvertible, Codable {
+    case system     = "system"
+    case chinese    = "zh-Hans"
+    case english    = "en"
+    
+    static let allValues = [system, chinese, english]
+    
+    static var preferredLanguages: [String]? {
+        Configuration.current?.localization.preferredLanguages
+    }
+    
+    var preferredLanguages: [String]? {
+        switch self {
+        case .system: return nil
+        default: return [self.rawValue]
+        }
+    }
+    
+    var description: String {
+        switch self {
+        case .system: return R.string.localizable.followSystem(
+            preferredLanguages: myLangs
+        )
+        case .chinese: return R.string.localizable.chinese(
+            preferredLanguages: myLangs
+        )
+        case .english: return R.string.localizable.english(
+            preferredLanguages: myLangs
+        )
+        }
+    }
+}

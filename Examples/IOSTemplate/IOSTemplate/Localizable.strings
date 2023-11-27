@@ -7,6 +7,8 @@
 "Mine" = "我的";
 "Login" = "登录";
 "About" = "关于";
+"Cancel" = "取消";
+"Exit" = "退出";
 /* 词语 */
 "Phone Login" = "手机登录";
 /* 句子 - Error */
@@ -30,3 +32,7 @@
 "Error.User.NotLoggedIn.Message" = "用户未登录";
 "Error.User.LoginExpired.Title" = "用户登录过期";
 "Error.User.LoginExpired.Message" = "用户登录过期";
+/* 不翻译 */
+"Chinese" = "中文";
+"English" = "English";
+"Follow System" = "Follow system";

@@ -89,11 +89,14 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
 
     func handleUser(user: User) {
         log("login success")
-        MainScheduler.asyncInstance.schedule(()) { _ -> Disposable in
+        MainScheduler.asyncInstance.schedule(()) { [weak self] _ -> Disposable in
+            guard let `self` = self else { fatalError() }
             User.update(user, reactive: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.back(result: user)
+            }
             return Disposables.create {}
         }.disposed(by: self.disposeBag)
-        self.close()
     }
     
 }

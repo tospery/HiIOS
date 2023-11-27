@@ -248,14 +248,22 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 29 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 34 localization keys.
     struct localizable {
+      /// Value: English
+      static let english = Rswift.StringResource(key: "English", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Follow system
+      static let followSystem = Rswift.StringResource(key: "Follow System", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 中文
+      static let chinese = Rswift.StringResource(key: "Chinese", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 关于
       static let about = Rswift.StringResource(key: "About", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 列表为空
       static let errorSystemListIsEmptyMessage = Rswift.StringResource(key: "Error.System.ListIsEmpty.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 列表为空
       static let errorSystemListIsEmptyTitle = Rswift.StringResource(key: "Error.System.ListIsEmpty.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 取消
+      static let cancel = Rswift.StringResource(key: "Cancel", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 否
       static let no = Rswift.StringResource(key: "No", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 导航错误
@@ -300,6 +308,8 @@ struct R: Rswift.Validatable {
       static let errorNetworkMessage = Rswift.StringResource(key: "Error.Network.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 网络错误
       static let errorNetworkTitle = Rswift.StringResource(key: "Error.Network.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 退出
+      static let exit = Rswift.StringResource(key: "Exit", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 重试
       static let errorRetry = Rswift.StringResource(key: "Error.Retry", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 非法操作
@@ -308,6 +318,45 @@ struct R: Rswift.Validatable {
       static let errorAppTitle = Rswift.StringResource(key: "Error.App.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 首页
       static let home = Rswift.StringResource(key: "Home", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+
+      /// Value: English
+      static func english(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("English", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "English"
+        }
+
+        return NSLocalizedString("English", bundle: bundle, comment: "")
+      }
+
+      /// Value: Follow system
+      static func followSystem(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Follow System", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Follow System"
+        }
+
+        return NSLocalizedString("Follow System", bundle: bundle, comment: "")
+      }
+
+      /// Value: 中文
+      static func chinese(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Chinese", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Chinese"
+        }
+
+        return NSLocalizedString("Chinese", bundle: bundle, comment: "")
+      }
 
       /// Value: 关于
       static func about(preferredLanguages: [String]? = nil) -> String {
@@ -346,6 +395,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Error.System.ListIsEmpty.Title", bundle: bundle, comment: "")
+      }
+
+      /// Value: 取消
+      static func cancel(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Cancel", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Cancel"
+        }
+
+        return NSLocalizedString("Cancel", bundle: bundle, comment: "")
       }
 
       /// Value: 否
@@ -632,6 +694,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Error.Network.Title", bundle: bundle, comment: "")
+      }
+
+      /// Value: 退出
+      static func exit(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Exit", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Exit"
+        }
+
+        return NSLocalizedString("Exit", bundle: bundle, comment: "")
       }
 
       /// Value: 重试

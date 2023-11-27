@@ -16,4 +16,5 @@ extension Parameter {
     static var appId: String { "app_id" }
     static var appVersion: String { "app_version" }
     static var appChannel: String { "app_channel" }
+    static var login: String { "login" }
 }

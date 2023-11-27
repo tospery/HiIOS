@@ -22,7 +22,7 @@ class PersonalViewReactor: NormalViewReactor {
         )
     }
     
-//    override func loadData(_ page: Int) -> Observable<[SectionData]> {
+//    override func loadData(_ page: Int) -> Observable<[HiContent]> {
 //        .create { [weak self] observer -> Disposable in
 //            guard let `self` = self else { fatalError() }
 //            var models = [ModelType].init()

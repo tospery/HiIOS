@@ -14,20 +14,30 @@ import URLNavigator
 import Rswift
 import HiIOS
 
+extension Router.Host {
+    static var about: Router.Host { "about" }
+    static var repo: Router.Host { "repo" }
+}
+
+extension Router.Path {
+    static var options: Router.Path { "options" }
+    static var branches: Router.Path { "branches" }
+}
+
 extension Router: RouterCompatible {
     
     public func isLogined() -> Bool {
         User.current?.isValid ?? false
     }
     
-    public func isLegalHost(host: Host) -> Bool {
+    public func isLegalHost(host: Router.Host) -> Bool {
         true
     }
     
-    public func allowedPaths(host: Host) -> [Path] {
+    public func allowedPaths(host: Router.Host) -> [Router.Path] {
         switch host {
         case .popup: return [
-            .inviteNew
+            .branches
         ]
         default: return []
         }
@@ -73,14 +83,6 @@ extension Router: RouterCompatible {
         let navigation = NavigationController(rootViewController: controller)
         top.present(navigation, animated: true)
         return false
-    }
-    
-    public func shouldRefresh(host: Host, path: Router.Path? = nil) -> Bool {
-        false
-    }
-    
-    public func shouldLoadMore(host: Host, path: Router.Path? = nil) -> Bool {
-        false
     }
 
 }

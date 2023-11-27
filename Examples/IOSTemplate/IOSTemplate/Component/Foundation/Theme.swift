@@ -9,12 +9,12 @@ import UIKit
 import HiIOS
 
 struct LightTheme: Theme {
-    let backgroundColor = UIColor.Material.white
-    let foregroundColor = UIColor.Material.black
+    let backgroundColor = UIColor.white
+    let foregroundColor = UIColor.black
     let lightColor = UIColor(hex: 0xF6F6F6)!
     let darkColor = UIColor.Material.grey900
-    var primaryColor = UIColor(hex: 0x0AD198)!
-    let secondaryColor = UIColor.Material.blue
+    var primaryColor = UIColor.Material.red
+    var secondaryColor = UIColor.Material.pink
     let titleColor = UIColor(hex: 0x333333)!
     let bodyColor = UIColor(hex: 0x666666)!
     let headerColor = UIColor(hex: 0xD2D2D2)!
@@ -24,16 +24,21 @@ struct LightTheme: Theme {
     let separatorColor = UIColor(hex: 0xE0E0E0)!
     let indicatorColor = UIColor.Material.grey600
     let specialColors = [
-        Parameter.code: UIColor(hex: 0xE82220)!
+        Parameter.login: UIColor(hex: 0x424954)!,
+        Parameter.error: UIColor.red
     ]
     let barStyle = UIBarStyle.default
     let statusBarStyle = UIStatusBarStyle.default
     let keyboardAppearance = UIKeyboardAppearance.light
     let blurStyle = UIBlurEffect.Style.extraLight
     
-    init(color: UIColor?) {
-        guard let color = color else { return }
-        self.primaryColor = color
+    init(primaryColor: UIColor?, secondaryColor: UIColor?) {
+        if let primaryColor = primaryColor {
+            self.primaryColor = primaryColor
+        }
+        if let secondaryColor = secondaryColor {
+            self.secondaryColor = secondaryColor
+        }
     }
 }
 
@@ -43,7 +48,7 @@ struct DarkTheme: Theme {
     let lightColor = UIColor.Material.grey900
     let darkColor = UIColor.Material.grey100
     var primaryColor = UIColor.red
-    let secondaryColor = UIColor.Material.red
+    var secondaryColor = UIColor.Material.red
     let titleColor = UIColor.Material.red
     let bodyColor = UIColor.Material.red
     let headerColor = UIColor(hex: 0xD2D2D2)!
@@ -53,24 +58,31 @@ struct DarkTheme: Theme {
     let separatorColor = UIColor.Material.red
     let indicatorColor = UIColor.Material.red
     let specialColors = [
-        Parameter.code: UIColor(hex: 0xE82220)!
+        Parameter.login: UIColor(hex: 0x424954)!,
+        Parameter.error: UIColor.red
     ]
     let barStyle = UIBarStyle.default
     let statusBarStyle = UIStatusBarStyle.default
     let keyboardAppearance = UIKeyboardAppearance.light
     let blurStyle = UIBlurEffect.Style.extraLight
     
-    init(color: UIColor?) {
-        guard let color = color else { return }
-        self.primaryColor = color
+    init(primaryColor: UIColor?, secondaryColor: UIColor?) {
+        if let primaryColor = primaryColor {
+            self.primaryColor = primaryColor
+        }
+        if let secondaryColor = secondaryColor {
+            self.secondaryColor = secondaryColor
+        }
     }
 }
 
 extension ThemeType: ThemeTypeCompatible {
     public var theme: Theme {
         switch self {
-        case let .light(color): return LightTheme.init(color: color)
-        case let .dark(color): return DarkTheme.init(color: color)
+        case let .light(primaryColor, secondaryColor):
+            return LightTheme(primaryColor: primaryColor, secondaryColor: secondaryColor)
+        case let .dark(primaryColor, secondaryColor):
+            return DarkTheme(primaryColor: primaryColor, secondaryColor: secondaryColor)
         }
     }
 }

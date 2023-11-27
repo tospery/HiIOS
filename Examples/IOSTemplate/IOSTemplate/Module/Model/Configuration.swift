@@ -21,6 +21,7 @@ struct Configuration: ModelType, Identifiable, Subjective, Eventable {
     }
     
     var id = ""
+    var localization = Localization.system
     
     init() {
     }
@@ -34,6 +35,7 @@ struct Configuration: ModelType, Identifiable, Subjective, Eventable {
 
     mutating func mapping(map: Map) {
         id                  <- map["id"]
+        localization        <- map["localization"]
     }
     
 }

@@ -34,8 +34,8 @@ class NormalViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
         case setUser(User?)
         case setConfiguration(Configuration)
         case setTarget(String?)
-        case initial([SectionData])
-        case append([SectionData])
+        case initial([HiContent])
+        case append([HiContent])
     }
 
     struct State {
@@ -49,8 +49,8 @@ class NormalViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
         var user: User?
         var configuration = Configuration.current!
         var target: String?
-        var originals = [SectionData].init()
-        var additions = [SectionData].init()
+        var originals = [HiContent].init()
+        var additions = [HiContent].init()
         var sections = [Section].init()
     }
 
@@ -239,10 +239,10 @@ class NormalViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
                     var models = [ModelType].init()
                     models.append(contentsOf: newState.originals.first!.models)
                     models.append(contentsOf: newState.additions.first?.models ?? [])
-                    newState.originals = models.count == 0 ? [] : [(header: nil, models: models)]
+                    newState.originals = models.count == 0 ? [] : [HiContent.init(header: nil, models: models)]
                     noMore = (newState.additions.first?.models ?? []).count < self.pageSize
                 } else {
-                    var data = [SectionData].init()
+                    var data = [HiContent].init()
                     data.append(contentsOf: newState.originals)
                     data.append(contentsOf: newState.additions)
                     newState.originals = data
@@ -256,7 +256,7 @@ class NormalViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
         return newState
     }
     
-    func genSections(originals: [SectionData]) -> [Section] {
+    func genSections(originals: [HiContent]) -> [Section] {
         (originals.count == 0 ? [] : originals.map {
             .sectionItems(header: $0.header, items: $0.models.map {
                 return .simple(.init($0))
@@ -269,7 +269,7 @@ class NormalViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
         .empty()
     }
     
-    func loadData(_ page: Int) -> Observable<[SectionData]> {
+    func loadData(_ page: Int) -> Observable<[HiContent]> {
         .empty()
     }
     
