@@ -83,16 +83,16 @@ extension TabBarController: UITabBarControllerDelegate {
         _ tabBarController: UITabBarController,
         shouldSelect viewController: UIViewController
     ) -> Bool {
-        guard let index = tabBarController.viewControllers?.firstIndex(of: viewController) else { return true }
-        if index == 1 || index == 2 {
-            if User.current?.isValid ?? false {
-                return true
-            }
-            self.navigator.rxLogin().subscribe(onNext: { _ in
-                tabBarController.selectedIndex = index
-            }).disposed(by: self.disposeBag)
-            return false
-        }
+//        guard let index = tabBarController.viewControllers?.firstIndex(of: viewController) else { return true }
+//        if index == 1 || index == 2 {
+//            if User.current?.isValid ?? false {
+//                return true
+//            }
+//            self.navigator.rxLogin().subscribe(onNext: { _ in
+//                tabBarController.selectedIndex = index
+//            }).disposed(by: self.disposeBag)
+//            return false
+//        }
         return true
     }
 

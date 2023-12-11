@@ -28,6 +28,10 @@ class EventViewController: ListViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 
 //    override func handleContents(contents: [HiContent]) {
 //        guard let host = self.reactor?.host, host.isNotEmpty else { return }

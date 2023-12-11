@@ -29,6 +29,10 @@ class FavoriteViewController: ListViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
 //    override func handleContents(contents: [HiContent]) {
 //        guard let host = self.reactor?.host, host.isNotEmpty else { return }
 //        guard let index = self.reactor?.pageIndex, index == self.reactor?.pageStart else { return }
