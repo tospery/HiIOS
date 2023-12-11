@@ -236,7 +236,7 @@ struct _R {
     var accentColor: RswiftResources.ColorResource { .init(name: "AccentColor", path: [], bundle: bundle) }
   }
 
-  /// This `_R.image` struct is generated, and contains static references to 9 images.
+  /// This `_R.image` struct is generated, and contains static references to 10 images.
   struct image {
     let bundle: Foundation.Bundle
 
@@ -248,6 +248,9 @@ struct _R {
 
     /// Image `ic_user_placeholder`.
     var ic_user_placeholder: RswiftResources.ImageResource { .init(name: "ic_user_placeholder", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `personal_parallax_bg`.
+    var personal_parallax_bg: RswiftResources.ImageResource { .init(name: "personal_parallax_bg", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `tabbar_event_normal`.
     var tabbar_event_normal: RswiftResources.ImageResource { .init(name: "tabbar_event_normal", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }

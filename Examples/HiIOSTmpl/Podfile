@@ -24,6 +24,7 @@ target 'HiIOSTmpl' do
   # Advanced
   pod 'Toast-Swift', '5.0.1'
   pod 'SwiftEntryKit', '2.0.0'
+  pod 'MXParallaxHeader', '1.1.0'
   pod 'TTTAttributedLabel', '2.0.0'
   
   # Platform

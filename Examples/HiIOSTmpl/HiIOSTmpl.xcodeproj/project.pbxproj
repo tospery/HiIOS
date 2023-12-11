@@ -27,6 +27,14 @@
 		914346EF2B26B484002199D0 /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914346EE2B26B484002199D0 /* TextViewCell.swift */; };
 		914346F12B26B4AE002199D0 /* TextFieldItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914346F02B26B4AE002199D0 /* TextFieldItem.swift */; };
 		914346F32B26B4B6002199D0 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914346F22B26B4B6002199D0 /* TextFieldCell.swift */; };
+		91560F272B27636E0008540E /* ScrollViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91560F262B27636E0008540E /* ScrollViewController+Rx.swift */; };
+		91560F2A2B2764090008540E /* PersonalParallaxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91560F292B2764090008540E /* PersonalParallaxView.swift */; };
+		91560F2E2B276AFE0008540E /* PersonalViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91560F2D2B276AFE0008540E /* PersonalViewReactor.swift */; };
+		91560F302B276B090008540E /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91560F2F2B276B090008540E /* PersonalViewController.swift */; };
+		91560F322B276B4F0008540E /* EventViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91560F312B276B4F0008540E /* EventViewReactor.swift */; };
+		91560F342B276B5A0008540E /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91560F332B276B5A0008540E /* EventViewController.swift */; };
+		91560F362B276B680008540E /* FavoriteViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91560F352B276B680008540E /* FavoriteViewReactor.swift */; };
+		91560F382B276B730008540E /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91560F372B276B730008540E /* FavoriteViewController.swift */; };
 		91AC6E772B260337003B728F /* ListViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC6E762B260337003B728F /* ListViewReactor.swift */; };
 		91AC6E792B260343003B728F /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC6E782B260343003B728F /* ListViewController.swift */; };
 		91AC6E7C2B260462003B728F /* SectionItemElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC6E7B2B260462003B728F /* SectionItemElement.swift */; };
@@ -36,6 +44,10 @@
 		91AC6E862B2605A8003B728F /* AppInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC6E852B2605A8003B728F /* AppInfoCell.swift */; };
 		91AC6E882B2605F5003B728F /* LabelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC6E872B2605F5003B728F /* LabelItem.swift */; };
 		91AC6E8A2B2605FD003B728F /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC6E892B2605FD003B728F /* LabelCell.swift */; };
+		91D20B052B276E3900EF878D /* TabBarReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D20B042B276E3900EF878D /* TabBarReactor.swift */; };
+		91D20B072B276E4300EF878D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D20B062B276E4300EF878D /* TabBarController.swift */; };
+		91D20B0C2B276F4900EF878D /* QMUIConfigurationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D20B0A2B276F4900EF878D /* QMUIConfigurationTemplate.m */; };
+		91D20B112B276FBF00EF878D /* OCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D20B102B276FBF00EF878D /* OCHelper.m */; };
 		91E679E22B0F2FFD00D4C4CA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91E679E12B0F2FFD00D4C4CA /* Localizable.strings */; };
 		91E679E62B0F308F00D4C4CA /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E679E52B0F308F00D4C4CA /* R.generated.swift */; };
 		91F8C1002B141BF1005CAB09 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F8C0FF2B141BF1005CAB09 /* Constant.swift */; };
@@ -67,6 +79,14 @@
 		914346EE2B26B484002199D0 /* TextViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
 		914346F02B26B4AE002199D0 /* TextFieldItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldItem.swift; sourceTree = "<group>"; };
 		914346F22B26B4B6002199D0 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		91560F262B27636E0008540E /* ScrollViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollViewController+Rx.swift"; sourceTree = "<group>"; };
+		91560F292B2764090008540E /* PersonalParallaxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalParallaxView.swift; sourceTree = "<group>"; };
+		91560F2D2B276AFE0008540E /* PersonalViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewReactor.swift; sourceTree = "<group>"; };
+		91560F2F2B276B090008540E /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
+		91560F312B276B4F0008540E /* EventViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewReactor.swift; sourceTree = "<group>"; };
+		91560F332B276B5A0008540E /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		91560F352B276B680008540E /* FavoriteViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewReactor.swift; sourceTree = "<group>"; };
+		91560F372B276B730008540E /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		9188AAA92B0F2B0200AF0DBD /* HiIOSTmpl.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HiIOSTmpl.entitlements; sourceTree = "<group>"; };
 		91AC6E762B260337003B728F /* ListViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewReactor.swift; sourceTree = "<group>"; };
 		91AC6E782B260343003B728F /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +97,12 @@
 		91AC6E852B2605A8003B728F /* AppInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoCell.swift; sourceTree = "<group>"; };
 		91AC6E872B2605F5003B728F /* LabelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelItem.swift; sourceTree = "<group>"; };
 		91AC6E892B2605FD003B728F /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
+		91D20B042B276E3900EF878D /* TabBarReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarReactor.swift; sourceTree = "<group>"; };
+		91D20B062B276E4300EF878D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		91D20B0A2B276F4900EF878D /* QMUIConfigurationTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMUIConfigurationTemplate.m; sourceTree = "<group>"; };
+		91D20B0B2B276F4900EF878D /* QMUIConfigurationTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMUIConfigurationTemplate.h; sourceTree = "<group>"; };
+		91D20B0F2B276FBF00EF878D /* OCHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCHelper.h; sourceTree = "<group>"; };
+		91D20B102B276FBF00EF878D /* OCHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCHelper.m; sourceTree = "<group>"; };
 		91E679E02B0F2FDE00D4C4CA /* OC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OC-Bridging-Header.h"; sourceTree = "<group>"; };
 		91E679E12B0F2FFD00D4C4CA /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		91E679E52B0F308F00D4C4CA /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
@@ -172,6 +198,9 @@
 		913904642B1D779200F947E0 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				91560F2C2B27659D0008540E /* Controller */,
+				91560F2B2B2765940008540E /* Reactor */,
+				91560F282B2763FB0008540E /* View */,
 				91AC6E822B260562003B728F /* Cell */,
 				91AC6E812B26055A003B728F /* Item */,
 				91AC6E7A2B26044C003B728F /* Section */,
@@ -187,6 +216,44 @@
 				9139046A2B1D787300F947E0 /* Configuration.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		91560F252B2763610008540E /* Reactive */ = {
+			isa = PBXGroup;
+			children = (
+				91560F262B27636E0008540E /* ScrollViewController+Rx.swift */,
+			);
+			path = Reactive;
+			sourceTree = "<group>";
+		};
+		91560F282B2763FB0008540E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				91560F292B2764090008540E /* PersonalParallaxView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		91560F2B2B2765940008540E /* Reactor */ = {
+			isa = PBXGroup;
+			children = (
+				91560F2D2B276AFE0008540E /* PersonalViewReactor.swift */,
+				91560F312B276B4F0008540E /* EventViewReactor.swift */,
+				91560F352B276B680008540E /* FavoriteViewReactor.swift */,
+				91D20B042B276E3900EF878D /* TabBarReactor.swift */,
+			);
+			path = Reactor;
+			sourceTree = "<group>";
+		};
+		91560F2C2B27659D0008540E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				91560F2F2B276B090008540E /* PersonalViewController.swift */,
+				91560F332B276B5A0008540E /* EventViewController.swift */,
+				91560F372B276B730008540E /* FavoriteViewController.swift */,
+				91D20B062B276E4300EF878D /* TabBarController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		91AC6E752B26032A003B728F /* List */ = {
@@ -234,9 +301,22 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		91D20B082B276EE600EF878D /* ObjC */ = {
+			isa = PBXGroup;
+			children = (
+				91D20B0B2B276F4900EF878D /* QMUIConfigurationTemplate.h */,
+				91D20B0A2B276F4900EF878D /* QMUIConfigurationTemplate.m */,
+				91D20B0F2B276FBF00EF878D /* OCHelper.h */,
+				91D20B102B276FBF00EF878D /* OCHelper.m */,
+			);
+			path = ObjC;
+			sourceTree = "<group>";
+		};
 		91F8C0FC2B141BC3005CAB09 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				91D20B082B276EE600EF878D /* ObjC */,
+				91560F252B2763610008540E /* Reactive */,
 				91AC6E752B26032A003B728F /* List */,
 				9139045F2B1D771600F947E0 /* Extension */,
 				91F8C0FE2B141BD6005CAB09 /* Foundation */,
@@ -291,6 +371,7 @@
 				TargetAttributes = {
 					910AF2712B0F10B60044111C = {
 						CreatedOnToolsVersion = 15.0.1;
+						LastSwiftMigration = 1500;
 					};
 				};
 			};
@@ -414,11 +495,18 @@
 				91AC6E802B2604B4003B728F /* Section.swift in Sources */,
 				91AC6E7E2B2604A5003B728F /* SectionItem.swift in Sources */,
 				911040F32B11A39A00AF07A3 /* AppDependency.swift in Sources */,
+				91560F2E2B276AFE0008540E /* PersonalViewReactor.swift in Sources */,
 				913904692B1D784200F947E0 /* DataType.swift in Sources */,
+				91560F2A2B2764090008540E /* PersonalParallaxView.swift in Sources */,
 				91AC6E772B260337003B728F /* ListViewReactor.swift in Sources */,
+				91560F362B276B680008540E /* FavoriteViewReactor.swift in Sources */,
+				91D20B112B276FBF00EF878D /* OCHelper.m in Sources */,
+				91560F382B276B730008540E /* FavoriteViewController.swift in Sources */,
 				910AF2762B0F10B60044111C /* AppDelegate.swift in Sources */,
 				91F8C1002B141BF1005CAB09 /* Constant.swift in Sources */,
 				913904632B1D776100F947E0 /* UIApplication+Ex.swift in Sources */,
+				91D20B052B276E3900EF878D /* TabBarReactor.swift in Sources */,
+				91560F302B276B090008540E /* PersonalViewController.swift in Sources */,
 				914346EB2B26B3EF002199D0 /* ImageViewCell.swift in Sources */,
 				91AC6E792B260343003B728F /* ListViewController.swift in Sources */,
 				91F8C1022B141C37005CAB09 /* Function.swift in Sources */,
@@ -426,16 +514,21 @@
 				914346E92B26B3E9002199D0 /* ImageViewItem.swift in Sources */,
 				913904672B1D77AF00F947E0 /* User.swift in Sources */,
 				91AC6E862B2605A8003B728F /* AppInfoCell.swift in Sources */,
+				91560F272B27636E0008540E /* ScrollViewController+Rx.swift in Sources */,
+				91D20B0C2B276F4900EF878D /* QMUIConfigurationTemplate.m in Sources */,
 				91AC6E882B2605F5003B728F /* LabelItem.swift in Sources */,
+				91560F322B276B4F0008540E /* EventViewReactor.swift in Sources */,
 				910AF2782B0F10B60044111C /* SceneDelegate.swift in Sources */,
 				914346E72B26B3A3002199D0 /* ButtonCell.swift in Sources */,
 				914346F12B26B4AE002199D0 /* TextFieldItem.swift in Sources */,
+				91D20B072B276E4300EF878D /* TabBarController.swift in Sources */,
 				914346EF2B26B484002199D0 /* TextViewCell.swift in Sources */,
 				913904612B1D772B00F947E0 /* Parameter+Ex.swift in Sources */,
 				91AC6E8A2B2605FD003B728F /* LabelCell.swift in Sources */,
 				914346ED2B26B47B002199D0 /* TextViewItem.swift in Sources */,
 				9139046D2B1D78CA00F947E0 /* Theme.swift in Sources */,
 				914346F32B26B4B6002199D0 /* TextFieldCell.swift in Sources */,
+				91560F342B276B5A0008540E /* EventViewController.swift in Sources */,
 				91E679E62B0F308F00D4C4CA /* R.generated.swift in Sources */,
 				91AC6E842B260594003B728F /* AppInfoItem.swift in Sources */,
 				914346E52B26B398002199D0 /* ButtonItem.swift in Sources */,
@@ -582,6 +675,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = HiIOSTmpl/HiIOSTmpl.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -620,8 +714,10 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/OC-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -631,6 +727,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = HiIOSTmpl/HiIOSTmpl.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -669,8 +766,9 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/OC-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
