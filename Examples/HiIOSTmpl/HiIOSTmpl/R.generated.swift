@@ -17,6 +17,7 @@ struct _R {
 
   var string: string { .init(bundle: bundle, preferredLanguages: nil, locale: nil) }
   var color: color { .init(bundle: bundle) }
+  var image: image { .init(bundle: bundle) }
   var info: info { .init(bundle: bundle) }
   var storyboard: storyboard { .init(bundle: bundle) }
 
@@ -30,6 +31,9 @@ struct _R {
     .init(bundle: bundle, preferredLanguages: preferredLanguages, locale: locale)
   }
   func color(bundle: Foundation.Bundle) -> color {
+    .init(bundle: bundle)
+  }
+  func image(bundle: Foundation.Bundle) -> image {
     .init(bundle: bundle)
   }
   func info(bundle: Foundation.Bundle) -> info {
@@ -232,6 +236,38 @@ struct _R {
     var accentColor: RswiftResources.ColorResource { .init(name: "AccentColor", path: [], bundle: bundle) }
   }
 
+  /// This `_R.image` struct is generated, and contains static references to 9 images.
+  struct image {
+    let bundle: Foundation.Bundle
+
+    /// Image `AppLogo`.
+    var appLogo: RswiftResources.ImageResource { .init(name: "AppLogo", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `ic_user_default`.
+    var ic_user_default: RswiftResources.ImageResource { .init(name: "ic_user_default", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `ic_user_placeholder`.
+    var ic_user_placeholder: RswiftResources.ImageResource { .init(name: "ic_user_placeholder", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `tabbar_event_normal`.
+    var tabbar_event_normal: RswiftResources.ImageResource { .init(name: "tabbar_event_normal", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `tabbar_event_selected`.
+    var tabbar_event_selected: RswiftResources.ImageResource { .init(name: "tabbar_event_selected", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `tabbar_favorite_normal`.
+    var tabbar_favorite_normal: RswiftResources.ImageResource { .init(name: "tabbar_favorite_normal", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `tabbar_favorite_selected`.
+    var tabbar_favorite_selected: RswiftResources.ImageResource { .init(name: "tabbar_favorite_selected", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `tabbar_personal_normal`.
+    var tabbar_personal_normal: RswiftResources.ImageResource { .init(name: "tabbar_personal_normal", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `tabbar_personal_selected`.
+    var tabbar_personal_selected: RswiftResources.ImageResource { .init(name: "tabbar_personal_selected", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+  }
+
   /// This `_R.info` struct is generated, and contains static references to 1 properties.
   struct info {
     let bundle: Foundation.Bundle
@@ -274,7 +310,6 @@ struct _R {
             let bundle: Foundation.Bundle
             var uiSceneConfigurationName: String { bundle.infoDictionaryString(path: ["UIApplicationSceneManifest", "UISceneConfigurations", "UIWindowSceneSessionRoleApplication"], key: "UISceneConfigurationName") ?? "Default Configuration" }
             var uiSceneDelegateClassName: String { bundle.infoDictionaryString(path: ["UIApplicationSceneManifest", "UISceneConfigurations", "UIWindowSceneSessionRoleApplication"], key: "UISceneDelegateClassName") ?? "$(PRODUCT_MODULE_NAME).SceneDelegate" }
-            var uiSceneStoryboardFile: String { bundle.infoDictionaryString(path: ["UIApplicationSceneManifest", "UISceneConfigurations", "UIWindowSceneSessionRoleApplication"], key: "UISceneStoryboardFile") ?? "Main" }
           }
         }
       }
@@ -319,7 +354,7 @@ struct _R {
 
       let name = "LaunchScreen"
       func validate() throws {
-
+        if UIKit.UIImage(named: "AppLogo", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'AppLogo' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
       }
     }
   }

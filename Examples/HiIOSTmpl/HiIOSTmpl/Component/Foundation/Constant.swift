@@ -27,4 +27,4 @@ var userParameters: [String: Any] {
 }
 
 
-var myLangs: [String]? { Localization.preferredLanguages }
+var myLangs: [String] { Localization.preferredLanguages ?? [] }
