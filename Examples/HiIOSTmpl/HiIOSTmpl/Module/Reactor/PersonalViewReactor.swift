@@ -17,11 +17,9 @@ class PersonalViewReactor: ListViewReactor {
     
     required init(_ provider: HiIOS.ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
-//        self.initialState = State(
-//            title: self.title ?? R.string.localizable.personal(
-//                preferredLanguages: myLangs
-//            )
-//        )
+        self.initialState = State(
+            title: self.title ?? R.string(preferredLanguages: myLangs).localizable.personal()
+        )
     }
     
 //    override func update() -> Observable<Mutation> {

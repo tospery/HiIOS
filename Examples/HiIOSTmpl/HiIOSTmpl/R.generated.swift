@@ -313,12 +313,15 @@ struct _R {
     }
   }
 
-  /// This `_R.file` struct is generated, and contains static references to 1 resource files.
+  /// This `_R.file` struct is generated, and contains static references to 2 resource files.
   struct file {
     let bundle: Foundation.Bundle
 
     /// Resource file `Configuration.json`.
     var configurationJson: RswiftResources.FileResource { .init(name: "Configuration", pathExtension: "json", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `EventList#1.json`.
+    var eventList1Json: RswiftResources.FileResource { .init(name: "EventList#1", pathExtension: "json", bundle: bundle, locale: LocaleReference.none) }
   }
 
   /// This `_R.storyboard` struct is generated, and contains static references to 1 storyboards.

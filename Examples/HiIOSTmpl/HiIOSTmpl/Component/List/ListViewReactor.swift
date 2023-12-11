@@ -15,6 +15,7 @@ import URLNavigator
 import RswiftResources
 import HiIOS
 
+// swiftlint:disable type_body_length
 class ListViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
 
     enum Action {
@@ -286,9 +287,9 @@ class ListViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
 //                if $0 is URLScheme {
 //                    return .urlScheme(.init($0))
 //                }
-//                if $0 is Event {
-//                    return .event(.init($0))
-//                }
+                if $0 is Event {
+                    return .event(.init($0))
+                }
 //                if $0 is Issue {
 //                    return .issue(.init($0))
 //                }
@@ -335,3 +336,4 @@ extension ListViewReactor.Action {
     }
     
 }
+// swiftlint:enable type_body_length

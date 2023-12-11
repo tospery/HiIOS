@@ -33,13 +33,13 @@ class EventViewController: ListViewController {
         super.viewDidLoad()
     }
 
-//    override func handleContents(contents: [HiContent]) {
-//        guard let host = self.reactor?.host, host.isNotEmpty else { return }
-//        guard let index = self.reactor?.pageIndex, index == self.reactor?.pageStart else { return }
-//        guard let events = contents.first?.models as? [Event], events.isNotEmpty else { return }
-//        let first = [Event].init(events.prefix(self.reactor?.pageSize ?? UIApplication.shared.pageSize))
-//        Event.storeArray(first, page: host)
-//        log("event缓存->\(host)【首页.事件】")
-//    }
+    override func handleContents(contents: [HiContent]) {
+        guard let host = self.reactor?.host, host.isNotEmpty else { return }
+        guard let index = self.reactor?.pageIndex, index == self.reactor?.pageStart else { return }
+        guard let events = contents.first?.models as? [Event], events.isNotEmpty else { return }
+        let first = [Event].init(events.prefix(self.reactor?.pageSize ?? UIApplication.shared.pageSize))
+        Event.storeArray(first, page: host)
+        log("event缓存->\(host)【首页.事件】")
+    }
     
 }

@@ -23,7 +23,7 @@ extension UIApplication {
     @objc var myBaseApiUrl: String { "https://api.github.com" }
     @objc var myBaseWebUrl: String { "https://github.com" }
     
-    @objc var myPageSize: Int { 30 }
+    @objc var myPageSize: Int { 20 }
 
 }
 

@@ -22,6 +22,7 @@ class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
     
     struct Reusable {
         static let appInfoCell = ReusableCell<AppInfoCell>()
+        static let eventCell = ReusableCell<EventCell>()
         static let labelCell = ReusableCell<LabelCell>()
         static let buttonCell = ReusableCell<ButtonCell>()
         static let textFieldCell = ReusableCell<TextFieldCell>()
@@ -68,6 +69,7 @@ class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.register(Reusable.appInfoCell)
+        self.collectionView.register(Reusable.eventCell)
         self.collectionView.register(Reusable.labelCell)
         self.collectionView.register(Reusable.buttonCell)
         self.collectionView.register(Reusable.textFieldCell)
@@ -184,6 +186,14 @@ class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
             cell.rx.tapLogo
                 .subscribeNext(weak: self, type(of: self).tapLogo)
                 .disposed(by: cell.disposeBag)
+            return cell
+        case let .event(item):
+            let cell = collectionView.dequeue(Reusable.eventCell, for: indexPath)
+            item.parent = self.reactor
+            cell.reactor = item
+//            cell.rx.click
+//                .subscribeNext(weak: self, type(of: self).handleTarget)
+//                .disposed(by: cell.disposeBag)
             return cell
         case let .label(item):
             let cell = collectionView.dequeue(Reusable.labelCell, for: indexPath)
@@ -337,6 +347,7 @@ extension ListViewController: UICollectionViewDelegateFlowLayout {
         let width = collectionView.sectionWidth(at: indexPath.section)
         switch self.dataSource[indexPath] {
         case let .appInfo(item): return Reusable.appInfoCell.class.size(width: width, item: item)
+        case let .event(item): return Reusable.eventCell.class.size(width: width, item: item)
         case let .label(item): return Reusable.labelCell.class.size(width: width, item: item)
         case let .button(item): return Reusable.buttonCell.class.size(width: width, item: item)
         case let .textField(item): return Reusable.textFieldCell.class.size(width: width, item: item)

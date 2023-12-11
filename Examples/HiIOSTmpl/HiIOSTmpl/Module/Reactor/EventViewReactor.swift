@@ -17,19 +17,17 @@ class EventViewReactor: ListViewReactor {
     
     required init(_ provider: HiIOS.ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
-//        self.initialState = State(
-//            title: self.title ?? R.string.localizable.event(
-//                preferredLanguages: myLangs
-//            )
-//        )
+        self.initialState = State(
+            title: self.title ?? R.string(preferredLanguages: myLangs).localizable.event()
+        )
     }
     
-//    override func fetchLocal() -> Observable<Mutation> {
-//          let models = Event.cachedArray(page: self.host) ?? []
-//          let original: [HiContent] = models.isNotEmpty ? [.init(header: nil, models: models)] : []
-//        return .just(.initial(original))
-//      }
-//    
+    override func fetchLocal() -> Observable<Mutation> {
+        let models = Event.cachedArray(page: self.pageIndex.string) ?? []
+        let original: [HiContent] = models.isNotEmpty ? [.init(header: nil, models: models)] : []
+        return .just(.initial(original))
+    }
+    
 //    override func requestRemote(_ mode: HiRequestMode, _ page: Int) -> Observable<Mutation> {
 //        .create { [weak self] observer -> Disposable in
 //            guard let `self` = self else { fatalError() }

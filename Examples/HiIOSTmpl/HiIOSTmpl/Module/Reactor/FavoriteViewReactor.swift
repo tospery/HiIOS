@@ -17,11 +17,9 @@ class FavoriteViewReactor: ListViewReactor {
     
     required init(_ provider: HiIOS.ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
-//        self.initialState = State(
-//            title: self.title ?? R.string.localizable.event(
-//                preferredLanguages: myLangs
-//            )
-//        )
+        self.initialState = State(
+            title: self.title ?? R.string(preferredLanguages: myLangs).localizable.favorite()
+        )
     }
     
 //    override func fetchLocal() -> Observable<Mutation> {

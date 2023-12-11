@@ -99,7 +99,7 @@ struct Event: Subjective, Eventable {
     enum Event {
     }
     
-    var id = 0
+    var id = ""
     var type = EventType.unknown
 //    var actor: BaseUser?
 //    var repo: BaseRepo?

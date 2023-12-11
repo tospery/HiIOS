@@ -38,6 +38,7 @@ extension ProviderType {
     }
     
     /// 用户事件
+    /// https://api.github.com/users/tospery/events?page=1&per_page=30
     func userEvents(username: String, page: Int) -> Single<[Event]> {
         networking.requestArray(
             MultiTarget.init(
