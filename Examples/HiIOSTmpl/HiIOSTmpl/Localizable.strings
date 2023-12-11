@@ -10,6 +10,8 @@
 /* 词语 */
 "Phone Login" = "手机登录";
 "Follow System" = "Follow system";
+/* 句子 - Login */
+"Login.Placeholder.Token" = "个人私钥";
 /* 句子 - Error */
 "Error.Login" = "登录失败，请稍后重试";
 "Error.Retry" = "重试";

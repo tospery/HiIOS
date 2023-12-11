@@ -19,7 +19,6 @@ extension UIApplication {
         }
     }
     
-    var baseTrendingUrl: String { "https://gtrend.yapie.me" }
     var baseGithubUrl: String { "https://github.com" }
     @objc var myBaseApiUrl: String { "https://api.github.com" }
     @objc var myBaseWebUrl: String { "https://github.com" }
