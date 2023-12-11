@@ -141,6 +141,7 @@
 		91D20B392B2774C400EF878D /* Dynamically.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamically.swift; sourceTree = "<group>"; };
 		91D20B3B2B2774CE00EF878D /* DynamicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicAPI.swift; sourceTree = "<group>"; };
 		91D20B3D2B27767900EF878D /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		91D20B3F2B27898C00EF878D /* readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		91E679E02B0F2FDE00D4C4CA /* OC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OC-Bridging-Header.h"; sourceTree = "<group>"; };
 		91E679E12B0F2FFD00D4C4CA /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		91E679E52B0F308F00D4C4CA /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
@@ -220,6 +221,7 @@
 				91E679E02B0F2FDE00D4C4CA /* OC-Bridging-Header.h */,
 				91E679E12B0F2FFD00D4C4CA /* Localizable.strings */,
 				911040F22B11A39A00AF07A3 /* AppDependency.swift */,
+				91D20B3F2B27898C00EF878D /* readme.txt */,
 			);
 			name = Core;
 			sourceTree = "<group>";

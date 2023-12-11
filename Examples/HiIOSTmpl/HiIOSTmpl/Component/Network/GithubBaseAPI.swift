@@ -48,7 +48,7 @@ extension GithubBaseAPI: TargetType {
 
     var task: Task {
         var parameters = envParameters
-        var encoding: ParameterEncoding = URLEncoding.default
+        let encoding: ParameterEncoding = URLEncoding.default
         switch self {
         case .userEvents(_, let page):
             parameters[Parameter.pageIndex] = page

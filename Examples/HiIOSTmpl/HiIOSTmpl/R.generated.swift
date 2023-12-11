@@ -62,7 +62,7 @@ struct _R {
     }
 
 
-    /// This `_R.string.localizable` struct is generated, and contains static references to 33 localization keys.
+    /// This `_R.string.localizable` struct is generated, and contains static references to 37 localization keys.
     struct localizable {
       let source: RswiftResources.StringResource.Source
 
@@ -70,6 +70,11 @@ struct _R {
       ///
       /// Key: About
       var about: RswiftResources.StringResource { .init(key: "About", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: 取消
+      ///
+      /// Key: Cancel
+      var cancel: RswiftResources.StringResource { .init(key: "Cancel", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
 
       /// Value: 中文
       ///
@@ -181,15 +186,25 @@ struct _R {
       /// Key: Error.User.NotLoggedIn.Title
       var errorUserNotLoggedInTitle: RswiftResources.StringResource { .init(key: "Error.User.NotLoggedIn.Title", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
 
+      /// Value: 事件
+      ///
+      /// Key: Event
+      var event: RswiftResources.StringResource { .init(key: "Event", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: 退出
+      ///
+      /// Key: Exit
+      var exit: RswiftResources.StringResource { .init(key: "Exit", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: 收藏
+      ///
+      /// Key: Favorite
+      var favorite: RswiftResources.StringResource { .init(key: "Favorite", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
       /// Value: Follow system
       ///
       /// Key: Follow System
       var followSystem: RswiftResources.StringResource { .init(key: "Follow System", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
-
-      /// Value: 首页
-      ///
-      /// Key: Home
-      var home: RswiftResources.StringResource { .init(key: "Home", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
 
       /// Value: 登录
       ///
@@ -201,11 +216,6 @@ struct _R {
       /// Key: Login.Placeholder.Token
       var loginPlaceholderToken: RswiftResources.StringResource { .init(key: "Login.Placeholder.Token", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
 
-      /// Value: 我的
-      ///
-      /// Key: Mine
-      var mine: RswiftResources.StringResource { .init(key: "Mine", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
-
       /// Value: 否
       ///
       /// Key: No
@@ -216,6 +226,11 @@ struct _R {
       /// Key: OK
       var oK: RswiftResources.StringResource { .init(key: "OK", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
 
+      /// Value: 我的
+      ///
+      /// Key: Personal
+      var personal: RswiftResources.StringResource { .init(key: "Personal", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
       /// Value: 手机登录
       ///
       /// Key: Phone Login
@@ -225,6 +240,11 @@ struct _R {
       ///
       /// Key: Sure
       var sure: RswiftResources.StringResource { .init(key: "Sure", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: 未知
+      ///
+      /// Key: Unknown
+      var unknown: RswiftResources.StringResource { .init(key: "Unknown", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
 
       /// Value: 是
       ///

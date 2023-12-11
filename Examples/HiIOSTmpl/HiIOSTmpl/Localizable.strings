@@ -3,8 +3,12 @@
 "No" = "否";
 "OK" = "确定";
 "Sure" = "确定";
-"Home" = "首页";
-"Mine" = "我的";
+"Cancel" = "取消";
+"Exit" = "退出";
+"Unknown" = "未知";
+"Event" = "事件";
+"Favorite" = "收藏";
+"Personal" = "我的";
 "Login" = "登录";
 "About" = "关于";
 /* 词语 */

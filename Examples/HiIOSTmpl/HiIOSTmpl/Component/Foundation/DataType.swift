@@ -181,6 +181,50 @@ enum CellId: Int {
     
 }
 
+enum HTAlertAction: AlertActionType, Equatable {
+    case destructive
+    case `default`
+    case cancel
+    case exit
+    
+    init?(string: String) {
+        switch string {
+        case HTAlertAction.cancel.title: self = HTAlertAction.cancel
+        case HTAlertAction.exit.title: self = HTAlertAction.exit
+        default: return nil
+        }
+    }
+
+    var title: String? {
+        switch self {
+        case .destructive:  return R.string(preferredLanguages: myLangs).localizable.sure()
+        case .default:  return R.string(preferredLanguages: myLangs).localizable.oK()
+        case .cancel: return R.string(preferredLanguages: myLangs).localizable.cancel()
+        case .exit: return R.string(preferredLanguages: myLangs).localizable.exit()
+        }
+    }
+
+    var style: UIAlertAction.Style {
+        switch self {
+        case .cancel:  return .cancel
+        case .destructive, .exit:  return .destructive
+        default: return .default
+        }
+    }
+
+    static func == (lhs: HTAlertAction, rhs: HTAlertAction) -> Bool {
+        switch (lhs, rhs) {
+        case (.destructive, .destructive),
+            (.default, .default),
+            (.cancel, .cancel),
+            (.exit, .exit):
+            return true
+        default:
+            return false
+        }
+    }
+}
+
 enum Localization: String, CustomStringConvertible, Codable {
     case system     = "system"
     case chinese    = "zh-Hans"

@@ -58,7 +58,7 @@ class PersonalViewReactor: ListViewReactor {
     }
     
     func section(_ user: User?) -> [HiContent] {
-        var models = [ModelType].init()
+        let models = [ModelType].init()
         if user?.isValid ?? false {
 //            models.append(contentsOf: [CellId.company, CellId.location, CellId.email].map {
 //                Simple.init(id: $0.rawValue, icon: $0.icon, indicated: false, divided: true)
