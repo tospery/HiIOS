@@ -1,0 +1,282 @@
+[
+    {
+        "username": "wsxiaoys",
+        "name": "Meng Zhang",
+        "url": "https://github.com/wsxiaoys",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/388154",
+        "repo": {
+            "name": "awesome-ai-coding",
+            "description": "Awesome AI Coding",
+            "url": "https://github.com/wsxiaoys/awesome-ai-coding"
+        }
+    },
+    {
+        "username": "oobabooga",
+        "name": "oobabooga",
+        "url": "https://github.com/oobabooga",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/112222186",
+        "repo": {
+            "name": "text-generation-webui",
+            "description": "A Gradio web UI for Large Language Models. Supports transformers, GPTQ, AWQ, EXL2, llama.cpp (GGUF), Llama models.",
+            "url": "https://github.com/oobabooga/text-generation-webui"
+        }
+    },
+    {
+        "username": "emilk",
+        "name": "Emil Ernerfeldt",
+        "url": "https://github.com/emilk",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/1148717",
+        "repo": {
+            "name": "egui",
+            "description": "egui: an easy-to-use immediate mode GUI in Rust that runs on both web and native",
+            "url": "https://github.com/emilk/egui"
+        }
+    },
+    {
+        "username": "abuaboud",
+        "name": "Mohammed Abu Aboud",
+        "url": "https://github.com/abuaboud",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/1812998",
+        "repo": null
+    },
+    {
+        "username": "dkhamsing",
+        "name": "dkhamsing",
+        "url": "https://github.com/dkhamsing",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/4723115",
+        "repo": {
+            "name": "open-source-ios-apps",
+            "description": "📱 Collaborative List of Open-Source iOS Apps",
+            "url": "https://github.com/dkhamsing/open-source-ios-apps"
+        }
+    },
+    {
+        "username": "lllyasviel",
+        "name": "lllyasviel",
+        "url": "https://github.com/lllyasviel",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/19834515",
+        "repo": {
+            "name": "Fooocus",
+            "description": "Focus on prompting and generating",
+            "url": "https://github.com/lllyasviel/Fooocus"
+        }
+    },
+    {
+        "username": "HansKristian-Work",
+        "name": "Hans-Kristian Arntzen",
+        "url": "https://github.com/HansKristian-Work",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/17786731",
+        "repo": {
+            "name": "vkd3d-proton",
+            "description": "Fork of VKD3D. Development branches for Proton's Direct3D 12 implementation.",
+            "url": "https://github.com/HansKristian-Work/vkd3d-proton"
+        }
+    },
+    {
+        "username": "vanhauser-thc",
+        "name": "van Hauser",
+        "url": "https://github.com/vanhauser-thc",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/7396244",
+        "repo": {
+            "name": "thc-hydra",
+            "description": "hydra",
+            "url": "https://github.com/vanhauser-thc/thc-hydra"
+        }
+    },
+    {
+        "username": "benmccann",
+        "name": "Ben McCann",
+        "url": "https://github.com/benmccann",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/322311",
+        "repo": null
+    },
+    {
+        "username": "Rich-Harris",
+        "name": "Rich Harris",
+        "url": "https://github.com/Rich-Harris",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/1162160",
+        "repo": {
+            "name": "degit",
+            "description": "Straightforward project scaffolding",
+            "url": "https://github.com/Rich-Harris/degit"
+        }
+    },
+    {
+        "username": "twpayne",
+        "name": "Tom Payne",
+        "url": "https://github.com/twpayne",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/6942",
+        "repo": {
+            "name": "chezmoi",
+            "description": "Manage your dotfiles across multiple diverse machines, securely.",
+            "url": "https://github.com/twpayne/chezmoi"
+        }
+    },
+    {
+        "username": "alexey-milovidov",
+        "name": "Alexey Milovidov",
+        "url": "https://github.com/alexey-milovidov",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/18581488",
+        "repo": null
+    },
+    {
+        "username": "bpasero",
+        "name": "Benjamin Pasero",
+        "url": "https://github.com/bpasero",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/900690",
+        "repo": null
+    },
+    {
+        "username": "ahuang11",
+        "name": "Andrew",
+        "url": "https://github.com/ahuang11",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/15331990",
+        "repo": {
+            "name": "tastymap",
+            "description": "colormaps cooked for your palate",
+            "url": "https://github.com/ahuang11/tastymap"
+        }
+    },
+    {
+        "username": "alphapapa",
+        "name": "Adam Porter",
+        "url": "https://github.com/alphapapa",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/601365",
+        "repo": {
+            "name": "emacs-package-dev-handbook",
+            "description": "An Emacs package development handbook. Built with Emacs, by Emacs package developers, for Emacs package developers.",
+            "url": "https://github.com/alphapapa/emacs-package-dev-handbook"
+        }
+    },
+    {
+        "username": "chenrui333",
+        "name": "Rui Chen",
+        "url": "https://github.com/chenrui333",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/1580956",
+        "repo": {
+            "name": "dnsrobocert",
+            "description": "Orchestrate Certbot and Lexicon together to provide Let's Encrypt TLS certificates validated by DNS challenges",
+            "url": "https://github.com/chenrui333/dnsrobocert"
+        }
+    },
+    {
+        "username": "saghul",
+        "name": "Saúl Ibarra Corretgé",
+        "url": "https://github.com/saghul",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/317464",
+        "repo": {
+            "name": "txiki.js",
+            "description": "A tiny JavaScript runtime",
+            "url": "https://github.com/saghul/txiki.js"
+        }
+    },
+    {
+        "username": "emontnemery",
+        "name": "Erik Montnemery",
+        "url": "https://github.com/emontnemery",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/14281572",
+        "repo": {
+            "name": "hatasmota",
+            "description": null,
+            "url": "https://github.com/emontnemery/hatasmota"
+        }
+    },
+    {
+        "username": "hrydgard",
+        "name": "Henrik Rydgård",
+        "url": "https://github.com/hrydgard",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/130929",
+        "repo": {
+            "name": "ppsspp",
+            "description": "A PSP emulator for Android, Windows, Mac and Linux, written in C++. Want to contribute? Join us on Discord at https://discord.gg/5NJB6dD …",
+            "url": "https://github.com/hrydgard/ppsspp"
+        }
+    },
+    {
+        "username": "rusty1s",
+        "name": "Matthias Fey",
+        "url": "https://github.com/rusty1s",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/6945922",
+        "repo": {
+            "name": "pytorch_scatter",
+            "description": "PyTorch Extension Library of Optimized Scatter Operations",
+            "url": "https://github.com/rusty1s/pytorch_scatter"
+        }
+    },
+    {
+        "username": "AskAlexSharov",
+        "name": "Alex Sharov",
+        "url": "https://github.com/AskAlexSharov",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/46885206",
+        "repo": null
+    },
+    {
+        "username": "romange",
+        "name": "Roman Gershman",
+        "url": "https://github.com/romange",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/3674760",
+        "repo": {
+            "name": "helio",
+            "description": "A modern framework for backend development based on io_uring Linux interface",
+            "url": "https://github.com/romange/helio"
+        }
+    },
+    {
+        "username": "bucanero",
+        "name": "Damián Parrino",
+        "url": "https://github.com/bucanero",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/1153055",
+        "repo": {
+            "name": "apollo-ps3",
+            "description": "Apollo Save Tool (PS3)",
+            "url": "https://github.com/bucanero/apollo-ps3"
+        }
+    },
+    {
+        "username": "homanp",
+        "name": "Ismail Pelaseyed",
+        "url": "https://github.com/homanp",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/2464556",
+        "repo": {
+            "name": "superagent",
+            "description": "🥷 The open framework for building AI Assistants",
+            "url": "https://github.com/homanp/superagent"
+        }
+    },
+    {
+        "username": "yairm210",
+        "name": "Yair Morgenstern",
+        "url": "https://github.com/yairm210",
+        "sponsorUrl": null,
+        "avatar": "https://avatars.githubusercontent.com/u/8366208",
+        "repo": {
+            "name": "Unciv",
+            "description": "Open-source Android/Desktop remake of Civ V",
+            "url": "https://github.com/yairm210/Unciv"
+        }
+    }
+]

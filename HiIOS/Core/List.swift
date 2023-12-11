@@ -38,7 +38,7 @@ public struct List<Item: ModelType>: ModelType {
 public protocol ListCompatible {
     func hasNext(map: Map) -> Bool
     func count(map: Map) -> Int
-    func items<MyItem: ModelType>(map: Map) -> [MyItem]
+    func items<ListItem: ModelType>(map: Map) -> [ListItem]
 }
 
 extension ListCompatible {
@@ -54,8 +54,8 @@ extension ListCompatible {
         return count ?? 0
     }
 
-    public func items<MyItem>(map: Map) -> [MyItem] where MyItem: ModelType {
-        var items: [MyItem]?
+    public func items<ListItem>(map: Map) -> [ListItem] where ListItem: ModelType {
+        var items: [ListItem]?
         items         <- map["items"]
         return items ?? []
     }

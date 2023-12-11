@@ -48,6 +48,10 @@
 		9160C6512B279A5700271081 /* ScrollViewController+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160C6502B279A5700271081 /* ScrollViewController+Ex.swift */; };
 		9160C6532B279AA900271081 /* Storable+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160C6522B279AA900271081 /* Storable+Ex.swift */; };
 		9160C6552B279ACD00271081 /* BaseViewController+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160C6542B279ACD00271081 /* BaseViewController+Ex.swift */; };
+		9160C6572B279D5300271081 /* BaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160C6562B279D5300271081 /* BaseUser.swift */; };
+		9160C6592B279D6000271081 /* BaseRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160C6582B279D6000271081 /* BaseRepo.swift */; };
+		9160C65B2B279E0000271081 /* BaseUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 9160C65A2B279E0000271081 /* BaseUser.json */; };
+		9160C65D2B279E0A00271081 /* BaseRepo.json in Resources */ = {isa = PBXBuildFile; fileRef = 9160C65C2B279E0A00271081 /* BaseRepo.json */; };
 		91AC6E772B260337003B728F /* ListViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC6E762B260337003B728F /* ListViewReactor.swift */; };
 		91AC6E792B260343003B728F /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC6E782B260343003B728F /* ListViewController.swift */; };
 		91AC6E7C2B260462003B728F /* SectionItemElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC6E7B2B260462003B728F /* SectionItemElement.swift */; };
@@ -132,6 +136,10 @@
 		9160C6502B279A5700271081 /* ScrollViewController+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollViewController+Ex.swift"; sourceTree = "<group>"; };
 		9160C6522B279AA900271081 /* Storable+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storable+Ex.swift"; sourceTree = "<group>"; };
 		9160C6542B279ACD00271081 /* BaseViewController+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseViewController+Ex.swift"; sourceTree = "<group>"; };
+		9160C6562B279D5300271081 /* BaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUser.swift; sourceTree = "<group>"; };
+		9160C6582B279D6000271081 /* BaseRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepo.swift; sourceTree = "<group>"; };
+		9160C65A2B279E0000271081 /* BaseUser.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BaseUser.json; sourceTree = "<group>"; };
+		9160C65C2B279E0A00271081 /* BaseRepo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BaseRepo.json; sourceTree = "<group>"; };
 		9188AAA92B0F2B0200AF0DBD /* HiIOSTmpl.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HiIOSTmpl.entitlements; sourceTree = "<group>"; };
 		91AC6E762B260337003B728F /* ListViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewReactor.swift; sourceTree = "<group>"; };
 		91AC6E782B260343003B728F /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -291,6 +299,8 @@
 				913904662B1D77AF00F947E0 /* User.swift */,
 				9139046A2B1D787300F947E0 /* Configuration.swift */,
 				91D20B3D2B27767900EF878D /* Event.swift */,
+				9160C6562B279D5300271081 /* BaseUser.swift */,
+				9160C6582B279D6000271081 /* BaseRepo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -348,6 +358,8 @@
 			children = (
 				9160C63C2B278D7400271081 /* Configuration.json */,
 				9160C63E2B2792A100271081 /* EventList#1.json */,
+				9160C65A2B279E0000271081 /* BaseUser.json */,
+				9160C65C2B279E0A00271081 /* BaseRepo.json */,
 			);
 			path = json;
 			sourceTree = "<group>";
@@ -539,6 +551,8 @@
 				910AF2822B0F10B70044111C /* LaunchScreen.storyboard in Resources */,
 				91E679E22B0F2FFD00D4C4CA /* Localizable.strings in Resources */,
 				9160C63F2B2792A100271081 /* EventList#1.json in Resources */,
+				9160C65D2B279E0A00271081 /* BaseRepo.json in Resources */,
+				9160C65B2B279E0000271081 /* BaseUser.json in Resources */,
 				9160C63D2B278D7400271081 /* Configuration.json in Resources */,
 				910AF27F2B0F10B70044111C /* Assets.xcassets in Resources */,
 			);
@@ -672,6 +686,7 @@
 				9160C6472B27995600271081 /* BaseResponse+Ex.swift in Sources */,
 				91560F272B27636E0008540E /* ScrollViewController+Rx.swift in Sources */,
 				9160C6492B2799A500271081 /* Library+Ex.swift in Sources */,
+				9160C6592B279D6000271081 /* BaseRepo.swift in Sources */,
 				9160C6412B2793FB00271081 /* EventItem.swift in Sources */,
 				91D20B0C2B276F4900EF878D /* QMUIConfigurationTemplate.m in Sources */,
 				9160C64F2B279A3D00271081 /* Runtime+Ex.swift in Sources */,
@@ -691,6 +706,7 @@
 				914346ED2B26B47B002199D0 /* TextViewItem.swift in Sources */,
 				9160C64D2B279A2A00271081 /* Logger+Ex.swift in Sources */,
 				91D20B212B27717A00EF878D /* Router+Dialog+Toast.swift in Sources */,
+				9160C6572B279D5300271081 /* BaseUser.swift in Sources */,
 				9139046D2B1D78CA00F947E0 /* Theme.swift in Sources */,
 				91D20B1B2B27715A00EF878D /* Router+Dialog+Alert.swift in Sources */,
 				914346F32B26B4B6002199D0 /* TextFieldCell.swift in Sources */,

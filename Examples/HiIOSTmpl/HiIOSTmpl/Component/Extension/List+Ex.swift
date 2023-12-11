@@ -23,8 +23,8 @@ extension List: ListCompatible {
         return count ?? 0
     }
     
-    public func items<MyItem>(map: Map) -> [MyItem] where MyItem: ModelType {
-        var items: [MyItem]?
+    public func items<ListItem>(map: Map) -> [ListItem] where ListItem: ModelType {
+        var items: [ListItem]?
         items    <- map["items"]
         return items ?? []
     }
