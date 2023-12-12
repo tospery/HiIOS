@@ -28,7 +28,7 @@ class TrendingViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         case setError(Error?)
         case setUser(User?)
         case setConfiguration(Configuration)
-        case setPagingElements([PagingElement])
+        case setPages([Page])
     }
 
     struct State {
@@ -40,7 +40,7 @@ class TrendingViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         var title: String?
         var user: User?
         var configuration = Configuration.current!
-        var pagingElements = [PagingElement].init()
+        var pages = [Page].init()
     }
 
     var initialState = State()
@@ -49,7 +49,7 @@ class TrendingViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         super.init(provider, parameters)
         self.initialState = State(
             title: self.title ?? R.string(preferredLanguages: myLangs).localizable.trending(),
-            pagingElements: PagingElement.trendingValues
+            pages: Page.trendingValues
         )
     }
     
@@ -76,8 +76,8 @@ class TrendingViewReactor: ScrollViewReactor, ReactorKit.Reactor {
             newState.user = user
         case let .setConfiguration(configuration):
             newState.configuration = configuration
-        case let .setPagingElements(pagingElements):
-            newState.pagingElements = pagingElements
+        case let .setPages(pages):
+            newState.pages = pages
         }
         return newState
     }
@@ -112,15 +112,15 @@ extension TrendingViewReactor: PagingViewControllerDataSource {
     func numberOfViewControllers(
         in pagingViewController: PagingViewController
     ) -> Int {
-        self.currentState.pagingElements.count
+        self.currentState.pages.count
     }
 
     func pagingViewController(
         _ pagingViewController: PagingViewController,
         viewControllerAt index: Int
     ) -> UIViewController {
-        let pagingElement = self.currentState.pagingElements[index]
-        switch pagingElement {
+        let page = self.currentState.pages[index]
+        switch page {
         case .trendingRepos:
             return self.navigator.viewController(
                 for: Router.shared.urlString(
@@ -128,7 +128,7 @@ extension TrendingViewReactor: PagingViewControllerDataSource {
                     path: .list,
                     parameters: [
                         Parameter.hidesNavigationBar: true.string,
-                        Parameter.pagingElement: pagingElement.rawValue
+                        Parameter.pagingElement: page.rawValue
                     ]
                 )
             )!
@@ -139,7 +139,7 @@ extension TrendingViewReactor: PagingViewControllerDataSource {
                     path: .list,
                     parameters: [
                         Parameter.hidesNavigationBar: true.string,
-                        Parameter.pagingElement: pagingElement.rawValue
+                        Parameter.pagingElement: page.rawValue
                     ]
                 )
             )!
@@ -147,6 +147,6 @@ extension TrendingViewReactor: PagingViewControllerDataSource {
     }
 
     func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
-        PagingIndexItem(index: index, title: self.currentState.pagingElements[index].title ?? "")
+        PagingIndexItem(index: index, title: self.currentState.pages[index].title ?? "")
     }
 }

@@ -212,9 +212,9 @@ class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
             let cell = collectionView.dequeue(Reusable.userCell, for: indexPath)
             item.parent = self.reactor
             cell.reactor = item
-//            cell.rx.clickRepo
-//                .subscribeNext(weak: self, type(of: self).handleTarget)
-//                .disposed(by: cell.disposeBag)
+            cell.rx.clickRepo
+                .subscribeNext(weak: self, type(of: self).handleTarget)
+                .disposed(by: cell.disposeBag)
             return cell
         case let .label(item):
             let cell = collectionView.dequeue(Reusable.labelCell, for: indexPath)
@@ -343,7 +343,18 @@ class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
     
     // MARK: - tap
     func tapItem(sectionItem: SectionItem) {
-        // let username = self.reactor?.username ?? ""
+//        let username = self.reactor?.username ?? ""
+//        let reponame = self.reactor?.reponame ?? ""
+        switch sectionItem {
+        case let .user(item):
+            guard let username = (item.model as? User)?.username else { return }
+            self.navigator.forward(Router.shared.urlString(host: .user, path: username))
+        case let .repo(item):
+            guard let url = (item.model as? Repo)?.htmlUrl, url.isNotEmpty else { return }
+            self.navigator.forward(url)
+        default:
+            break
+        }
     }
     
     func tapUser(username: String) {

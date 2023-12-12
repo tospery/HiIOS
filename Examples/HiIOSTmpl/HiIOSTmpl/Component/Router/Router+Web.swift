@@ -37,12 +37,11 @@ extension Router {
             return navigator.forward(
                 "\(UIApplication.shared.urlScheme)://\(Router.Host.user)/\(url.host ?? "")"
             )
-        } 
-//        else if paths.count == 1 {
-//            return navigator.forward(
-//                "\(UIApplication.shared.urlScheme)://\(Router.Host.repo)/\(url.host ?? "")/\(paths.first!)"
-//            )
-//        }
+        } else if paths.count == 1 {
+            return navigator.forward(
+                "\(UIApplication.shared.urlScheme)://\(Router.Host.repo)/\(url.host ?? "")/\(paths.first!)"
+            )
+        }
         return false
     }
     

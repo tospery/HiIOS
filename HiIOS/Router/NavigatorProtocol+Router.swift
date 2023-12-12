@@ -96,7 +96,7 @@ public extension NavigatorProtocol {
         let animated = parameters.bool(for: Parameter.animated) ?? animated
         
         // 打印路由地址
-        logger.print("导航\(url.absoluteString)\n\(parameters)", module: .hiIOS)
+        logger.print("导航地址->\(url.absoluteString)\n\(parameters)", module: .hiIOS)
         
         switch forwardType {
         case .push:

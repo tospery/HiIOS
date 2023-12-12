@@ -63,6 +63,10 @@
 		919CDEDA2B28BEA7001C359B /* UserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919CDED92B28BEA7001C359B /* UserItem.swift */; };
 		919CDEDC2B28BEAF001C359B /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919CDEDB2B28BEAF001C359B /* UserCell.swift */; };
 		919CDEDE2B28BEDB001C359B /* User+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919CDEDD2B28BEDB001C359B /* User+Ex.swift */; };
+		919CDEE02B28C830001C359B /* UserViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919CDEDF2B28C830001C359B /* UserViewReactor.swift */; };
+		919CDEE22B28C837001C359B /* RepoViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919CDEE12B28C837001C359B /* RepoViewReactor.swift */; };
+		919CDEE42B28C841001C359B /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919CDEE32B28C841001C359B /* UserViewController.swift */; };
+		919CDEE62B28C849001C359B /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919CDEE52B28C849001C359B /* RepoViewController.swift */; };
 		91A9314E2B28295E00814EB8 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A9314D2B28295E00814EB8 /* Repo.swift */; };
 		91A931502B282A1A00814EB8 /* UserListViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A9314F2B282A1A00814EB8 /* UserListViewReactor.swift */; };
 		91A931522B282A6200814EB8 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A931512B282A6200814EB8 /* UserListViewController.swift */; };
@@ -171,6 +175,10 @@
 		919CDED92B28BEA7001C359B /* UserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserItem.swift; sourceTree = "<group>"; };
 		919CDEDB2B28BEAF001C359B /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		919CDEDD2B28BEDB001C359B /* User+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Ex.swift"; sourceTree = "<group>"; };
+		919CDEDF2B28C830001C359B /* UserViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewReactor.swift; sourceTree = "<group>"; };
+		919CDEE12B28C837001C359B /* RepoViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewReactor.swift; sourceTree = "<group>"; };
+		919CDEE32B28C841001C359B /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		919CDEE52B28C849001C359B /* RepoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
 		91A9314D2B28295E00814EB8 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		91A9314F2B282A1A00814EB8 /* UserListViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewReactor.swift; sourceTree = "<group>"; };
 		91A931512B282A6200814EB8 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
@@ -376,6 +384,8 @@
 				91A9314F2B282A1A00814EB8 /* UserListViewReactor.swift */,
 				91A931532B282A9100814EB8 /* RepoListViewReactor.swift */,
 				914B99862B2830FE0084E311 /* TrendingViewReactor.swift */,
+				919CDEDF2B28C830001C359B /* UserViewReactor.swift */,
+				919CDEE12B28C837001C359B /* RepoViewReactor.swift */,
 			);
 			path = Reactor;
 			sourceTree = "<group>";
@@ -392,6 +402,8 @@
 				91A931552B282AB200814EB8 /* RepoListViewController.swift */,
 				914B99882B28310A0084E311 /* TrendingViewController.swift */,
 				914B998A2B2834050084E311 /* NavigationBarPagingViewController.swift */,
+				919CDEE32B28C841001C359B /* UserViewController.swift */,
+				919CDEE52B28C849001C359B /* RepoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -711,6 +723,7 @@
 				9160C6532B279AA900271081 /* Storable+Ex.swift in Sources */,
 				914B99892B28310A0084E311 /* TrendingViewController.swift in Sources */,
 				91D20B3E2B27767900EF878D /* Event.swift in Sources */,
+				919CDEE62B28C849001C359B /* RepoViewController.swift in Sources */,
 				91AC6E7E2B2604A5003B728F /* SectionItem.swift in Sources */,
 				911040F32B11A39A00AF07A3 /* AppDependency.swift in Sources */,
 				91560F2E2B276AFE0008540E /* PersonalViewReactor.swift in Sources */,
@@ -759,14 +772,17 @@
 				9160C6412B2793FB00271081 /* EventItem.swift in Sources */,
 				91D20B0C2B276F4900EF878D /* QMUIConfigurationTemplate.m in Sources */,
 				9160C64F2B279A3D00271081 /* Runtime+Ex.swift in Sources */,
+				919CDEE42B28C841001C359B /* UserViewController.swift in Sources */,
 				914B99912B2834620084E311 /* PagingViewController+Rx.swift in Sources */,
 				91AC6E882B2605F5003B728F /* LabelItem.swift in Sources */,
 				91560F322B276B4F0008540E /* EventViewReactor.swift in Sources */,
 				910AF2782B0F10B60044111C /* SceneDelegate.swift in Sources */,
+				919CDEE02B28C830001C359B /* UserViewReactor.swift in Sources */,
 				914B99872B2830FE0084E311 /* TrendingViewReactor.swift in Sources */,
 				914346E72B26B3A3002199D0 /* ButtonCell.swift in Sources */,
 				91D20B252B27719300EF878D /* Router+Page.swift in Sources */,
 				91A931502B282A1A00814EB8 /* UserListViewReactor.swift in Sources */,
+				919CDEE22B28C837001C359B /* RepoViewReactor.swift in Sources */,
 				91A9315A2B282B6A00814EB8 /* ProviderType+TrendingAPI.swift in Sources */,
 				91A931542B282A9100814EB8 /* RepoListViewReactor.swift in Sources */,
 				919CDEDA2B28BEA7001C359B /* UserItem.swift in Sources */,

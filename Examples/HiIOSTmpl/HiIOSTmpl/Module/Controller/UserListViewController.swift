@@ -23,7 +23,7 @@ class UserListViewController: ListViewController {
         super.init(navigator, reactor)
         self.shouldRefresh = reactor.parameters.bool(for: Parameter.shouldRefresh) ?? true
         self.shouldLoadMore = reactor.parameters.bool(for: Parameter.shouldLoadMore) ?? (
-            (reactor as? ListViewReactor)?.pagingElement == .trendingUsers ? false : true
+            (reactor as? ListViewReactor)?.page == .trendingUsers ? false : true
         )
     }
 
@@ -52,10 +52,10 @@ class UserListViewController: ListViewController {
     }
     
     override func handleContents(contents: [HiContent]) {
-        guard let pagingElement = self.reactor?.pagingElement, pagingElement == .trendingUsers else { return }
+        guard let page = self.reactor?.page, page == .trendingUsers else { return }
         guard let users = contents.first?.models as? [User], users.isNotEmpty else { return }
-        User.storeArray(users, page: pagingElement.rawValue)
-        log("user缓存->\(pagingElement.rawValue)")
+        User.storeArray(users, page: page.rawValue)
+        log("user缓存->\(page.rawValue)")
     }
 
 }

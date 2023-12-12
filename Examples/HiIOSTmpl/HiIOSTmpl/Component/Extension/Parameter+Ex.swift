@@ -20,4 +20,5 @@ extension Parameter {
     static var pageIndex: String { "page" }
     static var pageSize: String { "per_page" }
     static var pagingElement: String { "pagingElement" }
+    static var reponame: String { "reponame" }
 }

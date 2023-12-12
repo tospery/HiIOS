@@ -14,7 +14,7 @@ enum TabBarKey {
     case personal
 }
 
-enum PagingElement: String, Codable {
+enum Page: String, Codable {
     case none
     case trendingRepos
     case trendingUsers

@@ -22,7 +22,7 @@ class RepoListViewReactor: ListViewReactor {
     }
     
     override func fetchLocal() -> Observable<Mutation> {
-        let models = Repo.cachedArray(page: self.pagingElement.rawValue) ?? []
+        let models = Repo.cachedArray(page: self.page.rawValue) ?? []
         let original: [HiContent] = models.isNotEmpty ? [.init(header: nil, models: models)] : []
         return .just(.initial(original))
     }

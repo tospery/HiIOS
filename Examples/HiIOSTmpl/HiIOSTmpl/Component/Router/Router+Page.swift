@@ -29,6 +29,14 @@ extension Router {
         navigator.register(self.urlPattern(host: .repo, path: .list)) { url, values, context in
             RepoListViewController(navigator, RepoListViewReactor(provider, self.parameters(url, values, context)))
         }
+        // hiiostmpl://user/<username>
+        navigator.register(self.urlPattern(host: .user, placeholder: "<username>")) { url, values, context in
+            UserViewController(navigator, UserViewReactor(provider, self.parameters(url, values, context)))
+        }
+        // hiiostmpl://repo/<username>/<reponame>
+        navigator.register(self.urlPattern(host: .repo, placeholder: "<username>/<reponame>")) { url, values, context in
+            RepoViewController(navigator, RepoViewReactor(provider, self.parameters(url, values, context)))
+        }
 //        navigator.register(self.urlPattern(host: .about)) { url, values, context in
 //            AboutViewController(navigator, AboutViewReactor(provider, self.parameters(url, values, context)))
 //        }
