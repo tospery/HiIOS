@@ -43,3 +43,5 @@
 /* 不翻译 */
 "Chinese" = "中文";
 "English" = "English";
+"None.Desc" = "No description provided";
+"None.Repo" = "No hot repository";

@@ -88,18 +88,7 @@ class TrendingViewController: ScrollViewController, ReactorKit.View {
     }
     
     override func handleTheme(_ themeType: ThemeType) {
-        log("trending-theme-changed")
-//        let aaa = self.paging
-//        self.paging.select(index: <#T##Int#>)
-        // let aaa = self.paging.state
-        // guard let case .selected(pagingItem) = self.paging.state else { return }
-//        if case let .selected(pagingItem)  = self.paging.state {
-//            let index = pagingItem.identifier
-//            log("trending-theme-changed: index = \(index)")
-//            self.paging.select(pagingItem: pagingItem)
-//            self.paging.reloadMenu()
-//        }
         self.paging.reloadMenu()
     }
-    
+
 }

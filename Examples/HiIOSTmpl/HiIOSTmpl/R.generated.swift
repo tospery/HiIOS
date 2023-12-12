@@ -62,7 +62,7 @@ struct _R {
     }
 
 
-    /// This `_R.string.localizable` struct is generated, and contains static references to 40 localization keys.
+    /// This `_R.string.localizable` struct is generated, and contains static references to 42 localization keys.
     struct localizable {
       let source: RswiftResources.StringResource.Source
 
@@ -226,6 +226,16 @@ struct _R {
       /// Key: No
       var no: RswiftResources.StringResource { .init(key: "No", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
 
+      /// Value: No description provided
+      ///
+      /// Key: None.Desc
+      var noneDesc: RswiftResources.StringResource { .init(key: "None.Desc", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: No hot repository
+      ///
+      /// Key: None.Repo
+      var noneRepo: RswiftResources.StringResource { .init(key: "None.Repo", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
       /// Value: 确定
       ///
       /// Key: OK
@@ -276,12 +286,21 @@ struct _R {
     var accentColor: RswiftResources.ColorResource { .init(name: "AccentColor", path: [], bundle: bundle) }
   }
 
-  /// This `_R.image` struct is generated, and contains static references to 11 images.
+  /// This `_R.image` struct is generated, and contains static references to 14 images.
   struct image {
     let bundle: Foundation.Bundle
 
     /// Image `AppLogo`.
     var appLogo: RswiftResources.ImageResource { .init(name: "AppLogo", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `ic_fork`.
+    var ic_fork: RswiftResources.ImageResource { .init(name: "ic_fork", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `ic_repo_small`.
+    var ic_repo_small: RswiftResources.ImageResource { .init(name: "ic_repo_small", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `ic_star`.
+    var ic_star: RswiftResources.ImageResource { .init(name: "ic_star", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `ic_user_default`.
     var ic_user_default: RswiftResources.ImageResource { .init(name: "ic_user_default", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
@@ -335,17 +354,17 @@ struct _R {
   struct file {
     let bundle: Foundation.Bundle
 
-    /// Resource file `BaseRepo.json`.
-    var baseRepoJson: RswiftResources.FileResource { .init(name: "BaseRepo", pathExtension: "json", bundle: bundle, locale: LocaleReference.none) }
-
-    /// Resource file `BaseUser.json`.
-    var baseUserJson: RswiftResources.FileResource { .init(name: "BaseUser", pathExtension: "json", bundle: bundle, locale: LocaleReference.none) }
-
     /// Resource file `Configuration.json`.
     var configurationJson: RswiftResources.FileResource { .init(name: "Configuration", pathExtension: "json", bundle: bundle, locale: LocaleReference.none) }
 
     /// Resource file `EventList#1.json`.
     var eventList1Json: RswiftResources.FileResource { .init(name: "EventList#1", pathExtension: "json", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `RepoList#trendingRepos.json`.
+    var repoListTrendingReposJson: RswiftResources.FileResource { .init(name: "RepoList#trendingRepos", pathExtension: "json", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `UserList#trendingUsers.json`.
+    var userListTrendingUsersJson: RswiftResources.FileResource { .init(name: "UserList#trendingUsers", pathExtension: "json", bundle: bundle, locale: LocaleReference.none) }
   }
 
   /// This `_R.storyboard` struct is generated, and contains static references to 1 storyboards.

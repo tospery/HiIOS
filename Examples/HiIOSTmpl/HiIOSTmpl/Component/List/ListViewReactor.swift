@@ -290,6 +290,12 @@ class ListViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
 //                if $0 is URLScheme {
 //                    return .urlScheme(.init($0))
 //                }
+                if $0 is Repo {
+                    return .repo(.init($0))
+                }
+                if $0 is User {
+                    return .user(.init($0))
+                }
                 if $0 is Event {
                     return .event(.init($0))
                 }

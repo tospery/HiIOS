@@ -17,12 +17,14 @@ import ObjectMapper_Hi
 import RxDataSources
 import RxGesture
 
-// swiftlint:disable type_body_length
+// swiftlint:disable file_length type_body_length
 class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
     
     struct Reusable {
         static let appInfoCell = ReusableCell<AppInfoCell>()
         static let eventCell = ReusableCell<EventCell>()
+        static let repoCell = ReusableCell<RepoCell>()
+        static let userCell = ReusableCell<UserCell>()
         static let labelCell = ReusableCell<LabelCell>()
         static let buttonCell = ReusableCell<ButtonCell>()
         static let textFieldCell = ReusableCell<TextFieldCell>()
@@ -70,6 +72,8 @@ class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
         super.viewDidLoad()
         self.collectionView.register(Reusable.appInfoCell)
         self.collectionView.register(Reusable.eventCell)
+        self.collectionView.register(Reusable.repoCell)
+        self.collectionView.register(Reusable.userCell)
         self.collectionView.register(Reusable.labelCell)
         self.collectionView.register(Reusable.buttonCell)
         self.collectionView.register(Reusable.textFieldCell)
@@ -192,6 +196,23 @@ class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
             item.parent = self.reactor
             cell.reactor = item
 //            cell.rx.click
+//                .subscribeNext(weak: self, type(of: self).handleTarget)
+//                .disposed(by: cell.disposeBag)
+            return cell
+        case let .repo(item):
+            let cell = collectionView.dequeue(Reusable.repoCell, for: indexPath)
+            item.parent = self.reactor
+            cell.reactor = item
+//            cell.rx.clickUser
+//                .map { Router.shared.urlString(host: .user, path: $0) }
+//                .subscribeNext(weak: self, type(of: self).handleTarget)
+//                .disposed(by: cell.disposeBag)
+            return cell
+        case let .user(item):
+            let cell = collectionView.dequeue(Reusable.userCell, for: indexPath)
+            item.parent = self.reactor
+            cell.reactor = item
+//            cell.rx.clickRepo
 //                .subscribeNext(weak: self, type(of: self).handleTarget)
 //                .disposed(by: cell.disposeBag)
             return cell
@@ -348,6 +369,8 @@ extension ListViewController: UICollectionViewDelegateFlowLayout {
         switch self.dataSource[indexPath] {
         case let .appInfo(item): return Reusable.appInfoCell.class.size(width: width, item: item)
         case let .event(item): return Reusable.eventCell.class.size(width: width, item: item)
+        case let .repo(item): return Reusable.repoCell.class.size(width: width, item: item)
+        case let .user(item): return Reusable.userCell.class.size(width: width, item: item)
         case let .label(item): return Reusable.labelCell.class.size(width: width, item: item)
         case let .button(item): return Reusable.buttonCell.class.size(width: width, item: item)
         case let .textField(item): return Reusable.textFieldCell.class.size(width: width, item: item)
@@ -389,4 +412,4 @@ extension ListViewController: UICollectionViewDelegateFlowLayout {
     }
 
 }
-// swiftlint:enable type_body_length
+// swiftlint:enable file_length type_body_length

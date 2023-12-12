@@ -14,6 +14,8 @@ import HiIOS
 enum SectionItem: IdentifiableType, Equatable {
     case appInfo(AppInfoItem)
     case event(EventItem)
+    case repo(RepoItem)
+    case user(UserItem)
     case label(LabelItem)
     case button(ButtonItem)
     case textField(TextFieldItem)
@@ -25,6 +27,8 @@ enum SectionItem: IdentifiableType, Equatable {
         switch self {
         case let .appInfo(item): string = item.description
         case let .event(item): string = item.description
+        case let .repo(item): string = item.description
+        case let .user(item): string = item.description
         case let .label(item): string = item.description
         case let .button(item): string = item.description
         case let .textField(item): string = item.description
@@ -40,6 +44,8 @@ enum SectionItem: IdentifiableType, Equatable {
             switch lhs {
             case .appInfo: log("item变化 -> appInfo")
             case .event: log("item变化 -> event")
+            case .repo: log("item变化 -> repo")
+            case .user: log("item变化 -> user")
             case .label: log("item变化 -> label")
             case .button: log("item变化 -> button")
             case .textField: log("item变化 -> textField")
