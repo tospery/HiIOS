@@ -9,19 +9,25 @@ import Foundation
 import HiIOS
 
 enum TabBarKey {
-    case event
+    case trending
     case favorite
     case personal
 }
 
-enum Page: String, Codable {
+enum PagingElement: String, Codable {
     case none
-    case open
-    case closed
+    case trendingRepos
+    case trendingUsers
     
-    static let stateValues = [open, closed]
+    static let trendingValues = [trendingRepos, trendingUsers]
     
-    var title: String? { nil }
+    var title: String? {
+        switch self {
+        case .trendingRepos: return R.string(preferredLanguages: myLangs).localizable.repositories()
+        case .trendingUsers: return R.string(preferredLanguages: myLangs).localizable.developers()
+        default: return nil
+        }
+    }
     
 }
 

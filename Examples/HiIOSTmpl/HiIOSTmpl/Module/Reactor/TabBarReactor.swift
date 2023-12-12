@@ -18,7 +18,7 @@ class TabBarReactor: HiIOS.TabBarReactor, ReactorKit.Reactor {
     typealias Action = NoAction
 
     struct State {
-        let keys: [TabBarKey] = [.event, .favorite, .personal]
+        let keys: [TabBarKey] = [.trending, .favorite, .personal]
     }
 
     var initialState = State()

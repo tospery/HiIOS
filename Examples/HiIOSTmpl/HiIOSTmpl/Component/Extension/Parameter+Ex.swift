@@ -19,4 +19,5 @@ extension Parameter {
     static var authorization: String { "Authorization" }
     static var pageIndex: String { "page" }
     static var pageSize: String { "per_page" }
+    static var pagingElement: String { "pagingElement" }
 }

@@ -27,6 +27,11 @@
 		914346EF2B26B484002199D0 /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914346EE2B26B484002199D0 /* TextViewCell.swift */; };
 		914346F12B26B4AE002199D0 /* TextFieldItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914346F02B26B4AE002199D0 /* TextFieldItem.swift */; };
 		914346F32B26B4B6002199D0 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914346F22B26B4B6002199D0 /* TextFieldCell.swift */; };
+		914B99872B2830FE0084E311 /* TrendingViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914B99862B2830FE0084E311 /* TrendingViewReactor.swift */; };
+		914B99892B28310A0084E311 /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914B99882B28310A0084E311 /* TrendingViewController.swift */; };
+		914B998B2B2834050084E311 /* NavigationBarPagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914B998A2B2834050084E311 /* NavigationBarPagingViewController.swift */; };
+		914B998D2B2834230084E311 /* NavigationBarPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914B998C2B2834230084E311 /* NavigationBarPagingView.swift */; };
+		914B99912B2834620084E311 /* PagingViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914B99902B2834620084E311 /* PagingViewController+Rx.swift */; };
 		91560F272B27636E0008540E /* ScrollViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91560F262B27636E0008540E /* ScrollViewController+Rx.swift */; };
 		91560F2A2B2764090008540E /* PersonalParallaxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91560F292B2764090008540E /* PersonalParallaxView.swift */; };
 		91560F2E2B276AFE0008540E /* PersonalViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91560F2D2B276AFE0008540E /* PersonalViewReactor.swift */; };
@@ -52,6 +57,14 @@
 		9160C6592B279D6000271081 /* BaseRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160C6582B279D6000271081 /* BaseRepo.swift */; };
 		9160C65B2B279E0000271081 /* BaseUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 9160C65A2B279E0000271081 /* BaseUser.json */; };
 		9160C65D2B279E0A00271081 /* BaseRepo.json in Resources */ = {isa = PBXBuildFile; fileRef = 9160C65C2B279E0A00271081 /* BaseRepo.json */; };
+		91A9314E2B28295E00814EB8 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A9314D2B28295E00814EB8 /* Repo.swift */; };
+		91A931502B282A1A00814EB8 /* UserListViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A9314F2B282A1A00814EB8 /* UserListViewReactor.swift */; };
+		91A931522B282A6200814EB8 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A931512B282A6200814EB8 /* UserListViewController.swift */; };
+		91A931542B282A9100814EB8 /* RepoListViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A931532B282A9100814EB8 /* RepoListViewReactor.swift */; };
+		91A931562B282AB200814EB8 /* RepoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A931552B282AB200814EB8 /* RepoListViewController.swift */; };
+		91A931582B282B1100814EB8 /* TrendingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A931572B282B1100814EB8 /* TrendingAPI.swift */; };
+		91A9315A2B282B6A00814EB8 /* ProviderType+TrendingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A931592B282B6A00814EB8 /* ProviderType+TrendingAPI.swift */; };
+		91A9315C2B282C6C00814EB8 /* UIViewController+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A9315B2B282C6C00814EB8 /* UIViewController+Ex.swift */; };
 		91AC6E772B260337003B728F /* ListViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC6E762B260337003B728F /* ListViewReactor.swift */; };
 		91AC6E792B260343003B728F /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC6E782B260343003B728F /* ListViewController.swift */; };
 		91AC6E7C2B260462003B728F /* SectionItemElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC6E7B2B260462003B728F /* SectionItemElement.swift */; };
@@ -115,6 +128,11 @@
 		914346EE2B26B484002199D0 /* TextViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
 		914346F02B26B4AE002199D0 /* TextFieldItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldItem.swift; sourceTree = "<group>"; };
 		914346F22B26B4B6002199D0 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		914B99862B2830FE0084E311 /* TrendingViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewReactor.swift; sourceTree = "<group>"; };
+		914B99882B28310A0084E311 /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
+		914B998A2B2834050084E311 /* NavigationBarPagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarPagingViewController.swift; sourceTree = "<group>"; };
+		914B998C2B2834230084E311 /* NavigationBarPagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarPagingView.swift; sourceTree = "<group>"; };
+		914B99902B2834620084E311 /* PagingViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PagingViewController+Rx.swift"; sourceTree = "<group>"; };
 		91560F262B27636E0008540E /* ScrollViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollViewController+Rx.swift"; sourceTree = "<group>"; };
 		91560F292B2764090008540E /* PersonalParallaxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalParallaxView.swift; sourceTree = "<group>"; };
 		91560F2D2B276AFE0008540E /* PersonalViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewReactor.swift; sourceTree = "<group>"; };
@@ -141,6 +159,14 @@
 		9160C65A2B279E0000271081 /* BaseUser.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BaseUser.json; sourceTree = "<group>"; };
 		9160C65C2B279E0A00271081 /* BaseRepo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BaseRepo.json; sourceTree = "<group>"; };
 		9188AAA92B0F2B0200AF0DBD /* HiIOSTmpl.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HiIOSTmpl.entitlements; sourceTree = "<group>"; };
+		91A9314D2B28295E00814EB8 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
+		91A9314F2B282A1A00814EB8 /* UserListViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewReactor.swift; sourceTree = "<group>"; };
+		91A931512B282A6200814EB8 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
+		91A931532B282A9100814EB8 /* RepoListViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewReactor.swift; sourceTree = "<group>"; };
+		91A931552B282AB200814EB8 /* RepoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewController.swift; sourceTree = "<group>"; };
+		91A931572B282B1100814EB8 /* TrendingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingAPI.swift; sourceTree = "<group>"; };
+		91A931592B282B6A00814EB8 /* ProviderType+TrendingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProviderType+TrendingAPI.swift"; sourceTree = "<group>"; };
+		91A9315B2B282C6C00814EB8 /* UIViewController+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ex.swift"; sourceTree = "<group>"; };
 		91AC6E762B260337003B728F /* ListViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewReactor.swift; sourceTree = "<group>"; };
 		91AC6E782B260343003B728F /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		91AC6E7B2B260462003B728F /* SectionItemElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionItemElement.swift; sourceTree = "<group>"; };
@@ -275,6 +301,7 @@
 				9160C6502B279A5700271081 /* ScrollViewController+Ex.swift */,
 				9160C6522B279AA900271081 /* Storable+Ex.swift */,
 				9160C6542B279ACD00271081 /* BaseViewController+Ex.swift */,
+				91A9315B2B282C6C00814EB8 /* UIViewController+Ex.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -301,6 +328,7 @@
 				91D20B3D2B27767900EF878D /* Event.swift */,
 				9160C6562B279D5300271081 /* BaseUser.swift */,
 				9160C6582B279D6000271081 /* BaseRepo.swift */,
+				91A9314D2B28295E00814EB8 /* Repo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -309,6 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				91560F262B27636E0008540E /* ScrollViewController+Rx.swift */,
+				914B99902B2834620084E311 /* PagingViewController+Rx.swift */,
 			);
 			path = Reactive;
 			sourceTree = "<group>";
@@ -317,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				91560F292B2764090008540E /* PersonalParallaxView.swift */,
+				914B998C2B2834230084E311 /* NavigationBarPagingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -329,6 +359,9 @@
 				91560F352B276B680008540E /* FavoriteViewReactor.swift */,
 				91D20B042B276E3900EF878D /* TabBarReactor.swift */,
 				91D20B282B2771F200EF878D /* LoginViewReactor.swift */,
+				91A9314F2B282A1A00814EB8 /* UserListViewReactor.swift */,
+				91A931532B282A9100814EB8 /* RepoListViewReactor.swift */,
+				914B99862B2830FE0084E311 /* TrendingViewReactor.swift */,
 			);
 			path = Reactor;
 			sourceTree = "<group>";
@@ -341,6 +374,10 @@
 				91560F372B276B730008540E /* FavoriteViewController.swift */,
 				91D20B062B276E4300EF878D /* TabBarController.swift */,
 				91D20B2A2B2771FD00EF878D /* LoginViewController.swift */,
+				91A931512B282A6200814EB8 /* UserListViewController.swift */,
+				91A931552B282AB200814EB8 /* RepoListViewController.swift */,
+				914B99882B28310A0084E311 /* TrendingViewController.swift */,
+				914B998A2B2834050084E311 /* NavigationBarPagingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -455,6 +492,8 @@
 				91D20B372B27747800EF878D /* ProviderType+DynamicAPI.swift */,
 				91D20B392B2774C400EF878D /* Dynamically.swift */,
 				91D20B3B2B2774CE00EF878D /* DynamicAPI.swift */,
+				91A931572B282B1100814EB8 /* TrendingAPI.swift */,
+				91A931592B282B6A00814EB8 /* ProviderType+TrendingAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -650,14 +689,19 @@
 				91D20B382B27747800EF878D /* ProviderType+DynamicAPI.swift in Sources */,
 				91D20B1F2B27717000EF878D /* Router+Dialog+Sheet.swift in Sources */,
 				91D20B232B27718500EF878D /* Router+Ex.swift in Sources */,
+				91A931562B282AB200814EB8 /* RepoListViewController.swift in Sources */,
 				9160C6532B279AA900271081 /* Storable+Ex.swift in Sources */,
+				914B99892B28310A0084E311 /* TrendingViewController.swift in Sources */,
 				91D20B3E2B27767900EF878D /* Event.swift in Sources */,
 				91AC6E7E2B2604A5003B728F /* SectionItem.swift in Sources */,
 				911040F32B11A39A00AF07A3 /* AppDependency.swift in Sources */,
 				91560F2E2B276AFE0008540E /* PersonalViewReactor.swift in Sources */,
 				913904692B1D784200F947E0 /* DataType.swift in Sources */,
 				91560F2A2B2764090008540E /* PersonalParallaxView.swift in Sources */,
+				91A9314E2B28295E00814EB8 /* Repo.swift in Sources */,
 				91AC6E772B260337003B728F /* ListViewReactor.swift in Sources */,
+				91A931522B282A6200814EB8 /* UserListViewController.swift in Sources */,
+				914B998B2B2834050084E311 /* NavigationBarPagingViewController.swift in Sources */,
 				9160C6552B279ACD00271081 /* BaseViewController+Ex.swift in Sources */,
 				91560F362B276B680008540E /* FavoriteViewReactor.swift in Sources */,
 				9160C6432B27940300271081 /* EventCell.swift in Sources */,
@@ -666,6 +710,7 @@
 				91D20B112B276FBF00EF878D /* OCHelper.m in Sources */,
 				91560F382B276B730008540E /* FavoriteViewController.swift in Sources */,
 				910AF2762B0F10B60044111C /* AppDelegate.swift in Sources */,
+				914B998D2B2834230084E311 /* NavigationBarPagingView.swift in Sources */,
 				91F8C1002B141BF1005CAB09 /* Constant.swift in Sources */,
 				9160C6512B279A5700271081 /* ScrollViewController+Ex.swift in Sources */,
 				913904632B1D776100F947E0 /* UIApplication+Ex.swift in Sources */,
@@ -680,7 +725,9 @@
 				91D20B342B27746300EF878D /* ProviderType+GithubBaseAPI.swift in Sources */,
 				91D20B2B2B2771FD00EF878D /* LoginViewController.swift in Sources */,
 				91D20B322B27745700EF878D /* Networking.swift in Sources */,
+				91A9315C2B282C6C00814EB8 /* UIViewController+Ex.swift in Sources */,
 				91D20B162B2770E400EF878D /* WebViewController.swift in Sources */,
+				91A931582B282B1100814EB8 /* TrendingAPI.swift in Sources */,
 				913904672B1D77AF00F947E0 /* User.swift in Sources */,
 				91AC6E862B2605A8003B728F /* AppInfoCell.swift in Sources */,
 				9160C6472B27995600271081 /* BaseResponse+Ex.swift in Sources */,
@@ -690,11 +737,16 @@
 				9160C6412B2793FB00271081 /* EventItem.swift in Sources */,
 				91D20B0C2B276F4900EF878D /* QMUIConfigurationTemplate.m in Sources */,
 				9160C64F2B279A3D00271081 /* Runtime+Ex.swift in Sources */,
+				914B99912B2834620084E311 /* PagingViewController+Rx.swift in Sources */,
 				91AC6E882B2605F5003B728F /* LabelItem.swift in Sources */,
 				91560F322B276B4F0008540E /* EventViewReactor.swift in Sources */,
 				910AF2782B0F10B60044111C /* SceneDelegate.swift in Sources */,
+				914B99872B2830FE0084E311 /* TrendingViewReactor.swift in Sources */,
 				914346E72B26B3A3002199D0 /* ButtonCell.swift in Sources */,
 				91D20B252B27719300EF878D /* Router+Page.swift in Sources */,
+				91A931502B282A1A00814EB8 /* UserListViewReactor.swift in Sources */,
+				91A9315A2B282B6A00814EB8 /* ProviderType+TrendingAPI.swift in Sources */,
+				91A931542B282A9100814EB8 /* RepoListViewReactor.swift in Sources */,
 				914346F12B26B4AE002199D0 /* TextFieldItem.swift in Sources */,
 				91D20B072B276E4300EF878D /* TabBarController.swift in Sources */,
 				91D20B3A2B2774C400EF878D /* Dynamically.swift in Sources */,

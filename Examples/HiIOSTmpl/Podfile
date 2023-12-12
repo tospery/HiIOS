@@ -22,6 +22,7 @@ target 'HiIOSTmpl' do
   pod 'SnapKit', '5.6.0'
   
   # Advanced
+  pod 'Parchment', '3.2.0'
   pod 'Toast-Swift', '5.0.1'
   pod 'SwiftEntryKit', '2.0.0'
   pod 'MXParallaxHeader', '1.1.0'

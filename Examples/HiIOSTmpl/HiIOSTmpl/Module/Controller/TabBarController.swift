@@ -50,12 +50,12 @@ class TabBarController: HiIOS.TabBarController, ReactorKit.View {
     func viewController(with key: TabBarKey) -> UIViewController {
         var viewController: UIViewController!
         switch key {
-        case .event:
+        case .trending:
             viewController = self.navigator.viewController(
-                for: Router.shared.urlString(host: .event)
+                for: Router.shared.urlString(host: .trending, parameters: [:])
             )
-            viewController.tabBarItem.image = R.image.tabbar_event_normal()?.original
-            viewController.tabBarItem.selectedImage = R.image.tabbar_event_selected()?.template
+            viewController.tabBarItem.image = R.image.tabbar_trending_normal()?.original
+            viewController.tabBarItem.selectedImage = R.image.tabbar_trending_selected()?.template
         case .favorite:
             viewController = self.navigator.viewController(
                 for: Router.shared.urlString(host: .favorite)

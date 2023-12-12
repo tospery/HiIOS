@@ -61,13 +61,16 @@ class ListViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
     }
     
     let url: String
-    let page: Page
+    let pagingElement: PagingElement
     let username: String
     var initialState = State()
 
     required init(_ provider: HiIOS.ProviderType, _ parameters: [String: Any]?) {
         self.url = parameters?.string(for: Parameter.url) ?? ""
-        self.page = parameters?.enum(for: Parameter.page, type: Page.self) ?? Page.none
+        self.pagingElement = parameters?.enum(
+            for: Parameter.pagingElement,
+            type: PagingElement.self
+        ) ?? PagingElement.none
         self.username = parameters?.string(for: Parameter.username) ?? ""
         super.init(provider, parameters)
         self.initialState = State(

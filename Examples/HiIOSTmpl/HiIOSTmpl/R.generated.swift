@@ -62,7 +62,7 @@ struct _R {
     }
 
 
-    /// This `_R.string.localizable` struct is generated, and contains static references to 37 localization keys.
+    /// This `_R.string.localizable` struct is generated, and contains static references to 40 localization keys.
     struct localizable {
       let source: RswiftResources.StringResource.Source
 
@@ -80,6 +80,11 @@ struct _R {
       ///
       /// Key: Chinese
       var chinese: RswiftResources.StringResource { .init(key: "Chinese", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: 开发者
+      ///
+      /// Key: Developers
+      var developers: RswiftResources.StringResource { .init(key: "Developers", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
 
       /// Value: English
       ///
@@ -236,10 +241,20 @@ struct _R {
       /// Key: Phone Login
       var phoneLogin: RswiftResources.StringResource { .init(key: "Phone Login", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
 
+      /// Value: 仓库
+      ///
+      /// Key: Repositories
+      var repositories: RswiftResources.StringResource { .init(key: "Repositories", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
       /// Value: 确定
       ///
       /// Key: Sure
       var sure: RswiftResources.StringResource { .init(key: "Sure", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: 趋势
+      ///
+      /// Key: Trending
+      var trending: RswiftResources.StringResource { .init(key: "Trending", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
 
       /// Value: 未知
       ///
@@ -261,7 +276,7 @@ struct _R {
     var accentColor: RswiftResources.ColorResource { .init(name: "AccentColor", path: [], bundle: bundle) }
   }
 
-  /// This `_R.image` struct is generated, and contains static references to 10 images.
+  /// This `_R.image` struct is generated, and contains static references to 11 images.
   struct image {
     let bundle: Foundation.Bundle
 
@@ -274,14 +289,11 @@ struct _R {
     /// Image `ic_user_placeholder`.
     var ic_user_placeholder: RswiftResources.ImageResource { .init(name: "ic_user_placeholder", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
+    /// Image `navbar_search`.
+    var navbar_search: RswiftResources.ImageResource { .init(name: "navbar_search", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `personal_parallax_bg`.
     var personal_parallax_bg: RswiftResources.ImageResource { .init(name: "personal_parallax_bg", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
-
-    /// Image `tabbar_event_normal`.
-    var tabbar_event_normal: RswiftResources.ImageResource { .init(name: "tabbar_event_normal", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
-
-    /// Image `tabbar_event_selected`.
-    var tabbar_event_selected: RswiftResources.ImageResource { .init(name: "tabbar_event_selected", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `tabbar_favorite_normal`.
     var tabbar_favorite_normal: RswiftResources.ImageResource { .init(name: "tabbar_favorite_normal", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
@@ -294,6 +306,12 @@ struct _R {
 
     /// Image `tabbar_personal_selected`.
     var tabbar_personal_selected: RswiftResources.ImageResource { .init(name: "tabbar_personal_selected", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `tabbar_trending_normal`.
+    var tabbar_trending_normal: RswiftResources.ImageResource { .init(name: "tabbar_trending_normal", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `tabbar_trending_selected`.
+    var tabbar_trending_selected: RswiftResources.ImageResource { .init(name: "tabbar_trending_selected", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
   }
 
   /// This `_R.entitlements` struct is generated, and contains static references to 3 properties.
@@ -313,9 +331,15 @@ struct _R {
     }
   }
 
-  /// This `_R.file` struct is generated, and contains static references to 2 resource files.
+  /// This `_R.file` struct is generated, and contains static references to 4 resource files.
   struct file {
     let bundle: Foundation.Bundle
+
+    /// Resource file `BaseRepo.json`.
+    var baseRepoJson: RswiftResources.FileResource { .init(name: "BaseRepo", pathExtension: "json", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `BaseUser.json`.
+    var baseUserJson: RswiftResources.FileResource { .init(name: "BaseUser", pathExtension: "json", bundle: bundle, locale: LocaleReference.none) }
 
     /// Resource file `Configuration.json`.
     var configurationJson: RswiftResources.FileResource { .init(name: "Configuration", pathExtension: "json", bundle: bundle, locale: LocaleReference.none) }

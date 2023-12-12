@@ -6,6 +6,9 @@
 "Cancel" = "取消";
 "Exit" = "退出";
 "Unknown" = "未知";
+"Repositories" = "仓库";
+"Developers" = "开发者";
+"Trending" = "趋势";
 "Event" = "事件";
 "Favorite" = "收藏";
 "Personal" = "我的";

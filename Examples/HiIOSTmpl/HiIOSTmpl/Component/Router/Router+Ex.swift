@@ -15,9 +15,11 @@ import RswiftResources
 import HiIOS
 
 extension Router.Host {
+    static var trending: Router.Host { "trending" }
     static var event: Router.Host { "event" }
     static var favorite: Router.Host { "favorite" }
     static var about: Router.Host { "about" }
+    static var repo: Router.Host { "repo" }
     static var test: Router.Host { "test" }
 }
 
