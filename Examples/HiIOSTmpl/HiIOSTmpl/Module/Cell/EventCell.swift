@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import ReactorKit
-import URLNavigator
+import URLNavigator_Hi
 import TTTAttributedLabel
 import RswiftResources
 import HiIOS

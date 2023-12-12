@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import URLNavigator
+import URLNavigator_Hi
 
 open class TableViewController: ScrollViewController {
     

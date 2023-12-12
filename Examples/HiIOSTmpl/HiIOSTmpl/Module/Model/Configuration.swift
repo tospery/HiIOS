@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import ReactorKit
 import ReusableKit
-import URLNavigator
+import URLNavigator_Hi
 import RswiftResources
 import ObjectMapper_Hi
 import HiIOS

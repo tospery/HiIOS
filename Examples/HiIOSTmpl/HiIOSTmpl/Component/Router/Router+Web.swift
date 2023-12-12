@@ -7,7 +7,7 @@
 
 import Foundation
 import HiIOS
-import URLNavigator
+import URLNavigator_Hi
 
 extension Router {
     

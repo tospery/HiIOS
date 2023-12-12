@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import NSObject_Rx
 import SwifterSwift
-import URLNavigator
+import URLNavigator_Hi
 
 public let statusBarService = BehaviorRelay<UIStatusBarStyle>(
     value: defaultStatusBarStyle()

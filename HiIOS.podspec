@@ -35,7 +35,7 @@ Pod::Spec.new do |s|
   	ss.dependency 'HiIOS/Core'
   	ss.dependency 'RxSwift', '~> 6.0'
   	ss.dependency 'RxCocoa', '~> 6.0'
-  	ss.dependency 'URLNavigator', '2.5.1'
+  	ss.dependency 'URLNavigator-Hi', '2.5.1-v1'
   end
   
   s.subspec 'Network' do |ss|

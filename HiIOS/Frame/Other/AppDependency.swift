@@ -8,7 +8,7 @@
 import UIKit
 import QMUIKit
 import RxSwift
-import URLNavigator
+import URLNavigator_Hi
 import SwifterSwift
 
 public var gDisposeBag = DisposeBag()

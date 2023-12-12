@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import URLNavigator
+import URLNavigator_Hi
 
 public protocol RouterCompatible {
     
@@ -99,8 +99,10 @@ final public class Router {
             }
             return nil
         }
-        navigator.register("http://<path:_>", webFactory)
-        navigator.register("https://<path:_>", webFactory)
+//        navigator.register("http://<path:_>", webFactory)
+//        navigator.register("https://<path:_>", webFactory)
+        navigator.register("http://[path:_]", webFactory)
+        navigator.register("https://[path:_]", webFactory)
     }
     
     func buildinBack(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol) {

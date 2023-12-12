@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import URLNavigator
+import URLNavigator_Hi
 
 open class BaseViewReactor: NSObject, ReactorType {
     

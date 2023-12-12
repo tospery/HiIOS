@@ -11,7 +11,7 @@ import RxCocoa
 import ReactorKit
 import RxSwiftExt
 import RxOptional
-import URLNavigator
+import URLNavigator_Hi
 import RswiftResources
 import HiIOS
 

@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import WebKit
-import URLNavigator
+import URLNavigator_Hi
 import ReactorKit
 import SwifterSwift
 

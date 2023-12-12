@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import URLNavigator
+import URLNavigator_Hi
 import DZNEmptyDataSet
 import BonMot
 import MJRefresh
