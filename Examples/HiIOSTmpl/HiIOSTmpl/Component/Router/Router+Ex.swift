@@ -25,7 +25,7 @@ extension Router.Host {
 
 extension Router.Path {
     static var options: Router.Path { "options" }
-    static var branches: Router.Path { "branches" }
+    static var branchs: Router.Path { "branchs" }
 }
 
 extension Router: RouterCompatible {
@@ -41,7 +41,7 @@ extension Router: RouterCompatible {
     public func allowedPaths(host: Host) -> [Path] {
         switch host {
         case .popup: return [
-            .branches
+            .options
         ]
         default: return []
         }

@@ -37,6 +37,9 @@ extension Router {
         navigator.register(self.urlPattern(host: .repo, placeholder: "[username]/[reponame]")) { url, values, context in
             RepoViewController(navigator, RepoViewReactor(provider, self.parameters(url, values, context)))
         }
+        navigator.register(self.urlPattern(host: .options)) { url, values, context in
+            OptionsViewController(navigator, OptionsViewReactor(provider, self.parameters(url, values, context)))
+        }
         navigator.register(self.urlPattern(host: .about)) { url, values, context in
             AboutViewController(navigator, AboutViewReactor(provider, self.parameters(url, values, context)))
         }

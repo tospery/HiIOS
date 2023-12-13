@@ -63,6 +63,8 @@
 		9166BBCD2B297C2300FAF764 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9166BBCC2B297C2300FAF764 /* AboutViewController.swift */; };
 		9166BBCF2B297D2F00FAF764 /* TestViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9166BBCE2B297D2F00FAF764 /* TestViewReactor.swift */; };
 		9166BBD12B297D3900FAF764 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9166BBD02B297D3900FAF764 /* TestViewController.swift */; };
+		9166BBD32B29910C00FAF764 /* OptionsViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9166BBD22B29910C00FAF764 /* OptionsViewReactor.swift */; };
+		9166BBD52B29911900FAF764 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9166BBD42B29911900FAF764 /* OptionsViewController.swift */; };
 		919CDED42B28BA19001C359B /* RepoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919CDED32B28BA19001C359B /* RepoItem.swift */; };
 		919CDED62B28BA25001C359B /* RepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919CDED52B28BA25001C359B /* RepoCell.swift */; };
 		919CDED82B28BA5F001C359B /* Repo+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919CDED72B28BA5F001C359B /* Repo+Ex.swift */; };
@@ -180,6 +182,8 @@
 		9166BBCC2B297C2300FAF764 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		9166BBCE2B297D2F00FAF764 /* TestViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewReactor.swift; sourceTree = "<group>"; };
 		9166BBD02B297D3900FAF764 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		9166BBD22B29910C00FAF764 /* OptionsViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewReactor.swift; sourceTree = "<group>"; };
+		9166BBD42B29911900FAF764 /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		9188AAA92B0F2B0200AF0DBD /* HiIOSTmpl.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HiIOSTmpl.entitlements; sourceTree = "<group>"; };
 		919CDED32B28BA19001C359B /* RepoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoItem.swift; sourceTree = "<group>"; };
 		919CDED52B28BA25001C359B /* RepoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCell.swift; sourceTree = "<group>"; };
@@ -400,6 +404,7 @@
 				919CDEE12B28C837001C359B /* RepoViewReactor.swift */,
 				9166BBCA2B297C1900FAF764 /* AboutViewReactor.swift */,
 				9166BBCE2B297D2F00FAF764 /* TestViewReactor.swift */,
+				9166BBD22B29910C00FAF764 /* OptionsViewReactor.swift */,
 			);
 			path = Reactor;
 			sourceTree = "<group>";
@@ -420,6 +425,7 @@
 				919CDEE52B28C849001C359B /* RepoViewController.swift */,
 				9166BBCC2B297C2300FAF764 /* AboutViewController.swift */,
 				9166BBD02B297D3900FAF764 /* TestViewController.swift */,
+				9166BBD42B29911900FAF764 /* OptionsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -778,6 +784,7 @@
 				914346E92B26B3E9002199D0 /* ImageViewItem.swift in Sources */,
 				91D20B342B27746300EF878D /* ProviderType+GithubBaseAPI.swift in Sources */,
 				91D20B2B2B2771FD00EF878D /* LoginViewController.swift in Sources */,
+				9166BBD32B29910C00FAF764 /* OptionsViewReactor.swift in Sources */,
 				919CDED82B28BA5F001C359B /* Repo+Ex.swift in Sources */,
 				91D20B322B27745700EF878D /* Networking.swift in Sources */,
 				91A9315C2B282C6C00814EB8 /* UIViewController+Ex.swift in Sources */,
@@ -805,6 +812,7 @@
 				91D20B252B27719300EF878D /* Router+Page.swift in Sources */,
 				9166BBD12B297D3900FAF764 /* TestViewController.swift in Sources */,
 				91A931502B282A1A00814EB8 /* UserListViewReactor.swift in Sources */,
+				9166BBD52B29911900FAF764 /* OptionsViewController.swift in Sources */,
 				919CDEE22B28C837001C359B /* RepoViewReactor.swift in Sources */,
 				91A9315A2B282B6A00814EB8 /* ProviderType+TrendingAPI.swift in Sources */,
 				91A931542B282A9100814EB8 /* RepoListViewReactor.swift in Sources */,

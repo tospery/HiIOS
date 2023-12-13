@@ -85,6 +85,18 @@ class TrendingViewController: ScrollViewController, ReactorKit.View {
 //            wrap: NavigationController.self,
 //            animated: false
 //        )
+        
+        self.navigator.rxPopup(.options, context: [
+            Parameter.username: "myuser",
+            Parameter.reponame: "myrepo",
+            Parameter.selected: "true"
+        ]).subscribe(onNext: { [weak self] result in
+            guard let `self` = self else { return }
+            log("result: \(result)")
+//            var data = self.reactor?.currentState.data as? RepoViewReactor.Data
+//            data?.branch = result as? Branch
+//            self.reactor?.action.onNext(.data(data))
+        }).disposed(by: self.disposeBag)
     }
     
     override func handleTheme(_ themeType: ThemeType) {
