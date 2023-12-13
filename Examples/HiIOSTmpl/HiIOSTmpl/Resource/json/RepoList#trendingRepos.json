@@ -1,846 +1,786 @@
 [
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "Curated list of project-based tutorials",
-        "url": null,
-        "language": null,
-        "languageColor": null,
-        "stars": 130429,
-        "forks": 17936,
-        "currentPeriodStars": 1825,
+        "author": "malcommac",
+        "name": "SwiftLocation",
+        "url": "https://github.com/malcommac/SwiftLocation",
+        "description": "Efficient and easy to use location tracking framework for iOS",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 2223,
+        "forks": 296,
+        "currentPeriodStars": 55,
         "builtBy": [
             {
-                "username": "tuvtran",
-                "href": "https://github.com/tuvtran",
-                "avatar": "https://avatars.githubusercontent.com/u/13454011"
+                "username": "malcommac",
+                "href": "https://github.com/malcommac",
+                "avatar": "https://avatars0.githubusercontent.com/u/235645"
             },
             {
-                "username": "sayands",
-                "href": "https://github.com/sayands",
-                "avatar": "https://avatars.githubusercontent.com/u/29180645"
+                "username": "cyupa",
+                "href": "https://github.com/cyupa",
+                "avatar": "https://avatars0.githubusercontent.com/u/958431"
             },
             {
-                "username": "enkeyz",
-                "href": "https://github.com/enkeyz",
-                "avatar": "https://avatars.githubusercontent.com/u/17646853"
+                "username": "Dharin-shah",
+                "href": "https://github.com/Dharin-shah",
+                "avatar": "https://avatars0.githubusercontent.com/u/8616130"
             },
             {
-                "username": "bobeff",
-                "href": "https://github.com/bobeff",
-                "avatar": "https://avatars.githubusercontent.com/u/675506"
+                "username": "RafaelPlantard",
+                "href": "https://github.com/RafaelPlantard",
+                "avatar": "https://avatars2.githubusercontent.com/u/5968478"
             },
             {
-                "username": "olucode",
-                "href": "https://github.com/olucode",
-                "avatar": "https://avatars.githubusercontent.com/u/24525097"
+                "username": "qasimsina",
+                "href": "https://github.com/qasimsina",
+                "avatar": "https://avatars2.githubusercontent.com/u/24369597"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "leaked prompts of GPTs",
-        "url": null,
-        "language": null,
-        "languageColor": null,
-        "stars": 15142,
-        "forks": 2338,
-        "currentPeriodStars": 3061,
+        "author": "khoren93",
+        "name": "SwiftHub",
+        "url": "https://github.com/khoren93/SwiftHub",
+        "description": "GitHub iOS client in RxSwift and MVVM-C clean architecture",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 841,
+        "forks": 113,
+        "currentPeriodStars": 39,
         "builtBy": [
             {
-                "username": "linexjlin",
-                "href": "https://github.com/linexjlin",
-                "avatar": "https://avatars.githubusercontent.com/u/3595733"
+                "username": "khoren93",
+                "href": "https://github.com/khoren93",
+                "avatar": "https://avatars0.githubusercontent.com/u/11523360"
             },
             {
-                "username": "michaelskyba",
-                "href": "https://github.com/michaelskyba",
-                "avatar": "https://avatars.githubusercontent.com/u/57649592"
-            },
-            {
-                "username": "rohitg00",
-                "href": "https://github.com/rohitg00",
-                "avatar": "https://avatars.githubusercontent.com/u/48523873"
-            },
-            {
-                "username": "WooodHead",
-                "href": "https://github.com/WooodHead",
-                "avatar": "https://avatars.githubusercontent.com/u/5668806"
-            },
-            {
-                "username": "qtxwang",
-                "href": "https://github.com/qtxwang",
-                "avatar": "https://avatars.githubusercontent.com/u/28964185"
+                "username": "NghiaTranUIT",
+                "href": "https://github.com/NghiaTranUIT",
+                "avatar": "https://avatars0.githubusercontent.com/u/5878421"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "Python - 100天从新手到大师",
-        "url": null,
-        "language": "Python",
-        "languageColor": "#3572A5",
-        "stars": 143858,
-        "forks": 50622,
-        "currentPeriodStars": 263,
+        "author": "Silence-GitHub",
+        "name": "BBMetalImage",
+        "url": "https://github.com/Silence-GitHub/BBMetalImage",
+        "description": "A high performance Swift library for GPU-accelerated image/video processing based on Metal.",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 186,
+        "forks": 14,
+        "currentPeriodStars": 27,
         "builtBy": [
             {
-                "username": "jackfrued",
-                "href": "https://github.com/jackfrued",
-                "avatar": "https://avatars.githubusercontent.com/u/7474657"
-            },
-            {
-                "username": "softpo",
-                "href": "https://github.com/softpo",
-                "avatar": "https://avatars.githubusercontent.com/u/13017944"
-            },
-            {
-                "username": "geekya215",
-                "href": "https://github.com/geekya215",
-                "avatar": "https://avatars.githubusercontent.com/u/10865729"
-            },
-            {
-                "username": "jankeromnes",
-                "href": "https://github.com/jankeromnes",
-                "avatar": "https://avatars.githubusercontent.com/u/599268"
-            },
-            {
-                "username": "royaso",
-                "href": "https://github.com/royaso",
-                "avatar": "https://avatars.githubusercontent.com/u/2331406"
+                "username": "Silence-GitHub",
+                "href": "https://github.com/Silence-GitHub",
+                "avatar": "https://avatars3.githubusercontent.com/u/12474830"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "Open Source realtime backend in 1 file",
-        "url": null,
-        "language": "Go",
-        "languageColor": "#00ADD8",
-        "stars": 27886,
-        "forks": 1250,
-        "currentPeriodStars": 130,
+        "author": "shadowsocks",
+        "name": "ShadowsocksX-NG",
+        "url": "https://github.com/shadowsocks/ShadowsocksX-NG",
+        "description": "Next Generation of ShadowsocksX",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 20001,
+        "forks": 5507,
+        "currentPeriodStars": 21,
         "builtBy": [
             {
-                "username": "ganigeorgiev",
-                "href": "https://github.com/ganigeorgiev",
-                "avatar": "https://avatars.githubusercontent.com/u/8248071"
+                "username": "qiuyuzhou",
+                "href": "https://github.com/qiuyuzhou",
+                "avatar": "https://avatars0.githubusercontent.com/u/2310221"
             },
             {
-                "username": "ValleyZw",
-                "href": "https://github.com/ValleyZw",
-                "avatar": "https://avatars.githubusercontent.com/u/43366254"
+                "username": "qinyuhang",
+                "href": "https://github.com/qinyuhang",
+                "avatar": "https://avatars1.githubusercontent.com/u/6239057"
             },
             {
-                "username": "yuxiang-gao",
-                "href": "https://github.com/yuxiang-gao",
-                "avatar": "https://avatars.githubusercontent.com/u/17144564"
+                "username": "timothyqiu",
+                "href": "https://github.com/timothyqiu",
+                "avatar": "https://avatars2.githubusercontent.com/u/372476"
             },
             {
-                "username": "dschissler",
-                "href": "https://github.com/dschissler",
-                "avatar": "https://avatars.githubusercontent.com/u/3968727"
+                "username": "imnotpopo",
+                "href": "https://github.com/imnotpopo",
+                "avatar": "https://avatars1.githubusercontent.com/u/20587769"
             },
             {
-                "username": "MarvinJWendt",
-                "href": "https://github.com/MarvinJWendt",
-                "avatar": "https://avatars.githubusercontent.com/u/31022056"
+                "username": "rainux",
+                "href": "https://github.com/rainux",
+                "avatar": "https://avatars3.githubusercontent.com/u/13707"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "Explain complex systems using visuals and simple terms. Help you prepare for system design interviews.",
-        "url": null,
-        "language": null,
-        "languageColor": null,
-        "stars": 48499,
-        "forks": 4811,
-        "currentPeriodStars": 463,
+        "author": "Ikiga",
+        "name": "IkigaJSON",
+        "url": "https://github.com/Ikiga/IkigaJSON",
+        "description": "A high performance JSON library in Swift",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 163,
+        "forks": 3,
+        "currentPeriodStars": 18,
         "builtBy": [
             {
-                "username": "slam",
-                "href": "https://github.com/slam",
-                "avatar": "https://avatars.githubusercontent.com/u/50348"
-            },
-            {
-                "username": "Stephanvs",
-                "href": "https://github.com/Stephanvs",
-                "avatar": "https://avatars.githubusercontent.com/u/375631"
-            },
-            {
-                "username": "alastairp",
-                "href": "https://github.com/alastairp",
-                "avatar": "https://avatars.githubusercontent.com/u/1277202"
-            },
-            {
-                "username": "lucasberti",
-                "href": "https://github.com/lucasberti",
-                "avatar": "https://avatars.githubusercontent.com/u/3818584"
-            },
-            {
-                "username": "liweiyi88",
-                "href": "https://github.com/liweiyi88",
-                "avatar": "https://avatars.githubusercontent.com/u/7248260"
+                "username": "Joannis",
+                "href": "https://github.com/Joannis",
+                "avatar": "https://avatars3.githubusercontent.com/u/1951674"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "Official code for the paper \"LucidDreamer: Domain-free Generation of 3D Gaussian Splatting Scenes\".",
-        "url": null,
-        "language": "Python",
-        "languageColor": "#3572A5",
-        "stars": 464,
-        "forks": 45,
-        "currentPeriodStars": 138,
+        "author": "vsouza",
+        "name": "awesome-ios",
+        "url": "https://github.com/vsouza/awesome-ios",
+        "description": "A curated list of awesome iOS ecosystem, including Objective-C and Swift Projects",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 31236,
+        "forks": 5231,
+        "currentPeriodStars": 14,
         "builtBy": [
             {
-                "username": "ironjr",
-                "href": "https://github.com/ironjr",
-                "avatar": "https://avatars.githubusercontent.com/u/12259041"
+                "username": "lfarah",
+                "href": "https://github.com/lfarah",
+                "avatar": "https://avatars1.githubusercontent.com/u/6511079"
             },
             {
-                "username": "esw0116",
-                "href": "https://github.com/esw0116",
-                "avatar": "https://avatars.githubusercontent.com/u/27003125"
+                "username": "vsouza",
+                "href": "https://github.com/vsouza",
+                "avatar": "https://avatars1.githubusercontent.com/u/484656"
             },
             {
-                "username": "robot0321",
-                "href": "https://github.com/robot0321",
-                "avatar": "https://avatars.githubusercontent.com/u/11347296"
+                "username": "dkhamsing",
+                "href": "https://github.com/dkhamsing",
+                "avatar": "https://avatars1.githubusercontent.com/u/4723115"
             },
             {
-                "username": "eltociear",
-                "href": "https://github.com/eltociear",
-                "avatar": "https://avatars.githubusercontent.com/u/22633385"
+                "username": "victorgama",
+                "href": "https://github.com/victorgama",
+                "avatar": "https://avatars3.githubusercontent.com/u/77198"
+            },
+            {
+                "username": "naeemshaikh90",
+                "href": "https://github.com/naeemshaikh90",
+                "avatar": "https://avatars1.githubusercontent.com/u/10736853"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "🔮 SuperDuperDB: Bring AI to your database: Integrate, train and manage any AI models and APIs directly with your database and your data.",
-        "url": null,
-        "language": "Python",
-        "languageColor": "#3572A5",
-        "stars": 2772,
-        "forks": 400,
-        "currentPeriodStars": 642,
+        "author": "JamitLabs",
+        "name": "Accio",
+        "url": "https://github.com/JamitLabs/Accio",
+        "description": "A dependency manager driven by SwiftPM that works for iOS/tvOS/watchOS/macOS projects.",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 260,
+        "forks": 6,
+        "currentPeriodStars": 15,
         "builtBy": [
             {
-                "username": "blythed",
-                "href": "https://github.com/blythed",
-                "avatar": "https://avatars.githubusercontent.com/u/15139331"
+                "username": "Dschee",
+                "href": "https://github.com/Dschee",
+                "avatar": "https://avatars3.githubusercontent.com/u/6942160"
             },
             {
-                "username": "rec",
-                "href": "https://github.com/rec",
-                "avatar": "https://avatars.githubusercontent.com/u/253362"
+                "username": "fredpi",
+                "href": "https://github.com/fredpi",
+                "avatar": "https://avatars0.githubusercontent.com/u/19194800"
             },
             {
-                "username": "fnikolai",
-                "href": "https://github.com/fnikolai",
-                "avatar": "https://avatars.githubusercontent.com/u/4982285"
+                "username": "mrylmz",
+                "href": "https://github.com/mrylmz",
+                "avatar": "https://avatars0.githubusercontent.com/u/22421171"
             },
             {
-                "username": "nenb",
-                "href": "https://github.com/nenb",
-                "avatar": "https://avatars.githubusercontent.com/u/55434794"
-            },
-            {
-                "username": "kartik4949",
-                "href": "https://github.com/kartik4949",
-                "avatar": "https://avatars.githubusercontent.com/u/38289341"
+                "username": "tonyarnold",
+                "href": "https://github.com/tonyarnold",
+                "avatar": "https://avatars1.githubusercontent.com/u/4802"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": null,
-        "url": null,
-        "language": "Python",
-        "languageColor": "#3572A5",
-        "stars": 89,
-        "forks": 526,
-        "currentPeriodStars": 5,
+        "author": "wizeline",
+        "name": "WLEmptyState",
+        "url": "https://github.com/wizeline/WLEmptyState",
+        "description": "WLEmptyState is an iOS based component that lets you customize the view when the dataset of UITableView is empty. We created a sample project with the WLEmptyState component to show how you can use it.",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 151,
+        "forks": 7,
+        "currentPeriodStars": 14,
         "builtBy": [
             {
-                "username": "saransh-mapup",
-                "href": "https://github.com/saransh-mapup",
-                "avatar": "https://avatars.githubusercontent.com/u/77100515"
+                "username": "lojals",
+                "href": "https://github.com/lojals",
+                "avatar": "https://avatars2.githubusercontent.com/u/6756995"
             },
             {
-                "username": "Venkatesh1618",
-                "href": "https://github.com/Venkatesh1618",
-                "avatar": "https://avatars.githubusercontent.com/u/77106294"
+                "username": "alexandercg",
+                "href": "https://github.com/alexandercg",
+                "avatar": "https://avatars0.githubusercontent.com/u/3466367"
+            },
+            {
+                "username": "leonardo-garcia",
+                "href": "https://github.com/leonardo-garcia",
+                "avatar": "https://avatars0.githubusercontent.com/u/40211551"
+            },
+            {
+                "username": "p-daemon",
+                "href": "https://github.com/p-daemon",
+                "avatar": "https://avatars2.githubusercontent.com/u/42153231"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": null,
-        "url": null,
-        "language": "C++",
-        "languageColor": "#f34b7d",
-        "stars": 1194,
-        "forks": 982,
-        "currentPeriodStars": 160,
+        "author": "serhii-londar",
+        "name": "open-source-mac-os-apps",
+        "url": "https://github.com/serhii-londar/open-source-mac-os-apps",
+        "description": "🚀 Awesome list of open source applications for macOS.",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 16755,
+        "forks": 1066,
+        "currentPeriodStars": 13,
         "builtBy": [
             {
-                "username": "jmpoep",
-                "href": "https://github.com/jmpoep",
-                "avatar": "https://avatars.githubusercontent.com/u/25973366"
+                "username": "serhii-londar",
+                "href": "https://github.com/serhii-londar",
+                "avatar": "https://avatars0.githubusercontent.com/u/15808174"
+            },
+            {
+                "username": "justinclift",
+                "href": "https://github.com/justinclift",
+                "avatar": "https://avatars1.githubusercontent.com/u/406299"
+            },
+            {
+                "username": "alichtman",
+                "href": "https://github.com/alichtman",
+                "avatar": "https://avatars3.githubusercontent.com/u/20600565"
+            },
+            {
+                "username": "shlomoklahr",
+                "href": "https://github.com/shlomoklahr",
+                "avatar": "https://avatars1.githubusercontent.com/u/22583506"
+            },
+            {
+                "username": "Yasumoto",
+                "href": "https://github.com/Yasumoto",
+                "avatar": "https://avatars1.githubusercontent.com/u/48383"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "一个简单的 Python 脚本，可以通过语音与本地大语言模型进行对话。",
-        "url": null,
-        "language": "Python",
-        "languageColor": "#3572A5",
-        "stars": 412,
-        "forks": 69,
-        "currentPeriodStars": 98,
+        "author": "Ji4n1ng",
+        "name": "OpenInTerminal",
+        "url": "https://github.com/Ji4n1ng/OpenInTerminal",
+        "description": "✨ Finder Toolbar app for macOS to open the current directory in Terminal, iTerm, Hyper or Alacritty.",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 1205,
+        "forks": 55,
+        "currentPeriodStars": 12,
         "builtBy": [
             {
-                "username": "linyiLYi",
-                "href": "https://github.com/linyiLYi",
-                "avatar": "https://avatars.githubusercontent.com/u/48440925"
+                "username": "Ji4n1ng",
+                "href": "https://github.com/Ji4n1ng",
+                "avatar": "https://avatars2.githubusercontent.com/u/11001224"
+            },
+            {
+                "username": "Camji55",
+                "href": "https://github.com/Camji55",
+                "avatar": "https://avatars2.githubusercontent.com/u/2769158"
+            },
+            {
+                "username": "vcaesar",
+                "href": "https://github.com/vcaesar",
+                "avatar": "https://avatars3.githubusercontent.com/u/16043470"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "A collection of inspiring lists, manuals, cheatsheets, blogs, hacks, one-liners, cli/web tools and more.",
-        "url": null,
-        "language": null,
-        "languageColor": null,
-        "stars": 115132,
-        "forks": 8017,
-        "currentPeriodStars": 264,
+        "author": "malcommac",
+        "name": "SwiftDate",
+        "url": "https://github.com/malcommac/SwiftDate",
+        "description": "Parse, validate, manipulate, and display dates, time and timezones in Swift",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 4812,
+        "forks": 490,
+        "currentPeriodStars": 12,
         "builtBy": [
             {
-                "username": "trimstray",
-                "href": "https://github.com/trimstray",
-                "avatar": "https://avatars.githubusercontent.com/u/31127917"
+                "username": "malcommac",
+                "href": "https://github.com/malcommac",
+                "avatar": "https://avatars0.githubusercontent.com/u/235645"
             },
             {
-                "username": "lbonanomi",
-                "href": "https://github.com/lbonanomi",
-                "avatar": "https://avatars.githubusercontent.com/u/5369016"
+                "username": "Hout",
+                "href": "https://github.com/Hout",
+                "avatar": "https://avatars0.githubusercontent.com/u/641321"
             },
             {
-                "username": "loweryaustin",
-                "href": "https://github.com/loweryaustin",
-                "avatar": "https://avatars.githubusercontent.com/u/2003860"
+                "username": "fhisa",
+                "href": "https://github.com/fhisa",
+                "avatar": "https://avatars1.githubusercontent.com/u/23127"
             },
             {
-                "username": "fabidick22",
-                "href": "https://github.com/fabidick22",
-                "avatar": "https://avatars.githubusercontent.com/u/8176821"
+                "username": "mrkd",
+                "href": "https://github.com/mrkd",
+                "avatar": "https://avatars1.githubusercontent.com/u/205066"
             },
             {
-                "username": "naeluh",
-                "href": "https://github.com/naeluh",
-                "avatar": "https://avatars.githubusercontent.com/u/477860"
+                "username": "darlhz",
+                "href": "https://github.com/darlhz",
+                "avatar": "https://avatars0.githubusercontent.com/u/14962871"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "A Chrome extension helps you group your tabs with AI.",
-        "url": null,
-        "language": "TypeScript",
-        "languageColor": "#3178c6",
-        "stars": 767,
-        "forks": 137,
-        "currentPeriodStars": 209,
+        "author": "mxcl",
+        "name": "PromiseKit",
+        "url": "https://github.com/mxcl/PromiseKit",
+        "description": "Promises for Swift & ObjC.",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 11316,
+        "forks": 1067,
+        "currentPeriodStars": 11,
         "builtBy": [
             {
-                "username": "MichaelYuhe",
-                "href": "https://github.com/MichaelYuhe",
-                "avatar": "https://avatars.githubusercontent.com/u/63531512"
+                "username": "mxcl",
+                "href": "https://github.com/mxcl",
+                "avatar": "https://avatars2.githubusercontent.com/u/58962"
             },
             {
-                "username": "lawvs",
-                "href": "https://github.com/lawvs",
-                "avatar": "https://avatars.githubusercontent.com/u/18554747"
+                "username": "nathanhosselton",
+                "href": "https://github.com/nathanhosselton",
+                "avatar": "https://avatars3.githubusercontent.com/u/7957896"
             },
             {
-                "username": "nohzafk",
-                "href": "https://github.com/nohzafk",
-                "avatar": "https://avatars.githubusercontent.com/u/149959021"
+                "username": "josejulio",
+                "href": "https://github.com/josejulio",
+                "avatar": "https://avatars3.githubusercontent.com/u/3845764"
             },
             {
-                "username": "ObservedObserver",
-                "href": "https://github.com/ObservedObserver",
-                "avatar": "https://avatars.githubusercontent.com/u/22167673"
+                "username": "ldiqual",
+                "href": "https://github.com/ldiqual",
+                "avatar": "https://avatars0.githubusercontent.com/u/941453"
             },
             {
-                "username": "ringozzt",
-                "href": "https://github.com/ringozzt",
-                "avatar": "https://avatars.githubusercontent.com/u/61344647"
+                "username": "zlangley",
+                "href": "https://github.com/zlangley",
+                "avatar": "https://avatars3.githubusercontent.com/u/11829"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "⚡A CLI tool for code structural search, lint and rewriting. Written in Rust",
-        "url": null,
-        "language": "Rust",
-        "languageColor": "#dea584",
-        "stars": 4079,
-        "forks": 118,
-        "currentPeriodStars": 536,
+        "author": "xmartlabs",
+        "name": "Eureka",
+        "url": "https://github.com/xmartlabs/Eureka",
+        "description": "Elegant iOS form builder in Swift",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 9758,
+        "forks": 1110,
+        "currentPeriodStars": 11,
         "builtBy": [
             {
-                "username": "HerringtonDarkholme",
-                "href": "https://github.com/HerringtonDarkholme",
-                "avatar": "https://avatars.githubusercontent.com/u/2883231"
+                "username": "mtnbarreto",
+                "href": "https://github.com/mtnbarreto",
+                "avatar": "https://avatars1.githubusercontent.com/u/1746532"
             },
             {
-                "username": "SigureMo",
-                "href": "https://github.com/SigureMo",
-                "avatar": "https://avatars.githubusercontent.com/u/38436475"
+                "username": "mats-claassen",
+                "href": "https://github.com/mats-claassen",
+                "avatar": "https://avatars3.githubusercontent.com/u/8573865"
             },
             {
-                "username": "pd4d10",
-                "href": "https://github.com/pd4d10",
-                "avatar": "https://avatars.githubusercontent.com/u/9524411"
+                "username": "SpencerC",
+                "href": "https://github.com/SpencerC",
+                "avatar": "https://avatars0.githubusercontent.com/u/817672"
             },
             {
-                "username": "akx",
-                "href": "https://github.com/akx",
-                "avatar": "https://avatars.githubusercontent.com/u/58669"
+                "username": "m-revetria",
+                "href": "https://github.com/m-revetria",
+                "avatar": "https://avatars3.githubusercontent.com/u/4791678"
+            },
+            {
+                "username": "ilyapuchka",
+                "href": "https://github.com/ilyapuchka",
+                "avatar": "https://avatars0.githubusercontent.com/u/1488293"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "Let us democratise high-resolution generation! (arXiv 2023)",
-        "url": null,
-        "language": "Jupyter Notebook",
-        "languageColor": "#DA5B0B",
-        "stars": 1090,
-        "forks": 250,
-        "currentPeriodStars": 271,
+        "author": "ReactiveX",
+        "name": "RxSwift",
+        "url": "https://github.com/ReactiveX/RxSwift",
+        "description": "Reactive Programming in Swift",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 16149,
+        "forks": 2664,
+        "currentPeriodStars": 10,
         "builtBy": [
             {
-                "username": "RuoyiDu",
-                "href": "https://github.com/RuoyiDu",
-                "avatar": "https://avatars.githubusercontent.com/u/61931443"
+                "username": "kzaher",
+                "href": "https://github.com/kzaher",
+                "avatar": "https://avatars0.githubusercontent.com/u/1641148"
             },
             {
-                "username": "klimaleksus",
-                "href": "https://github.com/klimaleksus",
-                "avatar": "https://avatars.githubusercontent.com/u/20545364"
+                "username": "freak4pc",
+                "href": "https://github.com/freak4pc",
+                "avatar": "https://avatars2.githubusercontent.com/u/605076"
             },
             {
-                "username": "eltociear",
-                "href": "https://github.com/eltociear",
-                "avatar": "https://avatars.githubusercontent.com/u/22633385"
+                "username": "sergdort",
+                "href": "https://github.com/sergdort",
+                "avatar": "https://avatars3.githubusercontent.com/u/4622322"
+            },
+            {
+                "username": "yury",
+                "href": "https://github.com/yury",
+                "avatar": "https://avatars2.githubusercontent.com/u/5250"
+            },
+            {
+                "username": "tarunon",
+                "href": "https://github.com/tarunon",
+                "avatar": "https://avatars2.githubusercontent.com/u/1830205"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "An End-to-End Tile-Based Framework for High-Resolution Monocular Metric Depth Estimation",
-        "url": null,
-        "language": "Python",
-        "languageColor": "#3572A5",
-        "stars": 392,
-        "forks": 47,
-        "currentPeriodStars": 122,
+        "author": "KarimEbrahemAbdelaziz",
+        "name": "SwiftyMenu",
+        "url": "https://github.com/KarimEbrahemAbdelaziz/SwiftyMenu",
+        "description": "Drop down menu for iOS 🔥💥",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 146,
+        "forks": 10,
+        "currentPeriodStars": 10,
         "builtBy": [
             {
-                "username": "zhyever",
-                "href": "https://github.com/zhyever",
-                "avatar": "https://avatars.githubusercontent.com/u/37411345"
-            },
-            {
-                "username": "eltociear",
-                "href": "https://github.com/eltociear",
-                "avatar": "https://avatars.githubusercontent.com/u/22633385"
+                "username": "KarimEbrahemAbdelaziz",
+                "href": "https://github.com/KarimEbrahemAbdelaziz",
+                "avatar": "https://avatars1.githubusercontent.com/u/24304313"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "LLMCompiler: An LLM Compiler for Parallel Function Calling",
-        "url": null,
-        "language": "Python",
-        "languageColor": "#3572A5",
-        "stars": 380,
-        "forks": 56,
-        "currentPeriodStars": 68,
+        "author": "Juanpe",
+        "name": "SkeletonView",
+        "url": "https://github.com/Juanpe/SkeletonView",
+        "description": "An elegant way to show users that something is happening and also prepare them to which contents he is waiting",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 7171,
+        "forks": 476,
+        "currentPeriodStars": 9,
         "builtBy": [
             {
-                "username": "kssteven418",
-                "href": "https://github.com/kssteven418",
-                "avatar": "https://avatars.githubusercontent.com/u/50283958"
+                "username": "Juanpe",
+                "href": "https://github.com/Juanpe",
+                "avatar": "https://avatars2.githubusercontent.com/u/1409041"
             },
             {
-                "username": "hwchase17",
-                "href": "https://github.com/hwchase17",
-                "avatar": "https://avatars.githubusercontent.com/u/11986836"
+                "username": "eduardbosch",
+                "href": "https://github.com/eduardbosch",
+                "avatar": "https://avatars1.githubusercontent.com/u/3925897"
+            },
+            {
+                "username": "arn00s",
+                "href": "https://github.com/arn00s",
+                "avatar": "https://avatars2.githubusercontent.com/u/1527944"
+            },
+            {
+                "username": "hisaac",
+                "href": "https://github.com/hisaac",
+                "avatar": "https://avatars1.githubusercontent.com/u/923876"
+            },
+            {
+                "username": "B4V4-G",
+                "href": "https://github.com/B4V4-G",
+                "avatar": "https://avatars3.githubusercontent.com/u/33595532"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "A curated list of insanely awesome libraries, packages and resources for Quants (Quantitative Finance)",
-        "url": null,
-        "language": "Python",
-        "languageColor": "#3572A5",
-        "stars": 14515,
-        "forks": 2280,
-        "currentPeriodStars": 69,
+        "author": "raywenderlich",
+        "name": "swift-algorithm-club",
+        "url": "https://github.com/raywenderlich/swift-algorithm-club",
+        "description": "Algorithms and data structures in Swift, with explanations!",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 20231,
+        "forks": 3352,
+        "currentPeriodStars": 9,
         "builtBy": [
             {
-                "username": "wilsonfreitas",
-                "href": "https://github.com/wilsonfreitas",
-                "avatar": "https://avatars.githubusercontent.com/u/1583922"
+                "username": "kelvinlauKL",
+                "href": "https://github.com/kelvinlauKL",
+                "avatar": "https://avatars2.githubusercontent.com/u/11384608"
             },
             {
-                "username": "femtotrader",
-                "href": "https://github.com/femtotrader",
-                "avatar": "https://avatars.githubusercontent.com/u/5049737"
+                "username": "hollance",
+                "href": "https://github.com/hollance",
+                "avatar": "https://avatars3.githubusercontent.com/u/346853"
             },
             {
-                "username": "bbcho",
-                "href": "https://github.com/bbcho",
-                "avatar": "https://avatars.githubusercontent.com/u/47279398"
+                "username": "richard-ash",
+                "href": "https://github.com/richard-ash",
+                "avatar": "https://avatars1.githubusercontent.com/u/12877678"
             },
             {
-                "username": "jaymon0703",
-                "href": "https://github.com/jaymon0703",
-                "avatar": "https://avatars.githubusercontent.com/u/4340156"
+                "username": "remlostime",
+                "href": "https://github.com/remlostime",
+                "avatar": "https://avatars1.githubusercontent.com/u/3702498"
             },
             {
-                "username": "mirca",
-                "href": "https://github.com/mirca",
-                "avatar": "https://avatars.githubusercontent.com/u/13077051"
+                "username": "vincentngo",
+                "href": "https://github.com/vincentngo",
+                "avatar": "https://avatars3.githubusercontent.com/u/1634736"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": null,
-        "url": null,
-        "language": "C++",
-        "languageColor": "#f34b7d",
-        "stars": 132,
-        "forks": 34,
-        "currentPeriodStars": 23,
+        "author": "onmyway133",
+        "name": "Anchors",
+        "url": "https://github.com/onmyway133/Anchors",
+        "description": "⚓️ Declarative, extensible, powerful Auto Layout",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 219,
+        "forks": 14,
+        "currentPeriodStars": 9,
         "builtBy": [
             {
-                "username": "Matheus-Garbelini",
-                "href": "https://github.com/Matheus-Garbelini",
-                "avatar": "https://avatars.githubusercontent.com/u/6465668"
-            },
-            {
-                "username": "sudiptac",
-                "href": "https://github.com/sudiptac",
-                "avatar": "https://avatars.githubusercontent.com/u/637954"
+                "username": "onmyway133",
+                "href": "https://github.com/onmyway133",
+                "avatar": "https://avatars0.githubusercontent.com/u/2284279"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "Sweep: AI-powered Junior Developer for small features and bug fixes.",
-        "url": null,
-        "language": "Python",
-        "languageColor": "#3572A5",
-        "stars": 6172,
-        "forks": 351,
-        "currentPeriodStars": 208,
+        "author": "bernikovich",
+        "name": "StickyHeaderFlowLayout",
+        "url": "https://github.com/bernikovich/StickyHeaderFlowLayout",
+        "description": "Sticky headers for UICollectionView written in pure Swift (based on CSStickyHeaderFlowLayout)",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 92,
+        "forks": 3,
+        "currentPeriodStars": 9,
         "builtBy": [
             {
-                "username": "kevinlu1248",
-                "href": "https://github.com/kevinlu1248",
-                "avatar": "https://avatars.githubusercontent.com/u/26889185"
-            },
-            {
-                "username": "lukejagg",
-                "href": "https://github.com/lukejagg",
-                "avatar": "https://avatars.githubusercontent.com/u/13663235"
-            },
-            {
-                "username": "wwzeng1",
-                "href": "https://github.com/wwzeng1",
-                "avatar": "https://avatars.githubusercontent.com/u/44910023"
-            },
-            {
-                "username": "onuratakan",
-                "href": "https://github.com/onuratakan",
-                "avatar": "https://avatars.githubusercontent.com/u/41792982"
+                "username": "bernikovich",
+                "href": "https://github.com/bernikovich",
+                "avatar": "https://avatars2.githubusercontent.com/u/3878311"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "🏡 Open source home automation that puts local control and privacy first.",
-        "url": null,
-        "language": "Python",
-        "languageColor": "#3572A5",
-        "stars": 64716,
-        "forks": 26041,
-        "currentPeriodStars": 187,
+        "author": "IvanVorobei",
+        "name": "SPStorkController",
+        "url": "https://github.com/IvanVorobei/SPStorkController",
+        "description": "Very similar to the controllers displayed in Apple Music, Podcasts and Mail Apple's applications",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 1304,
+        "forks": 87,
+        "currentPeriodStars": 8,
         "builtBy": [
             {
-                "username": "balloob",
-                "href": "https://github.com/balloob",
-                "avatar": "https://avatars.githubusercontent.com/u/1444314"
+                "username": "IvanVorobei",
+                "href": "https://github.com/IvanVorobei",
+                "avatar": "https://avatars0.githubusercontent.com/u/10995774"
             },
             {
-                "username": "bdraco",
-                "href": "https://github.com/bdraco",
-                "avatar": "https://avatars.githubusercontent.com/u/663432"
+                "username": "ilia3546",
+                "href": "https://github.com/ilia3546",
+                "avatar": "https://avatars0.githubusercontent.com/u/4445510"
             },
             {
-                "username": "frenck",
-                "href": "https://github.com/frenck",
-                "avatar": "https://avatars.githubusercontent.com/u/195327"
-            },
-            {
-                "username": "emontnemery",
-                "href": "https://github.com/emontnemery",
-                "avatar": "https://avatars.githubusercontent.com/u/14281572"
-            },
-            {
-                "username": "epenet",
-                "href": "https://github.com/epenet",
-                "avatar": "https://avatars.githubusercontent.com/u/6771947"
+                "username": "jobinsjohn",
+                "href": "https://github.com/jobinsjohn",
+                "avatar": "https://avatars0.githubusercontent.com/u/3398498"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "A libre lightweight streaming front-end for Android.",
-        "url": null,
-        "language": "Java",
-        "languageColor": "#b07219",
-        "stars": 26542,
-        "forks": 2875,
-        "currentPeriodStars": 40,
+        "author": "IvanVorobei",
+        "name": "SPLarkController",
+        "url": "https://github.com/IvanVorobei/SPLarkController",
+        "description": "Make settings screen for application. Can add buttons and switches. Easy customisation",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 312,
+        "forks": 20,
+        "currentPeriodStars": 8,
         "builtBy": [
             {
-                "username": "TobiGr",
-                "href": "https://github.com/TobiGr",
-                "avatar": "https://avatars.githubusercontent.com/u/17365767"
-            },
-            {
-                "username": "theScrabi",
-                "href": "https://github.com/theScrabi",
-                "avatar": "https://avatars.githubusercontent.com/u/1891273"
-            },
-            {
-                "username": "Stypox",
-                "href": "https://github.com/Stypox",
-                "avatar": "https://avatars.githubusercontent.com/u/36421898"
-            },
-            {
-                "username": "weblate",
-                "href": "https://github.com/weblate",
-                "avatar": "https://avatars.githubusercontent.com/u/1607653"
-            },
-            {
-                "username": "litetex",
-                "href": "https://github.com/litetex",
-                "avatar": "https://avatars.githubusercontent.com/u/40789489"
+                "username": "IvanVorobei",
+                "href": "https://github.com/IvanVorobei",
+                "avatar": "https://avatars0.githubusercontent.com/u/10995774"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "深度学习经典、新论文逐段精读",
-        "url": null,
-        "language": null,
-        "languageColor": null,
-        "stars": 21895,
-        "forks": 2130,
-        "currentPeriodStars": 442,
+        "author": "aahung",
+        "name": "Unshaky",
+        "url": "https://github.com/aahung/Unshaky",
+        "description": "A software attempt to address the \"double key press\" issue on Apple's butterfly keyboard",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 747,
+        "forks": 39,
+        "currentPeriodStars": 7,
         "builtBy": [
             {
-                "username": "bryanyzhu",
-                "href": "https://github.com/bryanyzhu",
-                "avatar": "https://avatars.githubusercontent.com/u/16021460"
+                "username": "aahung",
+                "href": "https://github.com/aahung",
+                "avatar": "https://avatars3.githubusercontent.com/u/3804518"
             },
             {
-                "username": "youngfish42",
-                "href": "https://github.com/youngfish42",
-                "avatar": "https://avatars.githubusercontent.com/u/38998412"
+                "username": "HackingGate",
+                "href": "https://github.com/HackingGate",
+                "avatar": "https://avatars2.githubusercontent.com/u/8541644"
             },
             {
-                "username": "echosun1996",
-                "href": "https://github.com/echosun1996",
-                "avatar": "https://avatars.githubusercontent.com/u/19505192"
+                "username": "GoncaloCdM",
+                "href": "https://github.com/GoncaloCdM",
+                "avatar": "https://avatars3.githubusercontent.com/u/4027419"
             },
             {
-                "username": "astonzhang",
-                "href": "https://github.com/astonzhang",
-                "avatar": "https://avatars.githubusercontent.com/u/22279212"
+                "username": "readingsnail",
+                "href": "https://github.com/readingsnail",
+                "avatar": "https://avatars3.githubusercontent.com/u/1904967"
             },
             {
-                "username": "W0n9",
-                "href": "https://github.com/W0n9",
-                "avatar": "https://avatars.githubusercontent.com/u/38560218"
+                "username": "hazar-e",
+                "href": "https://github.com/hazar-e",
+                "avatar": "https://avatars1.githubusercontent.com/u/36481442"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "Open-source ChatGPT equivalent experience for both open and close source LLMs, embedders, and vector databases. Supports unlimited documents, threads, and concurrent users and management all in a very clean UI.",
-        "url": null,
-        "language": "JavaScript",
-        "languageColor": "#f1e05a",
-        "stars": 3394,
-        "forks": 442,
-        "currentPeriodStars": 367,
+        "author": "SwifterSwift",
+        "name": "SwifterSwift",
+        "url": "https://github.com/SwifterSwift/SwifterSwift",
+        "description": "A handy collection of more than 500 native Swift extensions to boost your productivity.",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 7099,
+        "forks": 826,
+        "currentPeriodStars": 7,
         "builtBy": [
             {
-                "username": "timothycarambat",
-                "href": "https://github.com/timothycarambat",
-                "avatar": "https://avatars.githubusercontent.com/u/16845892"
+                "username": "omaralbeik",
+                "href": "https://github.com/omaralbeik",
+                "avatar": "https://avatars2.githubusercontent.com/u/8127757"
             },
             {
-                "username": "shatfield4",
-                "href": "https://github.com/shatfield4",
-                "avatar": "https://avatars.githubusercontent.com/u/2336488"
+                "username": "LucianoPAlmeida",
+                "href": "https://github.com/LucianoPAlmeida",
+                "avatar": "https://avatars1.githubusercontent.com/u/8292651"
             },
             {
-                "username": "AntonioCiolino",
-                "href": "https://github.com/AntonioCiolino",
-                "avatar": "https://avatars.githubusercontent.com/u/2817636"
+                "username": "SD10",
+                "href": "https://github.com/SD10",
+                "avatar": "https://avatars3.githubusercontent.com/u/7445580"
             },
             {
-                "username": "franzbischoff",
-                "href": "https://github.com/franzbischoff",
-                "avatar": "https://avatars.githubusercontent.com/u/984592"
+                "username": "Vyax",
+                "href": "https://github.com/Vyax",
+                "avatar": "https://avatars1.githubusercontent.com/u/9899051"
             },
             {
-                "username": "frasergr",
-                "href": "https://github.com/frasergr",
-                "avatar": "https://avatars.githubusercontent.com/u/782565"
+                "username": "guykogus",
+                "href": "https://github.com/guykogus",
+                "avatar": "https://avatars1.githubusercontent.com/u/924764"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "Command-line program to download videos from YouTube.com and other video sites",
-        "url": null,
-        "language": "Python",
-        "languageColor": "#3572A5",
-        "stars": 125354,
-        "forks": 9634,
-        "currentPeriodStars": 243,
+        "author": "vapor",
+        "name": "vapor",
+        "url": "https://github.com/vapor/vapor",
+        "description": "💧 A server-side Swift web framework.",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 16334,
+        "forks": 972,
+        "currentPeriodStars": 7,
         "builtBy": [
             {
-                "username": "dstftw",
-                "href": "https://github.com/dstftw",
-                "avatar": "https://avatars.githubusercontent.com/u/1908898"
+                "username": "tanner0101",
+                "href": "https://github.com/tanner0101",
+                "avatar": "https://avatars1.githubusercontent.com/u/1342803"
             },
             {
-                "username": "phihag",
-                "href": "https://github.com/phihag",
-                "avatar": "https://avatars.githubusercontent.com/u/779568"
+                "username": "loganwright",
+                "href": "https://github.com/loganwright",
+                "avatar": "https://avatars1.githubusercontent.com/u/5750489"
             },
             {
-                "username": "remitamine",
-                "href": "https://github.com/remitamine",
-                "avatar": "https://avatars.githubusercontent.com/u/10879694"
+                "username": "Joannis",
+                "href": "https://github.com/Joannis",
+                "avatar": "https://avatars3.githubusercontent.com/u/1951674"
             },
             {
-                "username": "jaimeMF",
-                "href": "https://github.com/jaimeMF",
-                "avatar": "https://avatars.githubusercontent.com/u/1239727"
+                "username": "shnhrrsn",
+                "href": "https://github.com/shnhrrsn",
+                "avatar": "https://avatars2.githubusercontent.com/u/42901"
             },
             {
-                "username": "rg3",
-                "href": "https://github.com/rg3",
-                "avatar": "https://avatars.githubusercontent.com/u/53487"
+                "username": "ketzusaka",
+                "href": "https://github.com/ketzusaka",
+                "avatar": "https://avatars3.githubusercontent.com/u/1353840"
             }
         ]
     },
     {
-        "author": null,
-        "name": null,
-        "avatar": null,
-        "description": "A list of useful payloads and bypass for Web Application Security and Pentest/CTF",
-        "url": null,
-        "language": "Python",
-        "languageColor": "#3572A5",
-        "stars": 53271,
-        "forks": 13664,
-        "currentPeriodStars": 30,
+        "author": "SnapKit",
+        "name": "SnapKit",
+        "url": "https://github.com/SnapKit/SnapKit",
+        "description": "A Swift Autolayout DSL for iOS & OS X",
+        "language": "Swift",
+        "languageColor": "#ffac45",
+        "stars": 14852,
+        "forks": 1437,
+        "currentPeriodStars": 7,
         "builtBy": [
             {
-                "username": "swisskyrepo",
-                "href": "https://github.com/swisskyrepo",
-                "avatar": "https://avatars.githubusercontent.com/u/12152583"
+                "username": "robertjpayne",
+                "href": "https://github.com/robertjpayne",
+                "avatar": "https://avatars0.githubusercontent.com/u/214288"
             },
             {
-                "username": "p0dalirius",
-                "href": "https://github.com/p0dalirius",
-                "avatar": "https://avatars.githubusercontent.com/u/79218792"
+                "username": "cloudkite",
+                "href": "https://github.com/cloudkite",
+                "avatar": "https://avatars0.githubusercontent.com/u/598870"
             },
             {
-                "username": "noraj",
-                "href": "https://github.com/noraj",
-                "avatar": "https://avatars.githubusercontent.com/u/16578570"
+                "username": "sger",
+                "href": "https://github.com/sger",
+                "avatar": "https://avatars1.githubusercontent.com/u/118588"
             },
             {
-                "username": "cyber-niz",
-                "href": "https://github.com/cyber-niz",
-                "avatar": "https://avatars.githubusercontent.com/u/25560738"
+                "username": "aleffert",
+                "href": "https://github.com/aleffert",
+                "avatar": "https://avatars1.githubusercontent.com/u/114396"
+            },
+            {
+                "username": "bendjones",
+                "href": "https://github.com/bendjones",
+                "avatar": "https://avatars3.githubusercontent.com/u/184510"
             }
         ]
     }

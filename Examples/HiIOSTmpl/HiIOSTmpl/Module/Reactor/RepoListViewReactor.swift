@@ -27,17 +27,17 @@ class RepoListViewReactor: ListViewReactor {
         return .just(.initial(original))
     }
 
-    override func requestRemote(_ mode: HiRequestMode, _ page: Int) -> Observable<Mutation> {
-        .create { [weak self] observer -> Disposable in
-            guard let `self` = self else { fatalError() }
-            return self.provider.trendingRepos()
-                 .asObservable()
-                 .map {
-                     mode != .loadMore ?
-                         .initial([.init(header: nil, models: $0)]) : .append([.init(header: nil, models: $0)])
-                 }
-                 .subscribe(observer)
-        }
-    }
+//    override func requestRemote(_ mode: HiRequestMode, _ page: Int) -> Observable<Mutation> {
+//        .create { [weak self] observer -> Disposable in
+//            guard let `self` = self else { fatalError() }
+//            return self.provider.trendingRepos()
+//                 .asObservable()
+//                 .map {
+//                     mode != .loadMore ?
+//                         .initial([.init(header: nil, models: $0)]) : .append([.init(header: nil, models: $0)])
+//                 }
+//                 .subscribe(observer)
+//        }
+//    }
     
 }

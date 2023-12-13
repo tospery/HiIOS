@@ -21,6 +21,7 @@ import RxGesture
 class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
     
     struct Reusable {
+        static let simpleCell = ReusableCell<SimpleCell>()
         static let appInfoCell = ReusableCell<AppInfoCell>()
         static let eventCell = ReusableCell<EventCell>()
         static let repoCell = ReusableCell<RepoCell>()
@@ -70,6 +71,7 @@ class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.collectionView.register(Reusable.simpleCell)
         self.collectionView.register(Reusable.appInfoCell)
         self.collectionView.register(Reusable.eventCell)
         self.collectionView.register(Reusable.repoCell)
@@ -183,6 +185,11 @@ class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
         _ sectionItem: Section.Item
     ) -> UICollectionViewCell {
         switch sectionItem {
+        case let .simple(item):
+            let cell = collectionView.dequeue(Reusable.simpleCell, for: indexPath)
+            item.parent = self.reactor
+            cell.reactor = item
+            return cell
         case let .appInfo(item):
             let cell = collectionView.dequeue(Reusable.appInfoCell, for: indexPath)
             item.parent = self.reactor
@@ -203,10 +210,10 @@ class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
             let cell = collectionView.dequeue(Reusable.repoCell, for: indexPath)
             item.parent = self.reactor
             cell.reactor = item
-//            cell.rx.clickUser
-//                .map { Router.shared.urlString(host: .user, path: $0) }
-//                .subscribeNext(weak: self, type(of: self).handleTarget)
-//                .disposed(by: cell.disposeBag)
+            cell.rx.clickUser
+                .map { Router.shared.urlString(host: .user, path: $0) }
+                .subscribeNext(weak: self, type(of: self).handleTarget)
+                .disposed(by: cell.disposeBag)
             return cell
         case let .user(item):
             let cell = collectionView.dequeue(Reusable.userCell, for: indexPath)
@@ -346,6 +353,18 @@ class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
 //        let username = self.reactor?.username ?? ""
 //        let reponame = self.reactor?.reponame ?? ""
         switch sectionItem {
+        case let .simple(item):
+            guard let simple = item.model as? Simple else { return }
+            if let target = simple.target, target.isNotEmpty {
+                self.navigator.forward(target)
+                return
+            }
+            if let cellId = CellId.init(rawValue: simple.id) {
+                switch cellId {
+                default:
+                    break
+                }
+            }
         case let .user(item):
             guard let username = (item.model as? User)?.username else { return }
             self.navigator.forward(Router.shared.urlString(host: .user, path: username))
@@ -378,6 +397,7 @@ extension ListViewController: UICollectionViewDelegateFlowLayout {
     ) -> CGSize {
         let width = collectionView.sectionWidth(at: indexPath.section)
         switch self.dataSource[indexPath] {
+        case let .simple(item): return Reusable.simpleCell.class.size(width: width, item: item)
         case let .appInfo(item): return Reusable.appInfoCell.class.size(width: width, item: item)
         case let .event(item): return Reusable.eventCell.class.size(width: width, item: item)
         case let .repo(item): return Reusable.repoCell.class.size(width: width, item: item)

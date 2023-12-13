@@ -37,12 +37,15 @@ extension Router {
         navigator.register(self.urlPattern(host: .repo, placeholder: "[username]/[reponame]")) { url, values, context in
             RepoViewController(navigator, RepoViewReactor(provider, self.parameters(url, values, context)))
         }
-//        navigator.register(self.urlPattern(host: .about)) { url, values, context in
-//            AboutViewController(navigator, AboutViewReactor(provider, self.parameters(url, values, context)))
-//        }
-//        navigator.register(self.urlPattern(host: .test)) { url, values, context in
-//            TestViewController(navigator, TestViewReactor(provider, self.parameters(url, values, context)))
-//        }
+        navigator.register(self.urlPattern(host: .about)) { url, values, context in
+            AboutViewController(navigator, AboutViewReactor(provider, self.parameters(url, values, context)))
+        }
+        navigator.register(self.urlPattern(host: .settings)) { url, values, context in
+            TestViewController(navigator, TestViewReactor(provider, self.parameters(url, values, context)))
+        }
+        navigator.register(self.urlPattern(host: .test)) { url, values, context in
+            TestViewController(navigator, TestViewReactor(provider, self.parameters(url, values, context)))
+        }
     }
     
 }

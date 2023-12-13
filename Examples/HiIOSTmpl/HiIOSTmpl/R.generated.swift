@@ -62,7 +62,7 @@ struct _R {
     }
 
 
-    /// This `_R.string.localizable` struct is generated, and contains static references to 42 localization keys.
+    /// This `_R.string.localizable` struct is generated, and contains static references to 44 localization keys.
     struct localizable {
       let source: RswiftResources.StringResource.Source
 
@@ -256,10 +256,20 @@ struct _R {
       /// Key: Repositories
       var repositories: RswiftResources.StringResource { .init(key: "Repositories", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
 
+      /// Value: 设置
+      ///
+      /// Key: Settings
+      var settings: RswiftResources.StringResource { .init(key: "Settings", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
       /// Value: 确定
       ///
       /// Key: Sure
       var sure: RswiftResources.StringResource { .init(key: "Sure", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: 测试
+      ///
+      /// Key: Test
+      var test: RswiftResources.StringResource { .init(key: "Test", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
 
       /// Value: 趋势
       ///
@@ -286,18 +296,24 @@ struct _R {
     var accentColor: RswiftResources.ColorResource { .init(name: "AccentColor", path: [], bundle: bundle) }
   }
 
-  /// This `_R.image` struct is generated, and contains static references to 14 images.
+  /// This `_R.image` struct is generated, and contains static references to 16 images.
   struct image {
     let bundle: Foundation.Bundle
 
     /// Image `AppLogo`.
     var appLogo: RswiftResources.ImageResource { .init(name: "AppLogo", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
+    /// Image `ic_about`.
+    var ic_about: RswiftResources.ImageResource { .init(name: "ic_about", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `ic_fork`.
     var ic_fork: RswiftResources.ImageResource { .init(name: "ic_fork", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `ic_repo_small`.
     var ic_repo_small: RswiftResources.ImageResource { .init(name: "ic_repo_small", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `ic_settings`.
+    var ic_settings: RswiftResources.ImageResource { .init(name: "ic_settings", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `ic_star`.
     var ic_star: RswiftResources.ImageResource { .init(name: "ic_star", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }

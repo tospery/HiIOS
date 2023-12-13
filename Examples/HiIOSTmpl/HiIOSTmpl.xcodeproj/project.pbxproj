@@ -57,6 +57,12 @@
 		9160C6592B279D6000271081 /* BaseRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9160C6582B279D6000271081 /* BaseRepo.swift */; };
 		9160C65B2B279E0000271081 /* UserList#trendingUsers.json in Resources */ = {isa = PBXBuildFile; fileRef = 9160C65A2B279E0000271081 /* UserList#trendingUsers.json */; };
 		9160C65D2B279E0A00271081 /* RepoList#trendingRepos.json in Resources */ = {isa = PBXBuildFile; fileRef = 9160C65C2B279E0A00271081 /* RepoList#trendingRepos.json */; };
+		9166BBC72B2978E400FAF764 /* SimpleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9166BBC62B2978E400FAF764 /* SimpleItem.swift */; };
+		9166BBC92B2978EC00FAF764 /* SimpleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9166BBC82B2978EC00FAF764 /* SimpleCell.swift */; };
+		9166BBCB2B297C1900FAF764 /* AboutViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9166BBCA2B297C1900FAF764 /* AboutViewReactor.swift */; };
+		9166BBCD2B297C2300FAF764 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9166BBCC2B297C2300FAF764 /* AboutViewController.swift */; };
+		9166BBCF2B297D2F00FAF764 /* TestViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9166BBCE2B297D2F00FAF764 /* TestViewReactor.swift */; };
+		9166BBD12B297D3900FAF764 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9166BBD02B297D3900FAF764 /* TestViewController.swift */; };
 		919CDED42B28BA19001C359B /* RepoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919CDED32B28BA19001C359B /* RepoItem.swift */; };
 		919CDED62B28BA25001C359B /* RepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919CDED52B28BA25001C359B /* RepoCell.swift */; };
 		919CDED82B28BA5F001C359B /* Repo+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919CDED72B28BA5F001C359B /* Repo+Ex.swift */; };
@@ -168,6 +174,12 @@
 		9160C6582B279D6000271081 /* BaseRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepo.swift; sourceTree = "<group>"; };
 		9160C65A2B279E0000271081 /* UserList#trendingUsers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "UserList#trendingUsers.json"; sourceTree = "<group>"; };
 		9160C65C2B279E0A00271081 /* RepoList#trendingRepos.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "RepoList#trendingRepos.json"; sourceTree = "<group>"; };
+		9166BBC62B2978E400FAF764 /* SimpleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleItem.swift; sourceTree = "<group>"; };
+		9166BBC82B2978EC00FAF764 /* SimpleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCell.swift; sourceTree = "<group>"; };
+		9166BBCA2B297C1900FAF764 /* AboutViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewReactor.swift; sourceTree = "<group>"; };
+		9166BBCC2B297C2300FAF764 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		9166BBCE2B297D2F00FAF764 /* TestViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewReactor.swift; sourceTree = "<group>"; };
+		9166BBD02B297D3900FAF764 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		9188AAA92B0F2B0200AF0DBD /* HiIOSTmpl.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HiIOSTmpl.entitlements; sourceTree = "<group>"; };
 		919CDED32B28BA19001C359B /* RepoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoItem.swift; sourceTree = "<group>"; };
 		919CDED52B28BA25001C359B /* RepoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCell.swift; sourceTree = "<group>"; };
@@ -386,6 +398,8 @@
 				914B99862B2830FE0084E311 /* TrendingViewReactor.swift */,
 				919CDEDF2B28C830001C359B /* UserViewReactor.swift */,
 				919CDEE12B28C837001C359B /* RepoViewReactor.swift */,
+				9166BBCA2B297C1900FAF764 /* AboutViewReactor.swift */,
+				9166BBCE2B297D2F00FAF764 /* TestViewReactor.swift */,
 			);
 			path = Reactor;
 			sourceTree = "<group>";
@@ -404,6 +418,8 @@
 				914B998A2B2834050084E311 /* NavigationBarPagingViewController.swift */,
 				919CDEE32B28C841001C359B /* UserViewController.swift */,
 				919CDEE52B28C849001C359B /* RepoViewController.swift */,
+				9166BBCC2B297C2300FAF764 /* AboutViewController.swift */,
+				9166BBD02B297D3900FAF764 /* TestViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -458,6 +474,7 @@
 				9160C6402B2793FB00271081 /* EventItem.swift */,
 				919CDED32B28BA19001C359B /* RepoItem.swift */,
 				919CDED92B28BEA7001C359B /* UserItem.swift */,
+				9166BBC62B2978E400FAF764 /* SimpleItem.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -474,6 +491,7 @@
 				9160C6422B27940300271081 /* EventCell.swift */,
 				919CDED52B28BA25001C359B /* RepoCell.swift */,
 				919CDEDB2B28BEAF001C359B /* UserCell.swift */,
+				9166BBC82B2978EC00FAF764 /* SimpleCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -730,8 +748,10 @@
 				913904692B1D784200F947E0 /* DataType.swift in Sources */,
 				91560F2A2B2764090008540E /* PersonalParallaxView.swift in Sources */,
 				91A9314E2B28295E00814EB8 /* Repo.swift in Sources */,
+				9166BBC92B2978EC00FAF764 /* SimpleCell.swift in Sources */,
 				91AC6E772B260337003B728F /* ListViewReactor.swift in Sources */,
 				91A931522B282A6200814EB8 /* UserListViewController.swift in Sources */,
+				9166BBCD2B297C2300FAF764 /* AboutViewController.swift in Sources */,
 				914B998B2B2834050084E311 /* NavigationBarPagingViewController.swift in Sources */,
 				9160C6552B279ACD00271081 /* BaseViewController+Ex.swift in Sources */,
 				91560F362B276B680008540E /* FavoriteViewReactor.swift in Sources */,
@@ -746,6 +766,7 @@
 				919CDEDC2B28BEAF001C359B /* UserCell.swift in Sources */,
 				9160C6512B279A5700271081 /* ScrollViewController+Ex.swift in Sources */,
 				913904632B1D776100F947E0 /* UIApplication+Ex.swift in Sources */,
+				9166BBC72B2978E400FAF764 /* SimpleItem.swift in Sources */,
 				91D20B052B276E3900EF878D /* TabBarReactor.swift in Sources */,
 				91D20B1D2B27716500EF878D /* Router+Dialog+Popup.swift in Sources */,
 				919CDED62B28BA25001C359B /* RepoCell.swift in Sources */,
@@ -764,6 +785,7 @@
 				91A931582B282B1100814EB8 /* TrendingAPI.swift in Sources */,
 				913904672B1D77AF00F947E0 /* User.swift in Sources */,
 				919CDED42B28BA19001C359B /* RepoItem.swift in Sources */,
+				9166BBCF2B297D2F00FAF764 /* TestViewReactor.swift in Sources */,
 				91AC6E862B2605A8003B728F /* AppInfoCell.swift in Sources */,
 				9160C6472B27995600271081 /* BaseResponse+Ex.swift in Sources */,
 				91560F272B27636E0008540E /* ScrollViewController+Rx.swift in Sources */,
@@ -781,12 +803,14 @@
 				914B99872B2830FE0084E311 /* TrendingViewReactor.swift in Sources */,
 				914346E72B26B3A3002199D0 /* ButtonCell.swift in Sources */,
 				91D20B252B27719300EF878D /* Router+Page.swift in Sources */,
+				9166BBD12B297D3900FAF764 /* TestViewController.swift in Sources */,
 				91A931502B282A1A00814EB8 /* UserListViewReactor.swift in Sources */,
 				919CDEE22B28C837001C359B /* RepoViewReactor.swift in Sources */,
 				91A9315A2B282B6A00814EB8 /* ProviderType+TrendingAPI.swift in Sources */,
 				91A931542B282A9100814EB8 /* RepoListViewReactor.swift in Sources */,
 				919CDEDA2B28BEA7001C359B /* UserItem.swift in Sources */,
 				914346F12B26B4AE002199D0 /* TextFieldItem.swift in Sources */,
+				9166BBCB2B297C1900FAF764 /* AboutViewReactor.swift in Sources */,
 				91D20B072B276E4300EF878D /* TabBarController.swift in Sources */,
 				91D20B3A2B2774C400EF878D /* Dynamically.swift in Sources */,
 				914346EF2B26B484002199D0 /* TextViewCell.swift in Sources */,

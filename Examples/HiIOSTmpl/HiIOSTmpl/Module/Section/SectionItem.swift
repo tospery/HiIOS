@@ -12,6 +12,7 @@ import ObjectMapper_Hi
 import HiIOS
 
 enum SectionItem: IdentifiableType, Equatable {
+    case simple(SimpleItem)
     case appInfo(AppInfoItem)
     case event(EventItem)
     case repo(RepoItem)
@@ -25,6 +26,7 @@ enum SectionItem: IdentifiableType, Equatable {
     var identity: String {
         var string = ""
         switch self {
+        case let .simple(item): string = item.description
         case let .appInfo(item): string = item.description
         case let .event(item): string = item.description
         case let .repo(item): string = item.description
@@ -38,10 +40,12 @@ enum SectionItem: IdentifiableType, Equatable {
         return string // String.init(string.sorted())
     }
 
+    // swiftlint:disable cyclomatic_complexity
     static func == (lhs: SectionItem, rhs: SectionItem) -> Bool {
         let result = (lhs.identity == rhs.identity)
         if result == false {
             switch lhs {
+            case .simple: log("item变化 -> simple")
             case .appInfo: log("item变化 -> appInfo")
             case .event: log("item变化 -> event")
             case .repo: log("item变化 -> repo")
@@ -55,5 +59,6 @@ enum SectionItem: IdentifiableType, Equatable {
         }
         return result
     }
+    // swiftlint:enable cyclomatic_complexity
     
 }

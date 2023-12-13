@@ -56,7 +56,7 @@ class PersonalViewReactor: ListViewReactor {
     }
     
     func section(_ user: User?) -> [HiContent] {
-        let models = [ModelType].init()
+        var models = [ModelType].init()
         if user?.isValid ?? false {
 //            models.append(contentsOf: [CellId.company, CellId.location, CellId.email].map {
 //                Simple.init(id: $0.rawValue, icon: $0.icon, indicated: false, divided: true)
@@ -69,17 +69,17 @@ class PersonalViewReactor: ListViewReactor {
 //                divided: true
 //            ))
         }
-//        models.append(Simple.init())
-//        models.append(contentsOf: [CellId.settings, CellId.about, CellId.feedback].map {
-//            Simple.init(
-//                id: $0.rawValue,
-//                icon: $0.icon,
-//                title: $0.title,
-//                indicated: true,
-//                divided: $0 != .feedback,
-//                target: $0.target
-//            )
-//        })
+        models.append(Simple.init())
+        models.append(contentsOf: [CellId.settings, CellId.about].map {
+            Simple.init(
+                id: $0.rawValue,
+                icon: $0.icon,
+                title: $0.title,
+                indicated: true,
+                divided: $0 != .about,
+                target: $0.target
+            )
+        })
         return [.init(header: nil, models: models)]
     }
 

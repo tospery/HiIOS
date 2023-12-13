@@ -128,7 +128,7 @@ extension TrendingViewReactor: PagingViewControllerDataSource {
                     path: .list,
                     parameters: [
                         Parameter.hidesNavigationBar: true.string,
-                        Parameter.pagingElement: page.rawValue
+                        Parameter.page: page.rawValue
                     ]
                 )
             )!
@@ -139,7 +139,7 @@ extension TrendingViewReactor: PagingViewControllerDataSource {
                     path: .list,
                     parameters: [
                         Parameter.hidesNavigationBar: true.string,
-                        Parameter.pagingElement: page.rawValue
+                        Parameter.page: page.rawValue
                     ]
                 )
             )!

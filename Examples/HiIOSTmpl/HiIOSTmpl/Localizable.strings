@@ -6,6 +6,7 @@
 "Cancel" = "取消";
 "Exit" = "退出";
 "Unknown" = "未知";
+"Test" = "测试";
 "Repositories" = "仓库";
 "Developers" = "开发者";
 "Trending" = "趋势";
@@ -13,6 +14,7 @@
 "Favorite" = "收藏";
 "Personal" = "我的";
 "Login" = "登录";
+"Settings" = "设置";
 "About" = "关于";
 /* 词语 */
 "Phone Login" = "手机登录";

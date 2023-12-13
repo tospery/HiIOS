@@ -313,7 +313,7 @@ class ListViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
 //                if $0 is Pull {
 //                    return .pull(.init($0))
 //                }
-                return .label(.init($0))
+                return .simple(.init($0))
             })
         })
     }
