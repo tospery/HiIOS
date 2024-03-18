@@ -47,6 +47,14 @@ public extension NavigatorProtocol {
         completion: (() -> Void)? = nil
     ) -> Bool {
         guard let url = url.urlValue else { return false }
+        guard let scheme = url.scheme else { return false }
+        if scheme != UIApplication.shared.urlScheme && scheme != "http" && scheme != "https" {
+            logger.print("其他scheme的url: \(url)", module: .hiIOS)
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                return false
+            }
+        }
         guard let host = url.host else { return false }
         // 检测登录要求
         var needLogin = false
@@ -66,11 +74,11 @@ public extension NavigatorProtocol {
             (self as! Navigator).rx.open(
                 router.urlString(host: .login)
             ).subscribe(onNext: { result in
-                logger.print("自动跳转登录页(数据): \(result)")
+                logger.print("自动跳转登录页(数据): \(result)", module: .hiIOS)
             }, onError: { error in
-                logger.print("自动跳转登录页(错误): \(error)")
+                logger.print("自动跳转登录页(错误): \(error)", module: .hiIOS)
             }, onCompleted: {
-                logger.print("自动跳转登录页(完成)")
+                logger.print("自动跳转登录页(完成)", module: .hiIOS)
                 var hasLogined = false
                 if let compatible = router as? RouterCompatible {
                     hasLogined = compatible.isLogined()
