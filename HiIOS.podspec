@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'HiIOS'
-  s.version          = '1.2.6'
+  s.version          = '1.2.7'
   s.summary          = 'iOS App Framework.'
   s.description      = <<-DESC
 						iOS App Framework using Swift.
@@ -76,9 +76,13 @@ Pod::Spec.new do |s|
   	ss.dependency 'HiIOS/Network'
   	ss.dependency 'HiIOS/Resources'
   	ss.dependency 'HiIOS/Components/JSBridge'
+	ss.dependency 'RxOptional', '5.0.2'
+	ss.dependency 'RxSwiftExt', '6.2.1'
   	ss.dependency 'RxDataSources', '5.0.0'
   	ss.dependency 'NSObject+Rx', '5.2.2'
   	ss.dependency 'ReactorKit', '3.2.0'
+	ss.dependency 'RxViewController', '2.0.0'
+	ss.dependency 'ReusableKit-Hi/RxSwift', '3.0.0-v4'
   	ss.dependency 'BonMot', '6.1.3'
   	ss.dependency 'Kingfisher', '7.10.0'
   	ss.dependency 'DZNEmptyDataSet', '1.8.1'

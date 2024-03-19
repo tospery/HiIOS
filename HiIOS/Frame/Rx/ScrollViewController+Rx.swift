@@ -8,12 +8,21 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxViewController
 import URLNavigator_Hi
 import DZNEmptyDataSet
 import BonMot
 import MJRefresh
 
 public extension Reactive where Base: ScrollViewController {
+    
+    var load: ControlEvent<Void> {
+        let source = Observable.merge([
+            self.base.rx.viewDidLoad.asObservable(),
+            self.base.rx.emptyDataSet.asObservable()
+        ])
+        return ControlEvent(events: source)
+    }
     
     var loading: Binder<Bool> {
         return Binder(self.base) { viewController, isLoading in
