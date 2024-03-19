@@ -34,7 +34,7 @@ open class ListViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
         case setTitle(String?)
         case setTarget(String?)
         case setData(Any?)
-        case setUser(ModelType?)
+        case setUser(UserType?)
         case setConfiguration(ModelType)
         case initial([HiContent])
         case append([HiContent])
@@ -50,7 +50,7 @@ open class ListViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
         public var target: String?
         public var error: Error?
         public var data: Any?
-        public var user: ModelType? = nil
+        public var user: UserType? = nil
         public var configuration: ModelType = BaseModel.init()
         public var contents = [HiContent].init()
         public var sections = [any SectionModelType].init()
@@ -149,7 +149,7 @@ open class ListViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
         return newState
     }
     
-    public func transform(action: Observable<Action>) -> Observable<Action> {
+    open func transform(action: Observable<Action>) -> Observable<Action> {
         action
     }
     
@@ -157,12 +157,12 @@ open class ListViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
         mutation
     }
     
-    public func transform(state: Observable<State>) -> Observable<State> {
+    open func transform(state: Observable<State>) -> Observable<State> {
         state
     }
 
     // MARK: - actions
-    public func load() -> Observable<Mutation> {
+    open func load() -> Observable<Mutation> {
         .concat([
             self.fetchLocal(),
             .just(.setError(nil)),
@@ -181,7 +181,7 @@ open class ListViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
         })
     }
     
-    public func refresh() -> Observable<Mutation> {
+    open func refresh() -> Observable<Mutation> {
         .concat([
             .just(.setError(nil)),
             .just(.setRefreshing(true)),
@@ -198,7 +198,7 @@ open class ListViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
         })
     }
     
-    public func loadMore() -> Observable<Mutation> {
+    open func loadMore() -> Observable<Mutation> {
         .concat([
             .just(.setError(nil)),
             .just(.setLoadingMore(true)),
@@ -215,7 +215,7 @@ open class ListViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
         })
     }
     
-    public func reload() -> Observable<Mutation> {
+    open func reload() -> Observable<Mutation> {
         self.load()
     }
     
@@ -260,7 +260,7 @@ open class ListViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
     }
     
     // MARK: - sections
-    func append(
+    open func append(
         _ addition: [HiContent],
         to existing: [HiContent]
     ) -> [HiContent] {
@@ -293,7 +293,7 @@ open class ListViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
                 return Disposables.create { }
             }
             return self.navigator.rxLogin()
-                .map { Mutation.setUser($0 as? ModelType) }
+                .map { Mutation.setUser($0 as? UserType) }
                 .subscribe(observer)
         }
     }

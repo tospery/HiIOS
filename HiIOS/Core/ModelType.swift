@@ -48,6 +48,11 @@ public struct BaseModel: ModelType {
 
 }
 
+public protocol UserType: ModelType {
+    var username: String? { get }
+    var password: String? { get }
+}
+
 public struct ModelContext: MapContext {
     
     public let shouldMap: Bool

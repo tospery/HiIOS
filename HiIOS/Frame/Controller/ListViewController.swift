@@ -14,12 +14,11 @@ import RxDataSources
 import ReactorKit
 import URLNavigator_Hi
 import ObjectMapper_Hi
-import ReusableKit_Hi
 import Kingfisher
 import RxDataSources
 
 open class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
-
+    
     required public init(_ navigator: NavigatorProtocol, _ reactor: BaseViewReactor) {
         defer {
             self.reactor = reactor as? ListViewReactor
@@ -81,16 +80,6 @@ open class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
             .distinctUntilChanged({ $0?.asHiError == $1?.asHiError })
             .bind(to: self.rx.error)
             .disposed(by: self.disposeBag)
-        reactor.state.map { $0.data }
-            .distinctUntilChanged { HiIOS.compareAny($0, $1) }
-            .skip(1)
-            .subscribeNext(weak: self, type(of: self).handleData)
-            .disposed(by: self.disposeBag)
-        reactor.state.map { $0.contents }
-            .distinctUntilChanged { HiIOS.compareAny($0, $1) }
-            .skip(1)
-            .subscribeNext(weak: self, type(of: self).handleContents)
-            .disposed(by: self.disposeBag)
 //        reactor.state.map { $0.user }
 //            // .distinctUntilChanged()
 //            .distinctUntilChanged { HiIOS.compareAny($0, $1) }
@@ -102,47 +91,33 @@ open class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
             .skip(1)
             .subscribeNext(weak: self, type(of: self).handleLogin)
             .disposed(by: self.disposeBag)
-//        reactor.state.map { $0.configuration.localization }
-//            .distinctUntilChanged()
-//            .skip(1)
-//            .subscribeNext(weak: self, type(of: self).handleLocalization)
-//            .disposed(by: self.disposeBag)
 //        reactor.state.map { $0.configuration }
 //            // .distinctUntilChanged()
 //            .distinctUntilChanged { HiIOS.compareAny($0, $1) }
 //            .skip(1)
 //            .subscribeNext(weak: self, type(of: self).handleConfiguration)
 //            .disposed(by: self.disposeBag)
+//        reactor.state.map { $0.configuration.localization }
+//            .distinctUntilChanged()
+//            .skip(1)
+//            .subscribeNext(weak: self, type(of: self).handleLocalization)
+//            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.data }
+            .distinctUntilChanged { HiIOS.compareAny($0, $1) }
+            .skip(1)
+            .subscribeNext(weak: self, type(of: self).handleData)
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.contents }
+            .distinctUntilChanged { HiIOS.compareAny($0, $1) }
+            .skip(1)
+            .subscribeNext(weak: self, type(of: self).handleContents)
+            .disposed(by: self.disposeBag)
         reactor.state.map { $0.target }
             .distinctUntilChanged()
             .filterNil()
             .subscribeNext(weak: self, type(of: self).handleTarget)
             .disposed(by: self.disposeBag)
-//        reactor.state.map { $0.sections }
-//            .distinctUntilChanged()
-//            .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
-//            .disposed(by: self.disposeBag)
     }
-    
-    // MARK: - cell/header/footer
-//    open func cell<Section: SectionModelType>(
-//        _ dataSource: CollectionViewSectionedDataSource<Section>,
-//        _ collectionView: UICollectionView,
-//        _ indexPath: IndexPath,
-//        _ sectionItem: Section.Item
-//    ) -> UICollectionViewCell {
-//        fatalError()
-//    }
-    
-//    open func header(_ collectionView: UICollectionView, for indexPath: IndexPath) -> UICollectionReusableView {
-//        let header = collectionView.dequeue(
-//            Reusable.baseHeader,
-//            kind: UICollectionView.elementKindSectionHeader,
-//            for: indexPath
-//        )
-//        header.theme.backgroundColor = themeService.attribute { $0.lightColor }
-//        return header
-//    }
     
     // MARK: - handle
     open func handleLogin(isLogined: Bool?) {
@@ -154,25 +129,11 @@ open class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
         }.disposed(by: self.disposeBag)
     }
     
-//    open func handleLocalization(localization: Localization) {
-////        MainScheduler.asyncInstance.schedule(()) { [weak self] _ -> Disposable in
-////            guard let `self` = self else { fatalError() }
-////            let langs = self.reactor?.currentState.configuration.localization.preferredLanguages
-////            let title = self.reactor?.currentState.title?.localized(preferredLanguages: langs)
-////            self.reactor?.action.onNext(.title(title))
-////            return Disposables.create {}
-////        }.disposed(by: self.disposeBag)
-//    }
-    
-    open func handleUser(user: ModelType?) {
+    open func handleUser(user: UserType?) {
     }
     
     open func handleConfiguration(configuration: ModelType) {
         logger.print("handleConfiguration -> 更新配置(\(self.reactor?.host ?? ""), \(self.reactor?.path ?? ""))")
-//        MainScheduler.asyncInstance.schedule(()) { _ -> Disposable in
-//            Subjection.update(Configuration.self, configuration, true)
-//            return Disposables.create {}
-//        }.disposed(by: self.disposeBag)
     }
     
     open func handleTarget(target: String?) {
