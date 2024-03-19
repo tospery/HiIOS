@@ -200,22 +200,6 @@ open class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
     
     open func handleContents(contents: [HiContent]) {
     }
-    
-    // MARK: - tap
-//    open func tapItem(sectionItem: SectionItem) {
-//        
-//    }
-    
-    open func tapUser(username: String) {
-        self.navigator.forward(Router.shared.urlString(host: .user, path: username))
-    }
-    
-    open func tapQuery(query: String) {
-    }
-    
-    open func tapLogo(_: Void? = nil) {
-    }
-    
 }
 
 extension ListViewController: UICollectionViewDelegateFlowLayout {
