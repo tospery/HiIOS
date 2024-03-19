@@ -20,7 +20,7 @@ extension HiError {
         switch self {
         case .networkNotConnected, .networkNotReachable: return UIImage.networkError
         case .server: return UIImage.serverError
-        case .dataIsEmpty: return UIImage.emptyError
+        case .listIsEmpty: return UIImage.emptyError
         case .userNotLoginedIn: return UIImage.userNotLoginedInError
         case .userLoginExpired: return UIImage.userLoginExpiredError
         default: return nil

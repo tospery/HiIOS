@@ -284,11 +284,11 @@ open class BaseViewController: UIViewController {
                 if scrollViewController.isLoading {
                     return
                 } else if scrollViewController.isRefreshing {
-                    if error == .dataIsEmpty {
+                    if error == .listIsEmpty {
                         return
                     }
                 } else if scrollViewController.isLoadingMore {
-                    if error == .dataIsEmpty {
+                    if error == .listIsEmpty {
                         return
                     }
                 }

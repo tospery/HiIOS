@@ -30,11 +30,11 @@ public enum HiError: Error {
     case timeout
     case navigation
     case dataInvalid
-    case dataIsEmpty
-    case userNotLoginedIn   // 对应HTTP的401
-    case userLoginExpired   // 对应HTTP的403
+    case listIsEmpty
     case networkNotConnected
     case networkNotReachable
+    case userNotLoginedIn   // 对应HTTP的401
+    case userLoginExpired   // 对应HTTP的403
     case server(Int, String?, [String: Any]?)
     case app(Int, String?, [String: Any]?)
 }
@@ -48,11 +48,11 @@ extension HiError: CustomNSError {
         case .timeout: return 2
         case .navigation: return 3
         case .dataInvalid: return 4
-        case .dataIsEmpty: return 5
-        case .userNotLoginedIn: return 6
-        case .userLoginExpired: return 7
-        case .networkNotConnected: return 8
-        case .networkNotReachable: return 9
+        case .listIsEmpty: return 5
+        case .networkNotConnected: return 6
+        case .networkNotReachable: return 7
+        case .userNotLoginedIn: return 8
+        case .userLoginExpired: return 9
         case let .server(code, _, _): return code
         case let .app(code, _, _): return code
         }
@@ -72,21 +72,21 @@ extension HiError: LocalizedError {
         case .navigation:
             return NSLocalizedString("Error.Navigation.Title", value: "", comment: "")
         case .dataInvalid:
-            return NSLocalizedString("Error.Data.Invalid.Title", value: "", comment: "")
-        case .dataIsEmpty:
-            return NSLocalizedString("Error.Data.IsEmpty.Title", value: "", comment: "")
-        case .userNotLoginedIn:
-            return NSLocalizedString("Error.User.NotLoginedIn.Title", value: "", comment: "")
-        case .userLoginExpired:
-            return NSLocalizedString("Error.User.LoginExpired.Title", value: "", comment: "")
+            return NSLocalizedString("Error.DataInvalid.Title", value: "", comment: "")
+        case .listIsEmpty:
+            return NSLocalizedString("Error.ListIsEmpty.Title", value: "", comment: "")
         case .networkNotConnected:
             return NSLocalizedString("Error.Network.NotConnected.Title", value: "", comment: "")
         case .networkNotReachable:
             return NSLocalizedString("Error.Network.NotReachable.Title", value: "", comment: "")
-        case .server:
-            return NSLocalizedString("Error.Server.Title", value: "", comment: "")
-        case .app:
-            return NSLocalizedString("Error.App.Title", value: "", comment: "")
+        case .userNotLoginedIn:
+            return NSLocalizedString("Error.User.NotLoginedIn.Title", value: "", comment: "")
+        case .userLoginExpired:
+            return NSLocalizedString("Error.User.LoginExpired.Title", value: "", comment: "")
+        case let .server(code, _, _):
+            return NSLocalizedString("Error.Server.Title\(code)", value: "", comment: "")
+        case let .app(code, _, _):
+            return NSLocalizedString("Error.App.Title\(code)", value: "", comment: "")
         }
     }
     /// 详情
@@ -101,17 +101,17 @@ extension HiError: LocalizedError {
         case .navigation:
             return NSLocalizedString("Error.Navigation.Message", value: "", comment: "")
         case .dataInvalid:
-            return NSLocalizedString("Error.Data.Invalid.Message", value: "", comment: "")
-        case .dataIsEmpty:
-            return NSLocalizedString("Error.Data.IsEmpty.Message", value: "", comment: "")
-        case .userNotLoginedIn:
-            return NSLocalizedString("Error.User.NotLoginedIn.Message", value: "", comment: "")
-        case .userLoginExpired:
-            return NSLocalizedString("Error.User.LoginExpired.Message", value: "", comment: "")
+            return NSLocalizedString("Error.DataInvalid.Message", value: "", comment: "")
+        case .listIsEmpty:
+            return NSLocalizedString("Error.ListIsEmpty.Message", value: "", comment: "")
         case .networkNotConnected:
             return NSLocalizedString("Error.Network.NotConnected.Message", value: "", comment: "")
         case .networkNotReachable:
             return NSLocalizedString("Error.Network.NotReachable.Message", value: "", comment: "")
+        case .userNotLoginedIn:
+            return NSLocalizedString("Error.User.NotLoginedIn.Message", value: "", comment: "")
+        case .userLoginExpired:
+            return NSLocalizedString("Error.User.LoginExpired.Message", value: "", comment: "")
         case let .server(code, message, _):
             return message ?? NSLocalizedString("Error.Server.Message\(code)", value: "", comment: "")
         case let .app(code, message, _):
@@ -142,11 +142,11 @@ extension HiError: Equatable {
             (.timeout, .timeout),
              (.navigation, .navigation),
              (.dataInvalid, .dataInvalid),
-             (.dataIsEmpty, .dataIsEmpty),
-             (.userNotLoginedIn, .userNotLoginedIn),
-            (.userLoginExpired, .userLoginExpired),
+             (.listIsEmpty, .listIsEmpty),
             (.networkNotConnected, .networkNotConnected),
-            (.networkNotReachable, .networkNotReachable):
+            (.networkNotReachable, .networkNotReachable),
+            (.userNotLoginedIn, .userNotLoginedIn),
+           (.userLoginExpired, .userLoginExpired):
             return true
         case (.server(let left, _, _), .server(let right, _, _)),
              (.app(let left, _, _), .app(let right, _, _)):
@@ -164,11 +164,11 @@ extension HiError: CustomStringConvertible {
         case .timeout: return "HiError.timeout"
         case .navigation: return "HiError.navigation"
         case .dataInvalid: return "HiError.dataInvalid"
-        case .dataIsEmpty: return "HiError.dataIsEmpty"
-        case .userNotLoginedIn: return "HiError.userNotLoginedIn"
-        case .userLoginExpired: return "HiError.userLoginExpired"
+        case .listIsEmpty: return "HiError.listIsEmpty"
         case .networkNotConnected: return "HiError.networkNotConnected"
         case .networkNotReachable: return "HiError.networkNotReachable"
+        case .userNotLoginedIn: return "HiError.userNotLoginedIn"
+        case .userLoginExpired: return "HiError.userLoginExpired"
         case let .server(code, message, extra): return "HiError.server(\(code), \(message ?? ""), \(extra?.jsonString() ?? "")"
         case let .app(code, message, extra): return "HiError.app(\(code), \(message ?? ""), \(extra?.jsonString() ?? ""))"
         }

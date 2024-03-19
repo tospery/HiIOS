@@ -67,7 +67,7 @@ public extension Reactive where Base: ScrollViewController {
                 if viewController.noMoreData {
                     scrollView.mj_footer?.endRefreshingWithNoMoreData()
                 } else {
-                    if case .dataIsEmpty = viewController.error as? HiError {
+                    if case .listIsEmpty = viewController.error as? HiError {
                         scrollView.mj_footer?.endRefreshingWithNoMoreData()
                     } else {
                         scrollView.mj_footer?.resetNoMoreData()
