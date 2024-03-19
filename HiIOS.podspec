@@ -82,7 +82,6 @@ Pod::Spec.new do |s|
   	ss.dependency 'NSObject+Rx', '5.2.2'
   	ss.dependency 'ReactorKit', '3.2.0'
 	ss.dependency 'RxViewController', '2.0.0'
-	ss.dependency 'ReusableKit-Hi/RxSwift', '3.0.0-v4'
   	ss.dependency 'BonMot', '6.1.3'
   	ss.dependency 'Kingfisher', '7.10.0'
   	ss.dependency 'DZNEmptyDataSet', '1.8.1'

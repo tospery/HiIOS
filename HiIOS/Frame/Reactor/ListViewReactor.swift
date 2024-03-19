@@ -114,7 +114,7 @@ open class ListViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
         }
     }
     
-    public func reduce(state: State, mutation: Mutation) -> State {
+    open func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
         case let .setLoading(isLoading):
@@ -162,7 +162,7 @@ open class ListViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
     }
 
     // MARK: - actions
-    func load() -> Observable<Mutation> {
+    public func load() -> Observable<Mutation> {
         .concat([
             self.fetchLocal(),
             .just(.setError(nil)),
@@ -181,7 +181,7 @@ open class ListViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
         })
     }
     
-    func refresh() -> Observable<Mutation> {
+    public func refresh() -> Observable<Mutation> {
         .concat([
             .just(.setError(nil)),
             .just(.setRefreshing(true)),
@@ -198,7 +198,7 @@ open class ListViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
         })
     }
     
-    func loadMore() -> Observable<Mutation> {
+    public func loadMore() -> Observable<Mutation> {
         .concat([
             .just(.setError(nil)),
             .just(.setLoadingMore(true)),
@@ -215,15 +215,15 @@ open class ListViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
         })
     }
     
-    func reload() -> Observable<Mutation> {
+    public func reload() -> Observable<Mutation> {
         self.load()
     }
     
-    func update() -> Observable<Mutation> {
+    open func update() -> Observable<Mutation> {
         .empty()
     }
     
-    func execute(_ value: Any?, _ active: Bool, _ needLogin: Bool) -> Observable<Mutation> {
+    open func execute(_ value: Any?, _ active: Bool, _ needLogin: Bool) -> Observable<Mutation> {
         if active {
             guard !self.currentState.isActivating else { return .empty() }
         }
@@ -242,20 +242,20 @@ open class ListViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
     }
     
     // MARK: - fetch/request
-    func fetchLocal() -> Observable<Mutation> {
+    open func fetchLocal() -> Observable<Mutation> {
         .just(.initial([]))
     }
     
-    func requestRemote(_ mode: HiRequestMode, _ page: Int) -> Observable<Mutation> {
+    open func requestRemote(_ mode: HiRequestMode, _ page: Int) -> Observable<Mutation> {
         .empty()
     }
     
     // MARK: - active/silent
-    func active(_ value: Any?) -> Observable<Mutation> {
+    open func active(_ value: Any?) -> Observable<Mutation> {
         .empty()
     }
     
-    func silent(_ value: Any?) -> Observable<Mutation> {
+    open func silent(_ value: Any?) -> Observable<Mutation> {
         .empty()
     }
     
@@ -285,7 +285,7 @@ open class ListViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
     }
     
     // MARK: - other
-    func loginIfNeed() -> Observable<Mutation> {
+    open func loginIfNeed() -> Observable<Mutation> {
         .create { [weak self] observer -> Disposable in
             guard let `self` = self else { fatalError() }
             if self.currentState.user?.isValid ?? false {

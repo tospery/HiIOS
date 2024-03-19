@@ -27,11 +27,11 @@ open class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
         super.init(navigator, reactor)
         self.tabBarItem.title = reactor.title ?? (reactor as? ListViewReactor)?.currentState.title
     }
-
+    
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     open override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.theme.backgroundColor = themeService.attribute { $0.lightColor }
@@ -91,12 +91,12 @@ open class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
             .skip(1)
             .subscribeNext(weak: self, type(of: self).handleContents)
             .disposed(by: self.disposeBag)
-        reactor.state.map { $0.user }
-            // .distinctUntilChanged()
-            .distinctUntilChanged { HiIOS.compareAny($0, $1) }
-            .skip(1)
-            .subscribeNext(weak: self, type(of: self).handleUser)
-            .disposed(by: self.disposeBag)
+//        reactor.state.map { $0.user }
+//            // .distinctUntilChanged()
+//            .distinctUntilChanged { HiIOS.compareAny($0, $1) }
+//            .skip(1)
+//            .subscribeNext(weak: self, type(of: self).handleUser)
+//            .disposed(by: self.disposeBag)
         reactor.state.map { $0.user?.isValid }
             .distinctUntilChanged()
             .skip(1)
@@ -107,12 +107,12 @@ open class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
 //            .skip(1)
 //            .subscribeNext(weak: self, type(of: self).handleLocalization)
 //            .disposed(by: self.disposeBag)
-        reactor.state.map { $0.configuration }
-            // .distinctUntilChanged()
-            .distinctUntilChanged { HiIOS.compareAny($0, $1) }
-            .skip(1)
-            .subscribeNext(weak: self, type(of: self).handleConfiguration)
-            .disposed(by: self.disposeBag)
+//        reactor.state.map { $0.configuration }
+//            // .distinctUntilChanged()
+//            .distinctUntilChanged { HiIOS.compareAny($0, $1) }
+//            .skip(1)
+//            .subscribeNext(weak: self, type(of: self).handleConfiguration)
+//            .disposed(by: self.disposeBag)
         reactor.state.map { $0.target }
             .distinctUntilChanged()
             .filterNil()
@@ -125,16 +125,16 @@ open class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
     }
     
     // MARK: - cell/header/footer
-    open func cell<Section: SectionModelType>(
-        _ dataSource: CollectionViewSectionedDataSource<Section>,
-        _ collectionView: UICollectionView,
-        _ indexPath: IndexPath,
-        _ sectionItem: Section.Item
-    ) -> UICollectionViewCell {
-        fatalError()
-    }
+//    open func cell<Section: SectionModelType>(
+//        _ dataSource: CollectionViewSectionedDataSource<Section>,
+//        _ collectionView: UICollectionView,
+//        _ indexPath: IndexPath,
+//        _ sectionItem: Section.Item
+//    ) -> UICollectionViewCell {
+//        fatalError()
+//    }
     
-    open func header(_ collectionView: UICollectionView, for indexPath: IndexPath) -> UICollectionReusableView {
+//    open func header(_ collectionView: UICollectionView, for indexPath: IndexPath) -> UICollectionReusableView {
 //        let header = collectionView.dequeue(
 //            Reusable.baseHeader,
 //            kind: UICollectionView.elementKindSectionHeader,
@@ -142,8 +142,7 @@ open class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
 //        )
 //        header.theme.backgroundColor = themeService.attribute { $0.lightColor }
 //        return header
-        fatalError()
-    }
+//    }
     
     // MARK: - handle
     open func handleLogin(isLogined: Bool?) {
@@ -216,7 +215,7 @@ open class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
     
     open func tapLogo(_: Void? = nil) {
     }
-
+    
 }
 
 extension ListViewController: UICollectionViewDelegateFlowLayout {
