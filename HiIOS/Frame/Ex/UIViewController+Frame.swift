@@ -50,6 +50,6 @@ public extension UIViewController {
         }
         self.swf_present(viewControllerToPresent, animated: flag, completion: completion)
     }
-
+    
 }
 

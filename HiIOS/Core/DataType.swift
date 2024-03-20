@@ -13,6 +13,12 @@ public enum HiToastStyle: Int {
     case warning
 }
 
+public enum HiPagingStyle: Int, Codable {
+    case basic
+    case navigationBar
+    case pageViewController
+}
+
 // MARK: - 联合类型
 // public typealias KVTuple = (key: Any, value: Any?)
 // public typealias HiContent = (header: ModelType?, models: [ModelType])
