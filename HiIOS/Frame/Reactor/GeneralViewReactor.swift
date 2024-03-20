@@ -35,7 +35,7 @@ open class GeneralViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
         case setTarget(String?)
         case setData(Any?)
         case setUser(UserType?)
-        case setConfiguration(ModelType)
+        case setConfiguration(ConfigurationType?)
         case initial([HiContent])
         case append([HiContent])
     }
@@ -51,39 +51,9 @@ open class GeneralViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
         public var error: Error?
         public var data: Any?
         public var user: UserType? = nil
-        public var configuration: ModelType = BaseModel.init()
+        public var configuration: ConfigurationType? = nil
         public var contents = [HiContent].init()
         public var sections = [any SectionModelType].init()
-        
-//        public init(
-//            isLoading: Bool = false,
-//            isRefreshing: Bool = false,
-//            isActivating: Bool = false,
-//            isLoadingMore: Bool = false,
-//            noMoreData: Bool = false,
-//            title: String? = nil,
-//            target: String? = nil,
-//            error: Error? = nil,
-//            data: Any? = nil,
-//            user: ModelType? = nil,
-//            configuration: ModelType = BaseModel.init(),
-//            contents: [HiContent] = [HiContent].init(),
-//            sections: [any SectionModelType] = [any SectionModelType].init()
-//        ) {
-//            self.isLoading = isLoading
-//            self.isRefreshing = isRefreshing
-//            self.isActivating = isActivating
-//            self.isLoadingMore = isLoadingMore
-//            self.noMoreData = noMoreData
-//            self.title = title
-//            self.target = target
-//            self.error = error
-//            self.data = data
-//            self.user = user
-//            self.configuration = configuration
-//            self.contents = contents
-//            self.sections = sections
-//        }
     }
     
     public let url: String

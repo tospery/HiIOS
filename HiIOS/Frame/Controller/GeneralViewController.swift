@@ -79,23 +79,21 @@ open class GeneralViewController: HiIOS.CollectionViewController, ReactorKit.Vie
             .distinctUntilChanged({ $0?.asHiError == $1?.asHiError })
             .bind(to: self.rx.error)
             .disposed(by: self.disposeBag)
-//        reactor.state.map { $0.user }
-//            // .distinctUntilChanged()
-//            .distinctUntilChanged { HiIOS.compareAny($0, $1) }
-//            .skip(1)
-//            .subscribeNext(weak: self, type(of: self).handleUser)
-//            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.user }
+            .distinctUntilChanged { HiIOS.compareAny($0, $1) }
+            .skip(1)
+            .subscribeNext(weak: self, type(of: self).handleUser)
+            .disposed(by: self.disposeBag)
         reactor.state.map { $0.user?.isValid }
             .distinctUntilChanged()
             .skip(1)
             .subscribeNext(weak: self, type(of: self).handleLogin)
             .disposed(by: self.disposeBag)
-//        reactor.state.map { $0.configuration }
-//            // .distinctUntilChanged()
-//            .distinctUntilChanged { HiIOS.compareAny($0, $1) }
-//            .skip(1)
-//            .subscribeNext(weak: self, type(of: self).handleConfiguration)
-//            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.configuration }
+            .distinctUntilChanged { HiIOS.compareAny($0, $1) }
+            .skip(1)
+            .subscribeNext(weak: self, type(of: self).handleConfiguration)
+            .disposed(by: self.disposeBag)
 //        reactor.state.map { $0.configuration.localization }
 //            .distinctUntilChanged()
 //            .skip(1)
@@ -131,7 +129,7 @@ open class GeneralViewController: HiIOS.CollectionViewController, ReactorKit.Vie
     open func handleUser(user: UserType?) {
     }
     
-    open func handleConfiguration(configuration: ModelType) {
+    open func handleConfiguration(configuration: ConfigurationType?) {
         logger.print("handleConfiguration -> 更新配置(\(self.reactor?.host ?? ""), \(self.reactor?.path ?? ""))")
     }
     
