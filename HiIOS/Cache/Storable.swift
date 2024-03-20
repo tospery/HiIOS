@@ -98,7 +98,8 @@ public extension Storable {
     }
 
     static func == (lhs: Self, rhs: Self) -> Bool {
-        lhs.description.sorted() == rhs.description.sorted()
+        // lhs.description.sorted() == rhs.description.sorted()
+        lhs.description == rhs.description
     }
 
 }

@@ -19,7 +19,7 @@ public protocol ModelType: Mappable, CustomStringConvertible {
 public extension ModelType {
     var uuid: String { UUID.init().uuidString }
     var isValid: Bool { true }
-    var description: String { return self.toJSON().sortedJSONString }
+    var description: String { self.toJSON().sortedJSONString }
 }
 
 public protocol UserType: ModelType {
