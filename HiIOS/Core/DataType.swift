@@ -19,6 +19,39 @@ public enum HiPagingStyle: Int, Codable {
     case pageViewController
 }
 
+public enum Localization: String, Codable {
+    case system     = "system"
+    case chinese    = "zh-Hans"
+    case english    = "en"
+    
+    public static let allValues = [system, chinese, english]
+    
+//    static var preferredLanguages: [String]? {
+//        Configuration.current?.localization.preferredLanguages
+//    }
+    
+    public var preferredLanguages: [String]? {
+        switch self {
+        case .system: return nil
+        default: return [self.rawValue]
+        }
+    }
+    
+//    var description: String {
+//        switch self {
+//        case .system: return R.string.localizable.followSystem(
+//            preferredLanguages: myLangs
+//        )
+//        case .chinese: return R.string.localizable.chinese(
+//            preferredLanguages: myLangs
+//        )
+//        case .english: return R.string.localizable.english(
+//            preferredLanguages: myLangs
+//        )
+//        }
+//    }
+}
+
 // MARK: - 联合类型
 // public typealias KVTuple = (key: Any, value: Any?)
 // public typealias HiContent = (header: ModelType?, models: [ModelType])

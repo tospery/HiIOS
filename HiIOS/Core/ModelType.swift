@@ -22,6 +22,15 @@ public extension ModelType {
     var description: String { self.toJSON().sortedJSONString }
 }
 
+public protocol UserType: ModelType {
+    var username: String? { get }
+    var password: String? { get }
+}
+
+public protocol ConfigurationType: ModelType {
+    var localization: Localization { get }
+}
+
 public struct BaseModel: ModelType {
 
     public var data: Any?
@@ -46,11 +55,6 @@ public struct BaseModel: ModelType {
         String.init(describing: self.data)
     }
 
-}
-
-public protocol UserType: ModelType {
-    var username: String? { get }
-    var password: String? { get }
 }
 
 public struct ModelContext: MapContext {
