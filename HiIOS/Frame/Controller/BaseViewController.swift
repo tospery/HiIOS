@@ -252,6 +252,7 @@ open class BaseViewController: UIViewController {
     }
     
     open func handleTitle(_ text: String?) {
+        self.tabBarItem.title = text
         self.navigationBar.titleLabel.text = text
         self.navigationBar.setNeedsLayout()
         self.navigationBar.layoutIfNeeded()

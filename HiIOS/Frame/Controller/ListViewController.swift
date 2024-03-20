@@ -24,7 +24,6 @@ open class ListViewController: HiIOS.CollectionViewController, ReactorKit.View {
             self.reactor = reactor as? ListViewReactor
         }
         super.init(navigator, reactor)
-        self.tabBarItem.title = reactor.title ?? (reactor as? ListViewReactor)?.currentState.title
     }
     
     required public init?(coder: NSCoder) {
