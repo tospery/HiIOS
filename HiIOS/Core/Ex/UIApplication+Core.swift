@@ -68,6 +68,16 @@ public extension UIApplication {
         return UIImage(named: name)
     }
     
+    var window: UIWindow {
+        var window: UIWindow?
+        if #available(iOS 13, *) {
+            window = UIApplication.shared.windows.filter { $0.isKeyWindow }.last
+        } else {
+            window = UIApplication.shared.keyWindow
+        }
+        return window!
+    }
+    
     @objc var pageStart: Int { 1 }
     
     @objc var pageSize: Int { 20 }
