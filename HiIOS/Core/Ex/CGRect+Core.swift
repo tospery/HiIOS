@@ -10,6 +10,18 @@ import QMUIKit
 
 public extension CGRect {
     
+    init?(string: String) {
+        var myString = string.removingPrefix("(")
+        myString = myString.removingSuffix(")")
+        let components = myString.components(separatedBy: ",")
+        guard components.count == 4 else { return nil }
+        guard let x = components[0].trimmed.double() else { return nil }
+        guard let y = components[1].trimmed.double() else { return nil }
+        guard let width = components[2].trimmed.double() else { return nil }
+        guard let height = components[3].trimmed.double() else { return nil }
+        self.init(x: x, y: y, width: width, height: height)
+    }
+    
     var minEdge: CGFloat {
         return min(width, height)
     }

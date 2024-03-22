@@ -220,8 +220,9 @@ final public class Router {
 }
 
 extension Router.Host {
+    /// 返回上一级（包括退回或者关闭）
     public static var back: Router.Host { "back" }
-    
+    /// 弹窗分为两类（自动关闭的toast和手动关闭的）
     public static var toast: Router.Host { "toast" }
     public static var alert: Router.Host { "alert" }
     public static var sheet: Router.Host { "sheet" }
