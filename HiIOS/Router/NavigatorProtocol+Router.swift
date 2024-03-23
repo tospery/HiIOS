@@ -136,23 +136,16 @@ public extension NavigatorProtocol {
         from: UINavigationControllerType? = nil,
         animated: Bool = true
     ) -> Bool {
-        var ctx = self.convert(context: context)
-        ctx[Parameter.jumpType] = JumpType.forward.rawValue
-        ctx[Parameter.forwardType] = ForwardType.push.rawValue
-        return self.jump(url, context: ctx, fromNav: from, animated: animated)
+        self.jump(url, context: self.contextForPush(context: context), fromNav: from, animated: animated)
     }
     
-    // @discardableResult
     func rxPushX(
         _ url: URLConvertible,
         context: Any? = nil,
         from: UINavigationControllerType? = nil,
         animated: Bool = true
     ) -> Observable<Any> {
-        var ctx = self.convert(context: context)
-        ctx[Parameter.jumpType] = JumpType.forward.rawValue
-        ctx[Parameter.forwardType] = ForwardType.push.rawValue
-        return self.rxJump(url, context: ctx, fromNav: from, animated: animated)
+        self.rxJump(url, context: self.contextForPush(context: context), fromNav: from, animated: animated)
     }
     
     // MARK: scene
@@ -165,14 +158,9 @@ public extension NavigatorProtocol {
         animated: Bool = true,
         completion: (() -> Void)? = nil
     ) -> Bool {
-        var ctx = self.convert(context: context)
-        ctx[Parameter.jumpType] = JumpType.forward.rawValue
-        ctx[Parameter.forwardType] = ForwardType.open.rawValue
-        ctx[Parameter.openType] = OpenType.scene.rawValue
-        return self.jump(url, context: ctx, wrap: wrap, fromVC: from, animated: animated, completion: completion)
+        self.jump(url, context: self.contextForScene(context: context), wrap: wrap, fromVC: from, animated: animated, completion: completion)
     }
     
-    // @discardableResult
     func rxScene(
         _ url: URLConvertible,
         context: Any? = nil,
@@ -181,85 +169,41 @@ public extension NavigatorProtocol {
         animated: Bool = true,
         completion: (() -> Void)? = nil
     ) -> Observable<Any> {
-        var ctx = self.convert(context: context)
-        ctx[Parameter.jumpType] = JumpType.forward.rawValue
-        ctx[Parameter.forwardType] = ForwardType.open.rawValue
-        ctx[Parameter.openType] = OpenType.scene.rawValue
-        return self.rxJump(url, context: ctx, wrap: wrap, fromVC: from, animated: animated, completion: completion)
+        self.rxJump(url, context: self.contextForScene(context: context), wrap: wrap, fromVC: from, animated: animated, completion: completion)
     }
     
     // MARK: popup
     @discardableResult
     func popup(_ path: Router.Path, context: Any? = nil) -> Bool {
-        var ctx = self.convert(context: context)
-        ctx[Parameter.jumpType] = JumpType.forward.rawValue
-        ctx[Parameter.forwardType] = ForwardType.open.rawValue
-        ctx[Parameter.openType] = OpenType.popup.rawValue
-        return self.jump(Router.shared.urlString(host: .popup, path: path), context: ctx)
+        self.jump(Router.shared.urlString(host: .popup, path: path), context: self.contextForPopup(context: context))
     }
     
     func rxPopup(_ path: Router.Path, context: Any? = nil) -> Observable<Any> {
-        var ctx = self.convert(context: context)
-        ctx[Parameter.jumpType] = JumpType.forward.rawValue
-        ctx[Parameter.forwardType] = ForwardType.open.rawValue
-        ctx[Parameter.openType] = OpenType.popup.rawValue
-        return self.rxJump(Router.shared.urlString(host: .popup, path: path), context: ctx)
+        self.rxJump(Router.shared.urlString(host: .popup, path: path), context: self.contextForPopup(context: context))
     }
     
     // MARK: sheet
     @discardableResult
     func sheet(_ title: String?, _ message: String?, _ actions: [AlertActionType]) -> Bool {
-        var parameters = [String: String].init()
-        parameters[Parameter.title] = title
-        parameters[Parameter.message] = message
-        var ctx = self.convert(context: [
-            Parameter.actions: actions
-        ])
-        ctx[Parameter.jumpType] = JumpType.forward.rawValue
-        ctx[Parameter.forwardType] = ForwardType.open.rawValue
-        ctx[Parameter.openType] = OpenType.sheet.rawValue
-        return self.jump(Router.shared.urlString(host: .sheet, parameters: parameters), context: ctx)
+        let info = self.infoForSheet(title, message, actions)
+        return self.jump(Router.shared.urlString(host: .sheet, parameters: info.0), context: info.1)
     }
 
     func rxSheet(_ title: String?, _ message: String?, _ actions: [AlertActionType]) -> Observable<Any> {
-        var parameters = [String: String].init()
-        parameters[Parameter.title] = title
-        parameters[Parameter.message] = message
-        var ctx = self.convert(context: [
-            Parameter.actions: actions
-        ])
-        ctx[Parameter.jumpType] = JumpType.forward.rawValue
-        ctx[Parameter.forwardType] = ForwardType.open.rawValue
-        ctx[Parameter.openType] = OpenType.sheet.rawValue
-        return self.rxJump(Router.shared.urlString(host: .sheet, parameters: parameters), context: ctx)
+        let info = self.infoForSheet(title, message, actions)
+        return self.rxJump(Router.shared.urlString(host: .sheet, parameters: info.0), context: info.1)
     }
     
     // MARK: - alert
     @discardableResult
     func alert(_ title: String, _ message: String, _ actions: [AlertActionType]) -> Bool {
-        var parameters = [String: String].init()
-        parameters[Parameter.title] = title
-        parameters[Parameter.message] = message
-        var ctx = self.convert(context: [
-            Parameter.actions: actions
-        ])
-        ctx[Parameter.jumpType] = JumpType.forward.rawValue
-        ctx[Parameter.forwardType] = ForwardType.open.rawValue
-        ctx[Parameter.openType] = OpenType.alert.rawValue
-        return self.jump(Router.shared.urlString(host: .alert, parameters: parameters), context: ctx)
+        let info = self.infoForAlert(title, message, actions)
+        return self.jump(Router.shared.urlString(host: .alert, parameters: info.0), context: info.1)
     }
 
     func rxAlert(_ title: String, _ message: String, _ actions: [AlertActionType]) -> Observable<Any> {
-        var parameters = [String: String].init()
-        parameters[Parameter.title] = title
-        parameters[Parameter.message] = message
-        var ctx = self.convert(context: [
-            Parameter.actions: actions
-        ])
-        ctx[Parameter.jumpType] = JumpType.forward.rawValue
-        ctx[Parameter.forwardType] = ForwardType.open.rawValue
-        ctx[Parameter.openType] = OpenType.alert.rawValue
-        return self.rxJump(Router.shared.urlString(host: .alert, parameters: parameters), context: ctx)
+        let info = self.infoForAlert(title, message, actions)
+        return self.rxJump(Router.shared.urlString(host: .alert, parameters: info.0), context: info.1)
     }
     
     // MARK: toast
@@ -291,40 +235,20 @@ public extension NavigatorProtocol {
     
     // MARK: login
     func login() {
-        var ctx = self.convert()
-        ctx[Parameter.jumpType] = JumpType.forward.rawValue
-        ctx[Parameter.forwardType] = ForwardType.open.rawValue
-        ctx[Parameter.openType] = OpenType.scene.rawValue
-        self.jump(Router.shared.urlString(host: .login), context: ctx)
+        self.jump(Router.shared.urlString(host: .login), context: self.contextForLogin())
     }
     
     func rxLogin() -> Observable<Any> {
-        var ctx = self.convert()
-        ctx[Parameter.jumpType] = JumpType.forward.rawValue
-        ctx[Parameter.forwardType] = ForwardType.open.rawValue
-        ctx[Parameter.openType] = OpenType.scene.rawValue
-        return self.rxJump(Router.shared.urlString(host: .login), context: ctx)
+        self.rxJump(Router.shared.urlString(host: .login), context: self.contextForLogin())
     }
 
     // MARK: back
     func back(type: BackType? = nil, animated: Bool = true, message: String? = nil) {
-        var ctx = self.convert(context: [
-            Parameter.backType: type,
-            Parameter.animated: animated,
-            Parameter.message: message
-        ])
-        ctx[Parameter.jumpType] = JumpType.back.rawValue
-        self.jump(Router.shared.urlString(host: .back), context: ctx)
+        self.jump(Router.shared.urlString(host: .back), context: self.contextForBack(type: type, animated: animated, message: message))
     }
     
     func rxBack(type: BackType? = nil, animated: Bool = true, message: String? = nil) -> Observable<Any> {
-        var ctx = self.convert(context: [
-            Parameter.backType: type,
-            Parameter.animated: animated,
-            Parameter.message: message
-        ])
-        ctx[Parameter.jumpType] = JumpType.back.rawValue
-        return self.rxJump(Router.shared.urlString(host: .back), context: ctx)
+        self.rxJump(Router.shared.urlString(host: .back), context: self.contextForBack(type: type, animated: animated, message: message))
     }
     
     // MARK: - Private
@@ -417,6 +341,73 @@ public extension NavigatorProtocol {
         return ctx
     }
     
+    private func contextForPush(context: Any?) -> Any {
+        var ctx = self.convert(context: context)
+        ctx[Parameter.jumpType] = JumpType.forward.rawValue
+        ctx[Parameter.forwardType] = ForwardType.push.rawValue
+        return ctx
+    }
+    
+    private func contextForScene(context: Any?) -> Any {
+        var ctx = self.convert(context: context)
+        ctx[Parameter.jumpType] = JumpType.forward.rawValue
+        ctx[Parameter.forwardType] = ForwardType.open.rawValue
+        ctx[Parameter.openType] = OpenType.scene.rawValue
+        return ctx
+    }
+    
+    private func contextForPopup(context: Any?) -> Any {
+        var ctx = self.convert(context: context)
+        ctx[Parameter.jumpType] = JumpType.forward.rawValue
+        ctx[Parameter.forwardType] = ForwardType.open.rawValue
+        ctx[Parameter.openType] = OpenType.popup.rawValue
+        return ctx
+    }
+    
+    private func contextForLogin() -> Any {
+        var ctx = self.convert()
+        ctx[Parameter.jumpType] = JumpType.forward.rawValue
+        ctx[Parameter.forwardType] = ForwardType.open.rawValue
+        ctx[Parameter.openType] = OpenType.scene.rawValue
+        return ctx
+    }
+    
+    private func contextForBack(type: BackType?, animated: Bool, message: String?) -> Any {
+        var ctx = self.convert(context: [
+            Parameter.backType: type,
+            Parameter.animated: animated,
+            Parameter.message: message
+        ])
+        ctx[Parameter.jumpType] = JumpType.back.rawValue
+        return ctx
+    }
+    
+    private func infoForSheet(_ title: String?, _ message: String?, _ actions: [AlertActionType]) -> ([String: String], [String: Any]) {
+        var parameters = [String: String].init()
+        parameters[Parameter.title] = title
+        parameters[Parameter.message] = message
+        var context = self.convert(context: [
+            Parameter.actions: actions
+        ])
+        context[Parameter.jumpType] = JumpType.forward.rawValue
+        context[Parameter.forwardType] = ForwardType.open.rawValue
+        context[Parameter.openType] = OpenType.sheet.rawValue
+        return (parameters, context)
+    }
+    
+    private func infoForAlert(_ title: String, _ message: String, _ actions: [AlertActionType]) -> ([String: String], [String: Any]) {
+        var parameters = [String: String].init()
+        parameters[Parameter.title] = title
+        parameters[Parameter.message] = message
+        var context = self.convert(context: [
+            Parameter.actions: actions
+        ])
+        context[Parameter.jumpType] = JumpType.forward.rawValue
+        context[Parameter.forwardType] = ForwardType.open.rawValue
+        context[Parameter.openType] = OpenType.alert.rawValue
+        return (parameters, context)
+    }
+    
     @discardableResult
     private func forward(
         _ url: URLConvertible,
@@ -460,17 +451,6 @@ public extension NavigatorProtocol {
         default:
             return self.open(url, context: context)
         }
-    }
-    
-    @discardableResult
-    private func myOpen(
-        _ url: URLConvertible,
-        context: Any? = nil
-    ) -> Bool {
-        var ctx = self.convert(context: context)
-        ctx[Parameter.jumpType] = JumpType.forward.rawValue
-        ctx[Parameter.forwardType] = ForwardType.open.rawValue
-        return self.jump(url, context: ctx)
     }
     
 }
