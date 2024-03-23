@@ -142,7 +142,7 @@ open class GeneralViewController: HiIOS.CollectionViewController, ReactorKit.Vie
             let cancel = url.queryValue(for: Parameter.cancel)?.bool
             let message = url.queryValue(for: Parameter.message)
             self.back(
-                type: .init(rawValue: forwardType ?? ForwardType.auto.rawValue) ?? .auto,
+                type: .init(rawValue: forwardType ?? OldForwrdType.auto.rawValue) ?? .auto,
                 animated: animated ?? true,
                 result: result,
                 cancel: cancel ?? false,
@@ -150,7 +150,7 @@ open class GeneralViewController: HiIOS.CollectionViewController, ReactorKit.Vie
             )
             return
         }
-        self.navigator.forward(url)
+        self.navigator.jump(url)
     }
     
     open func handleData(data: Any?) {

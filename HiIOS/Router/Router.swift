@@ -83,7 +83,7 @@ final public class Router {
                 let base = UIApplication.shared.baseWebUrl + "/"
                 if string.hasPrefix(base) {
                     let url = string.replacingOccurrences(of: base, with: UIApplication.shared.urlScheme + "://")
-                    if navigator.forward(url, context: context) {
+                    if navigator.jump(url, context: context) {
                         return nil
                     }
                     if let compatible = self as? RouterCompatible {
@@ -120,7 +120,7 @@ final public class Router {
                 }
                 observer?.onCompleted()
             }
-            let forward = parameters?.enum(for: Parameter.forwardType, type: ForwardType.self) ?? .auto
+            let forward = parameters?.enum(for: Parameter.forwardType, type: OldForwrdType.self) ?? .auto
             let animated = parameters?.bool(for: Parameter.animated) ?? true
             switch forward {
             case .off:

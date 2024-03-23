@@ -32,7 +32,7 @@ public extension Reactive where Base: Navigator {
                 ctx[Parameter.routerContext] = context
             }
             ctx[Parameter.routerObserver] = observer
-            guard base.forward(
+            guard base.jump(
                 url,
                 context: ctx,
                 wrap: wrap,
@@ -56,7 +56,7 @@ public extension Reactive where Base: Navigator {
     ) -> Observable<UIViewController> {
         forward(url, context: (
             self.convert(context: context) + [
-                Parameter.forwardType: ForwardType.push.rawValue
+                Parameter.forwardType: OldForwrdType.push.rawValue
             ]
         ), fromNav: from, animated: animated)
             .map { $0 as! UIViewController }
@@ -72,7 +72,7 @@ public extension Reactive where Base: Navigator {
     ) -> Observable<Any> {
         forward(url, context: (
             self.convert(context: context) + [
-                Parameter.forwardType: ForwardType.present.rawValue
+                Parameter.forwardType: OldForwrdType.present.rawValue
             ]
         ), wrap: wrap, fromVC: from, animated: animated, completion: completion)
     }
@@ -83,13 +83,13 @@ public extension Reactive where Base: Navigator {
     ) -> Observable<Any> {
         forward(url, context: (
             self.convert(context: context) + [
-                Parameter.forwardType: ForwardType.open.rawValue
+                Parameter.forwardType: OldForwrdType.open.rawValue
             ]
         ))
     }
 
 //    func back(
-//        _ type: ForwardType? = nil,
+//        _ type: OldForwrdType? = nil,
 //        animated: Bool = true,
 //        result: Any? = nil
 //    ) -> Observable<Any> {

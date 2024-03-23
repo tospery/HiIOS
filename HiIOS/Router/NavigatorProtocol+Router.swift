@@ -13,7 +13,49 @@ import SwifterSwift
 
 var navigateBag = DisposeBag()
 
+/// 导航的分类
+public enum JumpType: Int {
+    /// 前进
+    case forward
+    /// 后退
+    case back
+}
+
+/// 前进的分类
 public enum ForwardType: Int {
+    /// 推进
+    case push
+    /// 打开
+    case open
+}
+
+/// 后退的分类
+public enum BackType: Int {
+    /// 自动
+    case auto
+    /// 弹出（一个）
+    case pop
+    /// 弹出（所有）
+    case off
+    /// 关闭
+    case close
+}
+
+/// 打开的分类
+public enum OpenType: Int {
+    /// 消息框（自动关闭）
+    case toast
+    /// 提示框（可选择的）
+    case alert
+    /// 表单框（可操作的）
+    case sheet
+    /// 弹窗
+    case popup
+    /// 场景
+    case scene
+}
+
+public enum OldForwrdType: Int {
     // to
     case push
     case present
@@ -35,9 +77,9 @@ public enum ForwardType: Int {
 
 public extension NavigatorProtocol {
 
-    // MARK: - Forward（支持自动跳转登录页功能）
+    // MARK: - Jump（支持自动跳转登录页功能）
     @discardableResult
-    func forward(
+    func jump(
         _ url: URLConvertible,
         context: Any? = nil,
         wrap: UINavigationController.Type? = nil,
@@ -84,7 +126,7 @@ public extension NavigatorProtocol {
                     hasLogined = compatible.isLogined()
                 }
                 if hasLogined {
-                    self.forward(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
+                    self.jump(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
                 }
             }).disposed(by: navigateBag)
             return true
@@ -95,10 +137,10 @@ public extension NavigatorProtocol {
         parameters += context as? [String: Any] ?? [:]
         let forwardValue = parameters.int(
             for: Parameter.forwardType
-        ) ?? (host == .back ? ForwardType.auto.rawValue : ForwardType.push.rawValue)
-        let forwardType = ForwardType.init(
+        ) ?? (host == .back ? OldForwrdType.auto.rawValue : OldForwrdType.push.rawValue)
+        let forwardType = OldForwrdType.init(
             rawValue: forwardValue
-        ) ?? (host == .back ? ForwardType.auto : ForwardType.push)
+        ) ?? (host == .back ? OldForwrdType.auto : OldForwrdType.push)
         
         // 用户参数优先级高于函数参数
         let animated = parameters.bool(for: Parameter.animated) ?? animated
@@ -122,7 +164,7 @@ public extension NavigatorProtocol {
     }
     
     @discardableResult
-    func rxForward(
+    func rxJump(
         _ url: URLConvertible,
         context: Any? = nil,
         wrap: UINavigationController.Type? = nil,
@@ -142,7 +184,7 @@ public extension NavigatorProtocol {
         from: UINavigationControllerType? = nil,
         animated: Bool = true
     ) -> Bool {
-        self.forward(url, context: context, fromNav: from, animated: animated)
+        self.jump(url, context: context, fromNav: from, animated: animated)
     }
     
     // MARK: - Present
@@ -156,8 +198,8 @@ public extension NavigatorProtocol {
         completion: (() -> Void)? = nil
     ) -> Bool {
         var ctx = self.convert(context: context)
-        ctx[Parameter.forwardType] = ForwardType.present.rawValue
-        return self.forward(url, context: ctx, wrap: wrap, fromVC: from, animated: animated, completion: completion)
+        ctx[Parameter.forwardType] = OldForwrdType.present.rawValue
+        return self.jump(url, context: ctx, wrap: wrap, fromVC: from, animated: animated, completion: completion)
     }
     
     // MARK: - Open
@@ -167,20 +209,20 @@ public extension NavigatorProtocol {
         context: Any? = nil
     ) -> Bool {
         var ctx = self.convert(context: context)
-        ctx[Parameter.forwardType] = ForwardType.open.rawValue
-        return self.forward(url, context: ctx)
+        ctx[Parameter.forwardType] = OldForwrdType.open.rawValue
+        return self.jump(url, context: ctx)
     }
     
     // MARK: - Back
-    func back(type: ForwardType? = nil, animated: Bool = true, message: String? = nil) {
-        self.forward(Router.shared.urlString(host: .back), context: [
+    func back(type: OldForwrdType? = nil, animated: Bool = true, message: String? = nil) {
+        self.jump(Router.shared.urlString(host: .back), context: [
             Parameter.forwardType: type,
             Parameter.animated: animated,
             Parameter.message: message
         ])
     }
     
-    func rxBack(type: ForwardType? = nil, animated: Bool = true, message: String? = nil) -> Observable<Any> {
+    func rxBack(type: OldForwrdType? = nil, animated: Bool = true, message: String? = nil) -> Observable<Any> {
         (self as! Navigator).rx.forward(Router.shared.urlString(host: .back), context: [
             Parameter.forwardType: type,
             Parameter.animated: animated,
@@ -188,7 +230,7 @@ public extension NavigatorProtocol {
         ])
     }
     
-//    func back(animated: Bool = true, type: ForwardType? = nil, _ completion: (() -> Void)? = nil) {
+//    func back(animated: Bool = true, type: OldForwrdType? = nil, _ completion: (() -> Void)? = nil) {
 //        guard let top = UIViewController.topMost else { return }
 //        guard let type = type else {
 //            if top.navigationController?.viewControllers.count ?? 0 > 1 {
@@ -208,7 +250,7 @@ public extension NavigatorProtocol {
 //        }
 //    }
 //    func back(
-//        _ type: ForwardType? = nil,
+//        _ type: OldForwrdType? = nil,
 //        animated: Bool = true,
 //        result: Any? = nil,
 //        completion: (() -> Void)? = nil
@@ -229,7 +271,7 @@ public extension NavigatorProtocol {
 //    }
     
 //    func rxBack(
-//        _ type: ForwardType? = nil,
+//        _ type: OldForwrdType? = nil,
 //        animated: Bool = true,
 //        result: Any? = nil
 //    ) {
