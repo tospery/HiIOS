@@ -83,10 +83,18 @@ public extension NavigatorProtocol {
             return true
         }
         
-        let jumpType = JumpType.init(
-            rawValue: self.getType(url, context: context, key: Parameter.jumpType) ?? 0
-        ) ?? .forward
-        switch jumpType {
+        var type: JumpType?
+        if url.host == .back {
+            type = .back
+        } else {
+            if let value = self.getType(url, context: context, key: Parameter.jumpType),
+               let jump = JumpType.init(rawValue: value) {
+                type = jump
+            } else {
+                type = .forward
+            }
+        }
+        switch type! {
         case .forward:
             return self.forward(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
         case .back:
@@ -296,10 +304,10 @@ public extension NavigatorProtocol {
         return false
     }
     
-    private func getType(_ url: URLConvertible, context: Any?, key: String) -> Int {
+    private func getType(_ url: URLConvertible, context: Any?, key: String) -> Int? {
         var parameters: [String: Any] = url.queryParameters ?? [:]
         parameters += context as? [String: Any] ?? [:]
-        return parameters.int(for: key) ?? 0
+        return parameters.int(for: key)
     }
     
     /// 用户参数优先级高于函数参数/
@@ -394,10 +402,18 @@ public extension NavigatorProtocol {
         animated: Bool = true,
         completion: (() -> Void)? = nil
     ) -> Bool {
-        let forwardType = ForwardType.init(
-            rawValue: self.getType(url, context: context, key: Parameter.forwardType) ?? 0
-        ) ?? .push
-        switch forwardType {
+        var type: ForwardType?
+        if url.urlValue?.host == .toast || url.urlValue?.host == .alert || url.urlValue?.host == .sheet || url.urlValue?.host == .popup {
+            type = .open
+        } else {
+            if let value = self.getType(url, context: context, key: Parameter.forwardType),
+               let forward = ForwardType.init(rawValue: value) {
+                type = forward
+            } else {
+                type = .push
+            }
+        }
+        switch type! {
         case .push:
             let animated = self.getAnimated(url, context: context, animated: animated)
             return self.push(url, context: context, from: fromNav, animated: animated) != nil
@@ -408,27 +424,5 @@ public extension NavigatorProtocol {
             return self.open(url, context: context)
         }
     }
-    
-//    @discardableResult
-//    private func open(
-//        _ url: URLConvertible,
-//        context: Any? = nil,
-//        wrap: UINavigationController.Type? = nil,
-//        fromNav: UINavigationControllerType? = nil,
-//        fromVC: UIViewControllerType? = nil,
-//        animated: Bool = true,
-//        completion: (() -> Void)? = nil
-//    ) -> Bool {
-//        let openType = OpenType.init(
-//            rawValue: self.getType(url, context: context, key: Parameter.openType) ?? 0
-//        ) ?? .scene
-//        switch openType {
-//        case .scene:
-//            let animated = self.getAnimated(url, context: context, animated: animated)
-//            return self.present(url, context: context, wrap: wrap ?? NavigationController.self, from: fromVC, animated: animated, completion: completion) != nil
-//        default:
-//            return self.open(url, context: context)
-//        }
-//    }
-    
+
 }
