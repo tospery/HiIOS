@@ -21,18 +21,18 @@ public enum JumpType: Int {
     case back
 }
 
-/// 前进的分类
+/// 前进的分类 -> hiios://[host]?forwardType=0
 public enum ForwardType: Int {
     /// 推进
     case push
+    /// 展示
+    case present
     /// 打开
     case open
 }
 
-/// 后退的分类
+/// 后退的分类 -> hiios://back?backType=0
 public enum BackType: Int {
-//    /// 自动
-//    case auto
     /// 弹出（一个）
     case pop
     /// 弹出（所有）
@@ -41,18 +41,18 @@ public enum BackType: Int {
     case close
 }
 
-/// 打开的分类
+/// 打开的分类 -> hiios://[popup|sheet|alert|toast]/[path]
 public enum OpenType: Int {
-    /// 场景
-    case scene
-    /// 弹窗
-    case popup
-    /// 表单框（可操作的）
-    case sheet
-    /// 提示框（可选择的）
-    case alert
+//    /// 场景
+//    case scene
     /// 消息框（自动关闭）
     case toast
+    /// 提示框（可选择的）
+    case alert
+    /// 表单框（可操作的）
+    case sheet
+    /// 弹窗
+    case popup
 }
 
 public enum OldForwrdType: Int {
@@ -148,9 +148,9 @@ public extension NavigatorProtocol {
         self.rxJump(url, context: self.contextForPush(context: context), fromNav: from, animated: animated)
     }
     
-    // MARK: scene
+    // MARK: present
     @discardableResult
-    func scene(
+    func presentX(
         _ url: URLConvertible,
         context: Any? = nil,
         wrap: UINavigationController.Type? = nil,
@@ -158,10 +158,10 @@ public extension NavigatorProtocol {
         animated: Bool = true,
         completion: (() -> Void)? = nil
     ) -> Bool {
-        self.jump(url, context: self.contextForScene(context: context), wrap: wrap, fromVC: from, animated: animated, completion: completion)
+        self.jump(url, context: self.contextForPresent(context: context), wrap: wrap, fromVC: from, animated: animated, completion: completion)
     }
     
-    func rxScene(
+    func rxPresentX(
         _ url: URLConvertible,
         context: Any? = nil,
         wrap: UINavigationController.Type? = nil,
@@ -169,7 +169,7 @@ public extension NavigatorProtocol {
         animated: Bool = true,
         completion: (() -> Void)? = nil
     ) -> Observable<Any> {
-        self.rxJump(url, context: self.contextForScene(context: context), wrap: wrap, fromVC: from, animated: animated, completion: completion)
+        self.rxJump(url, context: self.contextForPresent(context: context), wrap: wrap, fromVC: from, animated: animated, completion: completion)
     }
     
     // MARK: popup
@@ -348,11 +348,10 @@ public extension NavigatorProtocol {
         return ctx
     }
     
-    private func contextForScene(context: Any?) -> Any {
+    private func contextForPresent(context: Any?) -> Any {
         var ctx = self.convert(context: context)
         ctx[Parameter.jumpType] = JumpType.forward.rawValue
-        ctx[Parameter.forwardType] = ForwardType.open.rawValue
-        ctx[Parameter.openType] = OpenType.scene.rawValue
+        ctx[Parameter.forwardType] = ForwardType.present.rawValue
         return ctx
     }
     
@@ -367,8 +366,7 @@ public extension NavigatorProtocol {
     private func contextForLogin() -> Any {
         var ctx = self.convert()
         ctx[Parameter.jumpType] = JumpType.forward.rawValue
-        ctx[Parameter.forwardType] = ForwardType.open.rawValue
-        ctx[Parameter.openType] = OpenType.scene.rawValue
+        ctx[Parameter.forwardType] = ForwardType.present.rawValue
         return ctx
     }
     
@@ -425,32 +423,34 @@ public extension NavigatorProtocol {
         case .push:
             let animated = self.getAnimated(url, context: context, animated: animated)
             return self.push(url, context: context, from: fromNav, animated: animated) != nil
-        case .open:
-            return self.open(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
-        }
-        return false
-    }
-    
-    @discardableResult
-    private func open(
-        _ url: URLConvertible,
-        context: Any? = nil,
-        wrap: UINavigationController.Type? = nil,
-        fromNav: UINavigationControllerType? = nil,
-        fromVC: UIViewControllerType? = nil,
-        animated: Bool = true,
-        completion: (() -> Void)? = nil
-    ) -> Bool {
-        let openType = OpenType.init(
-            rawValue: self.getType(url, context: context, key: Parameter.openType) ?? 0
-        ) ?? .scene
-        switch openType {
-        case .scene:
+        case .present:
             let animated = self.getAnimated(url, context: context, animated: animated)
             return self.present(url, context: context, wrap: wrap ?? NavigationController.self, from: fromVC, animated: animated, completion: completion) != nil
-        default:
+        case .open:
             return self.open(url, context: context)
         }
     }
+    
+//    @discardableResult
+//    private func open(
+//        _ url: URLConvertible,
+//        context: Any? = nil,
+//        wrap: UINavigationController.Type? = nil,
+//        fromNav: UINavigationControllerType? = nil,
+//        fromVC: UIViewControllerType? = nil,
+//        animated: Bool = true,
+//        completion: (() -> Void)? = nil
+//    ) -> Bool {
+//        let openType = OpenType.init(
+//            rawValue: self.getType(url, context: context, key: Parameter.openType) ?? 0
+//        ) ?? .scene
+//        switch openType {
+//        case .scene:
+//            let animated = self.getAnimated(url, context: context, animated: animated)
+//            return self.present(url, context: context, wrap: wrap ?? NavigationController.self, from: fromVC, animated: animated, completion: completion) != nil
+//        default:
+//            return self.open(url, context: context)
+//        }
+//    }
     
 }
