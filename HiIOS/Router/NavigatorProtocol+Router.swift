@@ -77,7 +77,8 @@ public enum OldForwrdType: Int {
 
 public extension NavigatorProtocol {
 
-    // MARK: - Jump（支持自动跳转登录页功能）
+    // MARK: - Public
+    // MARK: jump
     @discardableResult
     func jump(
         _ url: URLConvertible,
@@ -127,31 +128,22 @@ public extension NavigatorProtocol {
         (self as! Navigator).rx.jump(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
     }
     
-    // MARK: - Forward
-    @discardableResult
-    private func forward(
-        _ url: URLConvertible,
-        context: Any? = nil,
-        wrap: UINavigationController.Type? = nil,
-        fromNav: UINavigationControllerType? = nil,
-        fromVC: UIViewControllerType? = nil,
-        animated: Bool = true,
-        completion: (() -> Void)? = nil
-    ) -> Bool {
-        let forwardType = ForwardType.init(
-            rawValue: self.getType(url, context: context, key: Parameter.forwardType) ?? 0
-        ) ?? .push
-        switch forwardType {
-        case .push:
-            let animated = self.getAnimated(url, context: context, animated: animated)
-            return self.push(url, context: context, from: fromNav, animated: animated) != nil
-        case .open:
-            return self.open(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
-        }
-        return false
+    // MARK: back
+    func back(type: BackType? = nil, animated: Bool = true, message: String? = nil) {
+        self.jump(Router.shared.urlString(host: .back), context: [
+            Parameter.backType: type,
+            Parameter.animated: animated,
+            Parameter.message: message
+        ])
     }
     
-//    // MARK: - Back
+    func rxBack(type: BackType? = nil, animated: Bool = true, message: String? = nil) -> Observable<Any> {
+        (self as! Navigator).rx.jump(Router.shared.urlString(host: .back), context: [
+            Parameter.backType: type,
+            Parameter.animated: animated,
+            Parameter.message: message
+        ])
+    }
 //    @discardableResult
 //    private func back(
 //        _ url: URLConvertible,
@@ -164,29 +156,6 @@ public extension NavigatorProtocol {
 //    ) -> Bool {
 //        return false
 //    }
-    
-    // MARK: - Open
-    @discardableResult
-    func open(
-        _ url: URLConvertible,
-        context: Any? = nil,
-        wrap: UINavigationController.Type? = nil,
-        fromNav: UINavigationControllerType? = nil,
-        fromVC: UIViewControllerType? = nil,
-        animated: Bool = true,
-        completion: (() -> Void)? = nil
-    ) -> Bool {
-        let openType = OpenType.init(
-            rawValue: self.getType(url, context: context, key: Parameter.openType) ?? 0
-        ) ?? .scene
-        switch openType {
-        case .scene:
-            let animated = self.getAnimated(url, context: context, animated: animated)
-            return self.present(url, context: context, wrap: wrap ?? NavigationController.self, from: fromVC, animated: animated, completion: completion) != nil
-        default:
-            return self.open(url, context: context)
-        }
-    }
     
 //    @discardableResult
 //    func scene(
@@ -253,20 +222,33 @@ public extension NavigatorProtocol {
 //        return false
 //    }
     
-    // MARK: - Push
+    // MARK: push/open
     @discardableResult
-    func fPush(
+    func forwardPush(
         _ url: URLConvertible,
         context: Any? = nil,
         from: UINavigationControllerType? = nil,
         animated: Bool = true
     ) -> Bool {
-        self.jump(url, context: context, fromNav: from, animated: animated)
+        var ctx = self.convert(context: context)
+        ctx[Parameter.jumpType] = JumpType.forward.rawValue
+        ctx[Parameter.forwardType] = ForwardType.push.rawValue
+        return self.jump(url, context: ctx, fromNav: from, animated: animated)
     }
     
-    // MARK: - Present
     @discardableResult
-    func fPresent(
+    func forwardOpen(
+        _ url: URLConvertible,
+        context: Any? = nil
+    ) -> Bool {
+        var ctx = self.convert(context: context)
+        ctx[Parameter.jumpType] = JumpType.forward.rawValue
+        ctx[Parameter.forwardType] = ForwardType.open.rawValue
+        return self.jump(url, context: ctx)
+    }
+    
+    @discardableResult
+    func scene(
         _ url: URLConvertible,
         context: Any? = nil,
         wrap: UINavigationController.Type? = nil,
@@ -275,36 +257,10 @@ public extension NavigatorProtocol {
         completion: (() -> Void)? = nil
     ) -> Bool {
         var ctx = self.convert(context: context)
-        ctx[Parameter.forwardType] = OldForwrdType.present.rawValue
+        ctx[Parameter.jumpType] = JumpType.forward.rawValue
+        ctx[Parameter.forwardType] = ForwardType.open.rawValue
+        ctx[Parameter.openType] = OpenType.scene.rawValue
         return self.jump(url, context: ctx, wrap: wrap, fromVC: from, animated: animated, completion: completion)
-    }
-    
-    // MARK: - Open
-    @discardableResult
-    func fOpen(
-        _ url: URLConvertible,
-        context: Any? = nil
-    ) -> Bool {
-        var ctx = self.convert(context: context)
-        ctx[Parameter.forwardType] = OldForwrdType.open.rawValue
-        return self.jump(url, context: ctx)
-    }
-    
-    // MARK: - Back
-    func back(type: OldForwrdType? = nil, animated: Bool = true, message: String? = nil) {
-        self.jump(Router.shared.urlString(host: .back), context: [
-            Parameter.forwardType: type,
-            Parameter.animated: animated,
-            Parameter.message: message
-        ])
-    }
-    
-    func rxBack(type: OldForwrdType? = nil, animated: Bool = true, message: String? = nil) -> Observable<Any> {
-        (self as! Navigator).rx.jump(Router.shared.urlString(host: .back), context: [
-            Parameter.forwardType: type,
-            Parameter.animated: animated,
-            Parameter.message: message
-        ])
     }
     
 //    func back(animated: Bool = true, type: OldForwrdType? = nil, _ completion: (() -> Void)? = nil) {
@@ -565,6 +521,51 @@ public extension NavigatorProtocol {
         var parameters: [String: Any] = url.queryParameters ?? [:]
         parameters += context as? [String: Any] ?? [:]
         return parameters.bool(for: Parameter.animated) ?? animated
+    }
+    
+    @discardableResult
+    private func forward(
+        _ url: URLConvertible,
+        context: Any? = nil,
+        wrap: UINavigationController.Type? = nil,
+        fromNav: UINavigationControllerType? = nil,
+        fromVC: UIViewControllerType? = nil,
+        animated: Bool = true,
+        completion: (() -> Void)? = nil
+    ) -> Bool {
+        let forwardType = ForwardType.init(
+            rawValue: self.getType(url, context: context, key: Parameter.forwardType) ?? 0
+        ) ?? .push
+        switch forwardType {
+        case .push:
+            let animated = self.getAnimated(url, context: context, animated: animated)
+            return self.push(url, context: context, from: fromNav, animated: animated) != nil
+        case .open:
+            return self.open(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
+        }
+        return false
+    }
+    
+    @discardableResult
+    private func open(
+        _ url: URLConvertible,
+        context: Any? = nil,
+        wrap: UINavigationController.Type? = nil,
+        fromNav: UINavigationControllerType? = nil,
+        fromVC: UIViewControllerType? = nil,
+        animated: Bool = true,
+        completion: (() -> Void)? = nil
+    ) -> Bool {
+        let openType = OpenType.init(
+            rawValue: self.getType(url, context: context, key: Parameter.openType) ?? 0
+        ) ?? .scene
+        switch openType {
+        case .scene:
+            let animated = self.getAnimated(url, context: context, animated: animated)
+            return self.present(url, context: context, wrap: wrap ?? NavigationController.self, from: fromVC, animated: animated, completion: completion) != nil
+        default:
+            return self.open(url, context: context)
+        }
     }
     
 }

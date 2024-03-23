@@ -136,13 +136,13 @@ open class GeneralViewController: HiIOS.CollectionViewController, ReactorKit.Vie
     open func handleTarget(target: String?) {
         guard let url = target?.url else { return }
         if url.host == .back {
-            let forwardType = url.queryValue(for: Parameter.forwardType)?.int
+            let backType = url.queryValue(for: Parameter.backType)?.int
             let animated = url.queryValue(for: Parameter.animated)?.bool
             let result = url.queryValue(for: Parameter.result)
             let cancel = url.queryValue(for: Parameter.cancel)?.bool
             let message = url.queryValue(for: Parameter.message)
             self.back(
-                type: .init(rawValue: forwardType ?? OldForwrdType.auto.rawValue) ?? .auto,
+                type: .init(rawValue: backType ?? BackType.pop.rawValue) ?? .pop,
                 animated: animated ?? true,
                 result: result,
                 cancel: cancel ?? false,

@@ -210,7 +210,7 @@ open class BaseViewController: UIViewController {
     }
     
     open func back(
-        type: OldForwrdType? = nil,
+        type: BackType? = nil,
         animated: Bool = true,
         result: Any? = nil,
         cancel: Bool = false,
