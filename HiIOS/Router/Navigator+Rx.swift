@@ -14,7 +14,8 @@ import SwifterSwift
 extension Navigator: ReactiveCompatible { }
 public extension Reactive where Base: Navigator {
     
-    func forward(
+    // MARK: - Public
+    func jump(
         _ url: URLConvertible,
         context: Any? = nil,
         wrap: UINavigationController.Type? = nil,
@@ -23,7 +24,7 @@ public extension Reactive where Base: Navigator {
         animated: Bool = true,
         completion: (() -> Void)? = nil
     ) -> Observable<Any> {
-        return .create { [weak base] observer -> Disposable in
+        .create { [weak base] observer -> Disposable in
             guard let base = base else { return Disposables.create { } }
             var ctx = [String: Any].init()
             if let context = context as? [String: Any] {
@@ -48,21 +49,35 @@ public extension Reactive where Base: Navigator {
         }
     }
     
-    func push(
+    // MARK: - Internal
+    internal func push(
         _ url: URLConvertible,
         context: Any? = nil,
         from: UINavigationControllerType? = nil,
         animated: Bool = true
     ) -> Observable<UIViewController> {
-        forward(url, context: (
+        jump(url, context: (
             self.convert(context: context) + [
-                Parameter.forwardType: OldForwrdType.push.rawValue
+                Parameter.jumpType: JumpType.forward.rawValue,
+                Parameter.forwardType: ForwardType.push.rawValue
             ]
         ), fromNav: from, animated: animated)
             .map { $0 as! UIViewController }
     }
+    
+    internal func open(
+        _ url: URLConvertible,
+        context: Any? = nil
+    ) -> Observable<Any> {
+        jump(url, context: (
+            self.convert(context: context) + [
+                Parameter.jumpType: JumpType.forward.rawValue,
+                Parameter.forwardType: ForwardType.open.rawValue
+            ]
+        ))
+    }
 
-    func present(
+    internal func scene(
         _ url: URLConvertible,
         context: Any? = nil,
         wrap: UINavigationController.Type? = nil,
@@ -70,22 +85,13 @@ public extension Reactive where Base: Navigator {
         animated: Bool = true,
         completion: (() -> Void)? = nil
     ) -> Observable<Any> {
-        forward(url, context: (
+        jump(url, context: (
             self.convert(context: context) + [
-                Parameter.forwardType: OldForwrdType.present.rawValue
+                Parameter.jumpType: JumpType.forward.rawValue,
+                Parameter.forwardType: ForwardType.open.rawValue,
+                Parameter.openType: OpenType.scene.rawValue
             ]
         ), wrap: wrap, fromVC: from, animated: animated, completion: completion)
-    }
-    
-    func open(
-        _ url: URLConvertible,
-        context: Any? = nil
-    ) -> Observable<Any> {
-        forward(url, context: (
-            self.convert(context: context) + [
-                Parameter.forwardType: OldForwrdType.open.rawValue
-            ]
-        ))
     }
 
 //    func back(
@@ -100,7 +106,8 @@ public extension Reactive where Base: Navigator {
 //        ])
 //    }
     
-    func convert(context: Any? = nil) -> [String: Any] {
+    // MARK: - Private
+    private func convert(context: Any? = nil) -> [String: Any] {
         var ctx = [String: Any].init()
         if let context = context as? [String: Any] {
             ctx = context

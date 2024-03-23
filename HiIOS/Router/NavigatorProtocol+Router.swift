@@ -31,8 +31,8 @@ public enum ForwardType: Int {
 
 /// 后退的分类
 public enum BackType: Int {
-    /// 自动
-    case auto
+//    /// 自动
+//    case auto
     /// 弹出（一个）
     case pop
     /// 弹出（所有）
@@ -43,16 +43,16 @@ public enum BackType: Int {
 
 /// 打开的分类
 public enum OpenType: Int {
-    /// 消息框（自动关闭）
-    case toast
-    /// 提示框（可选择的）
-    case alert
-    /// 表单框（可操作的）
-    case sheet
-    /// 弹窗
-    case popup
     /// 场景
     case scene
+    /// 弹窗
+    case popup
+    /// 表单框（可操作的）
+    case sheet
+    /// 提示框（可选择的）
+    case alert
+    /// 消息框（自动关闭）
+    case toast
 }
 
 public enum OldForwrdType: Int {
@@ -89,78 +89,29 @@ public extension NavigatorProtocol {
         completion: (() -> Void)? = nil
     ) -> Bool {
         guard let url = url.urlValue else { return false }
-        guard let scheme = url.scheme else { return false }
-        if scheme != UIApplication.shared.urlScheme && scheme != "http" && scheme != "https" {
-            logger.print("其他scheme的url: \(url)", module: .hiIOS)
-            if UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                return false
-            }
-        }
-        guard let host = url.host else { return false }
-        // 检测登录要求
-        var needLogin = false
-        var isLogined = true
-        let router = Router.shared
-        if let compatible = router as? RouterCompatible {
-            isLogined = compatible.isLogined()
-            if compatible.needLogin(host: host, path: url.path) {
-                needLogin = true
-            }
-        } else {
-            if host == .user {
-                needLogin = true
-            }
-        }
-        if needLogin && !isLogined {
-            (self as! Navigator).rx.open(
-                router.urlString(host: .login)
-            ).subscribe(onNext: { result in
-                logger.print("自动跳转登录页(数据): \(result)", module: .hiIOS)
-            }, onError: { error in
-                logger.print("自动跳转登录页(错误): \(error)", module: .hiIOS)
-            }, onCompleted: {
-                logger.print("自动跳转登录页(完成)", module: .hiIOS)
-                var hasLogined = false
-                if let compatible = router as? RouterCompatible {
-                    hasLogined = compatible.isLogined()
-                }
-                if hasLogined {
-                    self.jump(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
-                }
-            }).disposed(by: navigateBag)
-            return true
-        }
-        
-        // context中的参数的优先级高于查询参数
         var parameters: [String: Any] = url.queryParameters ?? [:]
+        // context中的参数的优先级高于查询参数
         parameters += context as? [String: Any] ?? [:]
-        let forwardValue = parameters.int(
-            for: Parameter.forwardType
-        ) ?? (host == .back ? OldForwrdType.auto.rawValue : OldForwrdType.push.rawValue)
-        let forwardType = OldForwrdType.init(
-            rawValue: forwardValue
-        ) ?? (host == .back ? OldForwrdType.auto : OldForwrdType.push)
-        
-        // 用户参数优先级高于函数参数
-        let animated = parameters.bool(for: Parameter.animated) ?? animated
-        
         // 打印路由地址
         logger.print("导航地址->\(url.absoluteString)\n\(parameters)", module: .hiIOS)
         
-        switch forwardType {
-        case .push:
-            if self.push(url, context: context, from: fromNav, animated: animated) != nil {
-                return true
-            }
-        case .present:
-            if self.present(url, context: context, wrap: wrap ?? NavigationController.self, from: fromVC, animated: animated, completion: completion) != nil {
-                return true
-            }
-        default:
-            break
+        if self.checkScheme(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion) {
+            return false
         }
-        return self.open(url, context: context)
+        if self.checkLogin(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion) {
+            return true
+        }
+        
+        let jumpType = JumpType.init(
+            rawValue: self.getType(url, context: context, key: Parameter.jumpType) ?? 0
+        ) ?? .forward
+        switch jumpType {
+        case .forward:
+            return self.forward(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
+        case .back:
+            return self.open(url, context: context)
+        }
+        return false
     }
     
     @discardableResult
@@ -173,8 +124,134 @@ public extension NavigatorProtocol {
         animated: Bool = true,
         completion: (() -> Void)? = nil
     ) -> Observable<Any> {
-        (self as! Navigator).rx.forward(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
+        (self as! Navigator).rx.jump(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
     }
+    
+    // MARK: - Forward
+    @discardableResult
+    private func forward(
+        _ url: URLConvertible,
+        context: Any? = nil,
+        wrap: UINavigationController.Type? = nil,
+        fromNav: UINavigationControllerType? = nil,
+        fromVC: UIViewControllerType? = nil,
+        animated: Bool = true,
+        completion: (() -> Void)? = nil
+    ) -> Bool {
+        let forwardType = ForwardType.init(
+            rawValue: self.getType(url, context: context, key: Parameter.forwardType) ?? 0
+        ) ?? .push
+        switch forwardType {
+        case .push:
+            let animated = self.getAnimated(url, context: context, animated: animated)
+            return self.push(url, context: context, from: fromNav, animated: animated) != nil
+        case .open:
+            return self.open(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
+        }
+        return false
+    }
+    
+//    // MARK: - Back
+//    @discardableResult
+//    private func back(
+//        _ url: URLConvertible,
+//        context: Any? = nil,
+//        wrap: UINavigationController.Type? = nil,
+//        fromNav: UINavigationControllerType? = nil,
+//        fromVC: UIViewControllerType? = nil,
+//        animated: Bool = true,
+//        completion: (() -> Void)? = nil
+//    ) -> Bool {
+//        return false
+//    }
+    
+    // MARK: - Open
+    @discardableResult
+    func open(
+        _ url: URLConvertible,
+        context: Any? = nil,
+        wrap: UINavigationController.Type? = nil,
+        fromNav: UINavigationControllerType? = nil,
+        fromVC: UIViewControllerType? = nil,
+        animated: Bool = true,
+        completion: (() -> Void)? = nil
+    ) -> Bool {
+        let openType = OpenType.init(
+            rawValue: self.getType(url, context: context, key: Parameter.openType) ?? 0
+        ) ?? .scene
+        switch openType {
+        case .scene:
+            let animated = self.getAnimated(url, context: context, animated: animated)
+            return self.present(url, context: context, wrap: wrap ?? NavigationController.self, from: fromVC, animated: animated, completion: completion) != nil
+        default:
+            return self.open(url, context: context)
+        }
+    }
+    
+//    @discardableResult
+//    func scene(
+//        _ url: URLConvertible,
+//        context: Any? = nil,
+//        wrap: UINavigationController.Type? = nil,
+//        fromNav: UINavigationControllerType? = nil,
+//        fromVC: UIViewControllerType? = nil,
+//        animated: Bool = true,
+//        completion: (() -> Void)? = nil
+//    ) -> Bool {
+//        return false
+//    }
+//    
+//    @discardableResult
+//    func popup(
+//        _ url: URLConvertible,
+//        context: Any? = nil,
+//        wrap: UINavigationController.Type? = nil,
+//        fromNav: UINavigationControllerType? = nil,
+//        fromVC: UIViewControllerType? = nil,
+//        animated: Bool = true,
+//        completion: (() -> Void)? = nil
+//    ) -> Bool {
+//        return false
+//    }
+//    
+//    @discardableResult
+//    func sheet(
+//        _ url: URLConvertible,
+//        context: Any? = nil,
+//        wrap: UINavigationController.Type? = nil,
+//        fromNav: UINavigationControllerType? = nil,
+//        fromVC: UIViewControllerType? = nil,
+//        animated: Bool = true,
+//        completion: (() -> Void)? = nil
+//    ) -> Bool {
+//        return false
+//    }
+//    
+//    @discardableResult
+//    func alert(
+//        _ url: URLConvertible,
+//        context: Any? = nil,
+//        wrap: UINavigationController.Type? = nil,
+//        fromNav: UINavigationControllerType? = nil,
+//        fromVC: UIViewControllerType? = nil,
+//        animated: Bool = true,
+//        completion: (() -> Void)? = nil
+//    ) -> Bool {
+//        return false
+//    }
+//    
+//    @discardableResult
+//    func toast(
+//        _ url: URLConvertible,
+//        context: Any? = nil,
+//        wrap: UINavigationController.Type? = nil,
+//        fromNav: UINavigationControllerType? = nil,
+//        fromVC: UIViewControllerType? = nil,
+//        animated: Bool = true,
+//        completion: (() -> Void)? = nil
+//    ) -> Bool {
+//        return false
+//    }
     
     // MARK: - Push
     @discardableResult
@@ -223,7 +300,7 @@ public extension NavigatorProtocol {
     }
     
     func rxBack(type: OldForwrdType? = nil, animated: Bool = true, message: String? = nil) -> Observable<Any> {
-        (self as! Navigator).rx.forward(Router.shared.urlString(host: .back), context: [
+        (self as! Navigator).rx.jump(Router.shared.urlString(host: .back), context: [
             Parameter.forwardType: type,
             Parameter.animated: animated,
             Parameter.message: message
@@ -405,6 +482,89 @@ public extension NavigatorProtocol {
             ctx[Parameter.routerContext] = context
         }
         return ctx
+    }
+    
+    // MARK: - Internal
+    
+    // MARK: - Private
+    private func checkScheme(
+        _ url: URLConvertible,
+        context: Any?,
+        wrap: UINavigationController.Type?,
+        fromNav: UINavigationControllerType?,
+        fromVC: UIViewControllerType?,
+        animated: Bool,
+        completion: (() -> Void)?
+    ) -> Bool {
+        guard let url = url.urlValue else { return false }
+        guard let scheme = url.scheme else { return false }
+        if scheme != UIApplication.shared.urlScheme && scheme != "http" && scheme != "https" {
+            logger.print("其他scheme的url: \(url)", module: .hiIOS)
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                return true
+            }
+        }
+        return false
+    }
+    
+    private func checkLogin(
+        _ url: URLConvertible,
+        context: Any?,
+        wrap: UINavigationController.Type?,
+        fromNav: UINavigationControllerType?,
+        fromVC: UIViewControllerType?,
+        animated: Bool,
+        completion: (() -> Void)?
+    ) -> Bool {
+        guard let url = url.urlValue else { return false }
+        guard let host = url.host, host != .back else { return false }
+        var needLogin = false
+        var isLogined = true
+        let router = Router.shared
+        if let compatible = router as? RouterCompatible {
+            isLogined = compatible.isLogined()
+            if compatible.needLogin(host: host, path: url.path) {
+                needLogin = true
+            }
+        } else {
+            if host == .user {
+                needLogin = true
+            }
+        }
+        if needLogin && !isLogined {
+            (self as! Navigator).rx.open(
+                router.urlString(host: .login)
+            ).subscribe(onNext: { result in
+                logger.print("自动跳转登录页(数据): \(result)", module: .hiIOS)
+            }, onError: { error in
+                logger.print("自动跳转登录页(错误): \(error)", module: .hiIOS)
+            }, onCompleted: {
+                logger.print("自动跳转登录页(完成)", module: .hiIOS)
+                var hasLogined = false
+                if let compatible = router as? RouterCompatible {
+                    hasLogined = compatible.isLogined()
+                }
+                if hasLogined {
+                    self.jump(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
+                }
+            }).disposed(by: navigateBag)
+            return true
+        }
+        return false
+    }
+    
+    private func getType(_ url: URLConvertible, context: Any?, key: String) -> Int {
+        var parameters: [String: Any] = url.queryParameters ?? [:]
+        parameters += context as? [String: Any] ?? [:]
+        return parameters.int(for: key) ?? 0
+    }
+    
+    /// 用户参数优先级高于函数参数/
+    private func getAnimated(_ url: URLConvertible, context: Any?, animated: Bool) -> Bool {
+        var parameters: [String: Any] = url.queryParameters ?? [:]
+        parameters += context as? [String: Any] ?? [:]
+        return parameters.bool(for: Parameter.animated) ?? animated
     }
     
 }
