@@ -33,18 +33,18 @@ public enum ForwardType: Int {
 
 /// 后退的分类 -> hiios://back?backType=0
 public enum BackType: Int {
+    /// 自动
+    case auto
     /// 弹出（一个）
-    case pop
+    case popOne
     /// 弹出（所有）
-    case off
-    /// 关闭
-    case close
+    case popAll
+    /// 退场
+    case dismiss
 }
 
 /// 打开的分类 -> hiios://[popup|sheet|alert|toast]/[path]
 public enum OpenType: Int {
-//    /// 场景
-//    case scene
     /// 消息框（自动关闭）
     case toast
     /// 提示框（可选择的）
@@ -54,26 +54,6 @@ public enum OpenType: Int {
     /// 弹窗
     case popup
 }
-
-public enum OldForwrdType: Int {
-    // to
-    case push
-    case present
-    case open
-    // back
-    case auto
-    case to
-    case off
-    case all
-    case dismiss
-}
-
-//public enum BackType {
-//    case pop
-//    case popAll
-//    case popTo(UIViewController)
-//    case dismiss
-//}
 
 public extension NavigatorProtocol {
 
@@ -112,10 +92,8 @@ public extension NavigatorProtocol {
         case .back:
             return self.open(url, context: context)
         }
-        return false
     }
     
-    // @discardableResult
     func rxJump(
         _ url: URLConvertible,
         context: Any? = nil,

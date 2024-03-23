@@ -120,21 +120,21 @@ final public class Router {
                 }
                 observer?.onCompleted()
             }
-            let forward = parameters?.enum(for: Parameter.forwardType, type: OldForwrdType.self) ?? .auto
+            let back = parameters?.enum(for: Parameter.backType, type: BackType.self) ?? .auto
             let animated = parameters?.bool(for: Parameter.animated) ?? true
-            switch forward {
-            case .off:
-                popOne(viewController: top, animated: animated, completion)
-            case .all:
-                popAll(viewController: top, animated: animated, completion)
-            case .dismiss:
-                HiIOS.dismiss(viewController: top, animated: animated, completion)
-            default:
+            switch back {
+            case .auto:
                 if top.navigationController?.viewControllers.count ?? 0 > 1 {
                     popOne(viewController: top, animated: animated, completion)
                 } else {
                     HiIOS.dismiss(viewController: top, animated: animated, completion)
                 }
+            case .popOne:
+                popOne(viewController: top, animated: animated, completion)
+            case .popAll:
+                popAll(viewController: top, animated: animated, completion)
+            case .dismiss:
+                HiIOS.dismiss(viewController: top, animated: animated, completion)
             }
             return true
         }
