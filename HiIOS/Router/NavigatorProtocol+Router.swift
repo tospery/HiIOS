@@ -115,7 +115,7 @@ public extension NavigatorProtocol {
         return false
     }
     
-    @discardableResult
+    // @discardableResult
     func rxJump(
         _ url: URLConvertible,
         context: Any? = nil,
@@ -128,103 +128,9 @@ public extension NavigatorProtocol {
         (self as! Navigator).rx.jump(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
     }
     
-    // MARK: back
-    func back(type: BackType? = nil, animated: Bool = true, message: String? = nil) {
-        self.jump(Router.shared.urlString(host: .back), context: [
-            Parameter.backType: type,
-            Parameter.animated: animated,
-            Parameter.message: message
-        ])
-    }
-    
-    func rxBack(type: BackType? = nil, animated: Bool = true, message: String? = nil) -> Observable<Any> {
-        (self as! Navigator).rx.jump(Router.shared.urlString(host: .back), context: [
-            Parameter.backType: type,
-            Parameter.animated: animated,
-            Parameter.message: message
-        ])
-    }
-//    @discardableResult
-//    private func back(
-//        _ url: URLConvertible,
-//        context: Any? = nil,
-//        wrap: UINavigationController.Type? = nil,
-//        fromNav: UINavigationControllerType? = nil,
-//        fromVC: UIViewControllerType? = nil,
-//        animated: Bool = true,
-//        completion: (() -> Void)? = nil
-//    ) -> Bool {
-//        return false
-//    }
-    
-//    @discardableResult
-//    func scene(
-//        _ url: URLConvertible,
-//        context: Any? = nil,
-//        wrap: UINavigationController.Type? = nil,
-//        fromNav: UINavigationControllerType? = nil,
-//        fromVC: UIViewControllerType? = nil,
-//        animated: Bool = true,
-//        completion: (() -> Void)? = nil
-//    ) -> Bool {
-//        return false
-//    }
-//    
-//    @discardableResult
-//    func popup(
-//        _ url: URLConvertible,
-//        context: Any? = nil,
-//        wrap: UINavigationController.Type? = nil,
-//        fromNav: UINavigationControllerType? = nil,
-//        fromVC: UIViewControllerType? = nil,
-//        animated: Bool = true,
-//        completion: (() -> Void)? = nil
-//    ) -> Bool {
-//        return false
-//    }
-//    
-//    @discardableResult
-//    func sheet(
-//        _ url: URLConvertible,
-//        context: Any? = nil,
-//        wrap: UINavigationController.Type? = nil,
-//        fromNav: UINavigationControllerType? = nil,
-//        fromVC: UIViewControllerType? = nil,
-//        animated: Bool = true,
-//        completion: (() -> Void)? = nil
-//    ) -> Bool {
-//        return false
-//    }
-//    
-//    @discardableResult
-//    func alert(
-//        _ url: URLConvertible,
-//        context: Any? = nil,
-//        wrap: UINavigationController.Type? = nil,
-//        fromNav: UINavigationControllerType? = nil,
-//        fromVC: UIViewControllerType? = nil,
-//        animated: Bool = true,
-//        completion: (() -> Void)? = nil
-//    ) -> Bool {
-//        return false
-//    }
-//    
-//    @discardableResult
-//    func toast(
-//        _ url: URLConvertible,
-//        context: Any? = nil,
-//        wrap: UINavigationController.Type? = nil,
-//        fromNav: UINavigationControllerType? = nil,
-//        fromVC: UIViewControllerType? = nil,
-//        animated: Bool = true,
-//        completion: (() -> Void)? = nil
-//    ) -> Bool {
-//        return false
-//    }
-    
-    // MARK: push/open
+    // MARK: push
     @discardableResult
-    func forwardPush(
+    func pushX(
         _ url: URLConvertible,
         context: Any? = nil,
         from: UINavigationControllerType? = nil,
@@ -236,17 +142,20 @@ public extension NavigatorProtocol {
         return self.jump(url, context: ctx, fromNav: from, animated: animated)
     }
     
-    @discardableResult
-    func forwardOpen(
+    // @discardableResult
+    func rxPushX(
         _ url: URLConvertible,
-        context: Any? = nil
-    ) -> Bool {
+        context: Any? = nil,
+        from: UINavigationControllerType? = nil,
+        animated: Bool = true
+    ) -> Observable<Any> {
         var ctx = self.convert(context: context)
         ctx[Parameter.jumpType] = JumpType.forward.rawValue
-        ctx[Parameter.forwardType] = ForwardType.open.rawValue
-        return self.jump(url, context: ctx)
+        ctx[Parameter.forwardType] = ForwardType.push.rawValue
+        return self.rxJump(url, context: ctx, fromNav: from, animated: animated)
     }
     
+    // MARK: scene
     @discardableResult
     func scene(
         _ url: URLConvertible,
@@ -263,184 +172,160 @@ public extension NavigatorProtocol {
         return self.jump(url, context: ctx, wrap: wrap, fromVC: from, animated: animated, completion: completion)
     }
     
-//    func back(animated: Bool = true, type: OldForwrdType? = nil, _ completion: (() -> Void)? = nil) {
-//        guard let top = UIViewController.topMost else { return }
-//        guard let type = type else {
-//            if top.navigationController?.viewControllers.count ?? 0 > 1 {
-//                top.navigationController?.popViewController(animated: animated, completion)
-//            } else {
-//                top.dismiss(animated: animated, completion: completion)
-//            }
-//            return
-//        }
-//        switch type {
-//        case .pop:
-//            top.navigationController?.popViewController(animated: animated, completion)
-//        case .dismiss:
-//            top.dismiss(animated: animated, completion: completion)
-//        default:
-//            break
-//        }
-//    }
-//    func back(
-//        _ type: OldForwrdType? = nil,
-//        animated: Bool = true,
-//        result: Any? = nil,
-//        completion: (() -> Void)? = nil
-//    ) {
-////        (self as! Navigator).rx.open(
-////            Router.shared.urlString(
-////                host: .alert,
-////                parameters: [
-////                    Parameter.title: title,
-////                    Parameter.message: message
-////                ]),
-////            context: [
-////                Parameter.actions: actions
-////            ]
-////        )
-//        (self as! Navigator).rx.open(Router.shared.urlString(host: .back), context: [
-//        ])
-//    }
-    
-//    func rxBack(
-//        _ type: OldForwrdType? = nil,
-//        animated: Bool = true,
-//        result: Any? = nil
-//    ) {
-//        (self as! Navigator).rx.open(Router.shared.urlString(host: .back), context: [
-//            Parameter.forwardType: type ?? .off,
-//            Parameter.animated: animated,
-//            Parameter.result:
-//        ])
-//    }
-    
-    // MARK: - Toast
-    func toastMessage(_ message: String, _ style: HiToastStyle = .success) {
-        guard !message.isEmpty else { return }
-        self.open(Router.shared.urlString(host: .toast, parameters: [
-            Parameter.style: style.rawValue.string,
-            Parameter.message: message
-        ]))
+    // @discardableResult
+    func rxScene(
+        _ url: URLConvertible,
+        context: Any? = nil,
+        wrap: UINavigationController.Type? = nil,
+        from: UIViewControllerType? = nil,
+        animated: Bool = true,
+        completion: (() -> Void)? = nil
+    ) -> Observable<Any> {
+        var ctx = self.convert(context: context)
+        ctx[Parameter.jumpType] = JumpType.forward.rawValue
+        ctx[Parameter.forwardType] = ForwardType.open.rawValue
+        ctx[Parameter.openType] = OpenType.scene.rawValue
+        return self.rxJump(url, context: ctx, wrap: wrap, fromVC: from, animated: animated, completion: completion)
     }
     
-    func showToastActivity() {
-        self.open(Router.shared.urlString(host: .toast, parameters: [
-            Parameter.active: true.string
-        ]))
+    // MARK: popup
+    @discardableResult
+    func popup(_ path: Router.Path, context: Any? = nil) -> Bool {
+        var ctx = self.convert(context: context)
+        ctx[Parameter.jumpType] = JumpType.forward.rawValue
+        ctx[Parameter.forwardType] = ForwardType.open.rawValue
+        ctx[Parameter.openType] = OpenType.popup.rawValue
+        return self.jump(Router.shared.urlString(host: .popup, path: path), context: ctx)
     }
     
-    func hideToastActivity() {
-        self.open(Router.shared.urlString(host: .toast, parameters: [
-            Parameter.active: false.string
-        ]))
+    func rxPopup(_ path: Router.Path, context: Any? = nil) -> Observable<Any> {
+        var ctx = self.convert(context: context)
+        ctx[Parameter.jumpType] = JumpType.forward.rawValue
+        ctx[Parameter.forwardType] = ForwardType.open.rawValue
+        ctx[Parameter.openType] = OpenType.popup.rawValue
+        return self.rxJump(Router.shared.urlString(host: .popup, path: path), context: ctx)
     }
     
-    // MARK: - Alert
-    func alert(_ title: String, _ message: String, _ actions: [AlertActionType]) {
-        self.open(
-            Router.shared.urlString(
-                host: .alert,
-                parameters: [
-                    Parameter.title: title,
-                    Parameter.message: message
-                ]),
-            context: [
-                Parameter.actions: actions
-            ]
-        )
-    }
-
-    func rxAlert(_ title: String, _ message: String, _ actions: [AlertActionType]) -> Observable<Any> {
-        (self as! Navigator).rx.open(
-            Router.shared.urlString(
-                host: .alert,
-                parameters: [
-                    Parameter.title: title,
-                    Parameter.message: message
-                ]),
-            context: [
-                Parameter.actions: actions
-            ]
-        )
-    }
-    
-    // MARK: - Sheet
-    func sheet(_ title: String?, _ message: String?, _ actions: [AlertActionType]) {
+    // MARK: sheet
+    @discardableResult
+    func sheet(_ title: String?, _ message: String?, _ actions: [AlertActionType]) -> Bool {
         var parameters = [String: String].init()
         parameters[Parameter.title] = title
         parameters[Parameter.message] = message
-        self.open(
-            Router.shared.urlString(
-                host: .sheet,
-                parameters: parameters
-            ),
-            context: [
-                Parameter.actions: actions
-            ]
-        )
+        var ctx = self.convert(context: [
+            Parameter.actions: actions
+        ])
+        ctx[Parameter.jumpType] = JumpType.forward.rawValue
+        ctx[Parameter.forwardType] = ForwardType.open.rawValue
+        ctx[Parameter.openType] = OpenType.sheet.rawValue
+        return self.jump(Router.shared.urlString(host: .sheet, parameters: parameters), context: ctx)
     }
 
     func rxSheet(_ title: String?, _ message: String?, _ actions: [AlertActionType]) -> Observable<Any> {
         var parameters = [String: String].init()
         parameters[Parameter.title] = title
         parameters[Parameter.message] = message
-        return (self as! Navigator).rx.open(
-            Router.shared.urlString(
-                host: .sheet,
-                parameters: parameters
-            ),
-            context: [
-                Parameter.actions: actions
-            ]
-        )
+        var ctx = self.convert(context: [
+            Parameter.actions: actions
+        ])
+        ctx[Parameter.jumpType] = JumpType.forward.rawValue
+        ctx[Parameter.forwardType] = ForwardType.open.rawValue
+        ctx[Parameter.openType] = OpenType.sheet.rawValue
+        return self.rxJump(Router.shared.urlString(host: .sheet, parameters: parameters), context: ctx)
     }
     
-    // MARK: - Popup
-    func popup(_ path: Router.Path, context: Any? = nil) {
-        self.open(
-            Router.shared.urlString(host: .popup, path: path),
-            context: context
-        )
+    // MARK: - alert
+    @discardableResult
+    func alert(_ title: String, _ message: String, _ actions: [AlertActionType]) -> Bool {
+        var parameters = [String: String].init()
+        parameters[Parameter.title] = title
+        parameters[Parameter.message] = message
+        var ctx = self.convert(context: [
+            Parameter.actions: actions
+        ])
+        ctx[Parameter.jumpType] = JumpType.forward.rawValue
+        ctx[Parameter.forwardType] = ForwardType.open.rawValue
+        ctx[Parameter.openType] = OpenType.alert.rawValue
+        return self.jump(Router.shared.urlString(host: .alert, parameters: parameters), context: ctx)
+    }
+
+    func rxAlert(_ title: String, _ message: String, _ actions: [AlertActionType]) -> Observable<Any> {
+        var parameters = [String: String].init()
+        parameters[Parameter.title] = title
+        parameters[Parameter.message] = message
+        var ctx = self.convert(context: [
+            Parameter.actions: actions
+        ])
+        ctx[Parameter.jumpType] = JumpType.forward.rawValue
+        ctx[Parameter.forwardType] = ForwardType.open.rawValue
+        ctx[Parameter.openType] = OpenType.alert.rawValue
+        return self.rxJump(Router.shared.urlString(host: .alert, parameters: parameters), context: ctx)
     }
     
-    func rxPopup(_ path: Router.Path, context: Any? = nil) -> Observable<Any> {
-        (self as! Navigator).rx.open(
-            Router.shared.urlString(host: .popup, path: path),
-            context: context
-        )
+    // MARK: toast
+    func toastMessage(_ message: String, _ style: HiToastStyle = .success) {
+        guard !message.isEmpty else { return }
+        var parameters = [String: String].init()
+        parameters[Parameter.message] = message
+        parameters[Parameter.style] = style.rawValue.string
+        var ctx = self.convert()
+        ctx[Parameter.jumpType] = JumpType.forward.rawValue
+        ctx[Parameter.forwardType] = ForwardType.open.rawValue
+        ctx[Parameter.openType] = OpenType.toast.rawValue
+        self.jump(Router.shared.urlString(host: .toast, parameters: parameters), context: ctx)
     }
     
-    // MARK: - Login
+    func showToastActivity(active: Bool = true) {
+        var parameters = [String: String].init()
+        parameters[Parameter.active] = active.string
+        var ctx = self.convert()
+        ctx[Parameter.jumpType] = JumpType.forward.rawValue
+        ctx[Parameter.forwardType] = ForwardType.open.rawValue
+        ctx[Parameter.openType] = OpenType.toast.rawValue
+        self.jump(Router.shared.urlString(host: .toast, parameters: parameters), context: ctx)
+    }
+    
+    func hideToastActivity() {
+        self.showToastActivity(active: false)
+    }
+    
+    // MARK: login
     func login() {
-        self.open(Router.shared.urlString(host: .login))
+        var ctx = self.convert()
+        ctx[Parameter.jumpType] = JumpType.forward.rawValue
+        ctx[Parameter.forwardType] = ForwardType.open.rawValue
+        ctx[Parameter.openType] = OpenType.scene.rawValue
+        self.jump(Router.shared.urlString(host: .login), context: ctx)
     }
     
     func rxLogin() -> Observable<Any> {
-        (self as! Navigator).rx.open(Router.shared.urlString(host: .login))
+        var ctx = self.convert()
+        ctx[Parameter.jumpType] = JumpType.forward.rawValue
+        ctx[Parameter.forwardType] = ForwardType.open.rawValue
+        ctx[Parameter.openType] = OpenType.scene.rawValue
+        return self.rxJump(Router.shared.urlString(host: .login), context: ctx)
+    }
+
+    // MARK: back
+    func back(type: BackType? = nil, animated: Bool = true, message: String? = nil) {
+        var ctx = self.convert(context: [
+            Parameter.backType: type,
+            Parameter.animated: animated,
+            Parameter.message: message
+        ])
+        ctx[Parameter.jumpType] = JumpType.back.rawValue
+        self.jump(Router.shared.urlString(host: .back), context: ctx)
     }
     
-    
-//
-//    func sheet(_ path: Router.Path, context: Any? = nil) {
-//        self.navigator.open(Router.urlString(host: .sheet, path: path), context: context)
-//    }
-//
-//    func rxSheet(_ path: Router.Path, context: Any? = nil) -> Observable<Any> {
-//        (self.navigator as! Navigator).rx.open(Router.urlString(host: .sheet, path: path), context: context)
-//    }
-    
-    func convert(context: Any? = nil) -> [String: Any] {
-        var ctx = [String: Any].init()
-        if let context = context as? [String: Any] {
-            ctx = context
-        } else {
-            ctx[Parameter.routerContext] = context
-        }
-        return ctx
+    func rxBack(type: BackType? = nil, animated: Bool = true, message: String? = nil) -> Observable<Any> {
+        var ctx = self.convert(context: [
+            Parameter.backType: type,
+            Parameter.animated: animated,
+            Parameter.message: message
+        ])
+        ctx[Parameter.jumpType] = JumpType.back.rawValue
+        return self.rxJump(Router.shared.urlString(host: .back), context: ctx)
     }
-    
-    // MARK: - Internal
     
     // MARK: - Private
     private func checkScheme(
@@ -489,22 +374,21 @@ public extension NavigatorProtocol {
             }
         }
         if needLogin && !isLogined {
-            (self as! Navigator).rx.open(
-                router.urlString(host: .login)
-            ).subscribe(onNext: { result in
-                logger.print("自动跳转登录页(数据): \(result)", module: .hiIOS)
-            }, onError: { error in
-                logger.print("自动跳转登录页(错误): \(error)", module: .hiIOS)
-            }, onCompleted: {
-                logger.print("自动跳转登录页(完成)", module: .hiIOS)
-                var hasLogined = false
-                if let compatible = router as? RouterCompatible {
-                    hasLogined = compatible.isLogined()
-                }
-                if hasLogined {
-                    self.jump(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
-                }
-            }).disposed(by: navigateBag)
+            self.rxLogin()
+                .subscribe(onNext: { result in
+                    logger.print("自动跳转登录页(数据): \(result)", module: .hiIOS)
+                }, onError: { error in
+                    logger.print("自动跳转登录页(错误): \(error)", module: .hiIOS)
+                }, onCompleted: {
+                    logger.print("自动跳转登录页(完成)", module: .hiIOS)
+                    var hasLogined = false
+                    if let compatible = router as? RouterCompatible {
+                        hasLogined = compatible.isLogined()
+                    }
+                    if hasLogined {
+                        self.jump(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
+                    }
+                }).disposed(by: navigateBag)
             return true
         }
         return false
@@ -521,6 +405,16 @@ public extension NavigatorProtocol {
         var parameters: [String: Any] = url.queryParameters ?? [:]
         parameters += context as? [String: Any] ?? [:]
         return parameters.bool(for: Parameter.animated) ?? animated
+    }
+    
+    private func convert(context: Any? = nil) -> [String: Any] {
+        var ctx = [String: Any].init()
+        if let context = context as? [String: Any] {
+            ctx = context
+        } else {
+            ctx[Parameter.routerContext] = context
+        }
+        return ctx
     }
     
     @discardableResult
@@ -566,6 +460,17 @@ public extension NavigatorProtocol {
         default:
             return self.open(url, context: context)
         }
+    }
+    
+    @discardableResult
+    private func myOpen(
+        _ url: URLConvertible,
+        context: Any? = nil
+    ) -> Bool {
+        var ctx = self.convert(context: context)
+        ctx[Parameter.jumpType] = JumpType.forward.rawValue
+        ctx[Parameter.forwardType] = ForwardType.open.rawValue
+        return self.jump(url, context: ctx)
     }
     
 }
