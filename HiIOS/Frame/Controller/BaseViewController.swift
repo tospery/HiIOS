@@ -217,6 +217,9 @@ open class BaseViewController: UIViewController {
         message: String? = nil
     ) {
         if result != nil && cancel == false {
+#if DEBUG
+            logger.print("\(self.className)返回值：\(result!)", module: .hiIOS)
+#endif
             self.callback?.onNext(result!)
         }
         self.navigator.rxBack(type: type, animated: animated, message: message)
@@ -232,7 +235,7 @@ open class BaseViewController: UIViewController {
     }
     
     open func cancel() {
-        self.callback?.onError(HiError.none)
+        self.callback?.onCompleted()
         self.mydealloc.onNext(())
     }
     
