@@ -53,6 +53,16 @@ public enum OpenType: Int {
     case sheet
     /// 弹窗
     case popup
+    /// 登录（因为登录页通常需要自定义，故以打开方式处理）
+    case login
+    
+    static let allHosts = [
+        Router.Host.toast,
+        Router.Host.alert,
+        Router.Host.sheet,
+        Router.Host.popup,
+        Router.Host.login
+    ]
 }
 
 public extension NavigatorProtocol {
@@ -79,6 +89,7 @@ public extension NavigatorProtocol {
         if self.checkScheme(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion) {
             return false
         }
+        
         if self.checkLogin(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion) {
             return true
         }
@@ -158,40 +169,6 @@ public extension NavigatorProtocol {
         self.rxJump(url, context: self.contextForPresent(context: context), wrap: wrap, fromVC: from, animated: animated, completion: completion)
     }
     
-    // MARK: popup
-    @discardableResult
-    func popup(_ path: Router.Path, context: Any? = nil) -> Bool {
-        self.jump(Router.shared.urlString(host: .popup, path: path), context: self.contextForPopup(context: context))
-    }
-    
-    func rxPopup(_ path: Router.Path, context: Any? = nil) -> Observable<Any> {
-        self.rxJump(Router.shared.urlString(host: .popup, path: path), context: self.contextForPopup(context: context))
-    }
-    
-    // MARK: sheet
-    @discardableResult
-    func sheet(_ title: String?, _ message: String?, _ actions: [AlertActionType]) -> Bool {
-        let info = self.infoForSheet(title, message, actions)
-        return self.jump(Router.shared.urlString(host: .sheet, parameters: info.0), context: info.1)
-    }
-
-    func rxSheet(_ title: String?, _ message: String?, _ actions: [AlertActionType]) -> Observable<Any> {
-        let info = self.infoForSheet(title, message, actions)
-        return self.rxJump(Router.shared.urlString(host: .sheet, parameters: info.0), context: info.1)
-    }
-    
-    // MARK: - alert
-    @discardableResult
-    func alert(_ title: String, _ message: String, _ actions: [AlertActionType]) -> Bool {
-        let info = self.infoForAlert(title, message, actions)
-        return self.jump(Router.shared.urlString(host: .alert, parameters: info.0), context: info.1)
-    }
-
-    func rxAlert(_ title: String, _ message: String, _ actions: [AlertActionType]) -> Observable<Any> {
-        let info = self.infoForAlert(title, message, actions)
-        return self.rxJump(Router.shared.urlString(host: .alert, parameters: info.0), context: info.1)
-    }
-    
     // MARK: toast
     func toastMessage(_ message: String, _ style: HiToastStyle = .success) {
         guard !message.isEmpty else { return }
@@ -217,6 +194,40 @@ public extension NavigatorProtocol {
     
     func hideToastActivity() {
         self.showToastActivity(active: false)
+    }
+    
+    // MARK: - alert
+    @discardableResult
+    func alert(_ title: String, _ message: String, _ actions: [AlertActionType]) -> Bool {
+        let info = self.infoForAlert(title, message, actions)
+        return self.jump(Router.shared.urlString(host: .alert, parameters: info.0), context: info.1)
+    }
+
+    func rxAlert(_ title: String, _ message: String, _ actions: [AlertActionType]) -> Observable<Any> {
+        let info = self.infoForAlert(title, message, actions)
+        return self.rxJump(Router.shared.urlString(host: .alert, parameters: info.0), context: info.1)
+    }
+    
+    // MARK: sheet
+    @discardableResult
+    func sheet(_ title: String?, _ message: String?, _ actions: [AlertActionType]) -> Bool {
+        let info = self.infoForSheet(title, message, actions)
+        return self.jump(Router.shared.urlString(host: .sheet, parameters: info.0), context: info.1)
+    }
+
+    func rxSheet(_ title: String?, _ message: String?, _ actions: [AlertActionType]) -> Observable<Any> {
+        let info = self.infoForSheet(title, message, actions)
+        return self.rxJump(Router.shared.urlString(host: .sheet, parameters: info.0), context: info.1)
+    }
+    
+    // MARK: popup
+    @discardableResult
+    func popup(_ path: Router.Path, context: Any? = nil) -> Bool {
+        self.jump(Router.shared.urlString(host: .popup, path: path), context: self.contextForPopup(context: context))
+    }
+    
+    func rxPopup(_ path: Router.Path, context: Any? = nil) -> Observable<Any> {
+        self.rxJump(Router.shared.urlString(host: .popup, path: path), context: self.contextForPopup(context: context))
     }
     
     // MARK: login
@@ -269,7 +280,7 @@ public extension NavigatorProtocol {
         completion: (() -> Void)?
     ) -> Bool {
         guard let url = url.urlValue else { return false }
-        guard let host = url.host, host != .back else { return false }
+        guard let host = url.host, host != .back, !OpenType.allHosts.contains(host) else { return false }
         var needLogin = false
         var isLogined = true
         let router = Router.shared
@@ -352,7 +363,8 @@ public extension NavigatorProtocol {
     private func contextForLogin() -> Any {
         var ctx = self.convert()
         ctx[Parameter.jumpType] = JumpType.forward.rawValue
-        ctx[Parameter.forwardType] = ForwardType.present.rawValue
+        ctx[Parameter.forwardType] = ForwardType.open.rawValue
+        ctx[Parameter.openType] = OpenType.login.rawValue
         return ctx
     }
     
@@ -403,7 +415,7 @@ public extension NavigatorProtocol {
         completion: (() -> Void)? = nil
     ) -> Bool {
         var type: ForwardType?
-        if url.urlValue?.host == .toast || url.urlValue?.host == .alert || url.urlValue?.host == .sheet || url.urlValue?.host == .popup {
+        if OpenType.allHosts.contains(url.urlValue?.host ?? "") {
             type = .open
         } else {
             if let value = self.getType(url, context: context, key: Parameter.forwardType),
