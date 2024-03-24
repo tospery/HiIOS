@@ -40,6 +40,8 @@ func defaultStatusBarStyle() -> UIStatusBarStyle {
 open class BaseViewController: UIViewController {
     
     public let parameters: [String: Any]
+    /// Rx版本的页面退出回调：只是点击左上角的后退/关闭的退出，发送HiError.none、用于判断是否可以关闭
+    /// 正常的退出，采用Next/Completed，有数据时Next，无数据时只Completed
     public var callback: AnyObserver<Any>?
     private let mydealloc: PublishSubject<Void>!
     public var disposeBag = DisposeBag()
@@ -235,7 +237,7 @@ open class BaseViewController: UIViewController {
     }
     
     open func cancel() {
-        self.callback?.onCompleted()
+        self.callback?.onNext(HiError.none)
         self.mydealloc.onNext(())
     }
     
