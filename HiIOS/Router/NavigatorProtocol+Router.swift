@@ -86,11 +86,12 @@ public extension NavigatorProtocol {
         // 打印路由地址
         logger.print("导航地址->\(url.absoluteString)\n\(parameters)", module: .hiIOS)
         
-        if self.checkScheme(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion) {
+        let myURL = self.checkScheme(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
+        if myURL == nil {
             return false
         }
         
-        if self.checkLogin(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion) {
+        if self.checkLogin(myURL!, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion) {
             return true
         }
         
@@ -98,7 +99,7 @@ public extension NavigatorProtocol {
         if url.host == .back {
             type = .back
         } else {
-            if let value = self.getType(url, context: context, key: Parameter.jumpType),
+            if let value = self.getType(myURL!, context: context, key: Parameter.jumpType),
                let jump = JumpType.init(rawValue: value) {
                 type = jump
             } else {
@@ -107,9 +108,9 @@ public extension NavigatorProtocol {
         }
         switch type! {
         case .forward:
-            return self.forward(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
+            return self.forward(myURL!, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
         case .back:
-            return self.open(url, context: context)
+            return self.open(myURL!, context: context)
         }
     }
     
@@ -257,17 +258,20 @@ public extension NavigatorProtocol {
         fromVC: UIViewControllerType?,
         animated: Bool,
         completion: (() -> Void)?
-    ) -> Bool {
-        guard let url = url.urlValue else { return false }
-        guard let scheme = url.scheme else { return false }
+    ) -> URLConvertible? {
+        guard var myURL = url.urlValue else { return nil }
+        if myURL.scheme?.isEmpty ?? true {
+            myURL = "https://\(myURL.absoluteString)".url ?? myURL
+        }
+        guard let scheme = myURL.scheme else { return nil }
         if scheme != UIApplication.shared.urlScheme && scheme != "http" && scheme != "https" {
-            logger.print("其他scheme的url: \(url)", module: .hiIOS)
-            if UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                return true
+            logger.print("其他scheme的url: \(myURL)", module: .hiIOS)
+            if UIApplication.shared.canOpenURL(myURL) {
+                UIApplication.shared.open(myURL, options: [:], completionHandler: nil)
+                return nil
             }
         }
-        return false
+        return myURL
     }
     
     private func checkLogin(
