@@ -21,10 +21,10 @@ public extension Int {
         ByteCountFormatter.string(fromByteCount: Int64(self), countStyle: .file)
     }
     
-    var decimalText: String? {
+    var decimalText: String {
         let formatter = NumberFormatter.init()
         formatter.numberStyle = .decimal
-        return formatter.string(from: NSNumber.init(value: self))
+        return formatter.string(from: NSNumber.init(value: self)) ?? self.string
     }
     
     init?(any: Any?) {
