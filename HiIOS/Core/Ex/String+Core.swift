@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwifterSwift
 
 public extension String {
     
@@ -82,6 +83,21 @@ public extension String {
             return nil
         }
         return from ..< to
+    }
+    
+    func substrings(pattern: String, options: NSRegularExpression.Options = []) -> [String] {
+        guard let regex = try? NSRegularExpression.init(pattern: pattern, options: options) else { return [] }
+        var results = [String].init()
+        let matches = regex.matches(in: self, options: [], range: self.startIndex..<self.endIndex)
+        for match in matches {
+            if let range = Range(match.range, in: self) {
+                let substring = String(self[range]).trimmed
+                if substring.isNotEmpty {
+                    results.append(substring)
+                }
+            }
+        }
+        return results
     }
     
     var ipValue: UInt32 {

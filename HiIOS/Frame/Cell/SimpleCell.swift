@@ -121,6 +121,10 @@ open class SimpleCell: BaseCollectionCell, ReactorKit.View {
         } else {
             self.detailLabel.right = self.indicatorImageView.left - 8
         }
+        
+        if self.titleLabel.right > self.detailLabel.left {
+            self.titleLabel.extendToRight = self.detailLabel.left - 2
+        }
     }
     
     open func bind(reactor: SimpleItem) {
