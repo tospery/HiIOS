@@ -15,7 +15,7 @@ open class SimpleCell: BaseCollectionCell, ReactorKit.View {
     
     public lazy var titleLabel: UILabel = {
         let label = UILabel.init(frame: .zero)
-        label.font = .normal(16)
+        label.font = .normal(Metric.Simple.titleFontSize)
         label.theme.textColor = themeService.attribute { $0.titleColor }
         label.sizeToFit()
         return label
@@ -23,7 +23,7 @@ open class SimpleCell: BaseCollectionCell, ReactorKit.View {
 
     public lazy var detailLabel: UILabel = {
         let label = UILabel.init(frame: .zero)
-        label.font = .normal(14)
+        label.font = .normal(Metric.Simple.detailFontSize)
         label.textAlignment = .right
         label.theme.textColor = themeService.attribute { $0.bodyColor }
         label.sizeToFit()
@@ -201,7 +201,9 @@ open class SimpleCell: BaseCollectionCell, ReactorKit.View {
         guard let simple = item.model as? Simple else { return .zero }
         return .init(
             width: width,
-            height: simple.height ?? (simple.isSpace ? 20 : simple.isButton ? 44 : 50)
+            height: simple.height ?? (
+                simple.isSpace ? Metric.Simple.spaceHeight : simple.isButton ? Metric.Simple.buttonHeight : Metric.Simple.cellHeight
+            )
         )
     }
     
