@@ -85,15 +85,16 @@ public extension String {
         return from ..< to
     }
     
-    func substrings(pattern: String, options: NSRegularExpression.Options = []) -> [String] {
+    func matched(pattern: String, options: NSRegularExpression.Options = [], wrapped: Bool = false) -> [String] {
         guard let regex = try? NSRegularExpression.init(pattern: pattern, options: options) else { return [] }
         var results = [String].init()
-        let matches = regex.matches(in: self, options: [], range: self.startIndex..<self.endIndex)
+        let matches = regex.matches(in: self, options: [], range: NSRange(location: 0, length: self.utf16.count))
         for match in matches {
-            if let range = Range(match.range, in: self) {
-                let substring = String(self[range]).trimmed
-                if substring.isNotEmpty {
-                    results.append(substring)
+            if let range = Range(wrapped ? match.range(at: 1) : match.range, in: self) {
+                let aaa = self[range]
+                let extractedString = String(self[range])
+                if extractedString.isNotEmpty {
+                    results.append(extractedString)
                 }
             }
         }
