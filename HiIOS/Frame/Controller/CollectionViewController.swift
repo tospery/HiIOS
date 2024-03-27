@@ -33,5 +33,4 @@ open class CollectionViewController: ScrollViewController {
         super.viewDidLoad()
         self.collectionView.theme.backgroundColor = themeService.attribute { $0.backgroundColor }
     }
-    
 }

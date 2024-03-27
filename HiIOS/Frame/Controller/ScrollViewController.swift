@@ -48,6 +48,7 @@ open class ScrollViewController: BaseViewController {
             scrollView.contentInsetAdjustmentBehavior = .never
         }
         self.scrollView = scrollView
+        // UITapGestureRecognizer(target: self, action: #selector(PopTip.handleTap(_:)))
         self.shouldRefresh = reactor.parameters.bool(for: Parameter.shouldRefresh) ?? false
         self.shouldLoadMore = reactor.parameters.bool(for: Parameter.shouldLoadMore) ?? false
     }
