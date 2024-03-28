@@ -249,41 +249,6 @@ public extension NavigatorProtocol {
         self.rxJump(Router.shared.urlString(host: .back), context: self.contextForBack(type: type, animated: animated, message: message))
     }
     
-    // MARK: - Internal
-    @discardableResult
-    public func jumpWithBool(
-        _ url: URLConvertible,
-        context: Any? = nil,
-        wrap: UINavigationController.Type? = nil,
-        fromNav: UINavigationControllerType? = nil,
-        fromVC: UIViewControllerType? = nil,
-        animated: Bool = true,
-        completion: (() -> Void)? = nil
-    ) -> Bool {
-        let result = jump(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
-        if let success = result as? Bool {
-            return success
-        }
-        return result as? UIViewController != nil
-    }
-    
-    @discardableResult
-    public func jumpWithViewController (
-        _ url: URLConvertible,
-        context: Any? = nil,
-        wrap: UINavigationController.Type? = nil,
-        fromNav: UINavigationControllerType? = nil,
-        fromVC: UIViewControllerType? = nil,
-        animated: Bool = true,
-        completion: (() -> Void)? = nil
-    ) -> UIViewController? {
-        let result = jump(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
-        if let vc = result as? UIViewController {
-            return vc
-        }
-        return nil
-    }
-    
     // MARK: - Private
     private func checkScheme(
         _ url: URLConvertible,
