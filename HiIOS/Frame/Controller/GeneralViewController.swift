@@ -145,7 +145,6 @@ open class GeneralViewController: HiIOS.CollectionViewController, ReactorKit.Vie
                 type: .init(rawValue: type) ?? .auto,
                 animated: animated ?? true,
                 result: result,
-                cancel: cancel ?? false,
                 message: message
             )
             return

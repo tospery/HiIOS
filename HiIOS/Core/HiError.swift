@@ -25,7 +25,6 @@ public struct ErrorCode {
 }
 
 public enum HiError: Error {
-    /// 仅用于导航的手动退回
     case none
     case unknown
     case timeout

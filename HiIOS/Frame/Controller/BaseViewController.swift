@@ -40,8 +40,6 @@ func defaultStatusBarStyle() -> UIStatusBarStyle {
 open class BaseViewController: UIViewController {
     
     public let parameters: [String: Any]
-    /// Rx版本的页面退出回调：只是点击左上角的后退/关闭的退出，发送HiError.none、用于判断是否可以关闭
-    /// 正常的退出，采用Next/Completed，有数据时Next，无数据时只Completed
     public var callback: AnyObserver<Any>?
     private let mydealloc: PublishSubject<Void>!
     public var disposeBag = DisposeBag()
@@ -153,13 +151,13 @@ open class BaseViewController: UIViewController {
             if self.navigationController?.viewControllers.count ?? 0 > 1 {
                 self.navigationBar.addBackButtonToLeft().rx.tap.subscribe(onNext: { [weak self] _ in
                     guard let `self` = self else { return }
-                    self.tapBack()
+                    self.back(type: .popOne)
                 }).disposed(by: self.disposeBag)
             } else {
                 if self.qmui_isPresented() {
                     self.navigationBar.addCloseButtonToLeft().rx.tap.subscribe(onNext: { [weak self] _ in
                         guard let `self` = self else { return }
-                        self.tapBack()
+                        self.back(type: .dismiss)
                     }).disposed(by: self.disposeBag)
                 }
             }
@@ -207,18 +205,17 @@ open class BaseViewController: UIViewController {
         reactor.navigator = self.navigator
     }
     
-    open func tapBack(_: Void? = nil) {
-        self.back(cancel: true)
+    public func tapBack(_: Void? = nil) {
+        self.back(type: .auto)
     }
     
     open func back(
         type: BackType? = nil,
         animated: Bool = true,
         result: Any? = nil,
-        cancel: Bool = false,
         message: String? = nil
     ) {
-        if result != nil && cancel == false {
+        if result != nil && type != nil {
 #if DEBUG
             logger.print("\(self.className)返回值：\(result!)", module: .hiIOS)
 #endif
@@ -227,17 +224,16 @@ open class BaseViewController: UIViewController {
         self.navigator.rxBack(type: type, animated: animated, message: message)
             .subscribe(onCompleted: { [weak self] in
                 guard let `self` = self else { return }
-                if cancel {
-                    self.cancel()
-                } else {
-                    self.callback?.onCompleted()
-                }
+                self.didBack(type: type)
             })
             .disposed(by: self.disposeBag)
     }
     
-    open func cancel() {
-        self.callback?.onError(HiError.none)
+    open func didBack(type: BackType? = nil) {
+        if type != nil {
+            self.callback?.onNext(type!)
+        }
+        self.callback?.onCompleted()
         self.mydealloc.onNext(())
     }
     
@@ -246,7 +242,7 @@ open class BaseViewController: UIViewController {
         case .ended:
             guard let superview = self.navigationController?.topViewController?.view.superview else { return }
             if superview.frame.minX == 0.f {
-                self.cancel()
+                self.didBack(type: .popOne)
             }
         default: break
         }

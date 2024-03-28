@@ -66,6 +66,58 @@ public enum Localization: String, Codable {
 //    }
 }
 
+/// 导航的分类
+public enum JumpType: Int {
+    /// 前进
+    case forward
+    /// 后退
+    case back
+}
+
+/// 前进的分类 -> hiios://[host]?forwardType=0
+public enum ForwardType: Int {
+    /// 推进
+    case push
+    /// 展示
+    case present
+    /// 打开
+    case open
+}
+
+/// 后退的分类 -> hiios://back?backType=0
+public enum BackType: Int {
+    /// 自动
+    case auto
+    /// 弹出（一个）
+    case popOne
+    /// 弹出（所有）
+    case popAll
+    /// 退场
+    case dismiss
+}
+
+/// 打开的分类 -> hiios://[popup|sheet|alert|toast]/[path]
+public enum OpenType: Int {
+    /// 消息框（自动关闭）
+    case toast
+    /// 提示框（可选择的）
+    case alert
+    /// 表单框（可操作的）
+    case sheet
+    /// 弹窗
+    case popup
+    /// 登录（因为登录页通常需要自定义，故以打开方式处理）
+    case login
+    
+    static let allHosts = [
+        Router.Host.toast,
+        Router.Host.alert,
+        Router.Host.sheet,
+        Router.Host.popup,
+        Router.Host.login
+    ]
+}
+
 // MARK: - 联合类型
 // public typealias KVTuple = (key: Any, value: Any?)
 // public typealias HiContent = (header: ModelType?, models: [ModelType])
