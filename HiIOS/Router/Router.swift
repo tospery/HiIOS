@@ -20,7 +20,7 @@ public protocol RouterCompatible {
     func needLogin(host: Router.Host, path: Router.Path?) -> Bool
     func customLogin(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol, _ url: URLConvertible, _ values: [String: Any], _ context: Any?) -> Bool
     
-    func webToNative(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol, _ url: URLConvertible, _ context: Any?) -> Bool
+    func webToNative(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol, _ url: URLConvertible, _ context: Any?) -> Any?
     func webViewController(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol, _ paramters: [String: Any]) -> UIViewController?
     
     func web(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol)
@@ -83,12 +83,20 @@ final public class Router {
                 let base = UIApplication.shared.baseWebUrl + "/"
                 if string.hasPrefix(base) {
                     let url = string.replacingOccurrences(of: base, with: UIApplication.shared.urlScheme + "://")
-                    if navigator.jump(url, context: context) {
+                    let result = navigator.jump(url, context: context)
+                    if let rt = result as? Bool {
                         return nil
                     }
+                    if let vc = result as? UIViewController {
+                        return vc
+                    }
                     if let compatible = self as? RouterCompatible {
-                        if compatible.webToNative(provider, navigator, url, context) {
+                        let result = compatible.webToNative(provider, navigator, url, context)
+                        if let rt = result as? Bool {
                             return nil
+                        }
+                        if let vc = result as? UIViewController {
+                            return vc
                         }
                     }
                 }

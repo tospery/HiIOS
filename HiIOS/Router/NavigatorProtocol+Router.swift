@@ -78,7 +78,7 @@ public extension NavigatorProtocol {
         fromVC: UIViewControllerType? = nil,
         animated: Bool = true,
         completion: (() -> Void)? = nil
-    ) -> Bool {
+    ) -> Any? {
         guard let url = url.urlValue else { return false }
         var parameters: [String: Any] = url.queryParameters ?? [:]
         // context中的参数的优先级高于查询参数
@@ -133,8 +133,8 @@ public extension NavigatorProtocol {
         context: Any? = nil,
         from: UINavigationControllerType? = nil,
         animated: Bool = true
-    ) -> Bool {
-        self.jump(url, context: self.contextForPush(context: context), fromNav: from, animated: animated)
+    ) -> UIViewController? {
+        self.jump(url, context: self.contextForPush(context: context), fromNav: from, animated: animated) as? UIViewController
     }
     
     func rxPushX(
@@ -155,8 +155,8 @@ public extension NavigatorProtocol {
         from: UIViewControllerType? = nil,
         animated: Bool = true,
         completion: (() -> Void)? = nil
-    ) -> Bool {
-        self.jump(url, context: self.contextForPresent(context: context), wrap: wrap, fromVC: from, animated: animated, completion: completion)
+    ) -> UIViewController? {
+        self.jump(url, context: self.contextForPresent(context: context), wrap: wrap, fromVC: from, animated: animated, completion: completion) as? UIViewController
     }
     
     func rxPresentX(
@@ -201,7 +201,7 @@ public extension NavigatorProtocol {
     @discardableResult
     func alert(_ title: String, _ message: String, _ actions: [AlertActionType]) -> Bool {
         let info = self.infoForAlert(title, message, actions)
-        return self.jump(Router.shared.urlString(host: .alert, parameters: info.0), context: info.1)
+        return self.jump(Router.shared.urlString(host: .alert, parameters: info.0), context: info.1) as? Bool ?? false
     }
 
     func rxAlert(_ title: String, _ message: String, _ actions: [AlertActionType]) -> Observable<Any> {
@@ -213,7 +213,7 @@ public extension NavigatorProtocol {
     @discardableResult
     func sheet(_ title: String?, _ message: String?, _ actions: [AlertActionType]) -> Bool {
         let info = self.infoForSheet(title, message, actions)
-        return self.jump(Router.shared.urlString(host: .sheet, parameters: info.0), context: info.1)
+        return self.jump(Router.shared.urlString(host: .sheet, parameters: info.0), context: info.1) as? Bool ?? false
     }
 
     func rxSheet(_ title: String?, _ message: String?, _ actions: [AlertActionType]) -> Observable<Any> {
@@ -224,7 +224,7 @@ public extension NavigatorProtocol {
     // MARK: popup
     @discardableResult
     func popup(_ path: Router.Path, context: Any? = nil) -> Bool {
-        self.jump(Router.shared.urlString(host: .popup, path: path), context: self.contextForPopup(context: context))
+        self.jump(Router.shared.urlString(host: .popup, path: path), context: self.contextForPopup(context: context)) as? Bool ?? false
     }
     
     func rxPopup(_ path: Router.Path, context: Any? = nil) -> Observable<Any> {
@@ -247,6 +247,41 @@ public extension NavigatorProtocol {
     
     func rxBack(type: BackType? = nil, animated: Bool = true, message: String? = nil) -> Observable<Any> {
         self.rxJump(Router.shared.urlString(host: .back), context: self.contextForBack(type: type, animated: animated, message: message))
+    }
+    
+    // MARK: - Internal
+    @discardableResult
+    public func jumpWithBool(
+        _ url: URLConvertible,
+        context: Any? = nil,
+        wrap: UINavigationController.Type? = nil,
+        fromNav: UINavigationControllerType? = nil,
+        fromVC: UIViewControllerType? = nil,
+        animated: Bool = true,
+        completion: (() -> Void)? = nil
+    ) -> Bool {
+        let result = jump(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
+        if let success = result as? Bool {
+            return success
+        }
+        return result as? UIViewController != nil
+    }
+    
+    @discardableResult
+    public func jumpWithViewController (
+        _ url: URLConvertible,
+        context: Any? = nil,
+        wrap: UINavigationController.Type? = nil,
+        fromNav: UINavigationControllerType? = nil,
+        fromVC: UIViewControllerType? = nil,
+        animated: Bool = true,
+        completion: (() -> Void)? = nil
+    ) -> UIViewController? {
+        let result = jump(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
+        if let vc = result as? UIViewController {
+            return vc
+        }
+        return nil
     }
     
     // MARK: - Private
@@ -419,7 +454,7 @@ public extension NavigatorProtocol {
         fromVC: UIViewControllerType? = nil,
         animated: Bool = true,
         completion: (() -> Void)? = nil
-    ) -> Bool {
+    ) -> Any? {
         var type: ForwardType?
         if OpenType.allHosts.contains(url.urlValue?.host ?? "") {
             type = .open
@@ -434,10 +469,11 @@ public extension NavigatorProtocol {
         switch type! {
         case .push:
             let animated = self.getAnimated(url, context: context, animated: animated)
-            return self.push(url, context: context, from: fromNav, animated: animated) != nil
+            let vc = self.push(url, context: context, from: fromNav, animated: animated)
+            return vc
         case .present:
             let animated = self.getAnimated(url, context: context, animated: animated)
-            return self.present(url, context: context, wrap: wrap ?? NavigationController.self, from: fromVC, animated: animated, completion: completion) != nil
+            return self.present(url, context: context, wrap: wrap ?? NavigationController.self, from: fromVC, animated: animated, completion: completion)
         case .open:
             return self.open(url, context: context)
         }

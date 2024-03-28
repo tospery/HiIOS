@@ -32,17 +32,9 @@ public extension Reactive where Base: Navigator {
                 ctx[Parameter.routerContext] = context
             }
             ctx[Parameter.routerObserver] = observer
-            guard base.jump(
-                url,
-                context: ctx,
-                wrap: wrap,
-                fromNav: fromNav,
-                fromVC: fromVC,
-                animated: animated,
-                completion: completion
-            ) else {
+            let success = base.jumpWithBool(url, context: ctx, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
+            if !success {
                 observer.onError(HiError.navigation)
-                return Disposables.create { }
             }
             return Disposables.create { }
         }
