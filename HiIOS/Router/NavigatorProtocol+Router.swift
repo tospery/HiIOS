@@ -265,11 +265,13 @@ public extension NavigatorProtocol {
         }
         guard let scheme = myURL.scheme else { return nil }
         if scheme != UIApplication.shared.urlScheme && scheme != "http" && scheme != "https" {
-            logger.print("其他scheme的url: \(myURL)", module: .hiIOS)
+            logger.print("第三方url: \(myURL)", module: .hiIOS)
             if UIApplication.shared.canOpenURL(myURL) {
                 UIApplication.shared.open(myURL, options: [:], completionHandler: nil)
                 return nil
             }
+            logger.print("无法打开该url: \(myURL)", module: .hiIOS)
+            return nil
         }
         return myURL
     }
