@@ -32,7 +32,7 @@ public extension Reactive where Base: Navigator {
                 ctx[Parameter.routerContext] = context
             }
             ctx[Parameter.routerObserver] = observer
-            let result = base.jump(url, context: context, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
+            let result = base.jump(url, context: ctx, wrap: wrap, fromNav: fromNav, fromVC: fromVC, animated: animated, completion: completion)
             var success = false
             if let rt = result as? Bool {
                 success = rt

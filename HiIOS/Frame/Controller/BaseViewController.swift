@@ -237,7 +237,7 @@ open class BaseViewController: UIViewController {
     }
     
     open func cancel() {
-        self.callback?.onNext(HiError.none)
+        self.callback?.onError(HiError.none)
         self.mydealloc.onNext(())
     }
     

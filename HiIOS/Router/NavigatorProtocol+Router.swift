@@ -434,8 +434,7 @@ public extension NavigatorProtocol {
         switch type! {
         case .push:
             let animated = self.getAnimated(url, context: context, animated: animated)
-            let vc = self.push(url, context: context, from: fromNav, animated: animated)
-            return vc
+            return self.push(url, context: context, from: fromNav, animated: animated)
         case .present:
             let animated = self.getAnimated(url, context: context, animated: animated)
             return self.present(url, context: context, wrap: wrap ?? NavigationController.self, from: fromVC, animated: animated, completion: completion)
