@@ -144,7 +144,14 @@ public extension String {
         guard let url = self.url else { return false }
         return [
             "jpg", "jpeg", "png", "gif", "svg"
-        ].contains(url.pathExtension)
+        ].contains(url.pathExtension.lowercased())
+    }
+    
+    var isValidMarkdownUrl: Bool {
+        guard let url = self.url else { return false }
+        return [
+            "md", "mdx"
+        ].contains(url.pathExtension.lowercased())
     }
     
 }
