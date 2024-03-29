@@ -91,10 +91,24 @@ public extension String {
         let matches = regex.matches(in: self, options: [], range: NSRange(location: 0, length: self.utf16.count))
         for match in matches {
             if let range = Range(wrapped ? match.range(at: 1) : match.range, in: self) {
-                let aaa = self[range]
-                let extractedString = String(self[range])
-                if extractedString.isNotEmpty {
-                    results.append(extractedString)
+                let string = String(self[range])
+                if string.isNotEmpty {
+                    results.append(string)
+                }
+            }
+        }
+        return results
+    }
+    
+    func found(pattern: String, options: NSRegularExpression.Options = [], count: Int = 1) -> [String] {
+        guard let regex = try? NSRegularExpression.init(pattern: pattern, options: options) else { return [] }
+        var results = [String].init()
+        if let match = regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: self.utf16.count)) {
+            for index in 1...count {
+                let range = Range(match.range(at: index), in: self)
+                if let range = Range(match.range(at: index), in: self) {
+                    let string = String(self[range])
+                    results.append(string)
                 }
             }
         }
@@ -124,6 +138,13 @@ public extension String {
             return self.url
         }
         return UIImage.init(named: self)
+    }
+    
+    var isValidImageUrl: Bool {
+        guard let url = self.url else { return false }
+        return [
+            "jpg", "jpeg", "png", "gif", "svg"
+        ].contains(url.pathExtension)
     }
     
 }
