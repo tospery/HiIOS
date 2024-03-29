@@ -144,7 +144,7 @@ final public class Router {
                     }
                     if let compatible = self as? RouterCompatible {
                         let result = compatible.webToNative(provider, navigator, url, context)
-                        if let rt = result as? Bool {
+                        if let rt = result as? Bool, rt {
                             return nil
                         }
                         if let vc = result as? UIViewController {
