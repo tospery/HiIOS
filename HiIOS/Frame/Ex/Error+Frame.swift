@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import RxOptional
 import Alamofire
 import SwifterSwift
 import Moya
@@ -122,6 +123,15 @@ extension RxError: HiErrorCompatible {
         case .unknown: return .unknown
         case .timeout: return .timeout
         default: return .app(ErrorCode.rxerror, self.localizedDescription, nil)
+        }
+    }
+}
+
+extension RxOptionalError: HiErrorCompatible {
+    public var hiError: HiError {
+        switch self {
+        case .emptyOccupiable: return .listIsEmpty
+        case .foundNilWhileUnwrappingOptional: return .dataInvalid
         }
     }
 }

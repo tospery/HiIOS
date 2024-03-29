@@ -77,7 +77,7 @@ public protocol RouterCompatible {
     
     func web(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol)
     func page(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol)
-    func dialog(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol)
+    func open(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol)
     
 }
 
@@ -99,7 +99,7 @@ final public class Router {
         if let compatible = self as? RouterCompatible {
             compatible.web(provider, navigator)
             compatible.page(provider, navigator)
-            compatible.dialog(provider, navigator)
+            compatible.open(provider, navigator)
         }
     }
     
