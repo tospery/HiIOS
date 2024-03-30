@@ -67,6 +67,8 @@ public extension String {
         }
         return result
     }
+    
+    var fileExt: String? { self.url?.pathExtension }
 
     // MARK: - Methods
     func nsRange(from range: Range<String.Index>) -> NSRange {
