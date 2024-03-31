@@ -102,6 +102,25 @@ public extension String {
         return results
     }
     
+    func splitString(by maxLength: Int) -> [String] {
+        var result = [String]()
+        let utf8 = self.utf8
+        var start = utf8.startIndex
+        var end = utf8.startIndex
+
+        while end != utf8.endIndex {
+            let nextIndex = utf8.index(end, offsetBy: maxLength, limitedBy: utf8.endIndex) ?? utf8.endIndex
+            let range = start..<nextIndex
+            if let subString = String(utf8[range]) {
+                result.append(subString)
+            }
+            start = nextIndex
+            end = nextIndex
+        }
+
+        return result
+    }
+    
     func found(pattern: String, options: NSRegularExpression.Options = [], count: Int = 1) -> [String] {
         guard let regex = try? NSRegularExpression.init(pattern: pattern, options: options) else { return [] }
         var results = [String].init()
