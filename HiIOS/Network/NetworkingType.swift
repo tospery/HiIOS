@@ -185,9 +185,9 @@ public extension NetworkingType {
             if code == 401 {
                 return .userNotLoginedIn
             }
-            if code == 403 {
-                return .userLoginExpired
-            }
+//            if code == 403 {
+//                return .userLoginExpired
+//            }
             return HiError.server(code, message, nil)
         }
         return nil

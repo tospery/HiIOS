@@ -88,7 +88,7 @@ extension NSError: HiErrorCompatible {
             if self.code == 500 {
                 return .server(ErrorCode.serverInternalError, self.localizedDescription, nil)
             } else if self.code == 401 {
-                return .userLoginExpired
+                return .userNotLoginedIn
             }
         }
         return .server(ErrorCode.nserror, self.localizedDescription, nil)
@@ -158,14 +158,14 @@ extension MoyaError: HiErrorCompatible {
             if response.statusCode == 401 {
                 return .userNotLoginedIn
             }
-            if response.statusCode == 403 {
-                return .userLoginExpired
-            }
+//            if response.statusCode == 403 {
+//                return .userLoginExpired
+//            }
             if let json = try? response.data.jsonObject() as? [String: Any],
                let message = json.string(for: Parameter.message), message.count != 0 {
-                return .server(ErrorCode.moyaError, message, nil)
+                return .server(response.statusCode, message, nil)
             }
-            return .server(ErrorCode.moyaError, response.data.string(encoding: .utf8), nil)
+            return .server(response.statusCode, response.data.string(encoding: .utf8), nil)
         case .jsonMapping:
             return .server(ErrorCode.moyaError, self.localizedDescription, nil)
         default:

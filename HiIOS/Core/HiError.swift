@@ -34,7 +34,7 @@ public enum HiError: Error {
     case networkNotConnected
     case networkNotReachable
     case userNotLoginedIn   // 对应HTTP的401
-    case userLoginExpired   // 对应HTTP的403
+    case userLoginExpired   // 将自己服务器的错误码转换为该值
     case server(Int, String?, [String: Any]?)
     case app(Int, String?, [String: Any]?)
 }
