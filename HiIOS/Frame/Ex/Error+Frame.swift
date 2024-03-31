@@ -72,6 +72,7 @@ extension NSError: HiErrorCompatible {
             if self.code == -1020 {
                 return .networkNotConnected
             }
+            // -1005 ~ -999
             if self.code >= NSURLErrorNetworkConnectionLost &&
                 self.code <= NSURLErrorCancelled {
                 return .server(ErrorCode.serverUnableConnect, self.localizedDescription, nil)
