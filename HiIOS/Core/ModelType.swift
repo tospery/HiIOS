@@ -31,7 +31,7 @@ public protocol ConfigurationType: ModelType {
     var localization: Localization { get }
 }
 
-public struct BaseModel: ModelType {
+public struct WrappedModel: ModelType {
 
     public var data: Any?
     
