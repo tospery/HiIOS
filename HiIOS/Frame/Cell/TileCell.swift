@@ -1,5 +1,5 @@
 //
-//  SimpleCell.swift
+//  TileCell.swift
 //  HiIOS
 //
 //  Created by 杨建祥 on 2024/3/21.
@@ -11,11 +11,11 @@ import RxCocoa
 import ReactorKit
 import URLNavigator_Hi
 
-open class SimpleCell: BaseCollectionCell, ReactorKit.View {
+open class TileCell: BaseCollectionCell, ReactorKit.View {
     
     public lazy var titleLabel: UILabel = {
         let label = UILabel.init(frame: .zero)
-        label.font = .normal(Metric.Simple.titleFontSize)
+        label.font = .normal(Metric.Tile.titleFontSize)
         label.theme.textColor = themeService.attribute { $0.titleColor }
         label.sizeToFit()
         return label
@@ -23,7 +23,7 @@ open class SimpleCell: BaseCollectionCell, ReactorKit.View {
 
     public lazy var detailLabel: UILabel = {
         let label = UILabel.init(frame: .zero)
-        label.font = .normal(Metric.Simple.detailFontSize)
+        label.font = .normal(Metric.Tile.detailFontSize)
         label.textAlignment = .right
         label.theme.textColor = themeService.attribute { $0.bodyColor }
         label.sizeToFit()
@@ -81,7 +81,7 @@ open class SimpleCell: BaseCollectionCell, ReactorKit.View {
     
     open override func layoutSubviews() {
         super.layoutSubviews()
-        if (self.model as? Simple)?.isButton ?? false {
+        if (self.model as? Tile)?.isButton ?? false {
             self.layoutButton()
             return
         }
@@ -127,14 +127,14 @@ open class SimpleCell: BaseCollectionCell, ReactorKit.View {
         }
     }
     
-    open func bind(reactor: SimpleItem) {
+    open func bind(reactor: TileItem) {
         super.bind(item: reactor)
-        guard let simple = reactor.model as? Simple else { return }
-        if simple.isSpace {
+        guard let tile = reactor.model as? Tile else { return }
+        if tile.isSpace {
             self.bindSpace(reactor: reactor)
             return
         }
-        if simple.isButton {
+        if tile.isButton {
             self.bindButton(reactor: reactor)
             return
         }
@@ -168,13 +168,13 @@ open class SimpleCell: BaseCollectionCell, ReactorKit.View {
             .disposed(by: self.disposeBag)
     }
     
-    open func bindSpace(reactor: SimpleItem) {
+    open func bindSpace(reactor: TileItem) {
         self.contentView.theme.backgroundColor = themeService.attribute { _ in reactor.color ?? UIColor.clear }
         self.borderLayer?.borderWidths = [:]
         self.indicatorImageView.isHidden = true
     }
     
-    open func bindButton(reactor: SimpleItem) {
+    open func bindButton(reactor: TileItem) {
         self.contentView.theme.backgroundColor = themeService.attribute { _ in reactor.color ?? UIColor.clear }
         self.borderLayer?.borderWidths = [:]
         self.indicatorImageView.isHidden = true
@@ -198,11 +198,11 @@ open class SimpleCell: BaseCollectionCell, ReactorKit.View {
     }
     
     open override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
-        guard let simple = item.model as? Simple else { return .zero }
+        guard let tile = item.model as? Tile else { return .zero }
         return .init(
             width: width,
-            height: simple.height ?? (
-                simple.isSpace ? Metric.Simple.spaceHeight : simple.isButton ? Metric.Simple.buttonHeight : Metric.Simple.cellHeight
+            height: tile.height ?? (
+                tile.isSpace ? Metric.Tile.spaceHeight : tile.isButton ? Metric.Tile.buttonHeight : Metric.Tile.cellHeight
             )
         )
     }

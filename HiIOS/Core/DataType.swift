@@ -9,7 +9,7 @@ import Foundation
 
 public struct Metric {
     
-    public struct Simple {
+    public struct Tile {
         public static let spaceHeight       = 20.f
         public static let buttonHeight      = 44.f
         public static let cellHeight        = 50.f

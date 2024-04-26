@@ -1,5 +1,5 @@
 //
-//  SimpleItem.swift
+//  TileItem.swift
 //  HiIOS
 //
 //  Created by 杨建祥 on 2024/3/21.
@@ -11,7 +11,7 @@ import RxCocoa
 import ReactorKit
 import URLNavigator_Hi
 
-open class SimpleItem: BaseCollectionItem, ReactorKit.Reactor {
+open class TileItem: BaseCollectionItem, ReactorKit.Reactor {
     
     public enum Action {
         case title(String?)
@@ -40,17 +40,17 @@ open class SimpleItem: BaseCollectionItem, ReactorKit.Reactor {
     
     required public init(_ model: ModelType) {
         super.init(model)
-        guard let simple = model as? Simple else { return }
-        isSpace = simple.isSpace
-        height = simple.height
-        color = simple.color?.color
-        tintColor = simple.tintColor?.color
+        guard let tile = model as? Tile else { return }
+        isSpace = tile.isSpace
+        height = tile.height
+        color = tile.color?.color
+        tintColor = tile.tintColor?.color
         self.initialState = State(
-            icon: simple.icon?.imageSource,
-            title: simple.title,
-            detail: simple.detail,
-            indicated: simple.indicated ?? false,
-            divided: simple.divided ?? false
+            icon: tile.icon?.imageSource,
+            title: tile.title,
+            detail: tile.detail,
+            indicated: tile.indicated ?? false,
+            divided: tile.divided ?? false
         )
     }
     

@@ -1,5 +1,5 @@
 //
-//  Simple.swift
+//  Tile.swift
 //  HiIOS
 //
 //  Created by liaoya on 2022/9/23.
@@ -8,7 +8,7 @@
 import Foundation
 import ObjectMapper_Hi
 
-public struct Simple: Subjective {
+public struct Tile: Subjective {
     
     public var id = 0
     public var divided: Bool? = true

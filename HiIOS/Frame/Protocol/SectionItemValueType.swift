@@ -11,11 +11,11 @@
 ////    var title: String? { get }
 ////    var image: UIImage? { get }
 ////    var urlScheme: String? { get }
-//    var simple: Simple { get }
+//    var tile: Tile { get }
 //}
 //
 //extension SectionItemValueType {
-//    var simple: Simple { Simple.init() }
+//    var tile: Tile { Tile.init() }
 ////    var title: String? { nil }
 ////    var image: UIImage? { nil }
 ////    var urlScheme: String? { nil }
