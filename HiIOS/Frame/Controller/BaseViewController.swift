@@ -40,6 +40,7 @@ func defaultStatusBarStyle() -> UIStatusBarStyle {
 open class BaseViewController: UIViewController {
     
     public let parameters: [String: Any]
+    /// 场景一：直接关闭，没有next，只有completed（如未登录时、点击TabBar需要登录的页面，只有next才展示）
     public var callback: AnyObserver<Any>?
     private let mydealloc: PublishSubject<Void>!
     public var disposeBag = DisposeBag()
@@ -211,27 +212,33 @@ open class BaseViewController: UIViewController {
     
     open func back(
         type: BackType? = nil,
-        animated: Bool = true,
         result: Any? = nil,
-        message: String? = nil
+        message: String? = nil,
+        animated: Bool = true
     ) {
-        if result != nil && type != nil {
-#if DEBUG
-            logger.print("\(self.className)返回值：\(result!)", module: .hiIOS)
-#endif
-            self.callback?.onNext(result!)
-        }
+//        if result != nil && type != nil {
+//#if DEBUG
+//            logger.print("\(self.className)返回值：\(result!)", module: .hiIOS)
+//#endif
+//            self.callback?.onNext(result!)
+//        }
         self.navigator.rxBack(type: type, animated: animated, message: message)
             .subscribe(onCompleted: { [weak self] in
                 guard let `self` = self else { return }
-                self.didBack(type: type)
+                self.didBack(type: type, result: result)
             })
             .disposed(by: self.disposeBag)
     }
     
-    open func didBack(type: BackType? = nil) {
-        if type != nil {
-            self.callback?.onNext(type!)
+    open func didBack(type: BackType? = nil, result: Any? = nil) {
+//        if type != nil {
+//#if DEBUG
+//            logger.print("\(self.className)返回：\(type)(\(data))", module: .hiIOS)
+//#endif
+//            self.callback?.onNext(BackResult(type: type, data: data))
+//        }
+        if result != nil {
+            self.callback?.onNext(result)
         }
         self.callback?.onCompleted()
         self.mydealloc.onNext(())

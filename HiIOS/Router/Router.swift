@@ -81,6 +81,20 @@ public protocol RouterCompatible {
     
 }
 
+//public struct BackResult {
+//    
+//    public var type: BackType
+//    public var data: Any?
+//    
+//    public init(
+//        type: BackType,
+//        data: Any? = nil
+//    ) {
+//        self.type = type
+//        self.data = data
+//    }
+//}
+
 final public class Router {
 
     public typealias Host = String

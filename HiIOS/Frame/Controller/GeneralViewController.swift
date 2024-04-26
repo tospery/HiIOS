@@ -141,12 +141,13 @@ open class GeneralViewController: HiIOS.CollectionViewController, ReactorKit.Vie
             let result = url.queryValue(for: Parameter.result)
             let cancel = url.queryValue(for: Parameter.cancel)?.bool
             let message = url.queryValue(for: Parameter.message)
-            self.back(
-                type: .init(rawValue: type) ?? .auto,
-                animated: animated ?? true,
-                result: result,
-                message: message
-            )
+//            self.back(
+//                type: .init(rawValue: type) ?? .auto,
+//                data: result,
+//                animated: animated ?? true,
+//                message: message
+//            )
+            self.back(type: .init(rawValue: type), result: result, message: message, animated: animated ?? true)
             return
         }
         self.navigator.jump(url)
