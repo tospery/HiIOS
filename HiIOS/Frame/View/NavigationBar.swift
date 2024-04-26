@@ -220,6 +220,17 @@ public class NavigationBar: UIView {
     }
     
     @discardableResult
+    public func addButtonToLeft(button: UIButton) -> UIButton {
+        self.addSubview(button)
+        
+        self.leftButtons.append(button)
+        self.setNeedsLayout()
+        self.layoutIfNeeded()
+        
+        return button
+    }
+    
+    @discardableResult
     public func addButtonToRight(button: UIButton) -> UIButton {
         self.addSubview(button)
         

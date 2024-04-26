@@ -78,7 +78,7 @@ public extension UIApplication {
         return window!
     }
     
-    @objc var pageStart: Int { 1 }
+    @objc var pageStart: Int { 0 }
     
     @objc var pageSize: Int { 20 }
     
