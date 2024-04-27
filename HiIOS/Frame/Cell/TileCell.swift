@@ -87,14 +87,14 @@ open class TileCell: BaseCollectionCell, ReactorKit.View {
         }
         if self.iconImageView.isHidden || self.iconImageView.image == nil {
             self.iconImageView.frame = .zero
-            self.iconImageView.left = 20
+            self.iconImageView.left = Metric.Tile.margin.left
             self.iconImageView.top = self.iconImageView.topWhenCenter
         } else {
             self.iconImageView.sizeToFit()
             self.iconImageView.height = (self.contentView.height * 0.5).flat
             self.iconImageView.width = self.iconImageView.height
             self.iconImageView.top = self.iconImageView.topWhenCenter
-            self.iconImageView.left = 20
+            self.iconImageView.left = Metric.Tile.margin.left
             if self.reactor?.currentState.icon is URL {
                 self.iconImageView.layerCornerRadius = self.iconImageView.height / 2.0
             } else {
@@ -104,7 +104,7 @@ open class TileCell: BaseCollectionCell, ReactorKit.View {
         
         self.indicatorImageView.sizeToFit()
         self.indicatorImageView.top = self.indicatorImageView.topWhenCenter
-        self.indicatorImageView.right = self.contentView.width - 15
+        self.indicatorImageView.right = self.contentView.width - Metric.Tile.margin.right
         
         self.titleLabel.sizeToFit()
         self.titleLabel.top = self.titleLabel.topWhenCenter

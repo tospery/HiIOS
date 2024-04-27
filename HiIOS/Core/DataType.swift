@@ -15,7 +15,7 @@ public struct Metric {
         public static let cellHeight        = 50.f
         public static let titleFontSize     = 16.f
         public static let detailFontSize    = 14.f
-        public static let margin = UIEdgeInsets.init(top: 10, left: 20, bottom: 5, right: 5)
+        public static let margin = UIEdgeInsets.init(top: 10, left: 10, bottom: 5, right: 10)
         public static let padding = UIOffset.init(horizontal: 10, vertical: 8)
     }
     

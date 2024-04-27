@@ -196,6 +196,14 @@ open class BaseViewController: UIViewController {
         super.viewWillAppear(animated)
         self.view.bringSubviewToFront(self.navigationBar)
     }
+    
+    open override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if hidesNavigationBar == false && transparetNavBar == false {
+            self.navigationBar.setNeedsLayout()
+            self.navigationBar.layoutIfNeeded()
+        }
+    }
 
     open override var preferredStatusBarStyle: UIStatusBarStyle {
         return statusBarService.value
