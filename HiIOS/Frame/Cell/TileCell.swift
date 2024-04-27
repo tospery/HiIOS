@@ -142,7 +142,7 @@ open class TileCell: BaseCollectionCell, ReactorKit.View {
         self.titleLabel.theme.textColor = themeService.attribute { $0.titleColor }
         reactor.state.map { $0.icon }
             .distinctUntilChanged { HiIOS.compareImage($0, $1) }
-            .bind(to: self.iconImageView.rx.imageResource(alwaysTemplate: true))
+            .bind(to: self.iconImageView.rx.imageResource(alwaysTemplate: false))
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.title }
             .distinctUntilChanged()
