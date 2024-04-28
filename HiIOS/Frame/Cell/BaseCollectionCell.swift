@@ -12,7 +12,7 @@ import RxCocoa
 open class BaseCollectionCell: UICollectionViewCell {
     
     public var disposeBag = DisposeBag()
-    public var model: ModelType?
+    public var model: (any ModelType)?
     
     public override init(frame: CGRect) {
         super.init(frame: frame)

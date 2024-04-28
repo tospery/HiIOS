@@ -8,6 +8,19 @@
 import UIKit
 import QMUIKit
 
+//public func isEmpty(data: any Hashable) -> Bool {
+//    if data is Int {
+//        return data as! Int == 0
+//    }
+//    if data is Double {
+//        return data as! Double == 0
+//    }
+//    if data is String {
+//        return data as! String == ""
+//    }
+//    return true
+//}
+
 // MARK: - Compare
 public func compareVersion(_ version1: String, _ version2: String, amount: Int = 3) -> ComparisonResult {
     version1.compare(version2, options: .numeric)
@@ -25,7 +38,7 @@ public func compareImage(_ left: ImageSource?, _ right: ImageSource?) -> Bool {
     return false
 }
 
-public func compareModels(_ left: [[ModelType]]?, _ right: [[ModelType]]?) -> Bool {
+public func compareModels(_ left: [[any ModelType]]?, _ right: [[any ModelType]]?) -> Bool {
     if left == nil && right == nil {
         return true
     }

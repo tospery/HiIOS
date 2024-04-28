@@ -38,7 +38,7 @@ open class TileItem: BaseCollectionItem, ReactorKit.Reactor {
     public var tintColor: UIColor?
     public var initialState = State()
     
-    required public init(_ model: ModelType) {
+    required public init(_ model: any ModelType) {
         super.init(model)
         guard let tile = model as? Tile else { return }
         isSpace = tile.isSpace

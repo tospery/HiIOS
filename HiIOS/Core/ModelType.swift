@@ -10,16 +10,25 @@ import ObjectMapper_Hi
 import SwifterSwift
 
 // MARK: - 模型协议
-public protocol ModelType: Mappable, CustomStringConvertible {
-    var uuid: String { get }
+public protocol ModelType: Identifiable, Mappable, Hashable, CustomStringConvertible {
     var isValid: Bool { get }
     init()
 }
 
 public extension ModelType {
-    var uuid: String { UUID.init().uuidString }
-    var isValid: Bool { true }
-    var description: String { self.toJSON().sortedJSONString }
+
+    var isValid: Bool { self.id.hashValue != 0 }
+    var description: String {
+        self.toJSON().sortedJSONString
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
+    }
+    
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.hashValue == rhs.hashValue
+    }
 }
 
 public protocol UserType: ModelType {
@@ -33,6 +42,7 @@ public protocol ConfigurationType: ModelType {
 
 public struct WrappedModel: ModelType {
 
+    public var id = 0
     public var data: Any?
     
     public var isValid: Bool { self.data != nil }
@@ -49,6 +59,10 @@ public struct WrappedModel: ModelType {
     
     public mutating func mapping(map: Map) {
         data    <- map["data"]
+    }
+    
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.description == rhs.description
     }
     
     public var description: String {

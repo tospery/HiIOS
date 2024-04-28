@@ -15,7 +15,7 @@ let archiver = try! Storage<String, String>.init(
 )
 
 // MARK: - 存储协议
-public protocol Storable: ModelType, Identifiable, Codable, Equatable {
+public protocol Storable: ModelType, Codable {
 
     // associatedtype Base: Storable where Base.Base == Base
     // associatedtype Store: Storable
@@ -97,10 +97,10 @@ public extension Storable {
         try? archiver.removeObject(forKey: key)
     }
 
-    static func == (lhs: Self, rhs: Self) -> Bool {
-        // lhs.description.sorted() == rhs.description.sorted()
-        lhs.description == rhs.description
-    }
+//    static func == (lhs: Self, rhs: Self) -> Bool {
+//        // lhs.description.sorted() == rhs.description.sorted()
+//        lhs.description == rhs.description
+//    }
 
 }
 

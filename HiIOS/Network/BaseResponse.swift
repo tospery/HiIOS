@@ -27,6 +27,7 @@ public protocol ResponseCompatible {
 }
 
 public struct BaseResponse: ResponseType, ModelType {
+    public var id = 0
     public var code = 0
     public var message: String?
     public var data: Any?

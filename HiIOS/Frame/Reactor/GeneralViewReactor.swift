@@ -34,8 +34,8 @@ open class GeneralViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
         case setTitle(String?)
         case setTarget(String?)
         case setData(Any?)
-        case setUser(UserType?)
-        case setConfiguration(ConfigurationType?)
+        case setUser((any UserType)?)
+        case setConfiguration((any ConfigurationType)?)
         case initial([HiContent])
         case append([HiContent])
     }
@@ -50,8 +50,8 @@ open class GeneralViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
         public var target: String?
         public var error: Error?
         public var data: Any?
-        public var user: UserType? = nil
-        public var configuration: ConfigurationType? = nil
+        public var user: (any UserType)? = nil
+        public var configuration: (any ConfigurationType)? = nil
         public var contents = [HiContent].init()
         public var sections = [any SectionModelType].init()
     }
@@ -263,7 +263,7 @@ open class GeneralViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
                 return Disposables.create { }
             }
             return self.navigator.rxLogin()
-                .map { Mutation.setUser($0 as? UserType) }
+                .map { Mutation.setUser($0 as? (any UserType)) }
                 .subscribe(observer)
         }
     }

@@ -68,5 +68,5 @@ public enum Localization: String, Codable {
 
 // MARK: - 联合类型
 // public typealias KVTuple = (key: Any, value: Any?)
-// public typealias HiContent = (header: ModelType?, models: [ModelType])
+// public typealias HiContent = (header: ModelType?, models: [any ModelType])
 // public typealias CustomLoginResult = (handled: Bool, result: Bool)

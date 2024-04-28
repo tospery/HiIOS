@@ -12,7 +12,7 @@ import RxCocoa
 open class BaseTableCell: UITableViewCell {
     
     public var disposeBag = DisposeBag()
-    public var model: ModelType?
+    public var model: (any ModelType)?
     
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

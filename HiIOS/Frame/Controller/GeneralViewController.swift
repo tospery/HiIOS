@@ -126,10 +126,10 @@ open class GeneralViewController: HiIOS.CollectionViewController, ReactorKit.Vie
         }.disposed(by: self.disposeBag)
     }
     
-    open func handleUser(user: UserType?) {
+    open func handleUser(user: (any UserType)?) {
     }
     
-    open func handleConfiguration(configuration: ConfigurationType?) {
+    open func handleConfiguration(configuration: (any ConfigurationType)?) {
         logger.print("handleConfiguration -> 更新配置(\(self.reactor?.host ?? ""), \(self.reactor?.path ?? ""))")
     }
     

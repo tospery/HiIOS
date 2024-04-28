@@ -9,10 +9,10 @@ import Foundation
 
 public struct HiContent: CustomStringConvertible {
 
-    public let header: ModelType?
-    public let models: [ModelType]
+    public let header: (any ModelType)?
+    public let models: [any ModelType]
     
-    public init(header: ModelType?, models: [ModelType]) {
+    public init(header: (any ModelType)?, models: [any ModelType]) {
         self.header = header
         self.models = models
     }
