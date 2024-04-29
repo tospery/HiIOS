@@ -72,7 +72,7 @@ public protocol RouterCompatible {
     func needLogin(host: Router.Host, path: Router.Path?) -> Bool
     func customLogin(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol, _ url: URLConvertible, _ values: [String: Any], _ context: Any?) -> Bool
     
-    func webToNative(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol, _ url: URLConvertible, _ context: Any?) -> Any?
+    func webToNative(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol, _ webURL: URLConvertible, _ nativeURL: URLConvertible, _ context: Any?) -> Any?
     func webViewController(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol, _ paramters: [String: Any]) -> UIViewController?
     
     func web(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol)
@@ -136,11 +136,11 @@ final public class Router {
     func buildinWeb(_ provider: HiIOS.ProviderType, _ navigator: NavigatorProtocol) {
         let webFactory: ViewControllerFactory = { [weak self] (url, values, context) in
             guard let `self` = self else { return nil }
-            guard let url = url.urlValue else { return nil }
-            let string = url.absoluteString
-            var paramters = self.parameters(url, values, context) ?? [:]
+            guard let myURL = url.urlValue else { return nil }
+            let string = myURL.absoluteString
+            var paramters = self.parameters(myURL, values, context) ?? [:]
             paramters[Parameter.url] = string
-            if let title = url.queryValue(for: Parameter.title) {
+            if let title = myURL.queryValue(for: Parameter.title) {
                 paramters[Parameter.title] = title
             }
             let force = paramters.bool(for: Parameter.routerForceWeb) ?? false
@@ -148,8 +148,8 @@ final public class Router {
                 // (1) 原生支持
                 let base = UIApplication.shared.baseWebUrl + "/"
                 if string.hasPrefix(base) {
-                    let url = string.replacingOccurrences(of: base, with: UIApplication.shared.urlScheme + "://")
-                    let result = navigator.jump(url, context: context)
+                    let native = string.replacingOccurrences(of: base, with: UIApplication.shared.urlScheme + "://")
+                    let result = navigator.jump(native, context: context)
                     if let rt = result as? Bool {
                         return nil
                     }
@@ -157,7 +157,7 @@ final public class Router {
                         return vc
                     }
                     if let compatible = self as? RouterCompatible {
-                        let result = compatible.webToNative(provider, navigator, url, context)
+                        let result = compatible.webToNative(provider, navigator, myURL, native, context)
                         if let rt = result as? Bool, rt {
                             return nil
                         }
