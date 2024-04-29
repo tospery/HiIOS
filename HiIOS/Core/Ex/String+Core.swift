@@ -161,6 +161,13 @@ public extension String {
         return UIImage.init(named: self)
     }
     
+    var isValidPDFUrl: Bool {
+        guard let url = self.url else { return false }
+        return [
+            "pdf"
+        ].contains(url.pathExtension.lowercased())
+    }
+    
     var isValidImageUrl: Bool {
         guard let url = self.url else { return false }
         return [

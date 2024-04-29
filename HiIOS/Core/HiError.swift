@@ -21,6 +21,7 @@ public struct ErrorCode {
     public static let aferror                   = -20004
     public static let moyaError                 = -20005
     public static let asError                   = -20006
+    public static let kfError                   = -20007
     public static let appError                  = -30000
 }
 

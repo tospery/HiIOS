@@ -14,6 +14,7 @@ import Moya
 import SafariServices
 import AuthenticationServices
 import StoreKit
+import Kingfisher
 
 extension HiError {
 
@@ -147,6 +148,12 @@ extension AFError: HiErrorCompatible {
         default:
             return .server(ErrorCode.aferror, self.localizedDescription, nil)
         }
+    }
+}
+
+extension KingfisherError: HiErrorCompatible {
+    public var hiError: HiError {
+        return .server(ErrorCode.kfError, self.localizedDescription, nil)
     }
 }
 
