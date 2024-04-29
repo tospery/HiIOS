@@ -218,5 +218,22 @@ public extension UIView {
         ])
     }
     
+    func startRotating() {
+        if self.layer.animation(forKey: "rotationAnimation") != nil {
+            return
+        }
+        let animation = CABasicAnimation(keyPath: "transform")
+        animation.fromValue = NSValue(caTransform3D: CATransform3DIdentity)
+        animation.toValue = NSValue(caTransform3D: CATransform3DMakeRotation(CGFloat(Double.pi / 2), 0.0, 0.0, 1.0))
+        animation.duration = 0.25
+        animation.repeatCount = .infinity
+        animation.isCumulative = true
+        animation.isRemovedOnCompletion = false
+        self.layer.add(animation, forKey: "rotationAnimation")
+    }
+    
+    func stopRotating() {
+        self.layer.removeAnimation(forKey: "rotationAnimation")
+    }
 }
 
