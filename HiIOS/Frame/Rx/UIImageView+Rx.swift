@@ -28,7 +28,8 @@ public extension Reactive where Base: UIImageView {
     func imageResource(
         placeholder: Placeholder? = nil,
         options: KingfisherOptionsInfo? = nil,
-        alwaysTemplate: Bool = false
+        alwaysTemplate: Bool = false,
+        completion: (() -> Void)? = nil
     ) -> Binder<ImageSource?> {
         return Binder(self.base) { imageView, resource in
             if resource == nil && placeholder == nil {
@@ -38,7 +39,9 @@ public extension Reactive where Base: UIImageView {
             if let image = resource as? UIImage {
                 imageView.image = alwaysTemplate ? image.template : image
             } else if let url = resource as? URL {
-                imageView.kf.setImage(with: url, placeholder: placeholder, options: options)
+                imageView.kf.setImage(with: url, placeholder: placeholder, options: options) { _ in
+                    completion?()
+                }
             } else {
                 placeholder?.add(to: imageView)
             }

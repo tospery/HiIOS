@@ -104,8 +104,10 @@ open class WebViewController: ScrollViewController, View {
         if self.navigationBar.titleLabel.text?.isEmpty ?? true {
             self.webView.evaluateJavaScript("document.title") { [weak self] response, Error in
                 guard let `self` = self else { return }
-                if let title = response as? String {
+                if let title = response as? String, title.isNotEmpty {
                     self.navigationBar.titleLabel.text = title
+                } else {
+                    self.navigationBar.titleLabel.text = self.url?.lastPathComponent
                 }
             }
         }
