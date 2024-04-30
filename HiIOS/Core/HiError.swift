@@ -87,7 +87,11 @@ extension HiError: LocalizedError {
         case let .server(code, _, _):
             return NSLocalizedString("Error.Server.Title\(code)", value: "", comment: "")
         case let .app(code, _, _):
-            return NSLocalizedString("Error.App.Title\(code)", value: "", comment: "")
+            var result = NSLocalizedString("Error.App.Title\(code)", value: "", comment: "")
+            if result.starts(with: "Error.App.Title") {
+                result = NSLocalizedString("Error.Unknown.Title", value: "", comment: "")
+            }
+            return result
         }
     }
     /// 详情
@@ -116,7 +120,11 @@ extension HiError: LocalizedError {
         case let .server(code, message, _):
             return message ?? NSLocalizedString("Error.Server.Message\(code)", value: "", comment: "")
         case let .app(code, message, _):
-            return message ?? NSLocalizedString("Error.App.Message\(code)", value: "", comment: "")
+            var result = message ?? NSLocalizedString("Error.App.Message\(code)", value: "", comment: "")
+            if result.starts(with: "Error.App.Message") {
+                result = NSLocalizedString("Error.Unknown.Message", value: "", comment: "")
+            }
+            return result
         }
     }
     /// 重试
@@ -227,7 +235,6 @@ extension Error {
         if let hi = self as? HiError {
             return hi
         }
-        
         if let compatible = self as? HiErrorCompatible {
             return compatible.hiError
         }

@@ -18,7 +18,7 @@ public extension Reactive where Base: DatasetCollectionCell {
     
     var load: ControlEvent<Void> {
         let source = Observable.merge([
-            // self.base.rx.initWithFrame.asObservable(),
+            Observable<Void>.just(()).delay(.milliseconds(100), scheduler: MainScheduler.asyncInstance),
             self.base.rx.emptyDataSet.asObservable()
         ])
         return ControlEvent(events: source)
@@ -27,8 +27,16 @@ public extension Reactive where Base: DatasetCollectionCell {
     var loading: Binder<Bool> {
         return Binder(self.base) { cell, isLoading in
             cell.isLoading = isLoading
-            // guard cell.isViewLoaded else { return }
             cell.scrollView.reloadEmptyDataSet()
+            if isLoading {
+//                DispatchQueue.main.async {
+//                    cell.request()
+//                }
+                MainScheduler.asyncInstance.schedule(()) { _ -> Disposable in
+                    cell.request()
+                    return Disposables.create {}
+                }.disposed(by: cell.disposeBag)
+            }
         }
     }
     

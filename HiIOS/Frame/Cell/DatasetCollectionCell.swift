@@ -59,12 +59,13 @@ open class DatasetCollectionCell: BaseCollectionCell, ReactorKit.View {
             .distinctUntilChanged()
             .bind(to: self.rx.loading)
             .disposed(by: self.disposeBag)
-        reactor.state.map { $0.param }
-            .distinctUntilChanged { HiIOS.compareAny($0, $1) }
-            .delay(.milliseconds(100), scheduler: ConcurrentDispatchQueueScheduler.init(qos: .background))
-            .observe(on: MainScheduler.asyncInstance)
-            .subscribeNext(weak: self, type(of: self).handleParam)
-            .disposed(by: self.disposeBag)
+//        reactor.state.map { $0.param }
+//            .distinctUntilChanged { HiIOS.compareAny($0, $1) }
+//            //.delay(.milliseconds(100), scheduler: ConcurrentDispatchQueueScheduler.init(qos: .background))
+//            //.observe(on: MainScheduler.asyncInstance)
+//            .skip(1)
+//            .subscribeNext(weak: self, type(of: self).handleParam)
+//            .disposed(by: self.disposeBag)
         reactor.state.map { $0.data }
             .distinctUntilChanged { HiIOS.compareAny($0, $1) }
             .skip(1)
@@ -79,9 +80,13 @@ open class DatasetCollectionCell: BaseCollectionCell, ReactorKit.View {
             .disposed(by: self.disposeBag)
     }
     
-    open func handleParam(param: Any?) {
-        self.reactor?.action.onNext(.load)
+    open func request() {
+        
     }
+    
+//    open func handleParam(param: Any?) {
+//        // self.reactor?.action.onNext(.load)
+//    }
     
     open func handleData(data: Any?) {
     }
@@ -116,8 +121,8 @@ extension DatasetCollectionCell: DZNEmptyDataSetSource {
     }
     
     open func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-        if let image = self.error?.asHiError.displayImage {
-            return image
+        if self.isLoading == false && self.error != nil {
+            return self.error?.asHiError.displayImage
         }
         return UIImage.loading.qmui_image(withTintColor: .primary)
     }

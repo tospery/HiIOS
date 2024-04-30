@@ -25,7 +25,7 @@ extension HiError {
         case .listIsEmpty: return UIImage.emptyError
         case .userNotLoginedIn: return UIImage.userNotLoginedInError
         case .userLoginExpired: return UIImage.userLoginExpiredError
-        default: return nil
+        default: return UIImage.serverError
         }
     }
     

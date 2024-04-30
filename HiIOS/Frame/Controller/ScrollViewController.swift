@@ -105,8 +105,8 @@ extension ScrollViewController: DZNEmptyDataSetSource {
     }
     
     open func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-        if let image = self.error?.asHiError.displayImage {
-            return image
+        if self.isLoading == false && self.error != nil {
+            return self.error?.asHiError.displayImage
         }
         return UIImage.loading.qmui_image(withTintColor: .primary)
     }
