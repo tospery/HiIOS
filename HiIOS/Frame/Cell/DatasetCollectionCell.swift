@@ -14,34 +14,42 @@ import DZNEmptyDataSet
 
 open class DatasetCollectionCell: BaseCollectionCell, ReactorKit.View {
     
-    public var isLoading = false
-    public var shouldRefresh = false
-    public var shouldLoadMore = false
-    public var isRefreshing = false
-    public var isLoadingMore = false
-    public var noMoreData = false
+    public var isLoading = true
     public var error: Error?
-    public let refreshSubject = PublishSubject<Void>()
-    public let loadMoreSubject = PublishSubject<Void>()
     public let emptyDataSetSubject = PublishSubject<Void>()
+    
+    public lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView.init(frame: .zero)
+        scrollView.emptyDataSetSource = self
+        scrollView.emptyDataSetDelegate = self
+        if #available(iOS 11.0, *) {
+            scrollView.contentInsetAdjustmentBehavior = .never
+        }
+        scrollView.theme.backgroundColor = themeService.attribute { $0.backgroundColor }
+        return scrollView
+    }()
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setupRefresh(should: self.shouldRefresh)
-        self.setupLoadMore(should: self.shouldLoadMore)
-        
-        guard let scrollView = self.contentView as? UIScrollView else { return }
-        scrollView.rx
+        self.contentView.addSubview(self.scrollView)
+        self.scrollView.rx
             .setDelegate(self)
             .disposed(by: self.disposeBag)
-        scrollView.theme.backgroundColor = themeService.attribute { $0.backgroundColor }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.reactor?.action.onNext(.load)
+        }
     }
     
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func bind(reactor: DatasetCollectionItem) {
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        self.scrollView.frame = self.contentView.bounds
+    }
+    
+    open func bind(reactor: DatasetCollectionItem) {
         super.bind(item: reactor)
         self.rx.load.map { Reactor.Action.load }
             .bind(to: reactor.action)

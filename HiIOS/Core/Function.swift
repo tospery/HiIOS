@@ -8,19 +8,6 @@
 import UIKit
 import QMUIKit
 
-//public func isEmpty(data: any Hashable) -> Bool {
-//    if data is Int {
-//        return data as! Int == 0
-//    }
-//    if data is Double {
-//        return data as! Double == 0
-//    }
-//    if data is String {
-//        return data as! String == ""
-//    }
-//    return true
-//}
-
 // MARK: - Compare
 public func compareVersion(_ version1: String, _ version2: String, amount: Int = 3) -> ComparisonResult {
     version1.compare(version2, options: .numeric)
@@ -58,10 +45,17 @@ public func compareModels(_ left: [[any ModelType]]?, _ right: [[any ModelType]]
         }
         for (modelIndex, model2) in array2.enumerated() {
             let model1 = array1[modelIndex]
-            let leftString = String.init(describing: model1)
-            let rightString = String.init(describing: model2)
-            if leftString != rightString {
-                return false
+            if let leftHashable = model1 as? (any Hashable),
+               let rightHashable = model2 as? any Hashable {
+                if leftHashable.hashValue != rightHashable.hashValue {
+                    return false
+                }
+            } else {
+                let leftString = String.init(describing: model1)
+                let rightString = String.init(describing: model2)
+                if leftString != rightString {
+                    return false
+                }
             }
         }
     }
@@ -82,6 +76,10 @@ public func compareAny(_ left: Any?, _ right: Any?) -> Bool {
     }
     if left != nil && right == nil {
         return false
+    }
+    if let leftHashable = left as? (any Hashable),
+       let rightHashable = right as? any Hashable {
+        return leftHashable.hashValue == rightHashable.hashValue
     }
     let leftString = String.init(describing: left!)
     let rightString = String.init(describing: right!)

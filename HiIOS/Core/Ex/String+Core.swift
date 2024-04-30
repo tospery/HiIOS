@@ -171,7 +171,7 @@ public extension String {
     var isValidImageUrl: Bool {
         guard let url = self.url else { return false }
         return [
-            "jpg", "jpeg", "png", "gif", "svg", "bmp", "webp", "pdf"
+            "jpg", "jpeg", "png", "gif", "svg", "bmp", "webp"
         ].contains(url.pathExtension.lowercased())
     }
     

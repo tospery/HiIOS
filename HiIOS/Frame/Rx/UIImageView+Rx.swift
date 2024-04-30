@@ -32,27 +32,13 @@ public extension Reactive where Base: UIImageView {
         completion: ((HiError?) -> Void)? = nil
     ) -> Binder<ImageSource?> {
         return Binder(self.base) { imageView, resource in
-            if resource == nil && placeholder == nil {
-                imageView.image = nil
-                return
-            }
-            if let image = resource as? UIImage {
-                imageView.image = alwaysTemplate ? image.template : image
-            } else if let url = resource as? URL {
-                imageView.kf.setImage(with: url, placeholder: placeholder, options: options) { result in
-                    if completion == nil {
-                        return
-                    }
-                    switch result {
-                    case .failure(let error):
-                        completion!(error.hiError)
-                    default:
-                        completion!(nil)
-                    }
-                }
-            } else {
-                placeholder?.add(to: imageView)
-            }
+            imageView.setImageResource(
+                with: resource,
+                placeholder: placeholder,
+                options: options,
+                alwaysTemplate: alwaysTemplate,
+                completion: completion
+            )
         }
     }
     

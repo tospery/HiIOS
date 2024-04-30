@@ -37,8 +37,20 @@ open class DatasetCollectionItem: BaseCollectionItem, ReactorKit.Reactor {
     
     public func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .load: return .empty()
-        case let .data(data): return .just(.setData(data))
+        case .load:
+            return .concat([
+                .just(.setError(nil)),
+                .just(.setLoading(true)),
+                self.request(),
+                .just(.setLoading(false))
+            ]).catch({
+                .concat([
+                    .just(.setError($0)),
+                    .just(.setLoading(false))
+                ])
+            })
+        case let .data(data): 
+            return .just(.setData(data))
         }
     }
             
@@ -65,6 +77,10 @@ open class DatasetCollectionItem: BaseCollectionItem, ReactorKit.Reactor {
     
     open func transform(state: Observable<State>) -> Observable<State> {
         state
+    }
+    
+    open func request() -> Observable<Mutation> {
+        .empty()
     }
     
 }
