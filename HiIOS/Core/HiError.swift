@@ -85,11 +85,15 @@ extension HiError: LocalizedError {
         case .userLoginExpired:
             return NSLocalizedString("Error.User.LoginExpired.Title", value: "", comment: "")
         case let .server(code, _, _):
-            return NSLocalizedString("Error.Server.Title\(code)", value: "", comment: "")
+            var result = NSLocalizedString("Error.Server.Title\(code)", value: "", comment: "")
+            if result.starts(with: "Error.Server.Title") {
+                result = NSLocalizedString("Error.Server.Title", value: "", comment: "")
+            }
+            return result
         case let .app(code, _, _):
             var result = NSLocalizedString("Error.App.Title\(code)", value: "", comment: "")
             if result.starts(with: "Error.App.Title") {
-                result = NSLocalizedString("Error.Unknown.Title", value: "", comment: "")
+                result = NSLocalizedString("Error.App.Title", value: "", comment: "")
             }
             return result
         }
@@ -118,11 +122,15 @@ extension HiError: LocalizedError {
         case .userLoginExpired:
             return NSLocalizedString("Error.User.LoginExpired.Message", value: "", comment: "")
         case let .server(code, message, _):
-            return message ?? NSLocalizedString("Error.Server.Message\(code)", value: "", comment: "")
+            var result = message ?? NSLocalizedString("Error.Server.Message\(code)", value: "", comment: "")
+            if result.starts(with: "Error.Server.Message") {
+                result = NSLocalizedString("Error.Server.Message", value: "", comment: "")
+            }
+            return result
         case let .app(code, message, _):
             var result = message ?? NSLocalizedString("Error.App.Message\(code)", value: "", comment: "")
             if result.starts(with: "Error.App.Message") {
-                result = NSLocalizedString("Error.Unknown.Message", value: "", comment: "")
+                result = NSLocalizedString("Error.App.Message", value: "", comment: "")
             }
             return result
         }

@@ -153,7 +153,21 @@ extension AFError: HiErrorCompatible {
 
 extension KingfisherError: HiErrorCompatible {
     public var hiError: HiError {
-        return .server(ErrorCode.kfError, self.localizedDescription, nil)
+        switch self {
+        case .responseError(let reason):
+            switch reason {
+            case .invalidHTTPStatusCode(let response):
+                return .server(
+                    response.statusCode,
+                    HTTPURLResponse.localizedString(forStatusCode: response.statusCode) ?? self.localizedDescription,
+                    nil
+                )
+            default:
+                return .server(ErrorCode.kfError, self.localizedDescription, nil)
+            }
+        default:
+            return .server(ErrorCode.kfError, self.localizedDescription, nil)
+        }
     }
 }
 

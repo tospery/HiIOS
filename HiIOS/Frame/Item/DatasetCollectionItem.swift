@@ -44,7 +44,12 @@ open class DatasetCollectionItem: BaseCollectionItem, ReactorKit.Reactor {
                 .just(.setLoading(true)),
                 self.request(),
                 .just(.setLoading(false))
-            ])
+            ]).catch({
+                .concat([
+                    .just(.setError($0)),
+                    .just(.setLoading(false))
+                ])
+            })
         case .finish(let error):
             return .concat([
                 .just(.setError(error)),
