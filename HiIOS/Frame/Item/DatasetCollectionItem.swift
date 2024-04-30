@@ -13,9 +13,8 @@ import ReactorKit
 open class DatasetCollectionItem: BaseCollectionItem, ReactorKit.Reactor {
     
     public enum Action {
-        case start
         case load
-        case end
+        case finish(Error?)
     }
         
     public enum Mutation {
@@ -40,20 +39,18 @@ open class DatasetCollectionItem: BaseCollectionItem, ReactorKit.Reactor {
     
     public func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .start:
-            return .concat([
-                .just(.setError(nil)),
-                .just(.setLoading(true))
-            ])
         case .load:
-            return self.load()
-        case .end:
             return .concat([
                 .just(.setError(nil)),
+                .just(.setLoading(true)),
+                self.request(),
                 .just(.setLoading(false))
             ])
-//        case let .data(data):
-//            return .just(.setData(data))
+        case .finish(let error):
+            return .concat([
+                .just(.setError(error)),
+                .just(.setLoading(false))
+            ])
         }
     }
             
@@ -99,7 +96,7 @@ open class DatasetCollectionItem: BaseCollectionItem, ReactorKit.Reactor {
     }
     
     open func request() -> Observable<Mutation> {
-        .empty()
+        .never()
     }
     
 }

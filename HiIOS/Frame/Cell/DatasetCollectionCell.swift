@@ -39,12 +39,6 @@ open class DatasetCollectionCell: BaseCollectionCell, ReactorKit.View {
         self.scrollView.rx
             .setDelegate(self)
             .disposed(by: self.disposeBag)
-//        Observable<Int>.timer(.milliseconds(100), scheduler: MainScheduler.instance)
-//            .subscribe(onNext: { [weak self] _ in
-//                guard let `self` = self else { return }
-//                self.reactor?.action.onNext(.load)
-//            })
-//            .disposed(by: self.disposeBag)
     }
     
     required public init?(coder: NSCoder) {
@@ -67,7 +61,8 @@ open class DatasetCollectionCell: BaseCollectionCell, ReactorKit.View {
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.param }
             .distinctUntilChanged { HiIOS.compareAny($0, $1) }
-            .delay(.milliseconds(100), scheduler: MainScheduler.asyncInstance)
+            .delay(.milliseconds(100), scheduler: ConcurrentDispatchQueueScheduler.init(qos: .background))
+            .observe(on: MainScheduler.asyncInstance)
             .subscribeNext(weak: self, type(of: self).handleParam)
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.data }
