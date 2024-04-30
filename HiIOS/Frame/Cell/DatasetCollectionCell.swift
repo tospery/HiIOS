@@ -14,6 +14,10 @@ import DZNEmptyDataSet
 
 open class DatasetCollectionCell: BaseCollectionCell, ReactorKit.View {
     
+    struct Metric {
+        static let height = deviceHeight - navigationContentTopConstant
+    }
+    
     public var isLoading = true
     public var error: Error?
     public let emptyDataSetSubject = PublishSubject<Void>()
@@ -35,9 +39,12 @@ open class DatasetCollectionCell: BaseCollectionCell, ReactorKit.View {
         self.scrollView.rx
             .setDelegate(self)
             .disposed(by: self.disposeBag)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.reactor?.action.onNext(.load)
-        }
+//        Observable<Int>.timer(.milliseconds(100), scheduler: MainScheduler.instance)
+//            .subscribe(onNext: { [weak self] _ in
+//                guard let `self` = self else { return }
+//                self.reactor?.action.onNext(.load)
+//            })
+//            .disposed(by: self.disposeBag)
     }
     
     required public init?(coder: NSCoder) {
@@ -58,6 +65,11 @@ open class DatasetCollectionCell: BaseCollectionCell, ReactorKit.View {
             .distinctUntilChanged()
             .bind(to: self.rx.loading)
             .disposed(by: self.disposeBag)
+        reactor.state.map { $0.param }
+            .distinctUntilChanged { HiIOS.compareAny($0, $1) }
+            .delay(.milliseconds(100), scheduler: MainScheduler.asyncInstance)
+            .subscribeNext(weak: self, type(of: self).handleParam)
+            .disposed(by: self.disposeBag)
         reactor.state.map { $0.data }
             .distinctUntilChanged { HiIOS.compareAny($0, $1) }
             .skip(1)
@@ -72,11 +84,19 @@ open class DatasetCollectionCell: BaseCollectionCell, ReactorKit.View {
             .disposed(by: self.disposeBag)
     }
     
+    open func handleParam(param: Any?) {
+        self.reactor?.action.onNext(.load)
+    }
+    
     open func handleData(data: Any?) {
     }
     
     open func handleError(_ error: Error?) {
         self.error = error
+    }
+    
+    open override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
+        .init(width: width, height: Metric.height)
     }
 }
 

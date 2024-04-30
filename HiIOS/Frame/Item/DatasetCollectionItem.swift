@@ -13,19 +13,22 @@ import ReactorKit
 open class DatasetCollectionItem: BaseCollectionItem, ReactorKit.Reactor {
     
     public enum Action {
+        case start
         case load
-        case data(Any?)
+        case end
     }
         
     public enum Mutation {
         case setLoading(Bool)
         case setError(Error?)
+        case setParam(Any?)
         case setData(Any?)
     }
 
     public struct State {
         public var isLoading = false
         public var error: Error?
+        public var param: Any?
         public var data: Any?
     }
 
@@ -37,20 +40,20 @@ open class DatasetCollectionItem: BaseCollectionItem, ReactorKit.Reactor {
     
     public func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .load:
+        case .start:
             return .concat([
                 .just(.setError(nil)),
-                .just(.setLoading(true)),
-                self.request(),
+                .just(.setLoading(true))
+            ])
+        case .load:
+            return self.load()
+        case .end:
+            return .concat([
+                .just(.setError(nil)),
                 .just(.setLoading(false))
-            ]).catch({
-                .concat([
-                    .just(.setError($0)),
-                    .just(.setLoading(false))
-                ])
-            })
-        case let .data(data): 
-            return .just(.setData(data))
+            ])
+//        case let .data(data):
+//            return .just(.setData(data))
         }
     }
             
@@ -61,6 +64,8 @@ open class DatasetCollectionItem: BaseCollectionItem, ReactorKit.Reactor {
             newState.isLoading = isLoading
         case let .setError(error):
             newState.error = error
+        case let .setParam(param):
+            newState.param = param
         case let .setData(data):
             newState.data = data
         }
@@ -77,6 +82,20 @@ open class DatasetCollectionItem: BaseCollectionItem, ReactorKit.Reactor {
     
     open func transform(state: Observable<State>) -> Observable<State> {
         state
+    }
+    
+    open func load() -> Observable<Mutation> {
+        .concat([
+            .just(.setError(nil)),
+            .just(.setLoading(true)),
+            self.request(),
+            .just(.setLoading(false))
+        ]).catch({
+            .concat([
+                .just(.setError($0)),
+                .just(.setLoading(false))
+            ])
+        })
     }
     
     open func request() -> Observable<Mutation> {
