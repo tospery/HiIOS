@@ -83,11 +83,11 @@ public extension UIApplication {
     @objc var pageSize: Int { 20 }
     
     @objc var baseApiUrl: String {
-        return "https://\(self.urlScheme).com"
+        return "https://\(self.urlScheme(name: "domain") ?? "")"
     }
     
     @objc var baseWebUrl: String {
-        return "https://\(self.urlScheme).com"
+        return "https://\(self.urlScheme(name: "domain") ?? "")"
     }
     
     func urlScheme(name: String) -> String? {
