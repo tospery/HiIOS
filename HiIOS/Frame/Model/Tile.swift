@@ -64,6 +64,19 @@ public struct Tile: Subjective {
         divided         <- map["divided"]
         target          <- map["target"]
     }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(height)
+        hasher.combine(color)
+        hasher.combine(tintColor)
+        hasher.combine(icon)
+        hasher.combine(title)
+        hasher.combine(detail)
+        hasher.combine(indicated)
+        hasher.combine(divided)
+        hasher.combine(target)
+    }
 
 }
 
