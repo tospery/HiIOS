@@ -83,11 +83,19 @@ public extension UIApplication {
     @objc var pageSize: Int { 20 }
     
     @objc var baseApiUrl: String {
-        return "https://\(self.urlScheme(name: "domain") ?? "")"
+        var domain = self.linkDomains.first ?? ""
+        if domain.isEmpty {
+            domain = "\(self.urlScheme).com"
+        }
+        return "https://\(domain)"
     }
     
     @objc var baseWebUrl: String {
-        return "https://\(self.urlScheme(name: "domain") ?? "")"
+        var domain = self.linkDomains.first ?? ""
+        if domain.isEmpty {
+            domain = "\(self.urlScheme).com"
+        }
+        return "https://\(domain)"
     }
     
     func urlScheme(name: String) -> String? {
@@ -105,4 +113,8 @@ public extension UIApplication {
         return scheme
     }
 
+    var linkDomains: [String] {
+        Bundle.main.infoDictionary?["linkDomains"] as? [String] ?? []
+    }
+    
 }
