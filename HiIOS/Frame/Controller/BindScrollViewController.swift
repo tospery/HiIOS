@@ -1,5 +1,5 @@
 //
-//  ScrollBindController.swift
+//  BindScrollViewController.swift
 //  HiIOS
 //
 //  Created by 杨建祥 on 2024/5/4.
@@ -16,11 +16,11 @@ import URLNavigator_Hi
 import ObjectMapper_Hi
 import Kingfisher
 
-open class ScrollBindController: ScrollViewController, ReactorKit.View {
+open class BindScrollViewController: ScrollViewController, ReactorKit.View {
     
     required public init(_ navigator: NavigatorProtocol, _ reactor: BaseViewReactor) {
         defer {
-            self.reactor = reactor as? ScrollBindReactor
+            self.reactor = reactor as? BindScrollViewReactor
         }
         super.init(navigator, reactor)
     }
@@ -34,7 +34,7 @@ open class ScrollBindController: ScrollViewController, ReactorKit.View {
         // self.collectionView.theme.backgroundColor = themeService.attribute { $0.lightColor }
     }
 
-    open func bind(reactor: ScrollBindReactor) {
+    open func bind(reactor: BindScrollViewReactor) {
         super.bind(reactor: reactor)
         // action
         self.rx.load.map { Reactor.Action.load }
