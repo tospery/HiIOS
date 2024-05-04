@@ -29,9 +29,6 @@ public extension Reactive where Base: BindCollectionCell {
             cell.isLoading = isLoading
             cell.scrollView.reloadEmptyDataSet()
             if isLoading {
-//                DispatchQueue.main.async {
-//                    cell.request()
-//                }
                 MainScheduler.asyncInstance.schedule(()) { _ -> Disposable in
                     cell.request()
                     return Disposables.create {}
