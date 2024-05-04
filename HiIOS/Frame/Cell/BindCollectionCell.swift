@@ -1,5 +1,5 @@
 //
-//  DatasetCollectionCell.swift
+//  BindCollectionCell.swift
 //  HiIOS
 //
 //  Created by 杨建祥 on 2024/4/30.
@@ -12,7 +12,7 @@ import MJRefresh
 import ReactorKit
 import DZNEmptyDataSet
 
-open class DatasetCollectionCell: BaseCollectionCell, ReactorKit.View {
+open class BindCollectionCell: BaseCollectionCell, ReactorKit.View {
     
     struct Metric {
         static let height = deviceHeight - navigationContentTopConstant
@@ -50,7 +50,7 @@ open class DatasetCollectionCell: BaseCollectionCell, ReactorKit.View {
         self.scrollView.frame = self.contentView.bounds
     }
     
-    open func bind(reactor: DatasetCollectionItem) {
+    open func bind(reactor: BindCollectionItem) {
         super.bind(item: reactor)
         self.rx.load.map { Reactor.Action.load }
             .bind(to: reactor.action)
@@ -100,7 +100,7 @@ open class DatasetCollectionCell: BaseCollectionCell, ReactorKit.View {
     }
 }
 
-extension DatasetCollectionCell: DZNEmptyDataSetSource {
+extension BindCollectionCell: DZNEmptyDataSetSource {
     
     open func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         if let title = self.error?.asHiError.failureReason, !title.isEmpty {
@@ -167,7 +167,7 @@ extension DatasetCollectionCell: DZNEmptyDataSetSource {
     
 }
 
-extension DatasetCollectionCell: DZNEmptyDataSetDelegate {
+extension BindCollectionCell: DZNEmptyDataSetDelegate {
     
     public func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool {
         let should = (self.isLoading == true || self.error != nil)
@@ -189,7 +189,7 @@ extension DatasetCollectionCell: DZNEmptyDataSetDelegate {
     
 }
 
-extension DatasetCollectionCell: UIScrollViewDelegate {
+extension BindCollectionCell: UIScrollViewDelegate {
     
 }
 

@@ -1,5 +1,5 @@
 //
-//  DatasetCollectionCell+Rx.swift
+//  BindCollectionCell+Rx.swift
 //  HiIOS
 //
 //  Created by 杨建祥 on 2024/4/30.
@@ -14,7 +14,7 @@ import DZNEmptyDataSet
 import BonMot
 import MJRefresh
 
-public extension Reactive where Base: DatasetCollectionCell {
+public extension Reactive where Base: BindCollectionCell {
     
     var load: ControlEvent<Void> {
         let source = Observable.merge([

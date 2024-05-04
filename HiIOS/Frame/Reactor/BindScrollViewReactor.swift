@@ -206,7 +206,7 @@ open class BindScrollViewReactor: ScrollViewReactor, ReactorKit.Reactor {
 
 extension BindScrollViewReactor.Action {
     
-    static func isLoad(_ action: GeneralViewReactor.Action) -> Bool {
+    static func isLoad(_ action: BindCollectionViewReactor.Action) -> Bool {
         if case .load = action {
             return true
         }

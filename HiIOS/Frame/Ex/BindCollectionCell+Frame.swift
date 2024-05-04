@@ -13,7 +13,7 @@
 //import BonMot
 //import MJRefresh
 //
-//extension DatasetCollectionCell {
+//extension BindCollectionCell {
 //    
 //    func handle(theme: ThemeType) {
 //        self.scrollView.reloadEmptyDataSet()

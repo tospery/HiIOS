@@ -1,5 +1,5 @@
 //
-//  DatasetCollectionItem.swift
+//  BindCollectionItem.swift
 //  HiIOS
 //
 //  Created by 杨建祥 on 2024/4/30.
@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import ReactorKit
 
-open class DatasetCollectionItem: BaseCollectionItem, ReactorKit.Reactor {
+open class BindCollectionItem: BaseCollectionItem, ReactorKit.Reactor {
     
     public enum Action {
         case load
@@ -103,9 +103,9 @@ open class DatasetCollectionItem: BaseCollectionItem, ReactorKit.Reactor {
     
 }
 
-extension DatasetCollectionItem.Action {
+extension BindCollectionItem.Action {
     
-    static func isLoad(_ action: DatasetCollectionItem.Action) -> Bool {
+    static func isLoad(_ action: BindCollectionItem.Action) -> Bool {
         if case .load = action {
             return true
         }

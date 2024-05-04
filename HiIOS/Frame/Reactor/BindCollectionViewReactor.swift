@@ -1,5 +1,5 @@
 //
-//  GeneralViewReactor.swift
+//  BindCollectionViewReactor.swift
 //  HiIOS
 //
 //  Created by 杨建祥 on 2024/3/19.
@@ -12,7 +12,7 @@ import RxDataSources
 import ReactorKit
 import URLNavigator_Hi
 
-open class GeneralViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
+open class BindCollectionViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
 
     public enum Action {
         case load
@@ -270,9 +270,9 @@ open class GeneralViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
 
 }
 
-extension GeneralViewReactor.Action {
+extension BindCollectionViewReactor.Action {
     
-    static func isLoad(_ action: GeneralViewReactor.Action) -> Bool {
+    static func isLoad(_ action: BindCollectionViewReactor.Action) -> Bool {
         if case .load = action {
             return true
         }

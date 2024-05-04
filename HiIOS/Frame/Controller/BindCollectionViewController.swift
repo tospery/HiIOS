@@ -1,5 +1,5 @@
 //
-//  GeneralViewController.swift
+//  BindCollectionViewController.swift
 //  HiIOS
 //
 //  Created by 杨建祥 on 2024/3/19.
@@ -17,11 +17,11 @@ import ObjectMapper_Hi
 import Kingfisher
 import RxDataSources
 
-open class GeneralViewController: HiIOS.CollectionViewController, ReactorKit.View {
+open class BindCollectionViewController: HiIOS.CollectionViewController, ReactorKit.View {
     
     required public init(_ navigator: NavigatorProtocol, _ reactor: BaseViewReactor) {
         defer {
-            self.reactor = reactor as? GeneralViewReactor
+            self.reactor = reactor as? BindCollectionViewReactor
         }
         super.init(navigator, reactor)
     }
@@ -35,7 +35,7 @@ open class GeneralViewController: HiIOS.CollectionViewController, ReactorKit.Vie
         self.collectionView.theme.backgroundColor = themeService.attribute { $0.lightColor }
     }
 
-    open func bind(reactor: GeneralViewReactor) {
+    open func bind(reactor: BindCollectionViewReactor) {
         super.bind(reactor: reactor)
         // action
         self.rx.load.map { Reactor.Action.load }
@@ -160,7 +160,7 @@ open class GeneralViewController: HiIOS.CollectionViewController, ReactorKit.Vie
     }
 }
 
-extension GeneralViewController: UICollectionViewDelegateFlowLayout {
+extension BindCollectionViewController: UICollectionViewDelegateFlowLayout {
 
     open func collectionView(
         _ collectionView: UICollectionView,
