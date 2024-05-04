@@ -116,7 +116,7 @@ open class BindScrollViewReactor: ScrollViewReactor, ReactorKit.Reactor {
             self.fetchLocal(),
             .just(.setError(nil)),
             .just(.setLoading(true)),
-            self.requestRemote(.load, self.pageStart),
+            self.requestRemote(.load),
             .just(.setLoading(false))
         ]).catch({
             .concat([
@@ -131,7 +131,7 @@ open class BindScrollViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         .concat([
             .just(.setError(nil)),
             .just(.setRefreshing(true)),
-            self.requestRemote(.refresh, self.pageStart),
+            self.requestRemote(.refresh),
             .just(.setRefreshing(false))
         ]).catch({
             .concat([
@@ -156,7 +156,7 @@ open class BindScrollViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         }
         return .concat([
             .just(.setError(nil)),
-            needLogin ? self.loginIfNeed() : .empty(),
+            needLogin ? self.checkLogin() : .empty(),
             active ? .just(.setActivating(true)) : .empty(),
             active ? self.active(value) : self.silent(value),
             active ? .just(.setActivating(false)) : .empty()
@@ -174,7 +174,7 @@ open class BindScrollViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         .just(.setData(nil))
     }
     
-    open func requestRemote(_ mode: HiRequestMode, _ page: Int) -> Observable<Mutation> {
+    open func requestRemote(_ mode: HiRequestMode) -> Observable<Mutation> {
         .empty()
     }
     
@@ -188,7 +188,7 @@ open class BindScrollViewReactor: ScrollViewReactor, ReactorKit.Reactor {
     }
     
     // MARK: - other
-    open func loginIfNeed() -> Observable<Mutation> {
+    open func checkLogin() -> Observable<Mutation> {
         .create { [weak self] observer -> Disposable in
             guard let `self` = self else { fatalError() }
             if self.currentState.user?.isValid ?? false {

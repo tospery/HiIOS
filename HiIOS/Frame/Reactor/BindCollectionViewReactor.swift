@@ -199,7 +199,7 @@ open class BindCollectionViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Re
         }
         return .concat([
             .just(.setError(nil)),
-            needLogin ? self.loginIfNeed() : .empty(),
+            needLogin ? self.checkLogin() : .empty(),
             active ? .just(.setActivating(true)) : .empty(),
             active ? self.active(value) : self.silent(value),
             active ? .just(.setActivating(false)) : .empty()
@@ -255,7 +255,7 @@ open class BindCollectionViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Re
     }
     
     // MARK: - other
-    open func loginIfNeed() -> Observable<Mutation> {
+    open func checkLogin() -> Observable<Mutation> {
         .create { [weak self] observer -> Disposable in
             guard let `self` = self else { fatalError() }
             if self.currentState.user?.isValid ?? false {
