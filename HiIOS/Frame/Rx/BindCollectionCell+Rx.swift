@@ -50,4 +50,5 @@ public extension Reactive where Base: BindCollectionCell {
             cell.handleError(error)
         }
     }
+
 }
