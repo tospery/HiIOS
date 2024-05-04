@@ -85,6 +85,7 @@ Pod::Spec.new do |s|
   	ss.dependency 'BonMot', '6.1.3'
   	ss.dependency 'Kingfisher', '7.10.0'
   	ss.dependency 'DZNEmptyDataSet', '1.8.1'
+	ss.dependency 'TTTAttributedLabel', '2.0.0'
   	ss.dependency 'MJRefresh', '3.7.6'
   end
 
