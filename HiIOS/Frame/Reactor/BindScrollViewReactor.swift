@@ -34,8 +34,6 @@ open class BindScrollViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         case setData(Any?)
         case setUser((any UserType)?)
         case setConfiguration((any ConfigurationType)?)
-//        case initial([HiContent])
-//        case append([HiContent])
     }
 
     public struct State {
@@ -48,15 +46,11 @@ open class BindScrollViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         public var data: Any?
         public var user: (any UserType)?
         public var configuration: (any ConfigurationType)?
-//        public var contents = [HiContent].init()
-//        public var sections = [any SectionModelType].init()
     }
     
-    public let url: String
     public var initialState = State()
 
     required public init(_ provider: HiIOS.ProviderType, _ parameters: [String: Any]?) {
-        self.url = parameters?.string(for: Parameter.url) ?? ""
         super.init(provider, parameters)
         self.initialState = State(
             title: self.title
@@ -100,14 +94,6 @@ open class BindScrollViewReactor: ScrollViewReactor, ReactorKit.Reactor {
             newState.user = user
         case let .setConfiguration(configuration):
             newState.configuration = configuration
-//        case let .initial(data):
-//            newState.contents = self.append(data, to: [])
-//            newState.sections = self.convert(contents: newState.contents)
-//            newState.noMoreData = newState.contents.last?.models.count ?? 0 < self.pageSize
-//        case let .append(added):
-//            newState.contents = self.append(added, to: newState.contents)
-//            newState.sections = self.convert(contents: newState.contents)
-//            newState.noMoreData = newState.contents.last?.models.count ?? 0 < self.pageSize
         }
         return newState
     }
@@ -132,12 +118,9 @@ open class BindScrollViewReactor: ScrollViewReactor, ReactorKit.Reactor {
             .just(.setLoading(true)),
             self.requestRemote(.load, self.pageStart),
             .just(.setLoading(false))
-        ]).do(onCompleted: { [weak self] in
-            guard let `self` = self else { return }
-            self.pageIndex = self.pageStart
-        }).catch({
+        ]).catch({
             .concat([
-                // .just(.initial([])),
+                // .just(.setData(nil)),
                 .just(.setError($0)),
                 .just(.setLoading(false))
             ])
@@ -150,11 +133,9 @@ open class BindScrollViewReactor: ScrollViewReactor, ReactorKit.Reactor {
             .just(.setRefreshing(true)),
             self.requestRemote(.refresh, self.pageStart),
             .just(.setRefreshing(false))
-        ]).do(onCompleted: { [weak self] in
-            guard let `self` = self else { return }
-            self.pageIndex = self.pageStart
-        }).catch({
+        ]).catch({
             .concat([
+                // .just(.setData(nil)),
                 .just(.setError($0)),
                 .just(.setRefreshing(false))
             ])
@@ -190,7 +171,7 @@ open class BindScrollViewReactor: ScrollViewReactor, ReactorKit.Reactor {
     // MARK: - fetch/request
     open func fetchLocal() -> Observable<Mutation> {
         // .just(.initial([]))
-        .empty()
+        .just(.setData(nil))
     }
     
     open func requestRemote(_ mode: HiRequestMode, _ page: Int) -> Observable<Mutation> {
@@ -205,31 +186,6 @@ open class BindScrollViewReactor: ScrollViewReactor, ReactorKit.Reactor {
     open func silent(_ value: Any?) -> Observable<Mutation> {
         .empty()
     }
-    
-//    // MARK: - sections
-//    open func append(
-//        _ addition: [HiContent],
-//        to existing: [HiContent]
-//    ) -> [HiContent] {
-//        var contents = [HiContent].init()
-//        if existing.isEmpty {
-//            contents = addition
-//        } else {
-//            if existing.last?.header == nil {
-//                var models = existing.last?.models ?? []
-//                models.append(contentsOf: addition.last?.models ?? [])
-//                contents = [HiContent.init(header: nil, models: models)]
-//            } else {
-//                contents.append(contentsOf: existing)
-//                contents.append(contentsOf: addition)
-//            }
-//        }
-//        return contents
-//    }
-//
-//    open func convert(contents: [HiContent]) -> [any SectionModelType] {
-//        []
-//    }
     
     // MARK: - other
     open func loginIfNeed() -> Observable<Mutation> {
