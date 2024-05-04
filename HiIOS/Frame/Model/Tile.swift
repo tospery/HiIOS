@@ -12,8 +12,8 @@ public struct Tile: Subjective {
     
     public var id = 0
     public var divided: Bool? = true
-    public var indicated: Bool? = true
-    public var checked: Bool?
+    public var indicated: Bool? = false
+    public var checked: Bool? = false
     public var height: CGFloat?
     public var icon: String?
     public var title: String?
@@ -34,9 +34,9 @@ public struct Tile: Subjective {
         icon: String? = nil,
         title: String? = nil,
         detail: String? = nil,
-        indicated: Bool? = true,
         divided: Bool? = true,
-        checked: Bool? = nil,
+        indicated: Bool? = false,
+        checked: Bool? = false,
         height: CGFloat? = nil,
         color: String? = nil,
         tintColor: String? = nil,

@@ -30,6 +30,7 @@ open class TileItem: BaseCollectionItem, ReactorKit.Reactor {
         public var detail: String?
         public var indicated = true
         public var divided = true
+        public var checked = false
     }
     
     public var isSpace = false
@@ -50,7 +51,8 @@ open class TileItem: BaseCollectionItem, ReactorKit.Reactor {
             title: tile.title,
             detail: tile.detail,
             indicated: tile.indicated ?? false,
-            divided: tile.divided ?? false
+            divided: tile.divided ?? false,
+            checked: tile.checked ?? false
         )
     }
     

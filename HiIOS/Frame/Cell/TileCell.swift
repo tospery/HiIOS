@@ -46,6 +46,15 @@ open class TileCell: BaseCollectionCell, ReactorKit.View {
         return imageView
     }()
     
+    public lazy var checkedImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.isHidden = true
+        imageView.image = UIImage.checked.template
+        imageView.theme.tintColor = themeService.attribute { $0.primaryColor }
+        imageView.sizeToFit()
+        return imageView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.borderLayer?.borders = .bottom
@@ -56,6 +65,7 @@ open class TileCell: BaseCollectionCell, ReactorKit.View {
         self.contentView.addSubview(self.detailLabel)
         self.contentView.addSubview(self.iconImageView)
         self.contentView.addSubview(self.indicatorImageView)
+        self.contentView.addSubview(self.checkedImageView)
     }
     
     required public init?(coder: NSCoder) {
@@ -77,6 +87,7 @@ open class TileCell: BaseCollectionCell, ReactorKit.View {
         self.detailLabel.text = nil
         self.iconImageView.image = nil
         self.indicatorImageView.isHidden = true
+        self.checkedImageView.isHidden = true
     }
     
     open override func layoutSubviews() {
@@ -105,6 +116,10 @@ open class TileCell: BaseCollectionCell, ReactorKit.View {
         self.indicatorImageView.sizeToFit()
         self.indicatorImageView.top = self.indicatorImageView.topWhenCenter
         self.indicatorImageView.right = self.contentView.width - Metric.Tile.margin.right
+        
+        self.checkedImageView.sizeToFit()
+        self.checkedImageView.top = self.checkedImageView.topWhenCenter
+        self.checkedImageView.right = self.contentView.width - Metric.Tile.margin.right
         
         self.titleLabel.sizeToFit()
         self.titleLabel.top = self.titleLabel.topWhenCenter
@@ -155,6 +170,10 @@ open class TileCell: BaseCollectionCell, ReactorKit.View {
         reactor.state.map { !$0.indicated }
             .distinctUntilChanged()
             .bind(to: self.indicatorImageView.rx.isHidden)
+            .disposed(by: self.disposeBag)
+        reactor.state.map { !$0.checked }
+            .distinctUntilChanged()
+            .bind(to: self.checkedImageView.rx.isHidden)
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.divided }
             .distinctUntilChanged()
