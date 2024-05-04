@@ -1,23 +1,22 @@
 //
-//  BindCollectionViewReactor.swift
+//  ScrollBindReactor.swift
 //  HiIOS
 //
-//  Created by 杨建祥 on 2024/3/19.
+//  Created by 杨建祥 on 2024/5/4.
 //
 
 import Foundation
 import RxSwift
 import RxCocoa
-import RxDataSources
 import ReactorKit
 import URLNavigator_Hi
+import RxDataSources
 
-open class BindCollectionViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Reactor {
+open class ScrollBindReactor: ScrollViewReactor, ReactorKit.Reactor {
 
     public enum Action {
         case load
         case refresh
-        case loadMore
         case update
         case reload
         case target(String?)
@@ -28,7 +27,6 @@ open class BindCollectionViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Re
     public enum Mutation {
         case setLoading(Bool)
         case setRefreshing(Bool)
-        case setLoadingMore(Bool)
         case setActivating(Bool)
         case setError(Error?)
         case setTitle(String?)
@@ -36,31 +34,23 @@ open class BindCollectionViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Re
         case setData(Any?)
         case setUser((any UserType)?)
         case setConfiguration((any ConfigurationType)?)
-        case initial([HiContent])
-        case append([HiContent])
     }
 
     public struct State {
         public var isLoading = false
         public var isRefreshing = false
         public var isActivating = false
-        public var isLoadingMore = false
-        public var noMoreData = false
         public var title: String?
         public var target: String?
         public var error: Error?
         public var data: Any?
-        public var user: (any UserType)? = nil
-        public var configuration: (any ConfigurationType)? = nil
-        public var contents = [HiContent].init()
-        public var sections = [any SectionModelType].init()
+        public var user: (any UserType)?
+        public var configuration: (any ConfigurationType)?
     }
     
-    public let url: String
     public var initialState = State()
 
     required public init(_ provider: HiIOS.ProviderType, _ parameters: [String: Any]?) {
-        self.url = parameters?.string(for: Parameter.url) ?? ""
         super.init(provider, parameters)
         self.initialState = State(
             title: self.title
@@ -72,7 +62,6 @@ open class BindCollectionViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Re
         case .load: return self.load()
         case .update: return self.update()
         case .refresh: return self.refresh()
-        case .loadMore: return self.loadMore()
         case .reload: return self.reload()
         case let .target(target):
             guard let target = target?.url?.appendingQueryParameters([
@@ -91,8 +80,6 @@ open class BindCollectionViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Re
             newState.isLoading = isLoading
         case let .setRefreshing(isRefreshing):
             newState.isRefreshing = isRefreshing
-        case let .setLoadingMore(isLoadingMore):
-            newState.isLoadingMore = isLoadingMore
         case let .setActivating(isActivating):
             newState.isActivating = isActivating
         case let .setError(error):
@@ -107,14 +94,6 @@ open class BindCollectionViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Re
             newState.user = user
         case let .setConfiguration(configuration):
             newState.configuration = configuration
-        case let .initial(data):
-            newState.contents = self.append(data, to: [])
-            newState.sections = self.convert(contents: newState.contents)
-            newState.noMoreData = newState.contents.last?.models.count ?? 0 < self.pageSize
-        case let .append(added):
-            newState.contents = self.append(added, to: newState.contents)
-            newState.sections = self.convert(contents: newState.contents)
-            newState.noMoreData = newState.contents.last?.models.count ?? 0 < self.pageSize
         }
         return newState
     }
@@ -139,12 +118,9 @@ open class BindCollectionViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Re
             .just(.setLoading(true)),
             self.requestRemote(.load, self.pageStart),
             .just(.setLoading(false))
-        ]).do(onCompleted: { [weak self] in
-            guard let `self` = self else { return }
-            self.pageIndex = self.pageStart
-        }).catch({
+        ]).catch({
             .concat([
-                .just(.initial([])),
+                // .just(.setData(nil)),
                 .just(.setError($0)),
                 .just(.setLoading(false))
             ])
@@ -157,30 +133,11 @@ open class BindCollectionViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Re
             .just(.setRefreshing(true)),
             self.requestRemote(.refresh, self.pageStart),
             .just(.setRefreshing(false))
-        ]).do(onCompleted: { [weak self] in
-            guard let `self` = self else { return }
-            self.pageIndex = self.pageStart
-        }).catch({
+        ]).catch({
             .concat([
+                // .just(.setData(nil)),
                 .just(.setError($0)),
                 .just(.setRefreshing(false))
-            ])
-        })
-    }
-    
-    open func loadMore() -> Observable<Mutation> {
-        .concat([
-            .just(.setError(nil)),
-            .just(.setLoadingMore(true)),
-            self.requestRemote(.loadMore, self.pageIndex + 1),
-            .just(.setLoadingMore(false))
-        ]).do(onCompleted: { [weak self] in
-            guard let `self` = self else { return }
-            self.pageIndex += 1
-        }).catch({
-            .concat([
-                .just(.setError($0)),
-                .just(.setLoadingMore(false))
             ])
         })
     }
@@ -213,7 +170,8 @@ open class BindCollectionViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Re
     
     // MARK: - fetch/request
     open func fetchLocal() -> Observable<Mutation> {
-        .just(.initial([]))
+        // .just(.initial([]))
+        .just(.setData(nil))
     }
     
     open func requestRemote(_ mode: HiRequestMode, _ page: Int) -> Observable<Mutation> {
@@ -227,31 +185,6 @@ open class BindCollectionViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Re
     
     open func silent(_ value: Any?) -> Observable<Mutation> {
         .empty()
-    }
-    
-    // MARK: - sections
-    open func append(
-        _ addition: [HiContent],
-        to existing: [HiContent]
-    ) -> [HiContent] {
-        var contents = [HiContent].init()
-        if existing.isEmpty {
-            contents = addition
-        } else {
-            if existing.last?.header == nil {
-                var models = existing.last?.models ?? []
-                models.append(contentsOf: addition.last?.models ?? [])
-                contents = [HiContent.init(header: nil, models: models)]
-            } else {
-                contents.append(contentsOf: existing)
-                contents.append(contentsOf: addition)
-            }
-        }
-        return contents
-    }
-    
-    open func convert(contents: [HiContent]) -> [any SectionModelType] {
-        []
     }
     
     // MARK: - other
@@ -268,11 +201,12 @@ open class BindCollectionViewReactor: HiIOS.CollectionViewReactor, ReactorKit.Re
         }
     }
 
+    
 }
 
-extension BindCollectionViewReactor.Action {
+extension ScrollBindReactor.Action {
     
-    static func isLoad(_ action: BindCollectionViewReactor.Action) -> Bool {
+    static func isLoad(_ action: CollectionBindReactor.Action) -> Bool {
         if case .load = action {
             return true
         }
