@@ -38,6 +38,10 @@ public extension UIImage {
         return self.image(name: "ic_indicator")
     }
     
+    static var checked: UIImage {
+        return self.image(name: "ic_checked")
+    }
+    
     static var loading: UIImage {
         return self.image(name: "ic_loading")
     }

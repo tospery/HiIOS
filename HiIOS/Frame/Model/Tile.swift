@@ -13,6 +13,7 @@ public struct Tile: Subjective {
     public var id = 0
     public var divided: Bool? = true
     public var indicated: Bool? = true
+    public var checked: Bool?
     public var height: CGFloat?
     public var icon: String?
     public var title: String?
@@ -35,6 +36,7 @@ public struct Tile: Subjective {
         detail: String? = nil,
         indicated: Bool? = true,
         divided: Bool? = true,
+        checked: Bool? = nil,
         height: CGFloat? = nil,
         color: String? = nil,
         tintColor: String? = nil,
@@ -46,6 +48,7 @@ public struct Tile: Subjective {
         self.detail = detail
         self.indicated = indicated
         self.divided = divided
+        self.checked = checked
         self.height = height
         self.color = color
         self.tintColor = tintColor
@@ -62,6 +65,7 @@ public struct Tile: Subjective {
         detail          <- map["detail"]
         indicated       <- map["indicated"]
         divided         <- map["divided"]
+        checked         <- map["checked"]
         target          <- map["target"]
     }
     
@@ -75,6 +79,7 @@ public struct Tile: Subjective {
         hasher.combine(detail)
         hasher.combine(indicated)
         hasher.combine(divided)
+        hasher.combine(checked)
         hasher.combine(target)
     }
 

@@ -73,24 +73,6 @@ open class ButtonCell: BaseCollectionCell, ReactorKit.View {
 
     open func bind(reactor: ButtonItem) {
         super.bind(item: reactor)
-//        if let parent = reactor.parent as? GeneralViewReactor {
-//            switch parent.host {
-//            case .modify:
-//                parent.state.map { ($0.data as? String)?.isNotEmpty ?? false }
-//                    .distinctUntilChanged()
-//                    .map(Reactor.Action.enable)
-//                    .bind(to: reactor.action)
-//                    .disposed(by: self.disposeBag)
-//            case .feedback:
-//                parent.state.map { ($0.data as? FeedbackViewReactor.Data)?.body }
-//                    .distinctUntilChanged()
-//                    .map { Reactor.Action.enable($0?.isNotEmpty) }
-//                    .bind(to: reactor.action)
-//                    .disposed(by: self.disposeBag)
-//            default:
-//                break
-//            }
-//        }
         reactor.state.map { $0.enabled ?? false }
             .distinctUntilChanged()
             .bind(to: self.rx.enable)
