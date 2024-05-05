@@ -10,7 +10,7 @@ import ObjectMapper_Hi
 
 public struct Tile: Subjective {
     
-    public var id = 0
+    public var id = ""
     public var divided: Bool? = true
     public var indicated: Bool? = false
     public var checked: Bool? = false
@@ -22,15 +22,15 @@ public struct Tile: Subjective {
     public var tintColor: String?
     public var target: String?
     
-    public var isSpace: Bool { id == 0 }
-    public var isButton: Bool { id == 1 }
+    public var isSpace: Bool { id == "space" }
+    public var isButton: Bool { id == "button" }
 
     public init() { }
 
     public init?(map: Map) { }
     
     public init(
-        id: Int = 0,
+        id: String = "",
         icon: String? = nil,
         title: String? = nil,
         detail: String? = nil,
