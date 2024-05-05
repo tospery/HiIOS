@@ -16,12 +16,14 @@ open class TileItem: BaseCollectionItem, ReactorKit.Reactor {
     public enum Action {
         case title(String?)
         case detail(String?)
+        case check(Bool)
     }
     
     public enum Mutation {
         case setTitle(String?)
         case setDetail(String?)
         case setIcon(ImageSource?)
+        case setCheck(Bool)
     }
     
     public struct State {
@@ -62,6 +64,8 @@ open class TileItem: BaseCollectionItem, ReactorKit.Reactor {
             return .just(.setTitle(title))
         case let .detail(detail):
             return .just(.setDetail(detail))
+        case let .check(checked):
+            return .just(.setCheck(checked))
         }
     }
         
@@ -74,6 +78,8 @@ open class TileItem: BaseCollectionItem, ReactorKit.Reactor {
             newState.detail = detail
         case let .setIcon(icon):
             newState.icon = icon
+        case let .setCheck(checked):
+            newState.checked = checked
         }
         return newState
     }

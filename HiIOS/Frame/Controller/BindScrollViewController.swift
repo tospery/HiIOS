@@ -113,7 +113,7 @@ open class BindScrollViewController: ScrollViewController, ReactorKit.View {
     }
     
     open func handleConfiguration(configuration: (any ConfigurationType)?) {
-        // logger.print("handleConfiguration -> 更新配置(\(self.reactor?.host ?? ""), \(self.reactor?.path ?? ""))")
+        logger.print("handleConfiguration -> 更新配置(\(self.reactor?.host ?? ""), \(self.reactor?.path ?? ""))")
     }
     
     open func handleTarget(target: String?) {
