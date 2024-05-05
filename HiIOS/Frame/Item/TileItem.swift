@@ -30,7 +30,7 @@ open class TileItem: BaseCollectionItem, ReactorKit.Reactor {
         public var icon: ImageSource?
         public var title: String?
         public var detail: String?
-        public var indicated = true
+        public var indicated = false
         public var divided = true
         public var checked = false
     }

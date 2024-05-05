@@ -92,6 +92,8 @@ open class TileCell: BaseCollectionCell, ReactorKit.View {
     
     open override func layoutSubviews() {
         super.layoutSubviews()
+//        guard let tile = self.model as? Tile else { return }
+//        self.setup(tile)
         if (self.model as? Tile)?.isButton ?? false {
             self.layoutButton()
             return
@@ -162,10 +164,22 @@ open class TileCell: BaseCollectionCell, ReactorKit.View {
         reactor.state.map { $0.title }
             .distinctUntilChanged()
             .bind(to: self.titleLabel.rx.text)
+//            .subscribe(onNext: { [weak self] title in
+//                guard let `self` = self else { return }
+//                self.titleLabel.text = title
+//                self.setNeedsLayout()
+//                self.layoutIfNeeded()
+//            })
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.detail }
             .distinctUntilChanged()
             .bind(to: self.detailLabel.rx.text)
+//            .subscribe(onNext: { [weak self] detail in
+//                guard let `self` = self else { return }
+//                self.detailLabel.text = detail
+//                self.setNeedsLayout()
+//                self.layoutIfNeeded()
+//            })
             .disposed(by: self.disposeBag)
         reactor.state.map { !$0.indicated }
             .distinctUntilChanged()
@@ -214,6 +228,14 @@ open class TileCell: BaseCollectionCell, ReactorKit.View {
         self.titleLabel.layerCornerRadius = 0
         self.titleLabel.left = self.titleLabel.leftWhenCenter
         self.titleLabel.top = self.titleLabel.topWhenCenter
+    }
+    
+    func setup(_ tile: Tile) {
+//        self.titleLabel.text = tile.title
+//        self.detailLabel.text = tile.detail
+//        self.iconImageView.setImageResource(with: tile.icon?.imageSource, alwaysTemplate: false)
+//        self.indicatorImageView.isHidden = !(tile.indicated ?? false)
+//        self.checkedImageView.isHidden = !(tile.checked ?? false)
     }
     
     open override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
