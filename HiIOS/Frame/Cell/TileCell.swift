@@ -92,12 +92,6 @@ open class TileCell: BaseCollectionCell, ReactorKit.View {
     
     open override func layoutSubviews() {
         super.layoutSubviews()
-//        guard let tile = self.model as? Tile else { return }
-//        self.setup(tile)
-        if (self.model as? Tile)?.isButton ?? false {
-            self.layoutButton()
-            return
-        }
         if self.iconImageView.isHidden || self.iconImageView.image == nil {
             self.iconImageView.frame = .zero
             self.iconImageView.left = Metric.Tile.margin.left
@@ -148,11 +142,9 @@ open class TileCell: BaseCollectionCell, ReactorKit.View {
         super.bind(item: reactor)
         guard let tile = reactor.model as? Tile else { return }
         if tile.isSpace {
-            self.bindSpace(reactor: reactor)
-            return
-        }
-        if tile.isButton {
-            self.bindButton(reactor: reactor)
+            self.contentView.theme.backgroundColor = themeService.attribute { _ in reactor.color ?? UIColor.clear }
+            self.borderLayer?.borderWidths = [:]
+            self.indicatorImageView.isHidden = true
             return
         }
         self.contentView.theme.backgroundColor = themeService.attribute { $0.backgroundColor }
@@ -164,22 +156,10 @@ open class TileCell: BaseCollectionCell, ReactorKit.View {
         reactor.state.map { $0.title }
             .distinctUntilChanged()
             .bind(to: self.titleLabel.rx.text)
-//            .subscribe(onNext: { [weak self] title in
-//                guard let `self` = self else { return }
-//                self.titleLabel.text = title
-//                self.setNeedsLayout()
-//                self.layoutIfNeeded()
-//            })
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.detail }
             .distinctUntilChanged()
             .bind(to: self.detailLabel.rx.text)
-//            .subscribe(onNext: { [weak self] detail in
-//                guard let `self` = self else { return }
-//                self.detailLabel.text = detail
-//                self.setNeedsLayout()
-//                self.layoutIfNeeded()
-//            })
             .disposed(by: self.disposeBag)
         reactor.state.map { !$0.indicated }
             .distinctUntilChanged()
@@ -201,49 +181,12 @@ open class TileCell: BaseCollectionCell, ReactorKit.View {
             .disposed(by: self.disposeBag)
     }
     
-    open func bindSpace(reactor: TileItem) {
-        self.contentView.theme.backgroundColor = themeService.attribute { _ in reactor.color ?? UIColor.clear }
-        self.borderLayer?.borderWidths = [:]
-        self.indicatorImageView.isHidden = true
-    }
-    
-    open func bindButton(reactor: TileItem) {
-        self.contentView.theme.backgroundColor = themeService.attribute { _ in reactor.color ?? UIColor.clear }
-        self.borderLayer?.borderWidths = [:]
-        self.indicatorImageView.isHidden = true
-        self.titleLabel.font = .normal(17)
-        self.titleLabel.theme.textColor = themeService.attribute { _ in reactor.tintColor ?? UIColor.primary }
-        reactor.state.map { $0.title }
-            .distinctUntilChanged()
-            .bind(to: self.titleLabel.rx.text)
-            .disposed(by: self.disposeBag)
-        reactor.state.map { _ in }
-            .bind(to: self.rx.setNeedsLayout)
-            .disposed(by: self.disposeBag)
-    }
-    
-    open func layoutButton() {
-        self.titleLabel.textAlignment = .left
-        self.titleLabel.sizeToFit()
-        self.titleLabel.layerCornerRadius = 0
-        self.titleLabel.left = self.titleLabel.leftWhenCenter
-        self.titleLabel.top = self.titleLabel.topWhenCenter
-    }
-    
-    func setup(_ tile: Tile) {
-//        self.titleLabel.text = tile.title
-//        self.detailLabel.text = tile.detail
-//        self.iconImageView.setImageResource(with: tile.icon?.imageSource, alwaysTemplate: false)
-//        self.indicatorImageView.isHidden = !(tile.indicated ?? false)
-//        self.checkedImageView.isHidden = !(tile.checked ?? false)
-    }
-    
     open override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
         guard let tile = item.model as? Tile else { return .zero }
         return .init(
             width: width,
             height: tile.height ?? (
-                tile.isSpace ? Metric.Tile.spaceHeight : tile.isButton ? Metric.Tile.buttonHeight : Metric.Tile.cellHeight
+                tile.isSpace ? Metric.Tile.spaceHeight : Metric.Tile.cellHeight
             )
         )
     }

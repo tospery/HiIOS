@@ -1,28 +1,22 @@
 //
-//  Tile.swift
+//  ButtonInfo.swift
 //  HiIOS
 //
-//  Created by liaoya on 2022/9/23.
+//  Created by 杨建祥 on 2024/5/6.
 //
 
 import Foundation
 import ObjectMapper_Hi
 
-public struct Tile: Subjective {
+public struct ButtonInfo: Subjective {
     
     public var id = ""
-    public var divided: Bool? = true
-    public var indicated: Bool? = false
-    public var checked: Bool? = false
     public var height: CGFloat?
-    public var icon: String?
     public var title: String?
-    public var detail: String?
     public var color: String?
     public var tintColor: String?
+    public var enabled: Bool?
     public var target: String?
-    
-    public var isSpace: Bool { id == "space" }
 
     public init() { }
 
@@ -30,24 +24,16 @@ public struct Tile: Subjective {
     
     public init(
         id: String = "",
-        icon: String? = nil,
         title: String? = nil,
-        detail: String? = nil,
-        divided: Bool? = true,
-        indicated: Bool? = false,
-        checked: Bool? = false,
         height: CGFloat? = nil,
         color: String? = nil,
         tintColor: String? = nil,
+        enabled: Bool? = nil,
         target: String? = nil
     ) {
         self.id = id
-        self.icon = icon
+        self.enabled = enabled
         self.title = title
-        self.detail = detail
-        self.indicated = indicated
-        self.divided = divided
-        self.checked = checked
         self.height = height
         self.color = color
         self.tintColor = tintColor
@@ -56,15 +42,11 @@ public struct Tile: Subjective {
 
     mutating public  func mapping(map: Map) {
         id              <- map["id"]
+        enabled         <- map["enabled"]
         height          <- map["height"]
         color           <- map["color"]
         tintColor       <- map["tintColor"]
-        icon            <- map["icon"]
         title           <- map["title"]
-        detail          <- map["detail"]
-        indicated       <- map["indicated"]
-        divided         <- map["divided"]
-        checked         <- map["checked"]
         target          <- map["target"]
     }
     
@@ -73,14 +55,9 @@ public struct Tile: Subjective {
         hasher.combine(height)
         hasher.combine(color)
         hasher.combine(tintColor)
-        hasher.combine(icon)
         hasher.combine(title)
-        hasher.combine(detail)
-        hasher.combine(indicated)
-        hasher.combine(divided)
-        hasher.combine(checked)
         hasher.combine(target)
+        hasher.combine(enabled)
     }
 
 }
-

@@ -21,7 +21,6 @@ open class ButtonCell: BaseCollectionCell, ReactorKit.View {
         let button = UIButton.init(type: .custom)
         button.layerCornerRadius = 8
         button.titleLabel?.font = .normal(17)
-        // button.setTitle(R.string.localizable.submit(), for: .normal)
         button.theme.titleColor(
             from: themeService.attribute { $0.backgroundColor },
             for: .normal
