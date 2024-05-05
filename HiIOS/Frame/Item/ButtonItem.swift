@@ -27,7 +27,9 @@ open class ButtonItem: BaseCollectionItem, ReactorKit.Reactor {
     }
 
     public var height: CGFloat?
-    public var color: UIColor?
+    public var style = ButtonStyle.plain
+    public var titleColor: UIColor?
+    public var backgroundColor: UIColor?
     public var tintColor: UIColor?
     public var initialState = State()
 
@@ -35,7 +37,9 @@ open class ButtonItem: BaseCollectionItem, ReactorKit.Reactor {
         super.init(model)
         guard let info = model as? ButtonInfo else { return }
         height = info.height
-        color = info.color?.color
+        style = info.style
+        titleColor = info.titleColor?.color
+        backgroundColor = info.backgroundColor?.color
         tintColor = info.tintColor?.color
         self.initialState = State(
             enabled: info.enabled,

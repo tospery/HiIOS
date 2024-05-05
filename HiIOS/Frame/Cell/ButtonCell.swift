@@ -19,30 +19,7 @@ open class ButtonCell: BaseCollectionCell, ReactorKit.View {
     
     lazy var button: UIButton = {
         let button = UIButton.init(type: .custom)
-        button.layerCornerRadius = 8
         button.titleLabel?.font = .normal(17)
-        button.theme.titleColor(
-            from: themeService.attribute { $0.backgroundColor },
-            for: .normal
-        )
-        button.theme.backgroundImage(
-            from: themeService.attribute {
-                UIImage.init(
-                    color: $0.primaryColor,
-                    size: .init(width: deviceWidth, height: Metric.height)
-                )
-            },
-            for: .normal
-        )
-        button.theme.backgroundImage(
-            from: themeService.attribute {
-                UIImage.init(
-                    color: $0.primaryColor.withAlphaComponent(0.7),
-                    size: .init(width: deviceWidth, height: Metric.height)
-                )
-            },
-            for: .disabled
-        )
         button.sizeToFit()
         return button
     }()
@@ -63,15 +40,22 @@ open class ButtonCell: BaseCollectionCell, ReactorKit.View {
 
     open override func layoutSubviews() {
         super.layoutSubviews()
-        self.button.sizeToFit()
-        self.button.width = self.contentView.width - 20 * 2
-        self.button.height = self.contentView.height * 0.84
-        self.button.left = self.button.leftWhenCenter
-        self.button.top = self.button.topWhenCenter
+        let style = self.reactor?.style ?? .plain
+        if style == .plain {
+            self.layoutPlain()
+        } else if style == .round {
+            self.layoutRound()
+        }
     }
 
     open func bind(reactor: ButtonItem) {
         super.bind(item: reactor)
+        let style = reactor.style
+        if style == .plain {
+            self.bindPlain()
+        } else if style == .round {
+            self.bindRound()
+        }
         reactor.state.map { $0.enabled ?? false }
             .distinctUntilChanged()
             .bind(to: self.rx.enable)
@@ -83,6 +67,57 @@ open class ButtonCell: BaseCollectionCell, ReactorKit.View {
         reactor.state.map { _ in }
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)
+    }
+    
+    func layoutPlain() {
+        self.button.layerCornerRadius = 0
+        self.button.sizeToFit()
+        self.button.width = self.contentView.width
+        self.button.height = self.contentView.height
+        self.button.left = self.button.leftWhenCenter
+        self.button.top = self.button.topWhenCenter
+    }
+    
+    func layoutRound() {
+        self.button.layerCornerRadius = 8
+        self.button.sizeToFit()
+        self.button.width = self.contentView.width - 20 * 2
+        self.button.height = self.contentView.height * 0.84
+        self.button.left = self.button.leftWhenCenter
+        self.button.top = self.button.topWhenCenter
+    }
+    
+    func bindPlain() {
+        self.button.theme.backgroundColor = themeService.attribute { $0.backgroundColor }
+        self.button.theme.titleColor(
+            from: themeService.attribute { $0.primaryColor },
+            for: .normal
+        )
+    }
+    
+    func bindRound() {
+        self.button.theme.titleColor(
+            from: themeService.attribute { $0.backgroundColor },
+            for: .normal
+        )
+        self.button.theme.backgroundImage(
+            from: themeService.attribute {
+                UIImage.init(
+                    color: $0.primaryColor,
+                    size: .init(width: deviceWidth, height: Metric.height)
+                )
+            },
+            for: .normal
+        )
+        self.button.theme.backgroundImage(
+            from: themeService.attribute {
+                UIImage.init(
+                    color: $0.primaryColor.withAlphaComponent(0.7),
+                    size: .init(width: deviceWidth, height: Metric.height)
+                )
+            },
+            for: .disabled
+        )
     }
     
     open override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
@@ -97,8 +132,11 @@ public extension Reactive where Base: ButtonCell {
         self.base.button.rx.isEnabled
     }
 
-    var tapButton: ControlEvent<Void> {
-        self.base.button.rx.tap
+    var click: Observable<String?> {
+        self.base.button.rx.tap.map { [weak base] _ -> String? in
+            guard let strongBase = base else { return nil }
+            return (strongBase.model as? ButtonInfo)?.target
+        }
     }
     
 }

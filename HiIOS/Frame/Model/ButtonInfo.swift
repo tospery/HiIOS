@@ -8,14 +8,21 @@
 import Foundation
 import ObjectMapper_Hi
 
+public enum ButtonStyle: Int, Codable {
+    case plain
+    case round
+}
+
 public struct ButtonInfo: Subjective {
     
     public var id = ""
+    public var style = ButtonStyle.plain
     public var height: CGFloat?
     public var title: String?
-    public var color: String?
+    public var titleColor: String?
+    public var backgroundColor: String?
     public var tintColor: String?
-    public var enabled: Bool?
+    public var enabled: Bool? = true
     public var target: String?
 
     public init() { }
@@ -24,36 +31,44 @@ public struct ButtonInfo: Subjective {
     
     public init(
         id: String = "",
+        style: ButtonStyle = .plain,
         title: String? = nil,
         height: CGFloat? = nil,
-        color: String? = nil,
+        titleColor: String? = nil,
+        backgroundColor: String? = nil,
         tintColor: String? = nil,
-        enabled: Bool? = nil,
+        enabled: Bool? = true,
         target: String? = nil
     ) {
         self.id = id
+        self.style = style
         self.enabled = enabled
         self.title = title
         self.height = height
-        self.color = color
+        self.titleColor = titleColor
+        self.backgroundColor = backgroundColor
         self.tintColor = tintColor
         self.target = target
     }
 
     mutating public  func mapping(map: Map) {
-        id              <- map["id"]
-        enabled         <- map["enabled"]
-        height          <- map["height"]
-        color           <- map["color"]
-        tintColor       <- map["tintColor"]
-        title           <- map["title"]
-        target          <- map["target"]
+        id                  <- map["id"]
+        style               <- map["style"]
+        enabled             <- map["enabled"]
+        height              <- map["height"]
+        titleColor          <- map["titleColor"]
+        backgroundColor     <- map["backgroundColor"]
+        tintColor           <- map["tintColor"]
+        title               <- map["title"]
+        target              <- map["target"]
     }
     
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
+        hasher.combine(style)
         hasher.combine(height)
-        hasher.combine(color)
+        hasher.combine(titleColor)
+        hasher.combine(backgroundColor)
         hasher.combine(tintColor)
         hasher.combine(title)
         hasher.combine(target)
