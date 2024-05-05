@@ -30,8 +30,8 @@ open class TileItem: BaseCollectionItem, ReactorKit.Reactor {
         public var icon: ImageSource?
         public var title: String?
         public var detail: String?
-        public var indicated = false
         public var divided = true
+        public var indicated = false
         public var checked = false
     }
     
@@ -52,8 +52,8 @@ open class TileItem: BaseCollectionItem, ReactorKit.Reactor {
             icon: tile.icon?.imageSource,
             title: tile.title,
             detail: tile.detail,
-            indicated: tile.indicated ?? false,
             divided: tile.divided ?? false,
+            indicated: tile.indicated ?? false,
             checked: tile.checked ?? false
         )
     }
