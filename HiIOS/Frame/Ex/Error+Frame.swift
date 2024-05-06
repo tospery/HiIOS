@@ -35,6 +35,12 @@ extension NSError: HiErrorCompatible {
     public var hiError: HiError {
         logger.print("NSError转换-> \(self.domain), \(self.code), \(self.localizedDescription)", module: .hiIOS)
         
+        var message = self.localizedDescription
+        if let msg1 = self.userInfo["message"] as? String, msg1.isNotEmpty {
+            message = msg1
+        } else if let msg2 = self.userInfo["msg"] as? String, msg2.isNotEmpty {
+            message = msg2
+        }
         if self.domain == ASWebAuthenticationSessionError.errorDomain {
             if let compatible = self as? ASWebAuthenticationSessionError {
                 return compatible.hiError
@@ -76,7 +82,7 @@ extension NSError: HiErrorCompatible {
             // -1005 ~ -999
             if self.code >= NSURLErrorNetworkConnectionLost &&
                 self.code <= NSURLErrorCancelled {
-                return .server(ErrorCode.serverUnableConnect, self.localizedDescription, nil)
+                return .server(ErrorCode.serverUnableConnect, message, self.userInfo)
             }
             if self.code == NSURLErrorCannotParseResponse {
                 return .dataInvalid
@@ -88,12 +94,12 @@ extension NSError: HiErrorCompatible {
             return .networkNotConnected
         } else {
             if self.code == 500 {
-                return .server(ErrorCode.serverInternalError, self.localizedDescription, nil)
+                return .server(ErrorCode.serverInternalError, message, self.userInfo)
             } else if self.code == 401 {
                 return .userNotLoginedIn
             }
         }
-        return .server(ErrorCode.nserror, self.localizedDescription, nil)
+        return .server(ErrorCode.nserror, message, self.userInfo)
     }
 }
 
