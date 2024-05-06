@@ -41,6 +41,7 @@ open class BaseViewController: UIViewController {
     
     public let parameters: [String: Any]
     /// 场景一：直接关闭，没有next，只有completed（如未登录时、点击TabBar需要登录的页面，只有next才展示）
+    /// 场景一：需要登录的网络请求，如果登录成功、则继续网络请求；如果取消登录、则不进行网络请求
     public var callback: AnyObserver<Any>?
     private let mydealloc: PublishSubject<Void>!
     public var disposeBag = DisposeBag()
