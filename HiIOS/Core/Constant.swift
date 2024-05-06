@@ -55,7 +55,7 @@ public var isZoomMode: Bool { QMUIHelper.isZoomedMode }
 // MARK: - 布局常量
 /// 获取一个像素
 public var pixelOne: CGFloat { QMUIHelper.pixelOne }
-public var standardWidth: CGFloat { 390.0 }
+public var designWidth: CGFloat { 390.0 }  // 375|390|430
 /// bounds && nativeBounds / scale && nativeScale
 public var screenBoundsSize: CGSize { UIScreen.main.bounds.size }
 public var screenNativeBoundsSize: CGSize { UIScreen.main.nativeBounds.size }

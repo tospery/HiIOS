@@ -89,7 +89,7 @@ public func compareAny(_ left: Any?, _ right: Any?) -> Bool {
 // MARK: - Metric
 /// 以390为标准，按设备宽度进行比例布局。
 public func metric(_ width: CGFloat) -> CGFloat {
-    (width / 390.f * deviceWidth).flat
+    (width / designWidth * deviceWidth).flat
 }
 
 // MARK: - Preferred
