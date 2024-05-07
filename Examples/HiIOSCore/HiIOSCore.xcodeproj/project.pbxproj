@@ -13,9 +13,12 @@
 		91651BE92B08849600EE9693 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91651BE72B08849600EE9693 /* Main.storyboard */; };
 		91651BEB2B08849700EE9693 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91651BEA2B08849700EE9693 /* Assets.xcassets */; };
 		91651BEE2B08849700EE9693 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91651BEC2B08849700EE9693 /* LaunchScreen.storyboard */; };
+		D1C339CC97279410534FCAB1 /* Pods_HiIOSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EF4B5DE09FDF01B6CBBD699 /* Pods_HiIOSCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		37121DD91F1302FA7F56DE2B /* Pods-HiIOSCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiIOSCore.release.xcconfig"; path = "Target Support Files/Pods-HiIOSCore/Pods-HiIOSCore.release.xcconfig"; sourceTree = "<group>"; };
+		7EF4B5DE09FDF01B6CBBD699 /* Pods_HiIOSCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HiIOSCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91651BDE2B08849600EE9693 /* HiIOSCore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiIOSCore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91651BE12B08849600EE9693 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91651BE32B08849600EE9693 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		91651BEA2B08849700EE9693 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91651BED2B08849700EE9693 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91651BEF2B08849700EE9693 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD45E58FB7653A792C63EBBB /* Pods-HiIOSCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiIOSCore.debug.xcconfig"; path = "Target Support Files/Pods-HiIOSCore/Pods-HiIOSCore.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1C339CC97279410534FCAB1 /* Pods_HiIOSCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F5BBE618915DADBFEF76657 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BD45E58FB7653A792C63EBBB /* Pods-HiIOSCore.debug.xcconfig */,
+				37121DD91F1302FA7F56DE2B /* Pods-HiIOSCore.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		71A4A0067C6222A9E8A130C3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7EF4B5DE09FDF01B6CBBD699 /* Pods_HiIOSCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		91651BD52B08849600EE9693 = {
 			isa = PBXGroup;
 			children = (
 				91651BE02B08849600EE9693 /* HiIOSCore */,
 				91651BDF2B08849600EE9693 /* Products */,
+				1F5BBE618915DADBFEF76657 /* Pods */,
+				71A4A0067C6222A9E8A130C3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 91651BF22B08849700EE9693 /* Build configuration list for PBXNativeTarget "HiIOSCore" */;
 			buildPhases = (
+				7C8B30811AB8DD1053A2090B /* [CP] Check Pods Manifest.lock */,
 				91651BDA2B08849600EE9693 /* Sources */,
 				91651BDB2B08849600EE9693 /* Frameworks */,
 				91651BDC2B08849600EE9693 /* Resources */,
+				B8DFC1A2FE6860DEC5E597BD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +158,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7C8B30811AB8DD1053A2090B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HiIOSCore-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8DFC1A2FE6860DEC5E597BD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HiIOSCore/Pods-HiIOSCore-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HiIOSCore/Pods-HiIOSCore-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HiIOSCore/Pods-HiIOSCore-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		91651BDA2B08849600EE9693 /* Sources */ = {
@@ -287,12 +355,14 @@
 		};
 		91651BF32B08849700EE9693 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD45E58FB7653A792C63EBBB /* Pods-HiIOSCore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WDE622528T;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HiIOSCore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -300,6 +370,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,12 +386,14 @@
 		};
 		91651BF42B08849700EE9693 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37121DD91F1302FA7F56DE2B /* Pods-HiIOSCore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WDE622528T;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HiIOSCore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -328,6 +401,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
