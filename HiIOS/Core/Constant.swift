@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import QMUIKit
+import DeviceKit
 
 // MARK: - 编译常量
 /// 判断当前是否debug编译模式
@@ -20,10 +20,10 @@ public var isDebug: Bool {
 
 // MARK: - 设备常量
 /// 设备类型
-public var isPad: Bool { QMUIHelper.isIPad }
-public var isPod: Bool { QMUIHelper.isIPod }
-public var isPhone: Bool { QMUIHelper.isIPhone }
-public var isSimulator: Bool { QMUIHelper.isSimulator }
+public var isPad: Bool { Device.current.isPad }
+public var isPod: Bool { Device.current.isPod }
+public var isPhone: Bool { Device.current.isPhone }
+public var isSimulator: Bool { Device.current.isSimulator }
 /// 操作系统版本号，只获取第二级的版本号，例如 10.3.1 只会得到 10.3
 public var iOSVersion: Double { (UIDevice.current.systemVersion as NSString).doubleValue }
 /// 是否横竖屏，用户界面横屏了才会返回YES
@@ -39,10 +39,11 @@ public var deviceWidth: CGFloat { min(UIScreen.main.bounds.size.width, UIScreen.
 /// 设备高度，跟横竖屏无关
 public var deviceHeight: CGFloat { max(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height) }
 /// 是否全面屏设备
-public var isNotchedScreen: Bool { QMUIHelper.isNotchedScreen }
+public var isNotchedScreen: Bool { Device.current.hasSensorHousing }
 /// 将屏幕分为普通和紧凑两种，这个方法用于判断普通屏幕（也即大屏幕）。
 /// @note 注意，这里普通/紧凑的标准是 SWFrame 自行制定的，与系统 UITraitCollection.horizontalSizeClass/verticalSizeClass 的值无关。只要是通常意义上的“大屏幕手机”（例如 Plus 系列）都会被视为 Regular Screen。
-public var isRegularScreen: Bool { QMUIHelper.isRegularScreen }
+// public var isRegularScreen: Bool { QMUIHelper.isRegularScreen }
+public var isRegularScreen: Bool { true } // YJX_TODO
 /// 是否Retina
 public var isRetinaScreen: Bool { UIScreen.main.scale >= 2.0 }
 /// HiIOS自定义的iPhone屏幕大小分类，以设备宽度为基准。
@@ -50,12 +51,19 @@ public var isSmallScreen: Bool { deviceWidth <= 320 }
 public var isMiddleScreen: Bool { deviceWidth > 320 && deviceWidth < 414 }
 public var isLargeScreen: Bool { deviceWidth >= 414 }
 /// 是否放大模式（iPhone 6及以上的设备支持放大模式，iPhone X 除外）
-public var isZoomMode: Bool { QMUIHelper.isZoomedMode }
+public var isZoomMode: Bool { Device.current.isZoomed ?? false }
 
 // MARK: - 布局常量
 /// 获取一个像素
-public var pixelOne: CGFloat { QMUIHelper.pixelOne }
-public var designWidth: CGFloat { 390.0 }  // 375|390|430
+public var pixelOne: CGFloat {
+    if pixelOneValue < 0 {
+        pixelOneValue = 1.0 / UIScreen.main.scale
+    }
+    return pixelOneValue
+}
+private var pixelOneValue = -1.f
+
+public var designWidth: CGFloat { 390.0 }  // 320|375|390|430
 /// bounds && nativeBounds / scale && nativeScale
 public var screenBoundsSize: CGSize { UIScreen.main.bounds.size }
 public var screenNativeBoundsSize: CGSize { UIScreen.main.nativeBounds.size }
@@ -69,8 +77,141 @@ public var navigationContentTop: CGFloat { HiHelper.sharedInstance().navigationC
 public var navigationContentTopConstant: CGFloat { HiHelper.sharedInstance().navigationContentTopConstant }
 public var tabBarHeight: CGFloat { HiHelper.sharedInstance().tabBarHeight }
 public var toolBarHeight: CGFloat { HiHelper.sharedInstance().toolBarHeight }
+// YJX_TODO
 /// 安全区域
-public var safeArea: UIEdgeInsets { QMUIHelper.safeAreaInsetsForDeviceWithNotch }
+// public var safeArea: UIEdgeInsets { QMUIHelper.safeAreaInsetsForDeviceWithNotch }
+/// 用于获取 isNotchedScreen 设备的 insets，注意对于无 Home 键的新款 iPad 而言，它不一定有物理凹槽，但因为使用了 Home Indicator，所以它的 safeAreaInsets 也是非0。
+/// @NEW_DEVICE_CHECKER
+public var safeArea: UIEdgeInsets {
+    if !isNotchedScreen {
+        return .zero
+    }
+    
+    if isPad {
+        return .init(top: 24, left: 0, bottom: 20, right: 0)
+    }
+    
+    if safeAreaInfo == nil {
+        safeAreaInfo = [
+            // iPhone 13 mini
+            "iPhone14,4": [
+                .portrait: .init(top: 50, left: 0, bottom: 34, right: 0),
+                .landscapeLeft: .init(top: 0, left: 50, bottom: 21, right: 50)
+            ],
+            "iPhone14,4-Zoom": [
+                .portrait: .init(top: 43, left: 0, bottom: 29, right: 0),
+                .landscapeLeft: .init(top: 0, left: 43, bottom: 21, right: 43)
+            ],
+            // iPhone 13
+            "iPhone14,5": [
+                .portrait: .init(top: 47, left: 0, bottom: 34, right: 0),
+                .landscapeLeft: .init(top: 0, left: 47, bottom: 21, right: 47)
+            ],
+            "iPhone14,5-Zoom": [
+                .portrait: .init(top: 39, left: 0, bottom: 28, right: 0),
+                .landscapeLeft: .init(top: 0, left: 39, bottom: 21, right: 39)
+            ],
+            // iPhone 13 Pro
+            "iPhone14,2": [
+                .portrait: .init(top: 47, left: 0, bottom: 34, right: 0),
+                .landscapeLeft: .init(top: 0, left: 47, bottom: 21, right: 47)
+            ],
+            "iPhone14,2-Zoom": [
+                .portrait: .init(top: 39, left: 0, bottom: 28, right: 0),
+                .landscapeLeft: .init(top: 0, left: 39, bottom: 21, right: 39)
+            ],
+            // iPhone 13 Pro Max
+            "iPhone14,3": [
+                .portrait: .init(top: 47, left: 0, bottom: 34, right: 0),
+                .landscapeLeft: .init(top: 0, left: 47, bottom: 21, right: 47)
+            ],
+            "iPhone14,3-Zoom": [
+                .portrait: .init(top: 41, left: 0, bottom: 29 + 2.0 / 3.0, right: 0),
+                .landscapeLeft: .init(top: 0, left: 41, bottom: 21, right: 41)
+            ],
+            // iPhone 12 mini
+            "iPhone13,1": [
+                .portrait: .init(top: 50, left: 0, bottom: 34, right: 0),
+                .landscapeLeft: .init(top: 0, left: 50, bottom: 21, right: 50)
+            ],
+            "iPhone13,1-Zoom": [
+                .portrait: .init(top: 43, left: 0, bottom: 29, right: 0),
+                .landscapeLeft: .init(top: 0, left: 43, bottom: 21, right: 43)
+            ],
+            // iPhone 12
+            "iPhone13,2": [
+                .portrait: .init(top: 47, left: 0, bottom: 34, right: 0),
+                .landscapeLeft: .init(top: 0, left: 47, bottom: 21, right: 47)
+            ],
+            "iPhone13,2-Zoom": [
+                .portrait: .init(top: 39, left: 0, bottom: 28, right: 0),
+                .landscapeLeft: .init(top: 0, left: 39, bottom: 21, right: 39)
+            ],
+            // iPhone 12 Pro
+            "iPhone13,3": [
+                .portrait: .init(top: 47, left: 0, bottom: 34, right: 0),
+                .landscapeLeft: .init(top: 0, left: 47, bottom: 21, right: 47)
+            ],
+            "iPhone13,3-Zoom": [
+                .portrait: .init(top: 39, left: 0, bottom: 28, right: 0),
+                .landscapeLeft: .init(top: 0, left: 39, bottom: 21, right: 39)
+            ],
+            // iPhone 12 Pro Max
+            "iPhone13,4": [
+                .portrait: .init(top: 47, left: 0, bottom: 34, right: 0),
+                .landscapeLeft: .init(top: 0, left: 47, bottom: 21, right: 47)
+            ],
+            "iPhone13,4-Zoom": [
+                .portrait: .init(top: 41, left: 0, bottom: 29 + 2.0 / 3.0, right: 0),
+                .landscapeLeft: .init(top: 0, left: 41, bottom: 21, right: 41)
+            ],
+            // iPhone 11
+            "iPhone12,1": [
+                .portrait: .init(top: 48, left: 0, bottom: 34, right: 0),
+                .landscapeLeft: .init(top: 0, left: 48, bottom: 21, right: 48)
+            ],
+            "iPhone12,1-Zoom": [
+                .portrait: .init(top: 44, left: 0, bottom: 31, right: 0),
+                .landscapeLeft: .init(top: 0, left: 44, bottom: 21, right: 44)
+            ],
+            // iPhone 11 Pro Max
+            "iPhone12,5": [
+                .portrait: .init(top: 44, left: 0, bottom: 34, right: 0),
+                .landscapeLeft: .init(top: 0, left: 44, bottom: 21, right: 44)
+            ],
+            "iPhone12,5-Zoom": [
+                .portrait: .init(top: 40, left: 0, bottom: 30 + 2.0 / 3.0, right: 0),
+                .landscapeLeft: .init(top: 0, left: 40, bottom: 21, right: 40)
+            ]
+        ]
+    }
+    
+    var deviceKey = Device.identifier
+    if safeAreaInfo?[deviceKey] == nil {
+        deviceKey = "iPhone14,2" // 默认按最新的 iPhone 13 Pro 处理，因为新出的设备肯定更大概率与上一代设备相似
+    }
+    if isZoomMode {
+        deviceKey += "-Zoom"
+    }
+    
+    var orientationKey: UIInterfaceOrientation = .portrait
+    let orientation = UIApplication.shared.statusBarOrientation
+    switch orientation {
+    case .landscapeLeft, .landscapeRight:
+        orientationKey = .landscapeLeft
+    default:
+        break
+    }
+    
+    var insets = safeAreaInfo![deviceKey]![orientationKey]!
+    if orientation == .portraitUpsideDown {
+        insets = .init(top: insets.bottom, left: insets.left, bottom: insets.top, right: insets.right)
+    } else if orientation == .landscapeRight {
+        insets = .init(top: insets.top, left: insets.right, bottom: insets.bottom, right: insets.left)
+    }
+    return insets
+}
+private var safeAreaInfo: [String : [UIInterfaceOrientation : UIEdgeInsets]]?
 
 // MARK: - 其他
 public var dateTimeFormatStyle1: String { "yyyy/MM/dd HH:mm:ss" }

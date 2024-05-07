@@ -6,14 +6,16 @@
 //
 
 import UIKit
-import QMUIKit
 import UICKeyChainStore
 import FCUUID
+import QMUIKit
 
 public extension UIDevice {
 
+    // YJX_TODO
     var modelName: String {
-        QMUIHelper.deviceName
+        // QMUIHelper.deviceName
+        "unknow"
     }
     
     var keychain: UICKeyChainStore {

@@ -17,7 +17,8 @@ Pod::Spec.new do |s|
   
   s.subspec 'Core' do |ss|
     ss.source_files = 'HiIOS/Core/**/*'
-  	ss.dependency 'QMUIKit/QMUICore', '4.7.0'
+  	ss.dependency 'DeviceKit', '5.2.3'
+	ss.dependency 'QMUIKit/QMUICore', '4.7.0'
   	ss.dependency 'FCUUID', '1.3.1'
   	ss.dependency 'SwiftyBeaver', '1.9.5'
   	ss.dependency 'ObjectMapper-Hi', '4.2.0-v2'

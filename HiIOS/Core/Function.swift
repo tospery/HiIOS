@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import QMUIKit
 
 // MARK: - Compare
 public func compareVersion(_ version1: String, _ version2: String, amount: Int = 3) -> ComparisonResult {
@@ -45,11 +44,8 @@ public func compareModels(_ left: [[any ModelType]]?, _ right: [[any ModelType]]
         }
         for (modelIndex, model2) in array2.enumerated() {
             let model1 = array1[modelIndex]
-            if let leftHashable = model1 as? (any Hashable),
-               let rightHashable = model2 as? any Hashable {
-                if leftHashable.hashValue != rightHashable.hashValue {
-                    return false
-                }
+            if model1.hashValue != model2.hashValue {
+                return false
             } else {
                 let leftString = String.init(describing: model1)
                 let rightString = String.init(describing: model2)
