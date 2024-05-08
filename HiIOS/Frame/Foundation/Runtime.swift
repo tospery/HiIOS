@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import QMUIKit
+// import QMUIKit
 
 public protocol RuntimeCompatible {
     func myWork()

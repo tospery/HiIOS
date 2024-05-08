@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import QMUIKit
+// import QMUIKit
 import RxSwift
 import URLNavigator_Hi
 import SwifterSwift
@@ -60,7 +60,7 @@ open class AppDependency {
         self.setupUser()
         // 日志
         logger.print("运行环境: \(UIApplication.shared.inferredEnvironment)", module: .hiIOS)
-        logger.print("设备型号: \(QMUIHelper.deviceName)", module: .hiIOS)
+        logger.print("设备型号: \(UIDevice.current.modelName)", module: .hiIOS)
         logger.print("硬件标识: \(UIDevice.current.uuid)", module: .hiIOS)
         logger.print("系统版本: \(UIDevice.current.systemVersion)", module: .hiIOS)
         logger.print("屏幕尺寸: \(UIScreen.main.bounds.size)", module: .hiIOS)
