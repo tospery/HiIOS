@@ -13,37 +13,6 @@
 
 @implementation HiHelper
 
-//#pragma clang diagnostic push
-//#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-//- (CGFloat)statusBarHeight {
-//    return StatusBarHeight;
-//}
-//
-//- (CGFloat)statusBarHeightConstant {
-//    return StatusBarHeightConstant;
-//}
-//
-//- (CGFloat)navigationBarHeight {
-//    return NavigationBarHeight;
-//}
-//
-//- (CGFloat)navigationContentTop {
-//    return NavigationContentTop;
-//}
-//
-//- (CGFloat)navigationContentTopConstant {
-//    return NavigationContentTopConstant;
-//}
-//
-//- (CGFloat)tabBarHeight {
-//    return TabBarHeight;
-//}
-//
-//- (CGFloat)toolBarHeight {
-//    return ToolBarHeight;
-//}
-//#pragma clang diagnostic pop
-
 + (instancetype)sharedInstance {
     static id instance;
     static dispatch_once_t onceToken;
