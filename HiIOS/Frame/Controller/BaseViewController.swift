@@ -77,11 +77,11 @@ open class BaseViewController: UIViewController {
     
     open var contentBottom: CGFloat {
         var height = 0.f
-        // YJX_TODO
         if let tabBar = self.tabBarController?.tabBar,
-            tabBar.isHidden == false,
-            // self.qmui_previous == nil,
-            self.hidesBottomBarWhenPushed == false {
+           tabBar.isHidden == false,
+           // self.qmui_previous == nil,
+           self.previous == nil,
+           self.hidesBottomBarWhenPushed == false {
             height += tabBar.height
         }
         return height
@@ -158,13 +158,13 @@ open class BaseViewController: UIViewController {
                     self.back(type: .popOne)
                 }).disposed(by: self.disposeBag)
             } else {
-                // YJX_TODO
                // if self.qmui_isPresented() {
+                if self.isPresented {
                     self.navigationBar.addCloseButtonToLeft().rx.tap.subscribe(onNext: { [weak self] _ in
                         guard let `self` = self else { return }
                         self.back(type: .dismiss)
                     }).disposed(by: self.disposeBag)
-                //}
+                }
             }
         }
         

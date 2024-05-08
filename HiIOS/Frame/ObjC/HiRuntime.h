@@ -19,7 +19,7 @@
  *  @param _newSelector 要拿 toClass 里的这个方法来替换 originSelector
  *  @return 是否成功替换（或增加）
  */
-BOOL
+CG_INLINE BOOL
 ExchangeImplementationsInTwoClasses(Class _fromClass, SEL _originSelector, Class _toClass, SEL _newSelector) {
     if (!_fromClass || !_toClass) {
         return NO;
@@ -44,7 +44,7 @@ ExchangeImplementationsInTwoClasses(Class _fromClass, SEL _originSelector, Class
 }
 
 /// 交换同一个 class 里的 originSelector 和 newSelector 的实现，如果原本不存在 originSelector，则相当于给 class 新增一个叫做 originSelector 的方法
-BOOL
+CG_INLINE BOOL
 ExchangeImplementations(Class _class, SEL _originSelector, SEL _newSelector) {
     return ExchangeImplementationsInTwoClasses(_class, _originSelector, _class, _newSelector);
 }

@@ -28,7 +28,7 @@ final public class Runtime {
     }
     
     public func basic() {
-        ExchangeImplementations(UIViewController.self, #selector(UIViewController.present(_:animated:completion:)), #selector(UIViewController.swf_present(_:animated:completion:)))
+        ExchangeImplementations(UIViewController.self, #selector(UIViewController.present(_:animated:completion:)), #selector(UIViewController.hi_present(_:animated:completion:)))
     }
     
 }

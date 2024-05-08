@@ -133,7 +133,7 @@ public var navigationBarHeight: CGFloat {
 }
 
 /// 代表(导航栏+状态栏)，这里用于获取其高度
-/// @warn 如果是用于 viewController，请使用 UIViewController(Frame) swf_navigationBarMaxYInViewCoordinator 代替
+/// @warn 如果是用于 viewController，请使用 UIViewController(Frame) hi_navigationBarMaxYInViewCoordinator 代替
 public var navigationContentTop: CGFloat {
     statusBarHeight + navigationBarHeight
 }

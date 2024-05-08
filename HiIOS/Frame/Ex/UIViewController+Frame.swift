@@ -16,6 +16,26 @@ public extension UIViewController {
         static let automaticallySetModalPresentationStyleKey = UnsafeRawPointer.init(bitPattern: "automaticallySetModalPresentationStyleKey".hashValue)
     }
     
+    var previous: UIViewController? {
+        guard let viewControllers = self.navigationController?.viewControllers else { return nil }
+        if let index = viewControllers.firstIndex(of: self), index > 0 {
+            return viewControllers[index - 1]
+        }
+        return nil
+    }
+    
+    var isPresented: Bool {
+        var viewController = self
+        if let navigationController = self.navigationController {
+            if navigationController.viewControllers.first != self {
+                return false
+            }
+            viewController = navigationController
+        }
+        let result = viewController.presentingViewController?.presentedViewController == viewController
+        return result
+    }
+    
     var automaticallySetModalPresentationStyle: Bool? {
         get {
             objc_getAssociatedObject(self, RuntimeKey.automaticallySetModalPresentationStyleKey!) as? Bool
@@ -25,7 +45,7 @@ public extension UIViewController {
         }
     }
     
-    @objc func swf_present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+    @objc func hi_present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
         if #available(iOS 13.0, *) {
             var need = true
             if let _ = self as? UIImagePickerController {
@@ -48,7 +68,7 @@ public extension UIViewController {
                 viewControllerToPresent.modalPresentationStyle = .fullScreen
             }
         }
-        self.swf_present(viewControllerToPresent, animated: flag, completion: completion)
+        self.hi_present(viewControllerToPresent, animated: flag, completion: completion)
     }
     
 }

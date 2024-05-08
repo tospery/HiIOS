@@ -11,6 +11,7 @@ import RxCocoa
 import MJRefresh
 import ReactorKit
 import DZNEmptyDataSet
+import SwifterSwift
 
 open class BindCollectionCell: BaseCollectionCell, ReactorKit.View {
     
@@ -124,9 +125,8 @@ extension BindCollectionCell: DZNEmptyDataSetSource {
         if self.isLoading == false && self.error != nil {
             return self.error?.asHiError.displayImage
         }
-        // YJX_TODO
         // return UIImage.loading.qmui_image(withTintColor: .primary)
-        return UIImage.loading
+        return UIImage.loading.withTintColor(.primary, renderingMode: .alwaysTemplate)
     }
     
     open func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControl.State) -> NSAttributedString! {
