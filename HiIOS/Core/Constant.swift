@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import QMUIKit
 import DeviceKit
 
 // MARK: - 编译常量
@@ -41,9 +42,18 @@ public var deviceHeight: CGFloat { max(UIScreen.main.bounds.size.width, UIScreen
 /// 是否全面屏设备
 public var isNotchedScreen: Bool { Device.current.hasSensorHousing }
 /// 将屏幕分为普通和紧凑两种，这个方法用于判断普通屏幕（也即大屏幕）。
-/// @note 注意，这里普通/紧凑的标准是 SWFrame 自行制定的，与系统 UITraitCollection.horizontalSizeClass/verticalSizeClass 的值无关。只要是通常意义上的“大屏幕手机”（例如 Plus 系列）都会被视为 Regular Screen。
-// public var isRegularScreen: Bool { QMUIHelper.isRegularScreen }
-public var isRegularScreen: Bool { true } // YJX_TODO
+/// @note 注意，这里普通/紧凑的标准是 HiIOS 自行制定的，与系统 UITraitCollection.horizontalSizeClass/verticalSizeClass 的值无关。只要是通常意义上的“大屏幕手机”（例如 Plus 系列）都会被视为 Regular Screen。
+public var isRegularScreen: Bool {
+    if isPad {
+        return true
+    }
+    if isZoomMode {
+        return false
+    }
+    let diagonal = Device.current.diagonal
+    return diagonal == 6.7 || diagonal == 6.5 || diagonal == 6.1 || diagonal == 5.5
+}
+
 /// 是否Retina
 public var isRetinaScreen: Bool { UIScreen.main.scale >= 2.0 }
 /// HiIOS自定义的iPhone屏幕大小分类，以设备宽度为基准。
@@ -63,7 +73,8 @@ public var pixelOne: CGFloat {
 }
 private var pixelOneValue = -1.f
 
-public var designWidth: CGFloat { 390.0 }  // 320|375|390|430
+/// 当前已有的宽度有：320 | 360 | 375 | 390 | 393 | 414 | 428 | 430，参考https://note.youdao.com/s/cdwYQ7HQ
+public var designWidth: CGFloat { 390.0 }
 /// bounds && nativeBounds / scale && nativeScale
 public var screenBoundsSize: CGSize { UIScreen.main.bounds.size }
 public var screenNativeBoundsSize: CGSize { UIScreen.main.nativeBounds.size }
@@ -77,9 +88,8 @@ public var navigationContentTop: CGFloat { HiHelper.sharedInstance().navigationC
 public var navigationContentTopConstant: CGFloat { HiHelper.sharedInstance().navigationContentTopConstant }
 public var tabBarHeight: CGFloat { HiHelper.sharedInstance().tabBarHeight }
 public var toolBarHeight: CGFloat { HiHelper.sharedInstance().toolBarHeight }
-// YJX_TODO
+
 /// 安全区域
-// public var safeArea: UIEdgeInsets { QMUIHelper.safeAreaInsetsForDeviceWithNotch }
 /// 用于获取 isNotchedScreen 设备的 insets，注意对于无 Home 键的新款 iPad 而言，它不一定有物理凹槽，但因为使用了 Home Indicator，所以它的 safeAreaInsets 也是非0。
 /// @NEW_DEVICE_CHECKER
 public var safeArea: UIEdgeInsets {
@@ -93,6 +103,42 @@ public var safeArea: UIEdgeInsets {
     
     if safeAreaInfo == nil {
         safeAreaInfo = [
+            // iPhone 14
+            "iPhone14,7": [
+                .portrait: .init(top: 47, left: 0, bottom: 34, right: 0),
+                .landscapeLeft: .init(top: 0, left: 47, bottom: 21, right: 47)
+            ],
+            "iPhone14,7-Zoom": [
+                .portrait: .init(top: 48, left: 0, bottom: 28, right: 0),
+                .landscapeLeft: .init(top: 0, left: 48, bottom: 21, right: 48)
+            ],
+            // iPhone 14 Plus
+            "iPhone14,8": [
+                .portrait: .init(top: 47, left: 0, bottom: 34, right: 0),
+                .landscapeLeft: .init(top: 0, left: 47, bottom: 21, right: 47)
+            ],
+            "iPhone14,8-Zoom": [
+                .portrait: .init(top: 41, left: 0, bottom: 30, right: 0),
+                .landscapeLeft: .init(top: 0, left: 41, bottom: 21, right: 41)
+            ],
+            // iPhone 14 Pro
+            "iPhone15,2": [
+                .portrait: .init(top: 59, left: 0, bottom: 34, right: 0),
+                .landscapeLeft: .init(top: 0, left: 59, bottom: 21, right: 59)
+            ],
+            "iPhone15,2-Zoom": [
+                .portrait: .init(top: 48, left: 0, bottom: 28, right: 0),
+                .landscapeLeft: .init(top: 0, left: 48, bottom: 21, right: 48)
+            ],
+            // iPhone 14 Pro Max
+            "iPhone15,3": [
+                .portrait: .init(top: 59, left: 0, bottom: 34, right: 0),
+                .landscapeLeft: .init(top: 0, left: 59, bottom: 21, right: 59)
+            ],
+            "iPhone15,3-Zoom": [
+                .portrait: .init(top: 51, left: 0, bottom: 31, right: 0),
+                .landscapeLeft: .init(top: 0, left: 51, bottom: 21, right: 51)
+            ],
             // iPhone 13 mini
             "iPhone14,4": [
                 .portrait: .init(top: 50, left: 0, bottom: 34, right: 0),
@@ -188,7 +234,7 @@ public var safeArea: UIEdgeInsets {
     
     var deviceKey = Device.identifier
     if safeAreaInfo?[deviceKey] == nil {
-        deviceKey = "iPhone14,2" // 默认按最新的 iPhone 13 Pro 处理，因为新出的设备肯定更大概率与上一代设备相似
+        deviceKey = "iPhone15,2" // 默认按最新的机型处理，因为新出的设备肯定更大概率与上一代设备相似
     }
     if isZoomMode {
         deviceKey += "-Zoom"

@@ -9,13 +9,12 @@ import UIKit
 import UICKeyChainStore
 import FCUUID
 import QMUIKit
+import DeviceKit
 
 public extension UIDevice {
 
-    // YJX_TODO
     var modelName: String {
-        // QMUIHelper.deviceName
-        "unknow"
+        Device.current.safeDescription
     }
     
     var keychain: UICKeyChainStore {
