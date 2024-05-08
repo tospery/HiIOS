@@ -82,7 +82,7 @@ public class NavigationBar: UIView {
         }
     }
 
-    @objc public dynamic var lineColor: UIColor? {
+    @objc public dynamic var borderColor: UIColor? {
         get {
             var color = self.borderColors?[.top]
             if color == nil {
@@ -334,9 +334,9 @@ public extension Reactive where Base: NavigationBar {
         }
     }
 
-    var lineColor: Binder<UIColor?> {
+    var borderColor: Binder<UIColor?> {
         return Binder(self.base) { view, color in
-            view.lineColor = color
+            view.borderColor = color
         }
     }
     
@@ -344,7 +344,7 @@ public extension Reactive where Base: NavigationBar {
 
 public extension ThemeProxy where Base: NavigationBar {
     
-    var lineColor: ThemeAttribute<UIColor?> {
+    var borderColor: ThemeAttribute<UIColor?> {
         get { fatalError("set only") }
         set {
             if let color = newValue.value {
@@ -360,8 +360,8 @@ public extension ThemeProxy where Base: NavigationBar {
             let disposable = newValue.stream
                 .take(until: base.rx.deallocating)
                 .observe(on: MainScheduler.instance)
-                .bind(to: base.rx.lineColor)
-            hold(disposable, for: "lineColor")
+                .bind(to: base.rx.borderColor)
+            hold(disposable, for: "borderColor")
         }
     }
 

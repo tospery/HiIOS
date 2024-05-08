@@ -23,8 +23,8 @@ open class LabelCell: BaseCollectionCell, ReactorKit.View {
     public var attributedText: NSAttributedString?
     public var links: [String]?
 
-    lazy var label: TTTAttributedLabel = {
-        let label = TTTAttributedLabel.init(frame: .zero)
+    lazy var label: AttributedLabel = {
+        let label = AttributedLabel.init(frame: .zero)
         label.delegate = self
         label.numberOfLines = 0
         label.verticalAlignment = .center
