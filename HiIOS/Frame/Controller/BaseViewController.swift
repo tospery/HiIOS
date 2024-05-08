@@ -147,7 +147,7 @@ open class BaseViewController: UIViewController {
                 self.navigationBar.transparet()
             } else {
                 if self.hidesNavBottomLine {
-                    self.navigationBar.sidePositions = nil
+                    self.navigationBar.borders = nil
                 }
             }
             if self.navigationController?.viewControllers.count ?? 0 > 1 {

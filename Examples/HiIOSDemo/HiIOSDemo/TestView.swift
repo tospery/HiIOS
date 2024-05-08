@@ -11,7 +11,7 @@ import HiIOS
 class TestView: UIView {
     
     override class var layerClass: AnyClass {
-        SideLayer.self
+        BorderLayer.self
     }
     
     override func layoutSublayers(of layer: CALayer) {

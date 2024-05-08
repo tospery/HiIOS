@@ -23,7 +23,7 @@ public class NavigationBar: UIView {
     public var style = Style.automatic
     
     open override class var layerClass: AnyClass {
-        return SideLayer.self
+        return BorderLayer.self
     }
     
     open override func layoutSublayers(of layer: CALayer) {
@@ -95,28 +95,28 @@ public class NavigationBar: UIView {
 
     @objc public dynamic var lineColor: UIColor? {
         get {
-            var color = self.sideColors?[.top]
+            var color = self.borderColors?[.top]
             if color == nil {
-                color = self.sideColors?[.left]
+                color = self.borderColors?[.left]
             }
             if color == nil {
-                color = self.sideColors?[.bottom]
+                color = self.borderColors?[.bottom]
             }
             if color == nil {
-                color = self.sideColors?[.right]
+                color = self.borderColors?[.right]
             }
             return color
         }
         set {
             if let color = newValue {
-                self.sideColors = [
+                self.borderColors = [
                     .top: color,
                     .left: color,
                     .bottom: color,
                     .right: color
                 ]
             } else {
-                self.sideColors = nil
+                self.borderColors = nil
             }
         }
     }
@@ -154,9 +154,9 @@ public class NavigationBar: UIView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        self.sidePositions = .bottom
-        self.sideWidths = [.bottom: pixelOne]
-        self.sideColors = [.bottom: .lightGray]
+        self.borders = .bottom
+        self.borderWidths = [.bottom: pixelOne]
+        self.borderColors = [.bottom: .lightGray]
         self.addSubview(self.bgImageView)
         self.addSubview(self.titleLabel)
     }
@@ -304,16 +304,16 @@ public class NavigationBar: UIView {
     
     public func transparet() {
         self.backgroundColor = .clear
-        self.sidePositions = nil
+        self.borders = nil
         self.isTransparet = true
     }
     
     public func reset() {
         self.backgroundColor = .white
         self.isTransparet = false
-        self.sidePositions = .bottom
-        self.sideWidths = [.bottom: pixelOne]
-        self.sideColors = [.bottom: self.layerBorderColor ?? .lightGray]
+        self.borders = .bottom
+        self.borderWidths = [.bottom: pixelOne]
+        self.borderColors = [.bottom: self.layerBorderColor ?? .lightGray]
     }
     
 }
@@ -359,14 +359,14 @@ public extension ThemeProxy where Base: NavigationBar {
         get { fatalError("set only") }
         set {
             if let color = newValue.value {
-                base.sideColors = [
+                base.borderColors = [
                     .top: color,
                     .left: color,
                     .bottom: color,
                     .right: color
                 ]
             } else {
-                base.sideColors = nil
+                base.borderColors = nil
             }
             let disposable = newValue.stream
                 .take(until: base.rx.deallocating)

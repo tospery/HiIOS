@@ -15,43 +15,43 @@ public enum ShadowPattern {
 
 public extension UIView {
     
-    fileprivate var borderLayer: SideLayer? {
-        return self.layer as? SideLayer
+    fileprivate var borderLayer: BorderLayer? {
+        return self.layer as? BorderLayer
     }
     
-    var sidePositions: SidePosition? {
+    var borders: BorderPosition? {
         get {
-            self.borderLayer?.sidePositions
+            self.borderLayer?.borders
         }
         set {
-            self.borderLayer?.sidePositions = newValue ?? []
-        }
-    }
-    
-    var sideColors: [SidePosition: UIColor]? {
-        get {
-            self.borderLayer?.sideColors
-        }
-        set {
-            self.borderLayer?.sideColors = newValue ?? [:]
+            self.borderLayer?.borders = newValue ?? []
         }
     }
     
-    var sideWidths: [SidePosition: CGFloat]? {
+    var borderColors: [BorderPosition: UIColor]? {
         get {
-            self.borderLayer?.sideWidths
+            self.borderLayer?.borderColors
         }
         set {
-            self.borderLayer?.sideWidths = newValue ?? [:]
+            self.borderLayer?.borderColors = newValue ?? [:]
         }
     }
     
-    var sideInsets: [SidePosition: SideInsets]? {
+    var borderWidths: [BorderPosition: CGFloat]? {
         get {
-            self.borderLayer?.sideInsets
+            self.borderLayer?.borderWidths
         }
         set {
-            self.borderLayer?.sideInsets = newValue ?? [:]
+            self.borderLayer?.borderWidths = newValue ?? [:]
+        }
+    }
+    
+    var borderInsets: [BorderPosition: BorderInsets]? {
+        get {
+            self.borderLayer?.borderInsets
+        }
+        set {
+            self.borderLayer?.borderInsets = newValue ?? [:]
         }
     }
     

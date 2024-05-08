@@ -20,23 +20,23 @@ public extension Reactive where Base: UIView {
         }
     }
     
-    var borderColor: Binder<UIColor?> {
+    var layerBorderColor: Binder<UIColor?> {
         return Binder(self.base) { view, color in
             view.layerBorderColor = color
         }
     }
     
-    var sideBorderColor: Binder<UIColor?> {
+    var borderColor: Binder<UIColor?> {
         return Binder(self.base) { view, color in
             if let color = color {
-                view.sideColors = [
+                view.borderColors = [
                     .top: color,
                     .left: color,
                     .bottom: color,
                     .right: color
                 ]
             } else {
-                view.sideColors = nil
+                view.borderColors = nil
             }
         }
     }
@@ -45,36 +45,36 @@ public extension Reactive where Base: UIView {
 
 public extension ThemeProxy where Base: UIView {
 
-    var borderColor: ThemeAttribute<UIColor?> {
+    var layerBorderColor: ThemeAttribute<UIColor?> {
         get { fatalError("set only") }
         set {
             base.layer.borderColor = newValue.value?.cgColor
             let disposable = newValue.stream
                 .take(until: base.rx.deallocating)
                 .observe(on: MainScheduler.instance)
-                .bind(to: base.rx.borderColor)
-            hold(disposable, for: "borderColor")
+                .bind(to: base.rx.layerBorderColor)
+            hold(disposable, for: "layerBorderColor")
         }
     }
 
-    var sideBorderColor: ThemeAttribute<UIColor?> {
+    var borderColor: ThemeAttribute<UIColor?> {
         get { fatalError("set only") }
         set {
             if let color = newValue.value {
-                base.sideColors = [
+                base.borderColors = [
                     .top: color,
                     .left: color,
                     .bottom: color,
                     .right: color
                 ]
             } else {
-                base.sideColors = nil
+                base.borderColors = nil
             }
             let disposable = newValue.stream
                 .take(until: base.rx.deallocating)
                 .observe(on: MainScheduler.instance)
-                .bind(to: base.rx.sideBorderColor)
-            hold(disposable, for: "sideBorderColor")
+                .bind(to: base.rx.borderColor)
+            hold(disposable, for: "borderColor")
         }
     }
     
