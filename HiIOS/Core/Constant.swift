@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import QMUIKit
 import DeviceKit
 
 // MARK: - 编译常量

@@ -8,7 +8,6 @@
 import UIKit
 import UICKeyChainStore
 import FCUUID
-import QMUIKit
 import DeviceKit
 
 public extension UIDevice {
