@@ -57,10 +57,10 @@ open class TileCell: BaseCollectionCell, ReactorKit.View {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.borderLayer?.borders = .bottom
-        self.borderLayer?.borderColors = [BorderLayer.Border.bottom: UIColor.border]
-        self.borderLayer?.borderWidths = [BorderLayer.Border.bottom: pixelOne]
-        self.borderLayer?.borderInsets = [BorderLayer.Border.bottom: (15, 0)]
+        self.sidePositions = .bottom
+        self.sideColors = [.bottom: UIColor.border]
+        self.sideWidths = [.bottom: pixelOne]
+        self.sideInsets = [.bottom: (15, 0)]
         self.contentView.addSubview(self.titleLabel)
         self.contentView.addSubview(self.detailLabel)
         self.contentView.addSubview(self.iconImageView)
@@ -73,7 +73,7 @@ open class TileCell: BaseCollectionCell, ReactorKit.View {
     }
     
     open override class var layerClass: AnyClass {
-        return BorderLayer.self
+        return SideLayer.self
     }
     
     open override func layoutSublayers(of layer: CALayer) {
@@ -143,7 +143,7 @@ open class TileCell: BaseCollectionCell, ReactorKit.View {
         guard let tile = reactor.model as? Tile else { return }
         if tile.isSpace {
             self.contentView.theme.backgroundColor = themeService.attribute { _ in reactor.color ?? UIColor.clear }
-            self.borderLayer?.borderWidths = [:]
+            self.sideWidths = nil
             self.indicatorImageView.isHidden = true
             return
         }
@@ -173,7 +173,7 @@ open class TileCell: BaseCollectionCell, ReactorKit.View {
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] divided in
                 guard let `self` = self else { return }
-                self.borderLayer?.borderWidths = divided ? [BorderLayer.Border.bottom: pixelOne] : [:]
+                self.sideWidths = divided ? [.bottom: pixelOne] : nil
             })
             .disposed(by: self.disposeBag)
         reactor.state.map { _ in }

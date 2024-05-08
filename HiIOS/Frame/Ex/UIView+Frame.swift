@@ -6,7 +6,6 @@
 //
 
 import UIKit
-// import QMUIKit
 import RxSwift
 import RxCocoa
 
@@ -16,8 +15,44 @@ public enum ShadowPattern {
 
 public extension UIView {
     
-    var borderLayer: BorderLayer? {
-        return self.layer as? BorderLayer
+    fileprivate var borderLayer: SideLayer? {
+        return self.layer as? SideLayer
+    }
+    
+    var sidePositions: SidePosition? {
+        get {
+            self.borderLayer?.sidePositions
+        }
+        set {
+            self.borderLayer?.sidePositions = newValue ?? []
+        }
+    }
+    
+    var sideColors: [SidePosition: UIColor]? {
+        get {
+            self.borderLayer?.sideColors
+        }
+        set {
+            self.borderLayer?.sideColors = newValue ?? [:]
+        }
+    }
+    
+    var sideWidths: [SidePosition: CGFloat]? {
+        get {
+            self.borderLayer?.sideWidths
+        }
+        set {
+            self.borderLayer?.sideWidths = newValue ?? [:]
+        }
+    }
+    
+    var sideInsets: [SidePosition: SideInsets]? {
+        get {
+            self.borderLayer?.sideInsets
+        }
+        set {
+            self.borderLayer?.sideInsets = newValue ?? [:]
+        }
     }
     
     var top: CGFloat {
@@ -97,11 +132,11 @@ public extension UIView {
     }
     
     var leftWhenCenter: CGFloat {
-        ((self.superview?.bounds.width ?? 0 - self.frame.width) / 2.0).flat
+        (((self.superview?.bounds.width ?? 0) - self.frame.width) / 2.0).flat
     }
     
     var topWhenCenter: CGFloat {
-        ((self.superview?.bounds.height ?? 0 - self.frame.height) / 2.0).flat
+        (((self.superview?.bounds.height ?? 0) - self.frame.height) / 2.0).flat
     }
 
     var centerX: CGFloat {
@@ -259,7 +294,7 @@ public extension UIView {
     }
     
     func startRotating() {
-        if self.layer.animation(forKey: "rotationAnimation") != nil {
+        if self.layer.animation(forKey: "hi.rotationAnimation") != nil {
             return
         }
         let animation = CABasicAnimation(keyPath: "transform")
@@ -269,11 +304,12 @@ public extension UIView {
         animation.repeatCount = .infinity
         animation.isCumulative = true
         animation.isRemovedOnCompletion = false
-        self.layer.add(animation, forKey: "rotationAnimation")
+        self.layer.add(animation, forKey: "hi.rotationAnimation")
     }
     
     func stopRotating() {
-        self.layer.removeAnimation(forKey: "rotationAnimation")
+        self.layer.removeAnimation(forKey: "hi.rotationAnimation")
     }
+    
 }
 

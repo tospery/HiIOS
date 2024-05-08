@@ -125,7 +125,6 @@ extension BindCollectionCell: DZNEmptyDataSetSource {
         if self.isLoading == false && self.error != nil {
             return self.error?.asHiError.displayImage
         }
-        // return UIImage.loading.qmui_image(withTintColor: .primary)
         return UIImage.loading.withTintColor(.primary, renderingMode: .alwaysTemplate)
     }
     

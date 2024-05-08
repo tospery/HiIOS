@@ -26,10 +26,18 @@ public extension Reactive where Base: UIView {
         }
     }
     
-    var qmui_borderColor: Binder<UIColor?> {
+    var sideBorderColor: Binder<UIColor?> {
         return Binder(self.base) { view, color in
-            // YJX_TODO
-            // view.qmui_borderColor = color
+            if let color = color {
+                view.sideColors = [
+                    .top: color,
+                    .left: color,
+                    .bottom: color,
+                    .right: color
+                ]
+            } else {
+                view.sideColors = nil
+            }
         }
     }
     
@@ -49,16 +57,24 @@ public extension ThemeProxy where Base: UIView {
         }
     }
 
-    var qmui_borderColor: ThemeAttribute<UIColor?> {
+    var sideBorderColor: ThemeAttribute<UIColor?> {
         get { fatalError("set only") }
         set {
-            // YJX_TODO
-            // base.qmui_borderColor = newValue.value
+            if let color = newValue.value {
+                base.sideColors = [
+                    .top: color,
+                    .left: color,
+                    .bottom: color,
+                    .right: color
+                ]
+            } else {
+                base.sideColors = nil
+            }
             let disposable = newValue.stream
                 .take(until: base.rx.deallocating)
                 .observe(on: MainScheduler.instance)
-                .bind(to: base.rx.qmui_borderColor)
-            hold(disposable, for: "qmui_borderColor")
+                .bind(to: base.rx.sideBorderColor)
+            hold(disposable, for: "sideBorderColor")
         }
     }
     

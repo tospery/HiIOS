@@ -126,7 +126,6 @@ public extension String {
         var results = [String].init()
         if let match = regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: self.utf16.count)) {
             for index in 1...count {
-                let range = Range(match.range(at: index), in: self)
                 if let range = Range(match.range(at: index), in: self) {
                     let string = String(self[range])
                     results.append(string)

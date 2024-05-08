@@ -165,7 +165,7 @@ extension KingfisherError: HiErrorCompatible {
             case .invalidHTTPStatusCode(let response):
                 return .server(
                     response.statusCode,
-                    HTTPURLResponse.localizedString(forStatusCode: response.statusCode) ?? self.localizedDescription,
+                    HTTPURLResponse.localizedString(forStatusCode: response.statusCode),
                     nil
                 )
             default:

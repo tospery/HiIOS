@@ -95,7 +95,7 @@ private extension HiLoggerPlugin {
 		
         if (isFromError && configuration.logOptions.contains(.errorResponseBody))
             || configuration.logOptions.contains(.successResponseBody) {
-            var info = "(\(response.statusCode), \(response.request?.url?.pathString ?? ""))"
+            let info = "(\(response.statusCode), \(response.request?.url?.pathString ?? ""))"
             let json = configuration.formatter.responseData(response.data)
             output.append(configuration.formatter.entry("Response", "\(info)\n\(json)", target))
         }

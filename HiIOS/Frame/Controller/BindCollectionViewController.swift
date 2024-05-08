@@ -139,14 +139,7 @@ open class BindCollectionViewController: HiIOS.CollectionViewController, Reactor
             let type = url.queryValue(for: Parameter.backType)?.int ?? 0
             let animated = url.queryValue(for: Parameter.animated)?.bool
             let result = url.queryValue(for: Parameter.result)
-            let cancel = url.queryValue(for: Parameter.cancel)?.bool
             let message = url.queryValue(for: Parameter.message)
-//            self.back(
-//                type: .init(rawValue: type) ?? .auto,
-//                data: result,
-//                animated: animated ?? true,
-//                message: message
-//            )
             self.back(type: .init(rawValue: type), result: result, message: message, animated: animated ?? true)
             return
         }

@@ -150,7 +150,7 @@ final public class Router {
                 if string.hasPrefix(base) {
                     let native = string.replacingOccurrences(of: base, with: UIApplication.shared.urlScheme + "://")
                     let result = navigator.jump(native, context: context)
-                    if let rt = result as? Bool {
+                    if result is Bool {
                         return nil
                     }
                     if let vc = result as? UIViewController {
@@ -190,7 +190,7 @@ final public class Router {
             let observer = parameters?[Parameter.routerObserver] as? AnyObserver<Any>
             let completion: (() -> Void) = {
                 if result != nil {
-                    observer?.onNext(result)
+                    observer?.onNext(result!)
                 }
                 observer?.onCompleted()
             }

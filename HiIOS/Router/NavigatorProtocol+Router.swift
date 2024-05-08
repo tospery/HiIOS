@@ -270,14 +270,14 @@ public extension NavigatorProtocol {
     }
     
     private func getType(_ url: URLConvertible, context: Any?, key: String) -> Int? {
-        var parameters: [String: Any] = url.queryParameters ?? [:]
+        var parameters: [String: Any] = url.queryParameters
         parameters += context as? [String: Any] ?? [:]
         return parameters.int(for: key)
     }
     
     /// 用户参数优先级高于函数参数/
     private func getAnimated(_ url: URLConvertible, context: Any?, animated: Bool) -> Bool {
-        var parameters: [String: Any] = url.queryParameters ?? [:]
+        var parameters: [String: Any] = url.queryParameters
         parameters += context as? [String: Any] ?? [:]
         return parameters.bool(for: Parameter.animated) ?? animated
     }
@@ -324,7 +324,7 @@ public extension NavigatorProtocol {
     
     private func contextForBack(type: BackType?, animated: Bool, message: String?) -> Any {
         var ctx = self.convert(context: [
-            Parameter.backType: type,
+            Parameter.backType: type as Any?,
             Parameter.animated: animated,
             Parameter.message: message
         ])

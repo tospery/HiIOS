@@ -22,7 +22,7 @@ public extension ModelType {
         self.toJSON().sortedJSONString
     }
     
-    public func hash(into hasher: inout Hasher) {
+    func hash(into hasher: inout Hasher) {
         hasher.combine(self.id)
     }
     

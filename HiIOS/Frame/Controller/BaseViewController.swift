@@ -79,7 +79,6 @@ open class BaseViewController: UIViewController {
         var height = 0.f
         if let tabBar = self.tabBarController?.tabBar,
            tabBar.isHidden == false,
-           // self.qmui_previous == nil,
            self.previous == nil,
            self.hidesBottomBarWhenPushed == false {
             height += tabBar.height
@@ -148,8 +147,7 @@ open class BaseViewController: UIViewController {
                 self.navigationBar.transparet()
             } else {
                 if self.hidesNavBottomLine {
-                    // YJX_TODO
-                    // self.navigationBar.qmui_borderPosition = QMUIViewBorderPosition.init(rawValue: 0)
+                    self.navigationBar.sidePositions = nil
                 }
             }
             if self.navigationController?.viewControllers.count ?? 0 > 1 {
@@ -158,7 +156,6 @@ open class BaseViewController: UIViewController {
                     self.back(type: .popOne)
                 }).disposed(by: self.disposeBag)
             } else {
-               // if self.qmui_isPresented() {
                 if self.isPresented {
                     self.navigationBar.addCloseButtonToLeft().rx.tap.subscribe(onNext: { [weak self] _ in
                         guard let `self` = self else { return }
@@ -246,7 +243,7 @@ open class BaseViewController: UIViewController {
 //            self.callback?.onNext(BackResult(type: type, data: data))
 //        }
         if result != nil {
-            self.callback?.onNext(result)
+            self.callback?.onNext(result!)
         }
         self.callback?.onCompleted()
         self.mydealloc.onNext(())

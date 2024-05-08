@@ -22,6 +22,15 @@ public class NavigationBar: UIView {
     public var isTransparet = false
     public var style = Style.automatic
     
+    open override class var layerClass: AnyClass {
+        return SideLayer.self
+    }
+    
+    open override func layoutSublayers(of layer: CALayer) {
+        super.layoutSublayers(of: layer)
+        self.layer.frame.size = self.bounds.size
+    }
+    
 //    private var myIsTransparet = false
 //    @objc public dynamic var isTransparet: Bool {
 //        get {
@@ -84,15 +93,33 @@ public class NavigationBar: UIView {
         }
     }
 
-    // YJX_TODO
-//    @objc public dynamic var lineColor: UIColor? {
-//        get {
-//            return self.qmui_borderColor
-//        }
-//        set {
-//            self.qmui_borderColor = newValue
-//        }
-//    }
+    @objc public dynamic var lineColor: UIColor? {
+        get {
+            var color = self.sideColors?[.top]
+            if color == nil {
+                color = self.sideColors?[.left]
+            }
+            if color == nil {
+                color = self.sideColors?[.bottom]
+            }
+            if color == nil {
+                color = self.sideColors?[.right]
+            }
+            return color
+        }
+        set {
+            if let color = newValue {
+                self.sideColors = [
+                    .top: color,
+                    .left: color,
+                    .bottom: color,
+                    .right: color
+                ]
+            } else {
+                self.sideColors = nil
+            }
+        }
+    }
     
     public var leftButtons: [UIButton] = []
     public var rightButtons: [UIButton] = []
@@ -127,10 +154,9 @@ public class NavigationBar: UIView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        // YJX_TODO
-//        self.qmui_borderColor = .lightGray
-//        self.qmui_borderWidth = pixelOne
-//        self.qmui_borderPosition = .bottom
+        self.sidePositions = .bottom
+        self.sideWidths = [.bottom: pixelOne]
+        self.sideColors = [.bottom: .lightGray]
         self.addSubview(self.bgImageView)
         self.addSubview(self.titleLabel)
     }
@@ -278,18 +304,16 @@ public class NavigationBar: UIView {
     
     public func transparet() {
         self.backgroundColor = .clear
-        // YJX_TODO
-        // self.qmui_borderPosition = .init(rawValue: 0)
+        self.sidePositions = nil
         self.isTransparet = true
     }
     
     public func reset() {
         self.backgroundColor = .white
         self.isTransparet = false
-        // YJX_TODO
-//        self.qmui_borderColor = self.layerBorderColor ?? .lightGray
-//        self.qmui_borderWidth = pixelOne
-//        self.qmui_borderPosition = .bottom
+        self.sidePositions = .bottom
+        self.sideWidths = [.bottom: pixelOne]
+        self.sideColors = [.bottom: self.layerBorderColor ?? .lightGray]
     }
     
 }
@@ -323,8 +347,7 @@ public extension Reactive where Base: NavigationBar {
 
     var lineColor: Binder<UIColor?> {
         return Binder(self.base) { view, color in
-            // YJX_TODO
-            // view.lineColor = color
+            view.lineColor = color
         }
     }
     
@@ -335,8 +358,16 @@ public extension ThemeProxy where Base: NavigationBar {
     var lineColor: ThemeAttribute<UIColor?> {
         get { fatalError("set only") }
         set {
-            // YJX_TODO
-            // base.qmui_borderColor = newValue.value
+            if let color = newValue.value {
+                base.sideColors = [
+                    .top: color,
+                    .left: color,
+                    .bottom: color,
+                    .right: color
+                ]
+            } else {
+                base.sideColors = nil
+            }
             let disposable = newValue.stream
                 .take(until: base.rx.deallocating)
                 .observe(on: MainScheduler.instance)

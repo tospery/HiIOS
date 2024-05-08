@@ -37,7 +37,7 @@ public extension Reactive where Base: Navigator {
             if let rt = result as? Bool {
                 success = rt
             }
-            if let vc = result as? UIViewController {
+            if result is UIViewController {
                 success = true
             }
             if !success {
