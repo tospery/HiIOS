@@ -84,14 +84,15 @@ public class NavigationBar: UIView {
         }
     }
 
-    @objc public dynamic var lineColor: UIColor? {
-        get {
-            return self.qmui_borderColor
-        }
-        set {
-            self.qmui_borderColor = newValue
-        }
-    }
+    // YJX_TODO
+//    @objc public dynamic var lineColor: UIColor? {
+//        get {
+//            return self.qmui_borderColor
+//        }
+//        set {
+//            self.qmui_borderColor = newValue
+//        }
+//    }
     
     public var leftButtons: [UIButton] = []
     public var rightButtons: [UIButton] = []
@@ -126,9 +127,10 @@ public class NavigationBar: UIView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        self.qmui_borderColor = .lightGray
-        self.qmui_borderWidth = pixelOne
-        self.qmui_borderPosition = .bottom
+        // YJX_TODO
+//        self.qmui_borderColor = .lightGray
+//        self.qmui_borderWidth = pixelOne
+//        self.qmui_borderPosition = .bottom
         self.addSubview(self.bgImageView)
         self.addSubview(self.titleLabel)
     }
@@ -276,16 +278,18 @@ public class NavigationBar: UIView {
     
     public func transparet() {
         self.backgroundColor = .clear
-        self.qmui_borderPosition = .init(rawValue: 0)
+        // YJX_TODO
+        // self.qmui_borderPosition = .init(rawValue: 0)
         self.isTransparet = true
     }
     
     public func reset() {
         self.backgroundColor = .white
         self.isTransparet = false
-        self.qmui_borderColor = self.layerBorderColor ?? .lightGray
-        self.qmui_borderWidth = pixelOne
-        self.qmui_borderPosition = .bottom
+        // YJX_TODO
+//        self.qmui_borderColor = self.layerBorderColor ?? .lightGray
+//        self.qmui_borderWidth = pixelOne
+//        self.qmui_borderPosition = .bottom
     }
     
 }
@@ -319,7 +323,8 @@ public extension Reactive where Base: NavigationBar {
 
     var lineColor: Binder<UIColor?> {
         return Binder(self.base) { view, color in
-            view.lineColor = color
+            // YJX_TODO
+            // view.lineColor = color
         }
     }
     
@@ -330,7 +335,8 @@ public extension ThemeProxy where Base: NavigationBar {
     var lineColor: ThemeAttribute<UIColor?> {
         get { fatalError("set only") }
         set {
-            base.qmui_borderColor = newValue.value
+            // YJX_TODO
+            // base.qmui_borderColor = newValue.value
             let disposable = newValue.stream
                 .take(until: base.rx.deallocating)
                 .observe(on: MainScheduler.instance)

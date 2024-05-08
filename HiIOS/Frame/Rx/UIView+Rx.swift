@@ -28,7 +28,8 @@ public extension Reactive where Base: UIView {
     
     var qmui_borderColor: Binder<UIColor?> {
         return Binder(self.base) { view, color in
-            view.qmui_borderColor = color
+            // YJX_TODO
+            // view.qmui_borderColor = color
         }
     }
     
@@ -51,7 +52,8 @@ public extension ThemeProxy where Base: UIView {
     var qmui_borderColor: ThemeAttribute<UIColor?> {
         get { fatalError("set only") }
         set {
-            base.qmui_borderColor = newValue.value
+            // YJX_TODO
+            // base.qmui_borderColor = newValue.value
             let disposable = newValue.stream
                 .take(until: base.rx.deallocating)
                 .observe(on: MainScheduler.instance)
