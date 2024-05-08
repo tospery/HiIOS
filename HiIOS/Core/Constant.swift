@@ -27,7 +27,7 @@ public var isSimulator: Bool { Device.current.isSimulator }
 /// 操作系统版本号，只获取第二级的版本号，例如 10.3.1 只会得到 10.3
 public var iOSVersion: Double { (UIDevice.current.systemVersion as NSString).doubleValue }
 /// 是否横竖屏，用户界面横屏了才会返回YES
-public var isLandscape: Bool { UIApplication.shared.windows.first!.windowScene!.interfaceOrientation.isLandscape }
+public var isLandscape: Bool { UIApplication.shared.statusBarOrientation.isLandscape }
 /// 无论支不支持横屏，只要设备横屏了，就会返回YES
 public var isDeviceLandscape: Bool { UIDevice.current.orientation.isLandscape }
 /// 屏幕宽度，会根据横竖屏的变化而变化

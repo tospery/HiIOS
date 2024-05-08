@@ -28,6 +28,15 @@ open class BaseCollectionCell: UICollectionViewCell {
         self.disposeBag = DisposeBag()
     }
     
+    open override class var layerClass: AnyClass {
+        return BorderLayer.self
+    }
+    
+    open override func layoutSublayers(of layer: CALayer) {
+        super.layoutSublayers(of: layer)
+        self.layer.frame.size = self.bounds.size
+    }
+    
     // MARK: - Public
     open func bind(item: BaseCollectionItem) {
         self.model = item.model

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-// import QMUIKit
 import RxSwift
 import RxCocoa
 import SwifterSwift
@@ -30,16 +29,6 @@ public class NavigationBar: UIView {
         super.layoutSublayers(of: layer)
         self.layer.frame.size = self.bounds.size
     }
-    
-//    private var myIsTransparet = false
-//    @objc public dynamic var isTransparet: Bool {
-//        get {
-//            self.myIsTransparet
-//        }
-//        set {
-//            self.myIsTransparet = newValue
-//        }
-//    }
     
     @objc public dynamic var titleColor: UIColor? {
         get {
