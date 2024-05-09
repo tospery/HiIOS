@@ -58,23 +58,23 @@ final public class Subjection {
     }
     
     public class func update<T: Object>(_ type: T.Type, _ value: T?, _ reactive: Bool = true) {
-        if let value = value {
-            try! defaultRealm.write {
-                defaultRealm.delete(value)
-                defaultRealm.add(value)
-            }
-        } else {
-            let objects = defaultRealm.objects(type)
-            try! defaultRealm.write {
-                defaultRealm.delete(objects)
-            }
-        }
-        if reactive {
-            self.for(type).accept(value)
-        } else {
-            let key = String(fullname: type)
-            subjects[key] = value
-        }
+//        if let value = value {
+//            try! defaultRealm.write {
+//                defaultRealm.delete(value)
+//                defaultRealm.add(value)
+//            }
+//        } else {
+//            let objects = defaultRealm.objects(type)
+//            try! defaultRealm.write {
+//                defaultRealm.delete(objects)
+//            }
+//        }
+//        if reactive {
+//            self.for(type).accept(value)
+//        } else {
+//            let key = String(fullname: type)
+//            subjects[key] = value
+//        }
     }
 
 }

@@ -14,18 +14,15 @@ import RealmSwift
 public extension Object {
     
     static var current: Self? {
-//        // EmbeddedObject Projection AsymmetricObject RealmFetchable
-//        // let aa = defaultRealm.add(T##object: Object##Object)
-//        let aaa = defaultRealm.delete(<#T##object: ObjectBase##ObjectBase#>)
-        let key = String(fullname: self)
-        if let subject = subjects[key] as? BehaviorRelay<Self?> {
-            return subject.value
-        }
-        if let object = defaultRealm.objects(self).first {
-            let subject = BehaviorRelay<Self?>(value: object)
-            subjects[key] = subject
-            return object
-        }
+//        let key = String(fullname: self)
+//        if let subject = subjects[key] as? BehaviorRelay<Self?> {
+//            return subject.value
+//        }
+//        if let object = defaultRealm.objects(self).first {
+//            let subject = BehaviorRelay<Self?>(value: object)
+//            subjects[key] = subject
+//            return object
+//        }
         return nil
     }
 
@@ -41,10 +38,10 @@ public extension Object {
     static func eraseObject(id: String? = nil) {
 //        let key = self.objectKey(id: id)
 //        try? archiver.removeObject(forKey: key)
-        try! defaultRealm.write {
-            let objects = defaultRealm.objects(self)
-            defaultRealm.delete(objects)
-        }
+//        try! defaultRealm.write {
+//            let objects = defaultRealm.objects(self)
+//            defaultRealm.delete(objects)
+//        }
     }
     
 }

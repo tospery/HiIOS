@@ -16,7 +16,7 @@ let archiver = try! Storage<String, String>.init(
     transformer: TransformerFactory.forCodable(ofType: String.self)
 )
 
-public let defaultRealm = try! Realm()
+//public let defaultRealm = try! Realm()
 
 // MARK: - 存储协议
 public protocol Storable: ModelType, Codable {
