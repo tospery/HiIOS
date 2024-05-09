@@ -11,8 +11,7 @@ import ObjectMapper
 
 public class Tile: Object, ObjectKeyIdentifiable, ModelType {
     
-    @Persisted(primaryKey: true) var _id: ObjectId
-    @Persisted public var mId: String
+    @Persisted(primaryKey: true) public var _id: String
     @Persisted public var divided: Bool?
     @Persisted public var indicated: Bool?
     @Persisted public var checked: Bool?
@@ -24,7 +23,7 @@ public class Tile: Object, ObjectKeyIdentifiable, ModelType {
     @Persisted public var tintColor: String?
     @Persisted public var target: String?
     
-    public var isSpace: Bool { mId == "space" }
+    public var isSpace: Bool { _id == "space" }
     
     required public override init() {
         super.init()
@@ -43,7 +42,8 @@ public class Tile: Object, ObjectKeyIdentifiable, ModelType {
         tintColor: String? = nil,
         target: String? = nil
     ) {
-        self.mId = id
+        super.init()
+        self._id = id
         self.icon = icon
         self.title = title
         self.detail = detail
@@ -59,7 +59,7 @@ public class Tile: Object, ObjectKeyIdentifiable, ModelType {
     required public init?(map: ObjectMapper.Map) {}
     
     public func mapping(map: ObjectMapper.Map) {
-        mId             <- map["id"]
+        _id             <- map["id"]
         height          <- map["height"]
         color           <- map["color"]
         tintColor       <- map["tintColor"]
