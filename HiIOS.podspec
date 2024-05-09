@@ -22,13 +22,13 @@ Pod::Spec.new do |s|
   	ss.dependency 'SwiftyBeaver', '1.9.5'
   	ss.dependency 'ObjectMapper-Hi', '4.2.0-v2'
   	ss.dependency 'SwifterSwift', '6.0.0'
+	ss.dependency 'RxRealm', '5.0.4'
   end
   
   s.subspec 'Cache' do |ss|
     ss.source_files = 'HiIOS/Cache/**/*'
   	ss.dependency 'HiIOS/Core'
   	ss.dependency 'Cache', '6.0.0'
-	ss.dependency 'RxRealm', '5.0.4'
   end
   
   s.subspec 'Router' do |ss|

@@ -7,10 +7,11 @@
 
 import Foundation
 import ObjectMapper_Hi
+import RealmSwift
 import SwifterSwift
 
 // MARK: - 模型协议
-public protocol ModelType: Identifiable, Mappable, Hashable, CustomStringConvertible {
+public protocol ModelType: Identifiable, Mapper, Hashable, CustomStringConvertible {
     var isValid: Bool { get }
     init()
 }
@@ -19,7 +20,8 @@ public extension ModelType {
 
     var isValid: Bool { self.id.hashValue != 0 }
     var description: String {
-        self.toJSON().sortedJSONString
+        // self.toJSON().sortedJSONString
+        ""
     }
     
     func hash(into hasher: inout Hasher) {

@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RealmSwift
 import ObjectMapper_Hi
 
 public var subjects: [String: Any] = [:]
@@ -44,6 +45,48 @@ final public class Subjection {
 
 }
 
+final public class MySubjection {
+    
+    public class func `for`<T: Object>(_ type: T.Type) -> BehaviorRelay<T?> {
+        let key = String(fullname: type)
+        if let subject = subjects[key] as? BehaviorRelay<T?> {
+            return subject
+        }
+        let subject = BehaviorRelay<T?>(value: type.current)
+        subjects[key] = subject
+        return subject
+    }
+    
+    public class func update<T: Object>(_ type: T.Type, _ value: T?, _ reactive: Bool = true) {
+//        if let id = value?.id as? String, !id.isEmpty {
+//            key = id
+//        }
+//        if let id = id {
+//            T.storeObject(value, id: id)
+//        } else {
+//            T.eraseObject(id: id)
+//        }
+        if let value = value {
+            try! defaultRealm.write {
+                defaultRealm.delete(value)
+                defaultRealm.add(value)
+            }
+        } else {
+            let objects = defaultRealm.objects(type)
+            try! defaultRealm.write {
+                defaultRealm.delete(objects)
+            }
+        }
+        if reactive {
+            self.for(type).accept(value)
+        } else {
+            let key = String(fullname: type)
+            subjects[key] = value
+        }
+    }
+
+}
+
 public protocol Subjective: Storable {
     static var current: Self? { get }
 }
@@ -64,4 +107,3 @@ public extension Subjective {
     }
     
 }
-

@@ -29,7 +29,7 @@ let archiver = try! Storage<String, String>.init(
     transformer: TransformerFactory.forCodable(ofType: String.self)
 )
 
-let realm = try! Realm()
+public let defaultRealm = try! Realm()
 
 // MARK: - 存储协议
 public protocol Storable: ModelType, Codable {
@@ -86,26 +86,28 @@ public extension Storable {
     }
 
     static func cachedObject(id: String? = nil) -> Self? {
-        let key = self.objectKey(id: id)
-        if let object = try? archiver.transformCodable(ofType: self).object(forKey: key) {
-            return object
-        }
-        if let path = Bundle.main.path(forResource: key, ofType: "json"),
-            let json = try? String(contentsOfFile: path, encoding: .utf8) {
-            return Self(JSONString: json)
-        }
+//        let key = self.objectKey(id: id)
+//        if let object = try? archiver.transformCodable(ofType: self).object(forKey: key) {
+//            return object
+//        }
+//        if let path = Bundle.main.path(forResource: key, ofType: "json"),
+//            let json = try? String(contentsOfFile: path, encoding: .utf8) {
+//            return Self(JSONString: json)
+//        }
+        // YJX_TODO
         return nil
     }
 
     static func cachedArray(page: String? = nil) -> [Self]? {
-        let key = self.arrayKey(page: page)
-        if let array = try? archiver.transformCodable(ofType: [Self].self).object(forKey: key) {
-            return array
-        }
-        if let path = Bundle.main.path(forResource: key, ofType: "json"),
-            let json = try? String(contentsOfFile: path, encoding: .utf8) {
-            return [Self](JSONString: json)
-        }
+//        let key = self.arrayKey(page: page)
+//        if let array = try? archiver.transformCodable(ofType: [Self].self).object(forKey: key) {
+//            return array
+//        }
+//        if let path = Bundle.main.path(forResource: key, ofType: "json"),
+//            let json = try? String(contentsOfFile: path, encoding: .utf8) {
+//            return [Self](JSONString: json)
+//        }
+        // YJX_TODO
         return nil
     }
 

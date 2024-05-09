@@ -61,13 +61,15 @@ public extension Dictionary where Key == String {
     }
 
     func model<Model: ModelType>(for key: String, type: Model.Type) -> Model? {
-        guard let value = self[key] else { return nil }
-        if value is Model {
-            return value as? Model
-        }
-        guard let string = self.string(for: key) else { return nil }
-        guard let base64 = string.base64Decoded else { return nil }
-        return Model.init(JSONString: base64)
+//        guard let value = self[key] else { return nil }
+//        if value is Model {
+//            return value as? Model
+//        }
+//        guard let string = self.string(for: key) else { return nil }
+//        guard let base64 = string.base64Decoded else { return nil }
+//        return Model.init(JSONString: base64)
+        // YJX_TODO
+         nil
     }
 
     func `enum`<T: RawRepresentable>(for key: String, type: T.Type) -> T? where T.RawValue == String {
