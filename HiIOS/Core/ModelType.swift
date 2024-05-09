@@ -38,10 +38,6 @@ public protocol UserType: ModelType {
     var avatar: String? { get }
 }
 
-public protocol ConfigurationType: ModelType {
-    var localization: Localization { get }
-}
-
 public struct WrappedModel: ModelType {
 
     public var id = 0

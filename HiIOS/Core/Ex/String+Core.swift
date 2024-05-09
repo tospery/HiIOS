@@ -11,6 +11,8 @@ import SwifterSwift
 public extension String {
     
     // MARK: - Properties
+    var localizedString: String { NSLocalizedString(self, comment: "") }
+    
     var forcedURL: URL? {
         var url = URL.init(string: self)
         if url == nil {
