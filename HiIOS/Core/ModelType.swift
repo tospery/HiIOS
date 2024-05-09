@@ -32,8 +32,10 @@ public extension ModelType {
 }
 
 public protocol UserType: ModelType {
+    var userid: String? { get }
     var username: String? { get }
-    var password: String? { get }
+    var nickname: String? { get }
+    var avatar: String? { get }
 }
 
 public protocol ConfigurationType: ModelType {

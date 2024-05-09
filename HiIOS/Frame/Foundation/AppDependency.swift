@@ -65,6 +65,7 @@ open class AppDependency {
         logger.print("屏幕尺寸: \(UIScreen.main.bounds.size)", module: .hiIOS)
         logger.print("安全区域: \(safeArea)", module: .hiIOS)
         logger.print("状态栏(\(statusBarHeightConstant))|导航栏(\(navigationBarHeight))|标签栏(\(tabBarHeight))", module: .hiIOS)
+        logger.print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.path ?? "", module: .hiIOS)
     }
     
     open func application(_ application: UIApplication, leaveDidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {

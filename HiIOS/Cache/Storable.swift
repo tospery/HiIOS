@@ -7,12 +7,29 @@
 
 import Foundation
 import Cache
+import ObjectMapper_Hi
+import RealmSwift
+
+//open class BaseModel: Object, ModelType, ObjectKeyIdentifiable {
+//    
+//    @Persisted(primaryKey: true) public var _id: ObjectId
+//    
+//    public required override init() { }
+//    
+//    public required init?(map: ObjectMapper_Hi.Map) { }
+//    
+//    public func mapping(map: ObjectMapper_Hi.Map) {
+//        _id  <- map["id"]
+//    }
+//}
 
 let archiver = try! Storage<String, String>.init(
     diskConfig: DiskConfig.init(name: "shared"),
     memoryConfig: MemoryConfig.init(),
     transformer: TransformerFactory.forCodable(ofType: String.self)
 )
+
+let realm = try! Realm()
 
 // MARK: - 存储协议
 public protocol Storable: ModelType, Codable {

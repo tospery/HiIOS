@@ -28,6 +28,7 @@ Pod::Spec.new do |s|
     ss.source_files = 'HiIOS/Cache/**/*'
   	ss.dependency 'HiIOS/Core'
   	ss.dependency 'Cache', '6.0.0'
+	ss.dependency 'RxRealm', '5.0.4'
   end
   
   s.subspec 'Router' do |ss|
