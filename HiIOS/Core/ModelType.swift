@@ -38,6 +38,7 @@ public protocol UserType: ModelType {
     var userid: String? { get }
     var username: String? { get }
     var nickname: String? { get }
+    var password: String? { get }
     var avatar: String? { get }
 }
 
