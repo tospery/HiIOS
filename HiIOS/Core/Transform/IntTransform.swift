@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import ObjectMapper_Hi
+import ObjectMapper
 import SwifterSwift
 
 public class IntTransform: TransformType {

@@ -6,29 +6,27 @@
 //
 
 import Foundation
-import ObjectMapper_Hi
+import ObjectMapper
 import RealmSwift
 import SwifterSwift
 
+public typealias JSONMap = ObjectMapper.Map
+
 // MARK: - 模型协议
-public protocol ModelType: Identifiable, Mappable, Hashable, CustomStringConvertible {
+public protocol ModelType: Mappable, Identifiable, Hashable, CustomStringConvertible {
     var isValid: Bool { get }
-    init()
-    
-//    init(value: Any)
-//    var isValid: Bool { get }
-//    func toJSON() -> [String: Any]
 }
 
 public extension ModelType {
 
     var isValid: Bool { self.id.hashValue != 0 }
-    var description: String {
-        self.toJSON().sortedJSONString
-    }
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(self.id)
+    }
+    
+    var description: String {
+        self.toJSONString() ?? self.id.hashValue.string
     }
     
     static func == (lhs: Self, rhs: Self) -> Bool {
@@ -57,10 +55,10 @@ public struct WrappedModel: ModelType {
         self.data = data
     }
     
-    public init?(map: ObjectMapper_Hi.Map) {
+    public init?(map: JSONMap) {
     }
     
-    public mutating func mapping(map: ObjectMapper_Hi.Map) {
+    public mutating func mapping(map: JSONMap) {
         data    <- map["data"]
     }
     

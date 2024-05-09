@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 import Moya
-import ObjectMapper_Hi
+import ObjectMapper
 
 public extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
 

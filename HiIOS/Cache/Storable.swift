@@ -7,21 +7,8 @@
 
 import Foundation
 import Cache
-import ObjectMapper_Hi
+import ObjectMapper
 import RealmSwift
-
-//open class BaseModel: Object, ModelType, ObjectKeyIdentifiable {
-//    
-//    @Persisted(primaryKey: true) public var _id: ObjectId
-//    
-//    public required override init() { }
-//    
-//    public required init?(map: ObjectMapper_Hi.Map) { }
-//    
-//    public func mapping(map: ObjectMapper_Hi.Map) {
-//        _id  <- map["id"]
-//    }
-//}
 
 let archiver = try! Storage<String, String>.init(
     diskConfig: DiskConfig.init(name: "shared"),
@@ -33,9 +20,6 @@ public let defaultRealm = try! Realm()
 
 // MARK: - 存储协议
 public protocol Storable: ModelType, Codable {
-
-    // associatedtype Base: Storable where Base.Base == Base
-    // associatedtype Store: Storable
 
     static func objectKey(id: String?) -> String
     static func arrayKey(page: String?) -> String
@@ -86,28 +70,26 @@ public extension Storable {
     }
 
     static func cachedObject(id: String? = nil) -> Self? {
-//        let key = self.objectKey(id: id)
-//        if let object = try? archiver.transformCodable(ofType: self).object(forKey: key) {
-//            return object
-//        }
-//        if let path = Bundle.main.path(forResource: key, ofType: "json"),
-//            let json = try? String(contentsOfFile: path, encoding: .utf8) {
-//            return Self(JSONString: json)
-//        }
-        // YJX_TODO
+        let key = self.objectKey(id: id)
+        if let object = try? archiver.transformCodable(ofType: self).object(forKey: key) {
+            return object
+        }
+        if let path = Bundle.main.path(forResource: key, ofType: "json"),
+            let json = try? String(contentsOfFile: path, encoding: .utf8) {
+            return Self(JSONString: json)
+        }
         return nil
     }
 
     static func cachedArray(page: String? = nil) -> [Self]? {
-//        let key = self.arrayKey(page: page)
-//        if let array = try? archiver.transformCodable(ofType: [Self].self).object(forKey: key) {
-//            return array
-//        }
-//        if let path = Bundle.main.path(forResource: key, ofType: "json"),
-//            let json = try? String(contentsOfFile: path, encoding: .utf8) {
-//            return [Self](JSONString: json)
-//        }
-        // YJX_TODO
+        let key = self.arrayKey(page: page)
+        if let array = try? archiver.transformCodable(ofType: [Self].self).object(forKey: key) {
+            return array
+        }
+        if let path = Bundle.main.path(forResource: key, ofType: "json"),
+            let json = try? String(contentsOfFile: path, encoding: .utf8) {
+            return [Self](JSONString: json)
+        }
         return nil
     }
 
@@ -115,11 +97,6 @@ public extension Storable {
         let key = self.objectKey(id: id)
         try? archiver.removeObject(forKey: key)
     }
-
-//    static func == (lhs: Self, rhs: Self) -> Bool {
-//        // lhs.description.sorted() == rhs.description.sorted()
-//        lhs.description == rhs.description
-//    }
 
 }
 

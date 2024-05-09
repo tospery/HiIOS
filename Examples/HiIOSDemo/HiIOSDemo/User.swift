@@ -16,3 +16,16 @@ import HiIOS
 //    @Persisted var avatar: String?
 //    @Persisted var type: Int
 //}
+
+
+class MyUser: Object, ObjectKeyIdentifiable {
+    @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted(indexed: true) var userid: Int
+    @Persisted var username: String?
+    
+    override class func propertiesMapping() -> [String : String] {
+        [
+            "username": "user_name"
+        ]
+    }
+}

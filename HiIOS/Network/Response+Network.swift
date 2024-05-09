@@ -7,7 +7,7 @@
 
 import Foundation
 import Moya
-import ObjectMapper_Hi
+import ObjectMapper
 
 public extension Response {
 

@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import RealmSwift
-import ObjectMapper_Hi
+import ObjectMapper
 
 public var subjects: [String: Any] = [:]
 

@@ -13,7 +13,7 @@ import RxSwiftExt
 import RxDataSources
 import ReactorKit
 import URLNavigator_Hi
-import ObjectMapper_Hi
+import ObjectMapper
 import Kingfisher
 import RxDataSources
 

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import ObjectMapper_Hi
+import ObjectMapper
 
 public struct Tile: Subjective {
     
