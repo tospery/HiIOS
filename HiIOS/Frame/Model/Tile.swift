@@ -26,6 +26,10 @@ public class Tile: Object, ObjectKeyIdentifiable, ModelType {
     
     public var isSpace: Bool { mId == "space" }
     
+    required public override init() {
+        super.init()
+    }
+    
     public init(
         id: String = "space",
         icon: String? = nil,

@@ -15,6 +15,7 @@ public typealias JSONMap = ObjectMapper.Map
 // MARK: - 模型协议
 public protocol ModelType: Mappable, Identifiable, Hashable, CustomStringConvertible {
     var isValid: Bool { get }
+    init()
 }
 
 public extension ModelType {
