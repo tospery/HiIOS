@@ -11,17 +11,20 @@ import RealmSwift
 import SwifterSwift
 
 // MARK: - 模型协议
-public protocol ModelType: Identifiable, Mapper, Hashable, CustomStringConvertible {
+public protocol ModelType: Identifiable, Mappable, Hashable, CustomStringConvertible {
     var isValid: Bool { get }
     init()
+    
+//    init(value: Any)
+//    var isValid: Bool { get }
+//    func toJSON() -> [String: Any]
 }
 
 public extension ModelType {
 
     var isValid: Bool { self.id.hashValue != 0 }
     var description: String {
-        // self.toJSON().sortedJSONString
-        ""
+        self.toJSON().sortedJSONString
     }
     
     func hash(into hasher: inout Hasher) {
@@ -54,10 +57,10 @@ public struct WrappedModel: ModelType {
         self.data = data
     }
     
-    public init?(map: Map) {
+    public init?(map: ObjectMapper_Hi.Map) {
     }
     
-    public mutating func mapping(map: Map) {
+    public mutating func mapping(map: ObjectMapper_Hi.Map) {
         data    <- map["data"]
     }
     

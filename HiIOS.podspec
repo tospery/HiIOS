@@ -22,13 +22,13 @@ Pod::Spec.new do |s|
   	ss.dependency 'SwiftyBeaver', '1.9.5'
   	ss.dependency 'ObjectMapper-Hi', '4.2.0-v2'
   	ss.dependency 'SwifterSwift', '6.0.0'
-	ss.dependency 'RxRealm', '5.0.4'
   end
   
   s.subspec 'Cache' do |ss|
     ss.source_files = 'HiIOS/Cache/**/*'
   	ss.dependency 'HiIOS/Core'
   	ss.dependency 'Cache', '6.0.0'
+	ss.dependency 'RxRealm', '5.0.4'
   end
   
   s.subspec 'Router' do |ss|
@@ -37,6 +37,7 @@ Pod::Spec.new do |s|
   	ss.dependency 'RxSwift', '~> 6.0'
   	ss.dependency 'RxCocoa', '~> 6.0'
   	ss.dependency 'URLNavigator-Hi', '2.5.1-v1'
+	ss.dependency 'RxRealm', '5.0.4'
   end
   
   s.subspec 'Network' do |ss|
@@ -44,6 +45,7 @@ Pod::Spec.new do |s|
   	ss.dependency 'HiIOS/Core'
   	ss.dependency 'RxRelay', '~> 6.0'
   	ss.dependency 'Moya/RxSwift', '15.0.0'
+	ss.dependency 'RxRealm', '5.0.4'
   end
   
   s.subspec 'Theme' do |ss|

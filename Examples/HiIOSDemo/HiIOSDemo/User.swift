@@ -9,10 +9,10 @@ import Foundation
 import RealmSwift
 import HiIOS
 
-class User: BaseModel, UserType {
-    @Persisted(indexed: true) var userid: String?
-    @Persisted var username: String?
-    @Persisted var nickname: String?
-    @Persisted var avatar: String?
-    @Persisted var type: Int
-}
+//class User: BaseModel, UserType {
+//    @Persisted(indexed: true) var userid: String?
+//    @Persisted var username: String?
+//    @Persisted var nickname: String?
+//    @Persisted var avatar: String?
+//    @Persisted var type: Int
+//}

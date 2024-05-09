@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RealmSwift
+import HiIOS
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+//        let aaa = Object(value: "")
+//        let bbb = aaa.to
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = .white
         self.window?.rootViewController = HomeViewController.init()
