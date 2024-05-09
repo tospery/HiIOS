@@ -72,6 +72,11 @@ public class Tile: Object, ObjectKeyIdentifiable, ModelType {
         target          <- map["target"]
     }
     
+    public override class func propertiesMapping() -> [String : String] {
+        [
+            "_id": "id"
+        ]
+    }
 //    public var id = "space"
 //    public var divided: Bool? = true
 //    public var indicated: Bool? = false
