@@ -33,13 +33,13 @@ public enum HiPagingStyle: Int, Codable {
     case pageViewController
 }
 
-public enum Localization: String, Codable {
-    case chinese    = "zh-Hans"
-    case english    = "en"
-    
-    public static let allValues = [chinese, english]
-    
-    public var preferredLanguages: [String]? {
-        [self.rawValue]
-    }
-}
+//public enum Localization: String, Codable {
+//    case chinese    = "zh-Hans"
+//    case english    = "en"
+//    
+//    public static let allValues = [chinese, english]
+//    
+//    public var preferredLanguages: [String]? {
+//        [self.rawValue]
+//    }
+//}

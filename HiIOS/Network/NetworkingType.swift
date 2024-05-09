@@ -95,7 +95,7 @@ public extension NetworkingType {
     }
     
     func requestArray<Model: ModelType>(_ target: Target, type: Model.Type) -> Single<[Model]> {
-        return self.request(target)
+        self.request(target)
             .mapArray(Model.self)
             .flatMap { $0.isEmpty ? .error(HiError.listIsEmpty) : .just($0) }
             .observe(on: MainScheduler.instance)

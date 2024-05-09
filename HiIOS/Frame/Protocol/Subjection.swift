@@ -13,39 +13,39 @@ import ObjectMapper
 
 public var subjects: [String: Any] = [:]
 
+//final public class Subjection {
+//    
+//    public class func `for`<T: Subjective>(_ type: T.Type) -> BehaviorRelay<T?> {
+//        let key = String(fullname: type)
+//        if let subject = subjects[key] as? BehaviorRelay<T?> {
+//            return subject
+//        }
+//        let subject = BehaviorRelay<T?>(value: type.current)
+//        subjects[key] = subject
+//        return subject
+//    }
+//    
+//    public class func update<T: Subjective>(_ type: T.Type, _ value: T?, _ reactive: Bool = true) {
+//        var key: String?
+//        if let id = value?.id as? String, !id.isEmpty {
+//            key = id
+//        }
+//        if let value = value {
+//            T.storeObject(value, id: key)
+//        } else {
+//            T.eraseObject(id: key)
+//        }
+//        if reactive {
+//            self.for(type).accept(value)
+//        } else {
+//            let key = String(fullname: type)
+//            subjects[key] = value
+//        }
+//    }
+//
+//}
+
 final public class Subjection {
-    
-    public class func `for`<T: Subjective>(_ type: T.Type) -> BehaviorRelay<T?> {
-        let key = String(fullname: type)
-        if let subject = subjects[key] as? BehaviorRelay<T?> {
-            return subject
-        }
-        let subject = BehaviorRelay<T?>(value: type.current)
-        subjects[key] = subject
-        return subject
-    }
-    
-    public class func update<T: Subjective>(_ type: T.Type, _ value: T?, _ reactive: Bool = true) {
-        var key: String?
-        if let id = value?.id as? String, !id.isEmpty {
-            key = id
-        }
-        if let value = value {
-            T.storeObject(value, id: key)
-        } else {
-            T.eraseObject(id: key)
-        }
-        if reactive {
-            self.for(type).accept(value)
-        } else {
-            let key = String(fullname: type)
-            subjects[key] = value
-        }
-    }
-
-}
-
-final public class MySubjection {
     
     public class func `for`<T: Object>(_ type: T.Type) -> BehaviorRelay<T?> {
         let key = String(fullname: type)
@@ -58,14 +58,6 @@ final public class MySubjection {
     }
     
     public class func update<T: Object>(_ type: T.Type, _ value: T?, _ reactive: Bool = true) {
-//        if let id = value?.id as? String, !id.isEmpty {
-//            key = id
-//        }
-//        if let id = id {
-//            T.storeObject(value, id: id)
-//        } else {
-//            T.eraseObject(id: id)
-//        }
         if let value = value {
             try! defaultRealm.write {
                 defaultRealm.delete(value)

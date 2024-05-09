@@ -12,7 +12,7 @@ public protocol ConfigurationType: ModelType {
     var localization: Localization { get }
 }
 
-public enum MyLocalization: String, PersistableEnum {
+public enum Localization: String, PersistableEnum {
     case chinese    = "zh-Hans"
     case english    = "en"
     

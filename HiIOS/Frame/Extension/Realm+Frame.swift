@@ -10,9 +10,13 @@ import RxSwift
 import RxCocoa
 import RealmSwift
 
+// YJX_TODO 替换为RealmFetchable
 public extension Object {
     
     static var current: Self? {
+//        // EmbeddedObject Projection AsymmetricObject RealmFetchable
+//        // let aa = defaultRealm.add(T##object: Object##Object)
+//        let aaa = defaultRealm.delete(<#T##object: ObjectBase##ObjectBase#>)
         let key = String(fullname: self)
         if let subject = subjects[key] as? BehaviorRelay<Self?> {
             return subject.value
@@ -42,5 +46,20 @@ public extension Object {
             defaultRealm.delete(objects)
         }
     }
+    
+}
+
+//extension ModelType: ObjectKeyIdentifiable {
+//    
+//}
+
+// ObjectKeyIdentifiable
+//public extension Object: ModelType {
+//    
+//}
+
+public extension RealmSwift.List {
+    
+    var array: [Element] { .init(self) }
     
 }
