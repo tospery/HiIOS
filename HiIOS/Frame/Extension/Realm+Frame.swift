@@ -20,15 +20,15 @@ public extension Realm {
 public extension Object {
     
     static var current: Self? {
-//        let key = String(fullname: self)
-//        if let subject = subjects[key] as? BehaviorRelay<Self?> {
-//            return subject.value
-//        }
-//        if let object = defaultRealm.objects(self).first {
-//            let subject = BehaviorRelay<Self?>(value: object)
-//            subjects[key] = subject
-//            return object
-//        }
+        let key = String(fullname: self)
+        if let subject = subjects[key] as? BehaviorRelay<Self?> {
+            return subject.value
+        }
+        if let object = Realm.default.objects(self).first {
+            let subject = BehaviorRelay<Self?>(value: object)
+            subjects[key] = subject
+            return object
+        }
         return nil
     }
 
