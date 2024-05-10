@@ -22,11 +22,11 @@ public protocol Storable: ModelType, Codable {
     static func objectKey(id: String?) -> String
     static func arrayKey(page: String?) -> String
 
-    static func storeObject(_ object: Self?, id: String?)
-    static func storeArray(_ array: [Self]?, page: String?)
+    static func storeObject<Element: Codable>(_ object: Element.Type?, id: String?)
+    static func storeArray<Element: Codable>(_ array: [Element.Type]?, page: String?)
 
-    static func cachedObject(id: String?) -> Self?
-    static func cachedArray(page: String?) -> [Self]?
+    static func cachedObject<Element: Codable>(id: String?) -> Element?
+    static func cachedArray<Element: Codable>(page: String?) -> [Element]?
 
     static func eraseObject(id: String?)
 }
@@ -49,44 +49,44 @@ public extension Storable {
         return key
     }
     
-    static func storeObject(_ object: Self?, id: String? = nil) {
+    static func storeObject<Element: Codable>(_ object: Element.Type?, id: String?) {
         let key = self.objectKey(id: id)
         if let object = object {
-            try? archiver.transformCodable(ofType: self).setObject(object, forKey: key)
+            try? archiver.transformCodable(ofType: self).setObject(object as! Self, forKey: key)
         } else {
             try? archiver.removeObject(forKey: key)
         }
     }
-
-    static func storeArray(_ array: [Self]?, page: String? = nil) {
+    
+    static func storeArray<Element: Codable>(_ array: [Element.Type]?, page: String?) {
         let key = self.arrayKey(page: page)
         if let array = array {
-            try? archiver.transformCodable(ofType: [Self].self).setObject(array, forKey: key)
+            try? archiver.transformCodable(ofType: [Self].self).setObject(array as! [Self], forKey: key)
         } else {
             try? archiver.removeObject(forKey: key)
         }
     }
 
-    static func cachedObject(id: String? = nil) -> Self? {
+    static func cachedObject<Element: Codable>(id: String?) -> Element? {
         let key = self.objectKey(id: id)
         if let object = try? archiver.transformCodable(ofType: self).object(forKey: key) {
-            return object
+            return object as? Element
         }
         if let path = Bundle.main.path(forResource: key, ofType: "json"),
             let json = try? String(contentsOfFile: path, encoding: .utf8) {
-            return Self(JSONString: json)
+            return Self(JSONString: json) as? Element
         }
         return nil
     }
 
-    static func cachedArray(page: String? = nil) -> [Self]? {
+    static func cachedArray<Element: Codable>(page: String?) -> [Element]? {
         let key = self.arrayKey(page: page)
         if let array = try? archiver.transformCodable(ofType: [Self].self).object(forKey: key) {
-            return array
+            return array as? [Element]
         }
         if let path = Bundle.main.path(forResource: key, ofType: "json"),
             let json = try? String(contentsOfFile: path, encoding: .utf8) {
-            return [Self](JSONString: json)
+            return [Self](JSONString: json) as? [Element]
         }
         return nil
     }

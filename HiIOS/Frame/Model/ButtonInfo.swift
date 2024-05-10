@@ -13,7 +13,7 @@ public enum ButtonStyle: Int, Codable {
     case round
 }
 
-public struct ButtonInfo: Subjective {
+public struct ButtonInfo { // : Subjective { // YJX_TODO
     
     public var id = ""
     public var style = ButtonStyle.plain
