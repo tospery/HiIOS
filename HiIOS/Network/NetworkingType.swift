@@ -8,7 +8,7 @@
 import Foundation
 import Moya
 import RxSwift
-import ObjectMapper
+import ObjectMapper_Hi
 
 public protocol NetworkingType {
     associatedtype Target: TargetType
@@ -95,7 +95,7 @@ public extension NetworkingType {
     }
     
     func requestArray<Model: ModelType>(_ target: Target, type: Model.Type) -> Single<[Model]> {
-        self.request(target)
+        return self.request(target)
             .mapArray(Model.self)
             .flatMap { $0.isEmpty ? .error(HiError.listIsEmpty) : .just($0) }
             .observe(on: MainScheduler.instance)

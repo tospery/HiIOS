@@ -7,8 +7,6 @@
 
 import Foundation
 import Cache
-import ObjectMapper
-import RealmSwift
 
 let archiver = try! Storage<String, String>.init(
     diskConfig: DiskConfig.init(name: "shared"),
@@ -16,10 +14,11 @@ let archiver = try! Storage<String, String>.init(
     transformer: TransformerFactory.forCodable(ofType: String.self)
 )
 
-//public let defaultRealm = try! Realm()
-
 // MARK: - 存储协议
 public protocol Storable: ModelType, Codable {
+
+    // associatedtype Base: Storable where Base.Base == Base
+    // associatedtype Store: Storable
 
     static func objectKey(id: String?) -> String
     static func arrayKey(page: String?) -> String
@@ -97,6 +96,11 @@ public extension Storable {
         let key = self.objectKey(id: id)
         try? archiver.removeObject(forKey: key)
     }
+
+//    static func == (lhs: Self, rhs: Self) -> Bool {
+//        // lhs.description.sorted() == rhs.description.sorted()
+//        lhs.description == rhs.description
+//    }
 
 }
 

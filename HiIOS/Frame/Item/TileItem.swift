@@ -45,7 +45,7 @@ open class TileItem: BaseCollectionItem, ReactorKit.Reactor {
         super.init(model)
         guard let tile = model as? Tile else { return }
         isSpace = tile.isSpace
-        height = tile.height?.cgFloat
+        height = tile.height
         color = tile.color?.color
         tintColor = tile.tintColor?.color
         self.initialState = State(

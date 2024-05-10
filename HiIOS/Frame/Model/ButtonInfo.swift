@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import ObjectMapper
+import ObjectMapper_Hi
 
 public enum ButtonStyle: Int, Codable {
     case plain

@@ -8,24 +8,32 @@
 import Foundation
 import RxSwift
 import Moya
-import ObjectMapper
+import ObjectMapper_Hi
 
 public extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
 
     func mapObject<T: BaseMappable>(_ type: T.Type, context: MapContext? = nil) -> Single<T> {
-        flatMap { .just(try $0.mapObject(type, context: context)) }
+        return flatMap { response -> Single<T> in
+                    return Single.just(try response.mapObject(type, context: context))
+                }
     }
 
     func mapArray<T: BaseMappable>(_ type: T.Type, context: MapContext? = nil) -> Single<[T]> {
-        flatMap { .just(try $0.mapArray(type, context: context)) }
+        return flatMap { response -> Single<[T]> in
+                    return Single.just(try response.mapArray(type, context: context))
+                }
     }
 
     func mapObject<T: BaseMappable>(_ type: T.Type, atKeyPath keyPath: String, context: MapContext? = nil) -> Single<T> {
-        flatMap { .just(try $0.mapObject(type, atKeyPath: keyPath, context: context)) }
+        return flatMap { response -> Single<T> in
+          return Single.just(try response.mapObject(type, atKeyPath: keyPath, context: context))
+                }
     }
 
     func mapArray<T: BaseMappable>(_ type: T.Type, atKeyPath keyPath: String, context: MapContext? = nil) -> Single<[T]> {
-        flatMap { .just(try $0.mapArray(type, atKeyPath: keyPath, context: context)) }
+        return flatMap { response -> Single<[T]> in
+                    return Single.just(try response.mapArray(type, atKeyPath: keyPath, context: context))
+                }
     }
 
 }
@@ -34,19 +42,27 @@ public extension PrimitiveSequence where Trait == SingleTrait, Element == Respon
 public extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
 
     func mapObject<T: ImmutableMappable>(_ type: T.Type, context: MapContext? = nil) -> Single<T> {
-        flatMap { .just(try $0.mapObject(type, context: context)) }
+        return flatMap { response -> Single<T> in
+                    return Single.just(try response.mapObject(type, context: context))
+                }
     }
 
     func mapArray<T: ImmutableMappable>(_ type: T.Type, context: MapContext? = nil) -> Single<[T]> {
-        flatMap { .just(try $0.mapArray(type, context: context)) }
+        return flatMap { response -> Single<[T]> in
+                    return Single.just(try response.mapArray(type, context: context))
+                }
     }
 
     func mapObject<T: ImmutableMappable>(_ type: T.Type, atKeyPath keyPath: String, context: MapContext? = nil) -> Single<T> {
-        flatMap { .just(try $0.mapObject(type, atKeyPath: keyPath, context: context)) }
+        return flatMap { response -> Single<T> in
+                    return Single.just(try response.mapObject(type, atKeyPath: keyPath, context: context))
+                }
     }
 
     func mapArray<T: ImmutableMappable>(_ type: T.Type, atKeyPath keyPath: String, context: MapContext? = nil) -> Single<[T]> {
-        flatMap { .just(try $0.mapArray(type, atKeyPath: keyPath, context: context)) }
+        return flatMap { response -> Single<[T]> in
+                    return Single.just(try response.mapArray(type, atKeyPath: keyPath, context: context))
+                }
     }
 
 }

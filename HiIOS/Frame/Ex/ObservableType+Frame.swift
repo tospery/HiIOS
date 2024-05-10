@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 import Moya
-import ObjectMapper
+import ObjectMapper_Hi
 
 extension ObservableType {
     

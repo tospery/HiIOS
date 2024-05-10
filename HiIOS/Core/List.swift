@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import ObjectMapper
+import ObjectMapper_Hi
 
 public struct List<Item: ModelType>: ModelType {
 

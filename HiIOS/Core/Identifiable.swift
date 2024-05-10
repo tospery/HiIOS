@@ -6,9 +6,9 @@
 //
 
 import Foundation
-//
-///// 唯一标识协议
-//public protocol Identifiable {
-//    associatedtype Identity: Hashable
-//    var id: Identity { get }
-//}
+
+/// 唯一标识协议
+public protocol Identifiable {
+    associatedtype Identity: Hashable
+    var id: Identity { get }
+}
