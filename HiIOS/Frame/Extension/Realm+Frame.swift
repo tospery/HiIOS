@@ -10,6 +10,12 @@ import RxSwift
 import RxCocoa
 import RealmSwift
 
+public extension Realm {
+    
+    static var `default`: Self { try! Self.init() }
+
+}
+
 // YJX_TODO 替换为RealmFetchable
 public extension Object {
     
@@ -35,14 +41,14 @@ public extension Object {
 ////        }
 //    }
     
-    static func eraseObject(id: String? = nil) {
+//    static func eraseObject(id: String? = nil) {
 //        let key = self.objectKey(id: id)
 //        try? archiver.removeObject(forKey: key)
 //        try! defaultRealm.write {
 //            let objects = defaultRealm.objects(self)
 //            defaultRealm.delete(objects)
 //        }
-    }
+//    }
     
 }
 

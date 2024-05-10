@@ -10,13 +10,11 @@ import Cache
 import ObjectMapper
 import RealmSwift
 
-let archiver = try! Storage<String, String>.init(
+public let archiver = try! Storage<String, String>.init(
     diskConfig: DiskConfig.init(name: "shared"),
     memoryConfig: MemoryConfig.init(),
     transformer: TransformerFactory.forCodable(ofType: String.self)
 )
-
-//public let defaultRealm = try! Realm()
 
 // MARK: - 存储协议
 public protocol Storable: ModelType, Codable {

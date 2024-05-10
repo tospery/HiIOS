@@ -33,7 +33,12 @@ open class AppDependency {
     open func test(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
     }
     
-    // MARK: - Update
+    // MARK: - Setup
+    open func setupData() {
+        self.setupConfiguration()
+        self.setupUser()
+    }
+    
     open func setupConfiguration() {
     }
     
@@ -41,6 +46,11 @@ open class AppDependency {
     }
     
     // MARK: - Update
+    open func updateData() {
+        self.updateConfiguration()
+        self.updateUser()
+    }
+    
     open func updateConfiguration() {
     }
     
@@ -55,8 +65,7 @@ open class AppDependency {
         Appearance.shared.config()
         Router.shared.initialize(self.provider, self.navigator)
         // 设置
-        self.setupConfiguration()
-        self.setupUser()
+        self.setupData()
         // 日志
         logger.print("运行环境: \(UIApplication.shared.inferredEnvironment)", module: .hiIOS)
         logger.print("设备型号: \(UIDevice.current.modelName)", module: .hiIOS)
@@ -69,8 +78,7 @@ open class AppDependency {
     }
     
     open func application(_ application: UIApplication, leaveDidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-        self.updateConfiguration()
-        self.updateUser()
+        self.updateData()
 #if DEBUG
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.test(launchOptions: launchOptions)
