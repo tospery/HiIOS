@@ -9,6 +9,23 @@ import Foundation
 import RxSwift
 import RxCocoa
 import RealmSwift
+import ObjectMapper
+
+//open class BaseModel: Object, ModelType {
+//    
+//    @Persisted(primaryKey: true) public var _id: String
+//    
+//    public required override init() {
+//        super.init()
+//    }
+//    
+//    public required init?(map: ObjectMapper.Map) {
+//    }
+//    
+//    public func mapping(map: ObjectMapper.Map) {
+//    }
+//    
+//}
 
 public extension Realm {
     
