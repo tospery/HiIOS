@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'HiIOS'
-  s.version          = '1.2.13'
+  s.version          = '2.0.1'
   s.summary          = 'iOS App Framework.'
   s.description      = <<-DESC
 						iOS App Framework using Swift.
@@ -22,13 +22,6 @@ Pod::Spec.new do |s|
   	ss.dependency 'SwiftyBeaver', '1.9.5'
   	ss.dependency 'ObjectMapper', '4.4.2'
   	ss.dependency 'SwifterSwift', '6.0.0'
-  end
-  
-  s.subspec 'Cache' do |ss|
-    ss.source_files = 'HiIOS/Cache/**/*'
-  	ss.dependency 'HiIOS/Core'
-  	ss.dependency 'Cache', '6.0.0'
-	ss.dependency 'RxRealm', '5.0.4'
   end
   
   s.subspec 'Router' do |ss|
@@ -62,6 +55,11 @@ Pod::Spec.new do |s|
   end
   
   s.subspec 'Components' do |ss|
+    ss.subspec 'Realm' do |sss|
+      sss.source_files = 'HiIOS/Components/Realm/**/*'
+  	  sss.dependency 'HiIOS/Core'
+	  sss.dependency 'RxRealm', '5.0.4'
+    end
     ss.subspec 'JSBridge' do |sss|
       sss.source_files = 'HiIOS/Components/JSBridge/**/*'
   	  sss.frameworks = 'WebKit'
@@ -71,11 +69,11 @@ Pod::Spec.new do |s|
   s.subspec 'Frame' do |ss|
     ss.source_files = 'HiIOS/Frame/**/*'
   	ss.dependency 'HiIOS/Core'
-  	ss.dependency 'HiIOS/Cache'
   	ss.dependency 'HiIOS/Theme'
   	ss.dependency 'HiIOS/Router'
   	ss.dependency 'HiIOS/Network'
   	ss.dependency 'HiIOS/Resources'
+	ss.dependency 'HiIOS/Components/Realm'
   	ss.dependency 'HiIOS/Components/JSBridge'
 	ss.dependency 'RxOptional', '5.0.2'
 	ss.dependency 'RxSwiftExt', '6.2.1'
