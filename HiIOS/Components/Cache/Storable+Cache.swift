@@ -1,5 +1,5 @@
 //
-//  Storable.swift
+//  Storable+Cache.swift
 //  HiIOS
 //
 //  Created by liaoya on 2022/7/19.
@@ -13,24 +13,6 @@ let archiver = try! Storage<String, String>.init(
     memoryConfig: MemoryConfig.init(),
     transformer: TransformerFactory.forCodable(ofType: String.self)
 )
-
-// MARK: - 存储协议
-public protocol Storable: ModelType, Codable {
-
-    // associatedtype Base: Storable where Base.Base == Base
-    // associatedtype Store: Storable
-
-    static func objectKey(id: String?) -> String
-    static func arrayKey(page: String?) -> String
-
-    static func storeObject(_ object: Self?, id: String?)
-    static func storeArray(_ array: [Self]?, page: String?)
-
-    static func cachedObject(id: String?) -> Self?
-    static func cachedArray(page: String?) -> [Self]?
-
-    static func eraseObject(id: String?)
-}
 
 public extension Storable {
 

@@ -55,27 +55,26 @@ Pod::Spec.new do |s|
   end
   
   s.subspec 'Components' do |ss|
+    ss.subspec 'Cache' do |sss|
+      sss.source_files = 'HiIOS/Components/Cache/**/*'
+      sss.dependency 'HiIOS/Core'
+      sss.dependency 'Cache', '6.0.0'
+    end
     ss.subspec 'JSBridge' do |sss|
       sss.source_files = 'HiIOS/Components/JSBridge/**/*'
   	  sss.frameworks = 'WebKit'
     end
-	ss.subspec 'Cache' do |sss|
-	  sss.source_files = 'HiIOS/Components/Cache/**/*'
-	  ss.dependency 'HiIOS/Core'
-	  ss.dependency 'Cache', '6.0.0'
-	end
   end
   
   s.subspec 'Frame' do |ss|
     ss.source_files = 'HiIOS/Frame/**/*'
   	ss.dependency 'HiIOS/Core'
-  	ss.dependency 'HiIOS/Cache'
   	ss.dependency 'HiIOS/Theme'
   	ss.dependency 'HiIOS/Router'
   	ss.dependency 'HiIOS/Network'
   	ss.dependency 'HiIOS/Resources'
-  	ss.dependency 'HiIOS/Components/JSBridge'
 	ss.dependency 'HiIOS/Components/Cache'
+	ss.dependency 'HiIOS/Components/JSBridge'
 	ss.dependency 'RxOptional', '5.0.2'
 	ss.dependency 'RxSwiftExt', '6.2.1'
   	ss.dependency 'RxDataSources', '5.0.0'
