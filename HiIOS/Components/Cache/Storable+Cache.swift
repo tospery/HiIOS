@@ -8,7 +8,7 @@
 import Foundation
 import Cache
 
-let archiver = try! Storage<String, String>.init(
+public let archiver = try! Storage<String, String>.init(
     diskConfig: DiskConfig.init(name: "shared"),
     memoryConfig: MemoryConfig.init(),
     transformer: TransformerFactory.forCodable(ofType: String.self)
