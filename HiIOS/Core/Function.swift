@@ -111,18 +111,18 @@ public func preferredValue(small: CGFloat, middle: CGFloat, large: CGFloat) -> C
 }
 
 
-func popOne(viewController: UIViewController, animated: Bool, _ completion: (() -> Void)?) {
+public func popOne(viewController: UIViewController, animated: Bool, _ completion: (() -> Void)?) {
     viewController.navigationController?.popViewController(animated: animated, completion)
 }
 
-func popTo(viewController: UIViewController, to: UIViewController, animated: Bool, _ completion: (() -> Void)?) {
+public func popTo(viewController: UIViewController, to: UIViewController, animated: Bool, _ completion: (() -> Void)?) {
     viewController.navigationController?.popToViewController(to, animated: animated)
 }
 
-func popAll(viewController: UIViewController, animated: Bool, _ completion: (() -> Void)?) {
+public func popAll(viewController: UIViewController, animated: Bool, _ completion: (() -> Void)?) {
     viewController.navigationController?.popToRootViewController(animated: animated)
 }
 
-func dismiss(viewController: UIViewController, animated: Bool, _ completion: (() -> Void)?) {
+public func dismiss(viewController: UIViewController, animated: Bool, _ completion: (() -> Void)?) {
     viewController.dismiss(animated: animated, completion: completion)
 }
