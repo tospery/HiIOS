@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RealmSwift
 import HiIOS
 
 class HomeViewController: UIViewController {

@@ -4,7 +4,7 @@ platform :ios, '13.0'
 use_frameworks!
 
 target 'HiIOSDemo' do
-  pod 'HiIOS', :path => '../../'
+  pod 'HiIOS/Frame', :path => '../../'
 
 end
 
