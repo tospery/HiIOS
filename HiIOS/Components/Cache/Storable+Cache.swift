@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import HiIOS
 import Cache
 
 public let archiver = try! Storage<String, String>.init(

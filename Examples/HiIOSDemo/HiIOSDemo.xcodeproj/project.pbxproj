@@ -11,7 +11,6 @@
 		916AB6AC2BEB13D0006701E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AB6AB2BEB13D0006701E0 /* AppDelegate.swift */; };
 		916AB6AE2BEB13F4006701E0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AB6AD2BEB13F4006701E0 /* HomeViewController.swift */; };
 		916AB6B02BEB14B1006701E0 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 916AB6AF2BEB14B1006701E0 /* Launch Screen.storyboard */; };
-		91D8ED632BEBB6E500AB7146 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D8ED622BEBB6E500AB7146 /* TestView.swift */; };
 		9C55BB46B33DB96C11A6A7B5 /* Pods_HiIOSDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A304B12B65AE2119BC8293CD /* Pods_HiIOSDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +23,6 @@
 		916AB6AD2BEB13F4006701E0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		916AB6AF2BEB14B1006701E0 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		916AB6B12BEB14BB006701E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		91D8ED622BEBB6E500AB7146 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		A304B12B65AE2119BC8293CD /* Pods_HiIOSDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HiIOSDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A91061F1C3C0ECC54E22267B /* Pods-HiIOSDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiIOSDemo.release.xcconfig"; path = "Target Support Files/Pods-HiIOSDemo/Pods-HiIOSDemo.release.xcconfig"; sourceTree = "<group>"; };
 		B59E60C7C6373FD022574958 /* Pods-HiIOSDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiIOSDemo.debug.xcconfig"; path = "Target Support Files/Pods-HiIOSDemo/Pods-HiIOSDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -79,7 +77,6 @@
 				916AB6AA2BEB13D0006701E0 /* HiIOSDemo-Bridging-Header.h */,
 				916AB6AD2BEB13F4006701E0 /* HomeViewController.swift */,
 				916AB6AF2BEB14B1006701E0 /* Launch Screen.storyboard */,
-				91D8ED622BEBB6E500AB7146 /* TestView.swift */,
 			);
 			path = HiIOSDemo;
 			sourceTree = "<group>";
@@ -207,7 +204,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91D8ED632BEBB6E500AB7146 /* TestView.swift in Sources */,
 				916AB6AC2BEB13D0006701E0 /* AppDelegate.swift in Sources */,
 				916AB6AE2BEB13F4006701E0 /* HomeViewController.swift in Sources */,
 			);
