@@ -1,5 +1,5 @@
 //
-//  UIColor+Frame.swift
+//  UIColor+Hi.swift
 //  HiIOS
 //
 //  Created by 杨建祥 on 2022/7/19.
@@ -81,7 +81,7 @@ public extension UIColor {
          return true
      }
     
-    func image(size: CGSize = .init(100)) -> UIImage {
+    func image(size: CGSize = .init(width: 10, height: 10)) -> UIImage {
         return .init(color: self, size: size)
     }
     
