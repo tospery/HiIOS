@@ -98,7 +98,7 @@ iOS 11+
 
 ## 示例项目
 
-请查看[SWHub](https://github.com/tospery/SWHub)
+请查看[TinyHub](https://github.com/tospery/TinyHubForIOS)
 
 ## 注意事项
 
