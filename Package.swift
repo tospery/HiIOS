@@ -10,12 +10,31 @@ let package = Package(
     products: [
         .library(name: "HiIOSCore", targets: ["HiIOSCore"]),
         .library(name: "HiIOSLog", targets: ["HiIOSLog"]),
+        .library(name: "HiIOSNavigation", targets: ["HiIOSNavigation"]),
+        .library(name: "HiIOSNetwork", targets: ["HiIOSNetwork"]),
+        .library(name: "HiIOSNetworkAlamofire", targets: ["HiIOSNetworkAlamofire"]),
         .library(name: "HiIOSPersistence", targets: ["HiIOSPersistence"]),
         .library(name: "HiIOSDevice", targets: ["HiIOSDevice"])
+    ],
+    dependencies: [
+        .package(
+            url: "https://github.com/Alamofire/Alamofire.git",
+            "5.12.0"..<"6.0.0"
+        )
     ],
     targets: [
         .target(name: "HiIOSCore"),
         .target(name: "HiIOSLog"),
+        .target(name: "HiIOSNavigation"),
+        .target(name: "HiIOSNetwork"),
+        .target(
+            name: "HiIOSNetworkAlamofire",
+            dependencies: [
+                "HiIOSLog",
+                "HiIOSNetwork",
+                .product(name: "Alamofire", package: "Alamofire")
+            ]
+        ),
         .target(
             name: "HiIOSPersistence",
             dependencies: ["HiIOSCore"]
@@ -31,6 +50,18 @@ let package = Package(
         .testTarget(
             name: "HiIOSLogTests",
             dependencies: ["HiIOSDevice", "HiIOSLog"]
+        ),
+        .testTarget(
+            name: "HiIOSNavigationTests",
+            dependencies: ["HiIOSNavigation"]
+        ),
+        .testTarget(
+            name: "HiIOSNetworkTests",
+            dependencies: ["HiIOSNetwork"]
+        ),
+        .testTarget(
+            name: "HiIOSNetworkAlamofireTests",
+            dependencies: ["HiIOSNetwork", "HiIOSNetworkAlamofire"]
         ),
         .testTarget(
             name: "HiIOSPersistenceTests",

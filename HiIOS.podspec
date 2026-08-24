@@ -11,7 +11,7 @@ Pod::Spec.new do |spec|
   spec.source = { :git => 'https://github.com/tospery/HiIOS.git', :tag => spec.version.to_s }
   spec.ios.deployment_target = '17.0'
   spec.swift_version = '6.0'
-  spec.default_subspecs = 'Core', 'Log', 'Persistence', 'Device'
+  spec.default_subspecs = 'Core', 'Log', 'Navigation', 'Network', 'Persistence', 'Device'
 
   spec.subspec 'Core' do |subspec|
     subspec.dependency 'HiIOSCore', spec.version.to_s
@@ -19,6 +19,18 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'Log' do |subspec|
     subspec.dependency 'HiIOSLog', spec.version.to_s
+  end
+
+  spec.subspec 'Navigation' do |subspec|
+    subspec.dependency 'HiIOSNavigation', spec.version.to_s
+  end
+
+  spec.subspec 'Network' do |subspec|
+    subspec.dependency 'HiIOSNetwork', spec.version.to_s
+  end
+
+  spec.subspec 'NetworkAlamofire' do |subspec|
+    subspec.dependency 'HiIOSNetworkAlamofire', spec.version.to_s
   end
 
   spec.subspec 'Persistence' do |subspec|
