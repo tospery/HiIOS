@@ -15,6 +15,7 @@ let package = Package(
         .library(name: "HiIOSNetworkAlamofire", targets: ["HiIOSNetworkAlamofire"]),
         .library(name: "HiIOSPersistence", targets: ["HiIOSPersistence"]),
         .library(name: "HiIOSDevice", targets: ["HiIOSDevice"])
+        , .library(name: "HiIOSGitHubTrending", targets: ["HiIOSGitHubTrending"])
     ],
     dependencies: [
         .package(
@@ -43,6 +44,10 @@ let package = Package(
             name: "HiIOSDevice",
             dependencies: ["HiIOSCore", "HiIOSPersistence"]
         ),
+        .target(
+            name: "HiIOSGitHubTrending",
+            dependencies: ["HiIOSNetwork"]
+        ),
         .testTarget(
             name: "HiIOSCoreTests",
             dependencies: ["HiIOSCore"]
@@ -70,6 +75,10 @@ let package = Package(
         .testTarget(
             name: "HiIOSDeviceTests",
             dependencies: ["HiIOSCore", "HiIOSDevice", "HiIOSPersistence"]
+        ),
+        .testTarget(
+            name: "HiIOSGitHubTrendingTests",
+            dependencies: ["HiIOSGitHubTrending"]
         )
     ],
     swiftLanguageModes: [.v6]

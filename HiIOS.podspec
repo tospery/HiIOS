@@ -33,6 +33,10 @@ Pod::Spec.new do |spec|
     subspec.dependency 'HiIOSNetworkAlamofire', spec.version.to_s
   end
 
+  spec.subspec 'GitHubTrending' do |subspec|
+    subspec.dependency 'HiIOSGitHubTrending', spec.version.to_s
+  end
+
   spec.subspec 'Persistence' do |subspec|
     subspec.dependency 'HiIOSPersistence', spec.version.to_s
   end
