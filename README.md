@@ -17,6 +17,8 @@ HiIOS is a reusable iOS development library. It ships the same Swift modules thr
 
 For development with SwiftPM, add this repository using the `dev` branch and select only the products your app needs. For CocoaPods development, use the independent podspecs from one local checkout. Because 4.x is not yet indexed by CocoaPods, a local Podfile must declare each HiIOS pod in the selected dependency chain with `:path`. After publication, `pod 'HiIOS'` will install the default bundle. A future public release will use a single matching tag and pod version; this development branch is not a published 4.x release.
 
+Projects using a sibling checkout through SwiftPM `.package(path:)` must also commit a full-SHA version lock and enforce the Verification, CI and Archive/Release checks in [`docs/engineering/sibling-source-dependency.md`](docs/engineering/sibling-source-dependency.md). A local package path alone does not pin the Git commit.
+
 ```ruby
 # Podfile, standalone Base from a local HiIOS checkout
 pod 'HiIOSBase', :path => '/path/to/HiIOS'
