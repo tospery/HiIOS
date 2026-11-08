@@ -7,6 +7,7 @@ HiIOS 是独立于 AtlasHub 业务的 iOS 效率库，同时提供 Swift Package
 - 六个基础家族为 Base、Core、Net、Nav、Store、Suite；GitHub Trending 是独立可选产品，`HiIOS` 是便捷入口。业务 Feature、认证策略、用户文案和品牌不进入本库。
 - `Package.swift` 是 SwiftPM product、target 与资源图的事实源；独立 Pod 与公开 Swift module 对应。同一公开版本的 SPM 与 CocoaPods 行为和依赖版本需一致，不覆盖已发布 tag/spec。
 - 修改公开接口、模块或依赖时，验证受影响的 SPM product、独立 Pod、聚合 Pod、资源及消费者；发布前核对两种分发方式，不能以本地 lint 代替公开发布验收。
+- 新增或升级第三方依赖时，读取 [`docs/engineering/dependencies.md`](docs/engineering/dependencies.md)。
 - 外发日志和可选 adapter 必须先满足脱敏及隐私边界；厂商 SDK 不进入默认产品，未经实际可用的双分发验证不预建空 target。
 
 ## 消费项目的同级源码依赖
