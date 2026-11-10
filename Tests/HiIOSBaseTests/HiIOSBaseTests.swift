@@ -5,15 +5,15 @@ import Testing
 private final class RecordingLogSink: LogSink, @unchecked Sendable {
     // 同步 sink 的测试替身用锁保护唯一的可变记录数组。
     private let lock = NSLock()
-    private var stored: [RedactedLogRecord] = []
+    private var stored: [LogOutputRecord] = []
 
-    func write(_ record: RedactedLogRecord) {
+    func write(_ record: LogOutputRecord) {
         lock.lock()
         stored.append(record)
         lock.unlock()
     }
 
-    var records: [RedactedLogRecord] {
+    var records: [LogOutputRecord] {
         lock.lock()
         defer { lock.unlock() }
         return stored
@@ -83,6 +83,42 @@ func bothLogPoliciesRedactSecretsInEventAndMetadata() {
         #expect(!redacted.metadata["url", default: ""].contains("private-state"))
         #expect(redacted.metadata["status"] == "ok")
     }
+}
+
+@Test
+func unredactedPolicyPassesValuesThroughAndAllowsDebug() {
+    let raw = LogRecord(
+        level: .debug,
+        event: "network.request",
+        message: "Authorization: Bearer development-token",
+        metadata: ["access_token": "development-token", "url": "https://example.com/?code=abc"]
+    )
+
+    #expect(LogRedactionPolicy.unredacted.allows(.verbose))
+    let output = LogRedactionPolicy.unredacted.redact(raw)
+    #expect(output.isRedacted == false)
+    #expect(output.message == raw.message)
+    #expect(output.metadata == raw.metadata)
+    #expect(LogRedactionPolicy.release.redact(raw).isRedacted)
+}
+
+@Test
+func eachRouteAppliesItsOwnPolicy() {
+    let protected = RecordingLogSink()
+    let console = RecordingLogSink()
+    let client = LogClient(routes: [
+        LogRoute(sink: protected, policy: .unredacted),
+        LogRoute(sink: console, policy: .release)
+    ])
+
+    #expect(client.log(.debug, event: "debug.only", message: "token=secret") == .emitted)
+    client.log(.info, event: "info", metadata: ["token": "secret"])
+
+    #expect(protected.records.map(\.event) == ["debug.only", "info"])
+    #expect(protected.records[1].metadata["token"] == "secret")
+    #expect(console.records.map(\.event) == ["info"])
+    #expect(console.records[0].metadata["token"] == "<redacted>")
+    #expect(LogClient(routes: []).log(.error, event: "nowhere") == .filtered)
 }
 
 @Test

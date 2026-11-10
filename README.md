@@ -37,7 +37,7 @@ The module graph is one way: Base has no internal dependency; Core uses Base; Ne
 | `HiIOSPersistence` | `HiIOSStoreCore` and a selected adapter |
 | `HiIOSGitHubTrending` | `HiIOSGHTrending` |
 
-Logging uses `LogClient(sink: OSLogSink(subsystem:category:))`; the client redacts records before sending them to any sink. Applications keep their own authentication policy, user-facing copy and business models.
+Logging uses `LogClient(sink: OSLogSink(subsystem:category:))` or `LogClient(routes:)` with one `LogRoute(sink:policy:)` per output; each route filters and redacts independently before its sink sees a `LogOutputRecord`. Redaction is the default; `.unredacted` passes records through and is only for outputs the consuming app explicitly protects. `SwiftyBeaverLogSink(destinations:)` forwards the structured `LogOutputRecord` as each destination's `context`. Applications keep their own authentication policy, user-facing copy and business models.
 
 ## Requirements
 

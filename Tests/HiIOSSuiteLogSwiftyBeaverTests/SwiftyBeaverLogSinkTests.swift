@@ -5,6 +5,7 @@ import Testing
 
 private final class RecordingDestination: BaseDestination {
     private(set) var messages: [String] = []
+    private(set) var records: [LogOutputRecord] = []
 
     override func send(
         _ level: SwiftyBeaver.Level,
@@ -16,6 +17,7 @@ private final class RecordingDestination: BaseDestination {
         context: Any? = nil
     ) -> String? {
         messages.append(msg)
+        if let record = context as? LogOutputRecord { records.append(record) }
         return msg
     }
 }
@@ -65,4 +67,23 @@ func swiftyBeaverSinkHonorsDestinationMinimumLevel() {
 
     #expect(destination.messages.count == 1)
     #expect(destination.messages[0].contains("event=kept"))
+}
+
+@Test
+func swiftyBeaverSinkPassesTheStructuredRecordToEveryDestination() {
+    let first = RecordingDestination()
+    let second = RecordingDestination()
+    second.minLevel = .error
+    let client = LogClient(
+        sink: SwiftyBeaverLogSink(destinations: [first, second]),
+        policy: .unredacted
+    )
+
+    client.log(.info, event: "network.response", message: "ok", metadata: ["cookie": "session=abc"])
+    client.log(.error, event: "network.failed")
+
+    #expect(first.records.map(\.event) == ["network.response", "network.failed"])
+    #expect(first.records[0].metadata["cookie"] == "session=abc")
+    #expect(first.records[0].isRedacted == false)
+    #expect(second.records.map(\.event) == ["network.failed"])
 }

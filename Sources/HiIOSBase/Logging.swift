@@ -33,17 +33,22 @@ public struct LogRecord: Equatable, Sendable {
     }
 }
 
-/// 输出端只能收到策略处理后的记录；构造器不对外开放。
-public struct RedactedLogRecord: Equatable, Sendable {
+/// 输出端只能收到经 `LogRedactionPolicy` 处理后的记录；构造器不对外开放。
+/// `isRedacted` 为 false 表示消费项目显式选择了 `.unredacted`，内容可能含凭据与正文。
+public struct LogOutputRecord: Equatable, Sendable {
     public let level: LogLevel
     public let event: String
     public let message: String
     public let metadata: [String: String]
+    public let isRedacted: Bool
 }
 
+/// 默认脱敏。`.unredacted` 原样传递，只有消费项目明确保护输出端（例如加密存储或受控的开发诊断）
+/// 时才应选择；本库不判断渠道或环境。
 public enum LogRedactionPolicy: Sendable {
     case release
     case diagnostic
+    case unredacted
 
     public func allows(_ level: LogLevel) -> Bool {
         switch (self, level) {
@@ -52,17 +57,27 @@ public enum LogRedactionPolicy: Sendable {
         }
     }
 
-    public func redact(_ record: LogRecord) -> RedactedLogRecord {
+    public func redact(_ record: LogRecord) -> LogOutputRecord {
+        if case .unredacted = self {
+            return LogOutputRecord(
+                level: record.level,
+                event: record.event,
+                message: record.message,
+                metadata: record.metadata,
+                isRedacted: false
+            )
+        }
         let metadata = record.metadata.reduce(into: [String: String]()) { result, entry in
             let key = Self.redactText(entry.key)
             result[key] = Self.isSensitiveKey(entry.key)
                 ? "<redacted>" : Self.redactText(entry.value)
         }
-        return RedactedLogRecord(
+        return LogOutputRecord(
             level: record.level,
             event: Self.redactText(record.event),
             message: Self.redactText(record.message),
-            metadata: metadata
+            metadata: metadata,
+            isRedacted: true
         )
     }
 
@@ -107,24 +122,40 @@ public enum LogRedactionPolicy: Sendable {
 }
 
 public protocol LogSink: Sendable {
-    func write(_ record: RedactedLogRecord)
+    func write(_ record: LogOutputRecord)
 }
 
-/// sink 只通过注入获取；没有隐式全局日志目的地。
-public struct LogClient: Sendable {
-    private let sink: any LogSink
-    private let policy: LogRedactionPolicy
+/// 一个输出端及其独立的级别与脱敏策略。
+public struct LogRoute: Sendable {
+    public let sink: any LogSink
+    public let policy: LogRedactionPolicy
 
     public init(sink: any LogSink, policy: LogRedactionPolicy = .release) {
         self.sink = sink
         self.policy = policy
     }
+}
+
+/// sink 只通过注入获取；没有隐式全局日志目的地。每条路由各自过滤与脱敏，互不影响。
+public struct LogClient: Sendable {
+    private let routes: [LogRoute]
+
+    public init(routes: [LogRoute]) {
+        self.routes = routes
+    }
+
+    public init(sink: any LogSink, policy: LogRedactionPolicy = .release) {
+        self.init(routes: [LogRoute(sink: sink, policy: policy)])
+    }
 
     @discardableResult
     public func log(_ record: LogRecord) -> LogDisposition {
-        guard policy.allows(record.level) else { return .filtered }
-        sink.write(policy.redact(record))
-        return .emitted
+        var disposition = LogDisposition.filtered
+        for route in routes where route.policy.allows(record.level) {
+            route.sink.write(route.policy.redact(record))
+            disposition = .emitted
+        }
+        return disposition
     }
 
     @discardableResult

@@ -1,7 +1,7 @@
 import HiIOSBase
 import os
 
-/// Apple unified logging 的显式目的地；只接收 Base 已脱敏的记录。
+/// Apple unified logging 的显式目的地；动态字段一律标记为 private。
 public struct OSLogSink: LogSink {
     private let subsystem: String
     private let category: String
@@ -11,7 +11,7 @@ public struct OSLogSink: LogSink {
         self.category = category
     }
 
-    public func write(_ record: RedactedLogRecord) {
+    public func write(_ record: LogOutputRecord) {
         let metadata = record.metadata
             .sorted { $0.key < $1.key }
             .map { "\($0.key)=\($0.value)" }
