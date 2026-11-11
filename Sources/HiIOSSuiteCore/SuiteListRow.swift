@@ -5,7 +5,7 @@ import SwiftUI
 /// - `trailingText` 适合“标题 + 右侧值 + 箭头”：标题优先完整显示，右侧值先缩小字号，仍放不下再截断。
 /// - `leading` 放图标等前置视图；`trailing` 放开关等自定义尾部视图，位于右侧值与箭头之间。
 /// - `action` 为空时行不可点击、无按压态；`isDimmed` 用于“未设置”等弱化展示。
-/// - 分隔线从标题起始处开始，与前置视图不重叠。
+/// - 分隔线从标题起始处开始、延伸到行右边缘，与前置视图不重叠；左右边距随 ``SuiteListStyle`` 变化。
 ///
 /// 所有文案由使用方提供并负责本地化。
 public struct SuiteListRow<Leading: View, Trailing: View>: View {
@@ -18,6 +18,7 @@ public struct SuiteListRow<Leading: View, Trailing: View>: View {
     private let action: (@MainActor () -> Void)?
     private let leading: Leading
     private let trailing: Trailing
+    @Environment(\.suiteListStyle) private var style
 
     public init(
         title: String,
@@ -76,7 +77,7 @@ public struct SuiteListRow<Leading: View, Trailing: View>: View {
                 }
             }
             .padding(.vertical, 8)
-            .padding(.trailing, 16)
+            .padding(.trailing, style.rowTrailingInset)
             .frame(minHeight: 48)
             .overlay(alignment: .bottom) {
                 if showsDivider {
@@ -84,7 +85,7 @@ public struct SuiteListRow<Leading: View, Trailing: View>: View {
                 }
             }
         }
-        .padding(.leading, 16)
+        .padding(.leading, style.rowLeadingInset)
         .frame(maxWidth: .infinity, alignment: .leading)
         .contentShape(Rectangle())
     }
@@ -141,8 +142,13 @@ public extension SuiteListRow where Trailing == EmptyView {
 }
 
 /// 按下时整行高亮，不改变文字颜色。
-private struct SuiteListRowButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
+///
+/// ``SuiteListRow`` 传入 `action` 时自动使用；把不带 `action` 的行包进 `NavigationLink`、`ShareLink`、`Link`
+/// 等系统控件时，可显式设置 `.buttonStyle(SuiteListRowButtonStyle())` 获得一致的按压态。
+public struct SuiteListRowButtonStyle: ButtonStyle {
+    public init() {}
+
+    public func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .foregroundStyle(.primary)
             .background(configuration.isPressed ? Color.suiteRowHighlight : Color.clear)

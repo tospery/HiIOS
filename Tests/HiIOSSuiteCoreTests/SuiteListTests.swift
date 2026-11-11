@@ -32,4 +32,31 @@ func suiteListSectionRendersEveryRowVariantInBothAppearancesAtAccessibilityTextS
         #expect(renderer.uiImage != nil)
     }
 }
+
+@Test @MainActor
+func fullWidthSuiteListRendersRowsAndButtonRowsInBothAppearances() {
+    for appearance in [ColorScheme.light, .dark] {
+        let page = VStack(spacing: 16) {
+            SuiteListSection(header: "Header") {
+                SuiteListRow(title: "Value", trailingText: "Detail", showsChevron: true, action: {})
+                SuiteListRow(title: "Last", showsDivider: false)
+            }
+            SuiteListSection {
+                SuiteListButtonRow(title: "Destructive", role: .destructive, action: {})
+            }
+            SuiteListSection {
+                SuiteListButtonRow(title: "Disabled", action: {})
+                    .disabled(true)
+            }
+        }
+        .suiteListStyle(.fullWidth)
+        let renderer = ImageRenderer(
+            content: page
+                .frame(width: 320)
+                .dynamicTypeSize(.accessibility3)
+                .preferredColorScheme(appearance)
+        )
+        #expect(renderer.uiImage != nil)
+    }
+}
 #endif
