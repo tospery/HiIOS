@@ -1,0 +1,68 @@
+import SwiftUI
+
+/// 无业务的圆角列表分组容器，承载一组 ``SuiteListRow``。
+///
+/// 分组之间、页面边距由页面布局决定；分组标题与脚注的文案由使用方提供并负责本地化。
+public struct SuiteListSection<Content: View>: View {
+    private let header: String?
+    private let footer: String?
+    private let cornerRadius: CGFloat
+    private let content: Content
+
+    public init(
+        header: String? = nil,
+        footer: String? = nil,
+        cornerRadius: CGFloat = 14,
+        @ViewBuilder content: () -> Content
+    ) {
+        self.header = header
+        self.footer = footer
+        self.cornerRadius = cornerRadius
+        self.content = content()
+    }
+
+    public var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            if let header {
+                Text(header)
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal, 16)
+                    .accessibilityAddTraits(.isHeader)
+            }
+            VStack(spacing: 0) {
+                content
+            }
+            .frame(maxWidth: .infinity)
+            .background(Color.suiteGroupedRowBackground)
+            .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+            if let footer {
+                Text(footer)
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal, 16)
+            }
+        }
+        .accessibilityElement(children: .contain)
+    }
+}
+
+extension Color {
+    /// 分组内行的背景色，随系统深浅色变化。
+    static var suiteGroupedRowBackground: Color {
+        #if canImport(UIKit)
+        Color(uiColor: .secondarySystemGroupedBackground)
+        #else
+        Color.primary.opacity(0.04)
+        #endif
+    }
+
+    /// 行被按下时的高亮色。
+    static var suiteRowHighlight: Color {
+        #if canImport(UIKit)
+        Color(uiColor: .systemFill)
+        #else
+        Color.primary.opacity(0.1)
+        #endif
+    }
+}
