@@ -8,8 +8,12 @@ func suiteListSectionRendersEveryRowVariantInBothAppearancesAtAccessibilityTextS
     for appearance in [ColorScheme.light, .dark] {
         let section = SuiteListSection(header: "Header", footer: "Footer") {
             SuiteListRow(title: "Plain")
-            SuiteListRow(title: "Value", trailingText: "A very long trailing value that must shrink", showsChevron: true,
-                         action: {})
+            SuiteListRow(
+                title: "Value",
+                trailingText: "A very long trailing value that must shrink",
+                showsChevron: true,
+                action: {}
+            )
             SuiteListRow(title: "Dimmed", isDimmed: true) {
                 Image(systemName: "envelope")
             }
