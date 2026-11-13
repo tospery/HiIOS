@@ -36,7 +36,7 @@ public struct SuiteListSection<Content: View>: View {
                 content
             }
             .frame(maxWidth: .infinity)
-            .background(Color.suiteGroupedRowBackground)
+            .background(Color.suiteContentSurface)
             .clipShape(RoundedRectangle(cornerRadius: style.sectionCornerRadius(cornerRadius), style: .continuous))
             if let footer {
                 Text(footer)
@@ -50,15 +50,6 @@ public struct SuiteListSection<Content: View>: View {
 }
 
 extension Color {
-    /// 分组内行的背景色，随系统深浅色变化。
-    static var suiteGroupedRowBackground: Color {
-        #if canImport(UIKit)
-        Color(uiColor: .secondarySystemGroupedBackground)
-        #else
-        Color.primary.opacity(0.04)
-        #endif
-    }
-
     /// 行被按下时的高亮色。
     static var suiteRowHighlight: Color {
         #if canImport(UIKit)

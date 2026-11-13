@@ -23,3 +23,12 @@ HiIOS 的 `dev` 分支是尚未公开发布的 4.x 开发线；已发布的 3.0.
 - 友盟、EMAS 等厂商 adapter 只有在 SPM 与 CocoaPods 都具备可验证来源时才实现，不预建空 target，也不由默认入口初始化。
 
 每次变更分别验证受影响的 SPM product、独立 Pod 和聚合 Pod；隔离安装 Core、RxSwift、Combine 与默认入口，检查 Swift module 名、公开接口、资源定位、依赖环、取消与错误语义、隐私脱敏。CocoaPods 本地 lint 不是公开 Trunk 发布。
+
+## SuiteCore 页面外观组件
+
+`HiIOSSuiteCore` 提供与业务、品牌无关的页面外观约定，消费项目在所有页面统一使用，不在页面中各自组合系统修饰符：
+
+- **传统导航栏**：`suiteNavigationTitle(_:)` 设置标准高度、标题居中的导航栏，不使用大标题；标题由工具栏自定义内容承担时用 `suiteNavigationBar()`。
+- **页面画布与内容表面**：`Color.suitePageCanvas`（浅灰，深色下纯黑）与 `Color.suiteContentSurface`（白色，深色下深灰）始终有色差。整页用 `suitePageCanvas()`；平铺列表用 `suiteListCanvas()` 并为内容行加 `suiteListRowSurface()`；阅读页的正文、评论等内容块用 `suiteContentBlock(padding:)`，块间露出画布。
+- **分页尾**：`LoadMoreFooter` 按 `LoadMoreState`（加载中、加载更多、已全部加载、失败）显示列表底部状态，文案由 `LoadMoreLabels` 提供；在 `List` 中自身无分隔线、透明行背景。`LoadMoreLabels.finished` 为空时全部加载后不显示结尾文字。
+- **列表分组与行**：`SuiteListSection`、`SuiteListRow`、`SuiteListButtonRow` 与 `SuiteListStyle`。
