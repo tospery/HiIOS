@@ -34,7 +34,7 @@ public struct SuiteListButtonRow: View {
                 .minimumScaleFactor(0.75)
                 .padding(.vertical, 8)
                 .padding(.horizontal, style.rowLeadingInset)
-                .frame(maxWidth: .infinity, minHeight: 48)
+                .frame(maxWidth: .infinity, minHeight: SuiteListRowMetrics.minimumHeight)
                 .overlay(alignment: .bottom) {
                     if showsDivider {
                         Divider()

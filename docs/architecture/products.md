@@ -31,4 +31,7 @@ HiIOS 的 `dev` 分支是尚未公开发布的 4.x 开发线；已发布的 3.0.
 - **传统导航栏**：`suiteNavigationTitle(_:)` 设置标准高度、标题居中的导航栏，不使用大标题；标题由工具栏自定义内容承担时用 `suiteNavigationBar()`。
 - **页面画布与内容表面**：`Color.suitePageCanvas`（浅灰，深色下纯黑）与 `Color.suiteContentSurface`（白色，深色下深灰）始终有色差。整页用 `suitePageCanvas()`；平铺列表用 `suiteListCanvas()` 并为内容行加 `suiteListRowSurface()`；阅读页的正文、评论等内容块用 `suiteContentBlock(padding:)`，块间露出画布。
 - **分页尾**：`LoadMoreFooter` 按 `LoadMoreState`（加载中、加载更多、已全部加载、失败）显示列表底部状态，文案由 `LoadMoreLabels` 提供；在 `List` 中自身无分隔线、透明行背景。`LoadMoreLabels.finished` 为空时全部加载后不显示结尾文字。
-- **列表分组与行**：`SuiteListSection`、`SuiteListRow`、`SuiteListButtonRow` 与 `SuiteListStyle`。
+- **列表分组与行**：`SuiteListSection`、`SuiteListRow`、`SuiteListButtonRow` 与 `SuiteListStyle`；单行最小高度为 `SuiteListRowMetrics.minimumHeight`（52pt，与 iOS 26 系统列表一致）。
+- **工具栏项**：导航栏上的每个 `ToolbarItem`、`ToolbarItemGroup` 加 `suitePlainToolbarItem()`，只显示图标或文字本身，不带 iOS 26 起的玻璃背景。
+- **页面首屏加载**：`SuitePageLoadingView` 只显示放大一档的加载动画，不显示文字；说明文字通过 `accessibilityLabel` 交给 VoiceOver。
+- **传统标签栏**：`SuiteTabBar` 与 `SuiteTabBarItem` 绘制与屏幕同宽的通栏标签栏（内容高 `SuiteTabBar.height`，背景延伸到底部安全区）。iOS 26 起系统标签栏只有悬浮玻璃样式，需要通栏样式的项目隐藏系统标签栏，把它以 `safeAreaInset(edge: .bottom, spacing: 0)` 挂在各 Tab 导航栈的根页上，push 时随根页滑出。

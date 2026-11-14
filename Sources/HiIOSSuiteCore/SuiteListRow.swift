@@ -78,7 +78,7 @@ public struct SuiteListRow<Leading: View, Trailing: View>: View {
             }
             .padding(.vertical, 8)
             .padding(.trailing, style.rowTrailingInset)
-            .frame(minHeight: 48)
+            .frame(minHeight: SuiteListRowMetrics.minimumHeight)
             .overlay(alignment: .bottom) {
                 if showsDivider {
                     Divider()
@@ -145,6 +145,12 @@ public extension SuiteListRow where Trailing == EmptyView {
 ///
 /// ``SuiteListRow`` 传入 `action` 时自动使用；把不带 `action` 的行包进 `NavigationLink`、`ShareLink`、`Link`
 /// 等系统控件时，可显式设置 `.buttonStyle(SuiteListRowButtonStyle())` 获得一致的按压态。
+/// 通用列表行的尺寸约定。
+public enum SuiteListRowMetrics {
+    /// 单行内容时的最小行高，与 iOS 26 系统列表行一致。
+    public static let minimumHeight: CGFloat = 52
+}
+
 public struct SuiteListRowButtonStyle: ButtonStyle {
     public init() {}
 
