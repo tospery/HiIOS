@@ -95,7 +95,8 @@ public struct GitHubTrendingClient: Sendable {
             guard validQueryValue(spokenLanguage, allowsSlash: true) else { throw .invalidQuery }
             queryItems.append(URLQueryItem(name: "spoken_language_code", value: spokenLanguage))
         }
-        if sponsorableOnly { queryItems.append(URLQueryItem(name: "sponsorable", value: "true")) }
+        // GitHub 只认 `sponsorable=1`；`true` 等其他取值会被忽略并返回未筛选的榜单。
+        if sponsorableOnly { queryItems.append(URLQueryItem(name: "sponsorable", value: "1")) }
         components.queryItems = queryItems
         guard let url = components.url else { throw .invalidQuery }
         return url

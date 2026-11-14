@@ -51,7 +51,7 @@ func developerRequestUsesDedicatedPathAndSponsorableQuery() async throws {
     #expect(developers.map(\.login) == ["sampledev"])
     #expect(requests.count == 1)
     #expect(requests[0].url.path == "/trending/developers/Swift")
-    #expect(requests[0].url.query?.contains("sponsorable=true") == true)
+    #expect(requests[0].url.query?.contains("sponsorable=1") == true)
 }
 
 @Test

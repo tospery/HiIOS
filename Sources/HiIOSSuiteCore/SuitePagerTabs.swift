@@ -19,7 +19,7 @@ public struct SuitePagerTab<Tag: Hashable>: Identifiable {
 /// 顶部标签与可左右滑动翻页的内容区。
 ///
 /// 标签等宽铺满一行（每个至少能放下自身文字），放不下时整行横向滚动；选中项使用当前 tint，
-/// 下方是与文字同宽、3pt 高的指示条，切换时滑动过去。左右滑动内容会同步选中标签，点击标签会翻到对应页。
+/// 下方是与文字同宽、3pt 高的指示条，切换时滑动过去。内容区是 ``SuitePager``：轻扫即可翻页并同步选中标签，点击标签会翻到对应页。
 /// 各页在切换时保留，不重新创建。标签栏背景透明，与页面画布融为一体，不画底部分隔线。
 public struct SuitePagerTabs<Tag: Hashable, Page: View>: View {
     public static var tabHeight: CGFloat { 48 }
@@ -42,12 +42,7 @@ public struct SuitePagerTabs<Tag: Hashable, Page: View>: View {
     public var body: some View {
         VStack(spacing: 0) {
             tabBar
-            TabView(selection: $selection) {
-                ForEach(tabs) { tab in
-                    page(tab.tag).tag(tab.tag)
-                }
-            }
-            .tabViewStyle(.page(indexDisplayMode: .never))
+            SuitePager(tags: tabs.map(\.tag), selection: $selection, page: page)
         }
     }
 
