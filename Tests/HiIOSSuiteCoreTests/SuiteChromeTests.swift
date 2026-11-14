@@ -123,7 +123,7 @@ func suiteToolbarTrailingGroupKeepsFixedSpacing() {
         .frame(width: 320, height: 200)
     )
     #expect(renderer.uiImage != nil)
-    #expect(SuiteToolbarMetrics.itemSpacing == 16)
+    #expect(SuiteToolbarMetrics.itemSpacing == 20)
 }
 
 @Test @MainActor

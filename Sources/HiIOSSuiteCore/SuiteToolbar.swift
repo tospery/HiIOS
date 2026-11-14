@@ -63,7 +63,7 @@ public extension View {
 /// 导航栏按钮组的统一尺寸。
 public enum SuiteToolbarMetrics {
     /// 同一侧相邻图标之间的间距。
-    public static let itemSpacing: CGFloat = 16
+    public static let itemSpacing: CGFloat = 20
 }
 
 /// 导航栏右侧的多个按钮：放在同一个工具栏项中，图标之间固定留 ``SuiteToolbarMetrics/itemSpacing``，
