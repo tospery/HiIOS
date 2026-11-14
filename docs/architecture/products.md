@@ -9,7 +9,7 @@ HiIOS 的 `dev` 分支是尚未公开发布的 4.x 开发线；已发布的 3.0.
 | Base | `HiIOSBase`：纯 Swift 模型、错误、日志、统计和社会化分享契约 | 无 |
 | Core | `HiIOSCore`：颜色、字体、资源、序列化、文件和设备工具 | Base |
 | Net | `HiIOSNetCore` 与 RxSwift、Combine adapter：HTTP 契约和 Moya transport | NetCore → Core；adapter → NetCore |
-| Nav | `HiIOSNavCore` 与 RxSwift、Combine adapter：typed route、URL 校验和通用展示状态 | NavCore → Core；adapter → NavCore |
+| Nav | `HiIOSNavCore` 与 RxSwift、Combine adapter：typed route、URL 路由表与安全校验、强类型路由栈和通用展示状态 | NavCore → Core；adapter → NavCore |
 | Store | `HiIOSStoreCore` 与 Keychain、Defaults、File adapter：字节存储与安全值契约 | StoreCore → Base；adapter → StoreCore |
 | Suite | `HiIOSSuiteCore` 与 OSLog、SwiftyBeaver adapter：通用 SwiftUI 视图与日志输出 | SuiteCore → Core；日志 adapter → Base |
 
@@ -43,3 +43,13 @@ HiIOS 的 `dev` 分支是尚未公开发布的 4.x 开发线；已发布的 3.0.
 - **翻页标签**：`SuitePagerTabs` 与 `SuitePagerTab` 提供顶部可横向滚动的等宽标签（选中项 tint 色、与文字同宽的 3pt 指示条），内容区为 `SuitePager`。
 - **锚定气泡**：`suiteAnchoredTooltip(text:anchor:reservedTop:autoDismissAfter:onDismiss:)` 在视图上显示指向锚点的反色气泡，上方空间不足时显示在下方；默认 5 秒后 0.3 秒渐隐。位置计算 `SuiteAnchoredTooltipLayout` 独立可测。
 - **传统标签栏**：`SuiteTabBar` 与 `SuiteTabBarItem` 绘制与屏幕同宽的通栏标签栏（内容高 `SuiteTabBar.height`，背景延伸到底部安全区；`itemOffset` 可让图标与文字整体下移）。iOS 26 起系统标签栏只有悬浮玻璃样式，需要通栏样式的项目隐藏系统标签栏，把它以 `safeAreaInset(edge: .bottom, spacing: 0)` 挂在各 Tab 导航栈的根页上，push 时随根页滑出。
+
+## NavCore 导航基础
+
+`HiIOSNavCore` 只提供与 UI 框架和架构无关的导航基础，UIKit、SwiftUI 与 TCA 项目都可以使用；不依赖 swift-navigation、URLNavigator 等第三方导航库，状态驱动的页面呈现由消费项目自行选择实现。
+
+- **URL 路由表**：`URLRouter<Context, Route>` 先用 `SanitizedURL` 做结构安全检查（拒绝 user-info、显式或空端口、编码过的主机名、空段、`.`/`..`，以及解码后含 `/`、`\`、`%`、`?`、`#` 或控制字符的路径段），再按 `URLRouteRule` 的顺序匹配 `URLRouteTemplate`（scheme、精确或参数化主机、`/{owner}/{repo}` 形式的路径模板、是否允许 query 与 fragment）。每条规则声明可达的入口上下文（由项目定义，如外部入口与 App 内导航），`resolve` 做保留名、数字范围、query 等业务校验，返回 nil 即拒绝。
+- **路由栈**：`NavigationRouteStack<Route>` 是可绑定到 `NavigationStack(path:)` 的强类型路由序列，每次写入都返回出栈的路由，供调用方释放页面独占的资源。
+- **展示状态**：`NavigationAction`、`ToastState`、`NavigationAlertState`、`NavigationDialogState`、`NavigationPresentationAction` 与 `PopupState`；命名带 `Navigation` 前缀，避免与 TCA、swift-navigation 的 `AlertState`、`PresentationAction` 同时导入时冲突。
+- `HiIOSNavRxSwift` 中基于 URLNavigator 的 `RxURLNavigator` 只适用于 UIKit；SwiftUI 项目使用 `URLRouter` 加自身的状态驱动导航。
+

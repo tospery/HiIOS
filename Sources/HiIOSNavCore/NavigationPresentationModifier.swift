@@ -2,14 +2,14 @@ import SwiftUI
 
 public struct NavigationPresentationBindings<Payload: Hashable & Sendable> {
     public let toast: Binding<ToastState?>
-    public let alert: Binding<AlertState?>
-    public let dialog: Binding<DialogState?>
+    public let alert: Binding<NavigationAlertState?>
+    public let dialog: Binding<NavigationDialogState?>
     public let popup: Binding<PopupState<Payload>?>
 
     public init(
         toast: Binding<ToastState?>,
-        alert: Binding<AlertState?>,
-        dialog: Binding<DialogState?>,
+        alert: Binding<NavigationAlertState?>,
+        dialog: Binding<NavigationDialogState?>,
         popup: Binding<PopupState<Payload>?>
     ) {
         self.toast = toast
@@ -22,15 +22,15 @@ public struct NavigationPresentationBindings<Payload: Hashable & Sendable> {
 /// 将通用呈现状态接到 Scene 根视图；文案、动作和弹层内容由项目注入。
 public struct NavigationPresentationModifier<Payload: Hashable & Sendable, PopupContent: View>: ViewModifier {
     @Binding private var toast: ToastState?
-    @Binding private var alert: AlertState?
-    @Binding private var dialog: DialogState?
+    @Binding private var alert: NavigationAlertState?
+    @Binding private var dialog: NavigationDialogState?
     @Binding private var popup: PopupState<Payload>?
-    private let onAction: (PresentationAction) -> Void
+    private let onAction: (NavigationPresentationAction) -> Void
     private let popupContent: (Payload) -> PopupContent
 
     public init(
         bindings: NavigationPresentationBindings<Payload>,
-        onAction: @escaping (PresentationAction) -> Void,
+        onAction: @escaping (NavigationPresentationAction) -> Void,
         @ViewBuilder popupContent: @escaping (Payload) -> PopupContent
     ) {
         _toast = bindings.toast
@@ -118,7 +118,7 @@ public struct NavigationPresentationModifier<Payload: Hashable & Sendable, Popup
 public extension View {
     func hiIOSNavigationPresentations<Payload: Hashable & Sendable, PopupContent: View>(
         bindings: NavigationPresentationBindings<Payload>,
-        onAction: @escaping (PresentationAction) -> Void,
+        onAction: @escaping (NavigationPresentationAction) -> Void,
         @ViewBuilder popupContent: @escaping (Payload) -> PopupContent
     ) -> some View {
         modifier(NavigationPresentationModifier(
@@ -138,7 +138,7 @@ private extension ToastStyle {
     }
 }
 
-private extension PresentationActionRole {
+private extension NavigationPresentationActionRole {
     var buttonRole: ButtonRole? {
         switch self {
         case .default: nil

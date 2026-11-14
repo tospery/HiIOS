@@ -16,9 +16,9 @@ func navigationActionCarriesOnlyTypedDestination() {
 
 @Test
 func presentationStatesUseCallerProvidedTextAndTypedPayload() {
-    let action = PresentationAction(id: "delete", title: "Delete", role: .destructive)
-    let alert = AlertState(title: "Confirm", message: "Proceed?", actions: [action])
-    let dialog = DialogState(title: "Choose", actions: [action])
+    let action = NavigationPresentationAction(id: "delete", title: "Delete", role: .destructive)
+    let alert = NavigationAlertState(title: "Confirm", message: "Proceed?", actions: [action])
+    let dialog = NavigationDialogState(title: "Choose", actions: [action])
     let toast = ToastState(message: "Saved", style: .success)
     let popup = PopupState(payload: TestRoute.details)
 

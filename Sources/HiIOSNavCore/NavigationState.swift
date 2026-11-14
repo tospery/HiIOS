@@ -41,36 +41,36 @@ public struct ToastState: Identifiable, Equatable, Sendable {
     }
 }
 
-public enum PresentationActionRole: String, CaseIterable, Sendable {
+public enum NavigationPresentationActionRole: String, CaseIterable, Sendable {
     case `default`
     case cancel
     case destructive
 }
 
 /// 文案与动作 ID 均由调用方提供，便于业务本地化和测试。
-public struct PresentationAction: Identifiable, Equatable, Sendable {
+public struct NavigationPresentationAction: Identifiable, Equatable, Sendable {
     public let id: String
     public let title: String
-    public let role: PresentationActionRole
+    public let role: NavigationPresentationActionRole
 
-    public init(id: String, title: String, role: PresentationActionRole = .default) {
+    public init(id: String, title: String, role: NavigationPresentationActionRole = .default) {
         self.id = id
         self.title = title
         self.role = role
     }
 }
 
-public struct AlertState: Identifiable, Equatable, Sendable {
+public struct NavigationAlertState: Identifiable, Equatable, Sendable {
     public let id: UUID
     public let title: String
     public let message: String?
-    public let actions: [PresentationAction]
+    public let actions: [NavigationPresentationAction]
 
     public init(
         id: UUID = UUID(),
         title: String,
         message: String? = nil,
-        actions: [PresentationAction]
+        actions: [NavigationPresentationAction]
     ) {
         self.id = id
         self.title = title
@@ -79,17 +79,17 @@ public struct AlertState: Identifiable, Equatable, Sendable {
     }
 }
 
-public struct DialogState: Identifiable, Equatable, Sendable {
+public struct NavigationDialogState: Identifiable, Equatable, Sendable {
     public let id: UUID
     public let title: String
     public let message: String?
-    public let actions: [PresentationAction]
+    public let actions: [NavigationPresentationAction]
 
     public init(
         id: UUID = UUID(),
         title: String,
         message: String? = nil,
-        actions: [PresentationAction]
+        actions: [NavigationPresentationAction]
     ) {
         self.id = id
         self.title = title
