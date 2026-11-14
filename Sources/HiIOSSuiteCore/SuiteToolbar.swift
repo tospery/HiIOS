@@ -58,3 +58,29 @@ public extension View {
     }
 }
 #endif
+
+#if os(iOS)
+/// 导航栏按钮组的统一尺寸。
+public enum SuiteToolbarMetrics {
+    /// 同一侧相邻图标之间的间距。
+    public static let itemSpacing: CGFloat = 16
+}
+
+/// 导航栏右侧的多个按钮：放在同一个工具栏项中，图标之间固定留 ``SuiteToolbarMetrics/itemSpacing``，
+/// 不依赖系统随版本变化的默认间距。按书写顺序从左到右排列。
+///
+/// 用在 `suiteToolbar { … }` 中，代替多个相邻的 `ToolbarItem(placement: .topBarTrailing)`。
+public struct SuiteToolbarTrailingGroup<Content: View>: ToolbarContent {
+    private let content: Content
+
+    public init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
+
+    public var body: some ToolbarContent {
+        ToolbarItem(placement: .topBarTrailing) {
+            HStack(spacing: SuiteToolbarMetrics.itemSpacing) { content }
+        }
+    }
+}
+#endif

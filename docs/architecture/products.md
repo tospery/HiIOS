@@ -34,6 +34,8 @@ HiIOS 的 `dev` 分支是尚未公开发布的 4.x 开发线；已发布的 3.0.
 - **列表分组与行**：`SuiteListSection`、`SuiteListRow`、`SuiteListButtonRow` 与 `SuiteListStyle`；单行最小高度为 `SuiteListRowMetrics.minimumHeight`（52pt，与 iOS 26 系统列表一致）。
 - **工具栏**：页面用 `suiteToolbar { … }` 代替 `.toolbar { … }`，其中每一项只显示图标或文字本身，不带 iOS 26 起的玻璃背景。版本判断放在视图层：`ToolbarContentBuilder` 中的 `if #available` 会引用位于 SwiftUICore 的 `buildLimitedAvailability`，动态库产品无法链接。
 - **工具栏按钮外观**：`suiteToolbarItemStyle()`（`SuiteToolbarButtonStyle`）让导航栏中的按钮、菜单与分享入口使用主文字色，与返回图标一致；按下变淡、禁用置灰。
+- **导航栏按钮组**：`SuiteToolbarTrailingGroup` 把导航栏右侧多个按钮放进同一个工具栏项，图标间距固定为 `SuiteToolbarMetrics.itemSpacing`（16pt），按书写顺序从左到右排列。
+- **主操作按钮**：`.buttonStyle(.suitePrimary)` / `.suitePrimary(shape:minHeight:)`（`SuitePrimaryButtonStyle`）以当前 `tint` 为实心底、白色文字与加载动画，禁用时系统灰底；外形分圆角矩形与胶囊，代替 `.borderedProminent`。
 - **页面首屏加载**：`SuitePageLoadingView` 只显示放大一档的加载动画，不显示文字；动画由 `SuiteActivityIndicator` 绘制，颜色取当前 `tint`。说明文字通过 `accessibilityLabel` 交给 VoiceOver。
 - **翻页标签**：`SuitePagerTabs` 与 `SuitePagerTab` 提供顶部可横向滚动的等宽标签（选中项 tint 色、与文字同宽的 3pt 指示条）和可左右滑动的分页内容。
 - **锚定气泡**：`suiteAnchoredTooltip(text:anchor:reservedTop:autoDismissAfter:onDismiss:)` 在视图上显示指向锚点的反色气泡，上方空间不足时显示在下方；默认 5 秒后 0.3 秒渐隐。位置计算 `SuiteAnchoredTooltipLayout` 独立可测。

@@ -108,4 +108,41 @@ func suiteAnchoredTooltipRendersOverItsContent() {
 func suiteListRowMinimumHeightMatchesSystemListRows() {
     #expect(SuiteListRowMetrics.minimumHeight == 52)
 }
+@Test @MainActor
+func suiteToolbarTrailingGroupKeepsFixedSpacing() {
+    let renderer = ImageRenderer(
+        content: NavigationStack {
+            Text("Body")
+                .suiteToolbar {
+                    SuiteToolbarTrailingGroup {
+                        Button {} label: { Image(systemName: "star") }
+                        Button {} label: { Image(systemName: "square.and.arrow.up") }
+                    }
+                }
+        }
+        .frame(width: 320, height: 200)
+    )
+    #expect(renderer.uiImage != nil)
+    #expect(SuiteToolbarMetrics.itemSpacing == 16)
+}
+
+@Test @MainActor
+func suitePrimaryButtonRendersEnabledAndDisabledInBothShapesAndAppearances() {
+    for appearance in [ColorScheme.light, .dark] {
+        for shape in [SuitePrimaryButtonStyle.Shape.roundedRectangle, .capsule] {
+            for disabled in [false, true] {
+                let renderer = ImageRenderer(
+                    content: Button("Submit") {}
+                        .buttonStyle(.suitePrimary(shape: shape, minHeight: 46))
+                        .disabled(disabled)
+                        .tint(.indigo)
+                        .preferredColorScheme(appearance)
+                        .frame(width: 240)
+                )
+                #expect(renderer.uiImage != nil)
+            }
+        }
+    }
+}
+
 #endif
