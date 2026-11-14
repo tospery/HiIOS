@@ -39,6 +39,8 @@ public struct SuitePager<Tag: Hashable, Page: View>: View {
                     ForEach(tags, id: \.self) { tag in
                         page(tag)
                             .frame(width: proxy.size.width, height: proxy.size.height)
+                            // 与 TabView 分页一致：只有当前页进入无障碍树，其他页的同名元素不会重复出现。
+                            .accessibilityHidden(tag != selection)
                             .id(tag)
                     }
                 }
