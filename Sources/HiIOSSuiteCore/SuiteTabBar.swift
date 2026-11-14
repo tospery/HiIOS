@@ -31,12 +31,19 @@ public struct SuiteTabBar<Tag: Hashable>: View {
 
     private let items: [SuiteTabBarItem<Tag>]
     private let selection: Tag
+    private let itemOffset: CGFloat
     private let onSelect: @MainActor (Tag) -> Void
 
-    /// - Parameter onSelect: 点击某一项时执行，包括再次点击当前项。
-    public init(items: [SuiteTabBarItem<Tag>], selection: Tag, onSelect: @escaping @MainActor (Tag) -> Void) {
+    /// - Parameters:
+    ///   - itemOffset: 图标与文字整体向下偏移的距离；标签栏高度与背景不变，偏移部分落入底部安全区。
+    ///   - onSelect: 点击某一项时执行，包括再次点击当前项。
+    public init(
+        items: [SuiteTabBarItem<Tag>], selection: Tag, itemOffset: CGFloat = 0,
+        onSelect: @escaping @MainActor (Tag) -> Void
+    ) {
         self.items = items
         self.selection = selection
+        self.itemOffset = itemOffset
         self.onSelect = onSelect
     }
 
@@ -46,6 +53,7 @@ public struct SuiteTabBar<Tag: Hashable>: View {
                 button(for: item)
             }
         }
+        .offset(y: itemOffset)
         .frame(height: Self.height)
         .frame(maxWidth: .infinity)
         .background(alignment: .top) { Divider() }

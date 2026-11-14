@@ -33,5 +33,8 @@ HiIOS 的 `dev` 分支是尚未公开发布的 4.x 开发线；已发布的 3.0.
 - **分页尾**：`LoadMoreFooter` 按 `LoadMoreState`（加载中、加载更多、已全部加载、失败）显示列表底部状态，文案由 `LoadMoreLabels` 提供；在 `List` 中自身无分隔线、透明行背景。`LoadMoreLabels.finished` 为空时全部加载后不显示结尾文字。
 - **列表分组与行**：`SuiteListSection`、`SuiteListRow`、`SuiteListButtonRow` 与 `SuiteListStyle`；单行最小高度为 `SuiteListRowMetrics.minimumHeight`（52pt，与 iOS 26 系统列表一致）。
 - **工具栏**：页面用 `suiteToolbar { … }` 代替 `.toolbar { … }`，其中每一项只显示图标或文字本身，不带 iOS 26 起的玻璃背景。版本判断放在视图层：`ToolbarContentBuilder` 中的 `if #available` 会引用位于 SwiftUICore 的 `buildLimitedAvailability`，动态库产品无法链接。
-- **页面首屏加载**：`SuitePageLoadingView` 只显示放大一档的加载动画，不显示文字；说明文字通过 `accessibilityLabel` 交给 VoiceOver。
-- **传统标签栏**：`SuiteTabBar` 与 `SuiteTabBarItem` 绘制与屏幕同宽的通栏标签栏（内容高 `SuiteTabBar.height`，背景延伸到底部安全区）。iOS 26 起系统标签栏只有悬浮玻璃样式，需要通栏样式的项目隐藏系统标签栏，把它以 `safeAreaInset(edge: .bottom, spacing: 0)` 挂在各 Tab 导航栈的根页上，push 时随根页滑出。
+- **工具栏按钮外观**：`suiteToolbarItemStyle()`（`SuiteToolbarButtonStyle`）让导航栏中的按钮、菜单与分享入口使用主文字色，与返回图标一致；按下变淡、禁用置灰。
+- **页面首屏加载**：`SuitePageLoadingView` 只显示放大一档的加载动画，不显示文字；动画由 `SuiteActivityIndicator` 绘制，颜色取当前 `tint`。说明文字通过 `accessibilityLabel` 交给 VoiceOver。
+- **翻页标签**：`SuitePagerTabs` 与 `SuitePagerTab` 提供顶部可横向滚动的等宽标签（选中项 tint 色、与文字同宽的 3pt 指示条）和可左右滑动的分页内容。
+- **锚定气泡**：`suiteAnchoredTooltip(text:anchor:reservedTop:autoDismissAfter:onDismiss:)` 在视图上显示指向锚点的反色气泡，上方空间不足时显示在下方；默认 5 秒后 0.3 秒渐隐。位置计算 `SuiteAnchoredTooltipLayout` 独立可测。
+- **传统标签栏**：`SuiteTabBar` 与 `SuiteTabBarItem` 绘制与屏幕同宽的通栏标签栏（内容高 `SuiteTabBar.height`，背景延伸到底部安全区；`itemOffset` 可让图标与文字整体下移）。iOS 26 起系统标签栏只有悬浮玻璃样式，需要通栏样式的项目隐藏系统标签栏，把它以 `safeAreaInset(edge: .bottom, spacing: 0)` 挂在各 Tab 导航栈的根页上，push 时随根页滑出。

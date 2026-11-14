@@ -24,3 +24,37 @@ private struct SuitePlainToolbarModifier<Items: ToolbarContent>: ViewModifier {
     }
 }
 #endif
+
+#if os(iOS)
+/// 导航栏按钮的统一外观：图案或文字使用主文字色（与返回图标一致，浅色黑、深色白），不跟随 App 主色；
+/// 按下时变淡，禁用时置灰。状态（例如已加星标）用实心与空心等图案区分，不另用颜色。
+public struct SuiteToolbarButtonStyle: ButtonStyle {
+    public init() {}
+
+    public func makeBody(configuration: Configuration) -> some View {
+        SuiteToolbarButtonLabel(configuration: configuration)
+    }
+}
+
+private struct SuiteToolbarButtonLabel: View {
+    let configuration: ButtonStyleConfiguration
+    @Environment(\.isEnabled) private var isEnabled
+
+    var body: some View {
+        configuration.label
+            .foregroundStyle(.primary)
+            .contentShape(Rectangle())
+            .opacity(isEnabled ? (configuration.isPressed ? 0.4 : 1) : 0.35)
+    }
+}
+
+public extension View {
+    /// 导航栏中的按钮、菜单与分享入口统一使用 ``SuiteToolbarButtonStyle``。
+    ///
+    /// 放在 `suiteToolbar { … }` 的每一项上；菜单（`Menu`）的标签同样改为主文字色。
+    func suiteToolbarItemStyle() -> some View {
+        buttonStyle(SuiteToolbarButtonStyle())
+            .foregroundStyle(.primary)
+    }
+}
+#endif
