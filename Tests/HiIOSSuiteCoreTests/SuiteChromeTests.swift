@@ -31,6 +31,21 @@ func suitePageLoadingViewRendersWithAndWithoutAccessibilityLabel() {
     }
 }
 
+@Test @MainActor
+func suiteToolbarRendersPlainItemsInsideNavigationStack() {
+    let renderer = ImageRenderer(
+        content: NavigationStack {
+            Text("Body")
+                .suiteToolbar {
+                    ToolbarItem(placement: .topBarTrailing) { Button("Done") {} }
+                    ToolbarItem(placement: .topBarLeading) { Image(systemName: "chevron.backward") }
+                }
+        }
+        .frame(width: 320, height: 200)
+    )
+    #expect(renderer.uiImage != nil)
+}
+
 @Test
 func suiteListRowMinimumHeightMatchesSystemListRows() {
     #expect(SuiteListRowMetrics.minimumHeight == 52)
